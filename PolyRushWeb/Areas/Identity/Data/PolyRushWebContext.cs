@@ -22,6 +22,12 @@ public class PolyRushWebContext : IdentityDbContext<User, IdentityRole<int>, int
     {
         base.OnModelCreating(builder);
 
+        builder.Entity<User>().ToTable("user");
+        builder.Entity<IdentityRole<int>>().ToTable("role");
+        builder.Entity<IdentityUserRole<int>>().ToTable("userrole");
+        builder.Entity<IdentityUserClaim<int>>().ToTable("userclaim");
+        builder.Entity<IdentityUserLogin<int>>().ToTable("userlogin");
+
         //Seed identity admin user
         const int AdminRoleId = 1;
         const string AdminRoleName = "Admin";

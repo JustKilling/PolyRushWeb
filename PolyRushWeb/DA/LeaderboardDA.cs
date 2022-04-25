@@ -1,47 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
 using PolyRushLibrary;
 using PolyRushLibrary.Responses;
 using PolyRushWeb.Helper;
+using PolyRushWeb.Models;
 
 namespace PolyRushWeb.DA
 {
     public class LeaderboardDA
     {
         private readonly UserDA _userDa;
+        private readonly polyrushContext _context;
+        private readonly UserManager<User> _userManager;
+        private Random rnd = new();
 
-        public LeaderboardDA(UserDA userDa)
+        public LeaderboardDA(UserDA userDa, polyrushContext context, UserManager<User> userManager)
         {
             _userDa = userDa;
+            _context = context;
+            _userManager = userManager;
         }
-        public  List<UserDTO> GetTopUsers(int amount, bool getImages = true)
+        public async Task<List<UserDTO>> GetTopUsers(int amount, bool getImages = true)
         {
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
-            string avatar = getImages ? ", avatar" : "";
-            string query = $"SELECT iduser, firstname, lastname, username, email, isadmin, seesads, coins, highscore, scoregathered, itemspurchased, coinsspent, coinsgathered, timespassed, createddate, isactive {avatar} from user WHERE IsAdmin NOT LIKE 1 AND IsActive = 1 ORDER BY Highscore DESC LIMIT @Limit";
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@Limit", amount); 
-            MySqlDataReader? reader = cmd.ExecuteReader();
-            List<UserDTO> users = new();
-
-            try
-            {
-                while (reader.Read()) users.Add(_userDa.CreateDTO(reader));
-
-                return users;
-            }
-            finally
-            {
-                reader.Close();
-
-                conn.Close();
-            }
+            return await _context.Users.Where(u => u.IsAdmin == true).OrderByDescending(u => u.Highscore).Take(amount).Select(u => u.ToUserDTO()).ToListAsync();
         }
         
         //method to return the top users with playtime
         public async Task<List<(UserDTO, int TopPlayTime)>> GetTopPlaytime(int amount)
         {
+
+
             MySqlConnection conn = DatabaseConnector.MakeConnection();
             //user top playtime query
             string query = "select UserID, IsActive, sum(timediff(EndDateTime, StartDateTime)) AS 'PlayTime' from gamesession INNER JOIN user WHERE IsActive = 1 group by UserID Order by PlayTime DESC LIMIT @Limit";
@@ -67,53 +58,35 @@ namespace PolyRushWeb.DA
             }
         }
         
-        public  List<NextGoalResponse> GetNextGoals(int amount, int highscore)
+        public async Task<List<NextGoalResponse>> GetNextGoals(int amount, int highscore)
         {
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
-            //select the first record of the lowest highscore that is higher then the current highscore.
-            string query = @"SELECT (SELECT 
-                            COUNT(*) AS Rank 
-                            FROM user 
-                            WHERE Highscore>= @Current) as rank, Highscore, Avatar FROM user WHERE Highscore > @Current
-                            ORDER BY Highscore
-                            LIMIT @Amount";
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@Current", highscore);
-            cmd.Parameters.AddWithValue("@Amount", amount);
 
-            MySqlDataReader reader = cmd.ExecuteReader();
+            var users = await _context.Users.FromSqlRaw("select Id, Highscore, Avatar from user").Where(u => u.Highscore > highscore).OrderBy(u => u.Highscore).Take(amount).ToListAsync();           
             
-            if (!reader.Read())
-            {
-                conn.Close(); 
-                reader.Close();
 
+            if(users == null)
+            {
                 string avatar = ImageToBase64Helper.ConvertImagePathToBase64String("Media/success.png");
                 return new()
                 {
-                    new() {Avatar = avatar, Goal = Convert.ToInt32(highscore * 1.25f), Rank = 0}
+                    new() { Avatar = avatar, Goal = Convert.ToInt32(highscore * 1.25f), Rank = 0 }
                 };
             }
 
-            try
-            {
-                List<NextGoalResponse> goalResponses = new();
-                do
-                {
-                    goalResponses.Add(new()
-                    {
-                        Avatar = reader["Avatar"].ToString()!, Goal = Convert.ToInt32(reader["Highscore"]),
-                        Rank = Convert.ToInt32(reader["Rank"])
-                    });
-                } while (reader.Read());
+            List<NextGoalResponse> goalResponses = new();
 
-                return goalResponses;
-            }
-            finally
+            for (int i = 0; i < users.Count(); i++)
             {
-                reader.Close();
-                conn.Close();
+                var user = users[i];
+                goalResponses.Add(new()
+                {
+                    Avatar = user.Avatar,
+                    Goal = user.Highscore,
+                    Rank = i+1
+                });
             }
+
+            return goalResponses;
         }
 
         // private  int GetUserPosition(int id)
@@ -137,23 +110,19 @@ namespace PolyRushWeb.DA
         //     }
         // }
 
-        public  void UpdateRandom(string username)
+        public async Task UpdateRandomAsync(string username)
         {
-            Random rnd = new();
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
-            string query =
-                "Update user SET  Highscore = @Highscore, Coins = @Coins, Itemspurchased=@Itemspurchased, Coinsspent = @Coinsspent, Coinsgathered = @Coinsgathered, Timespassed = @Timespassed where Username = @username";
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@Highscore", rnd.Next(10000));
-            cmd.Parameters.AddWithValue("@Itemspurchased", rnd.Next(100));
-            cmd.Parameters.AddWithValue("@Coinsspent", rnd.Next(10000));
-            cmd.Parameters.AddWithValue("@Coinsgathered", rnd.Next(10000));
-            cmd.Parameters.AddWithValue("@Coins", rnd.Next(100000));
-            cmd.Parameters.AddWithValue("@Timespassed", rnd.Next(1000));
-            cmd.Parameters.AddWithValue("@Username", username);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-        }
+
+            var user = await _userManager.FindByNameAsync(username);
+            user.Coins = rnd.Next(1000,15000);
+            user.Highscore = rnd.Next(7500);
+            user.Itemspurchased = rnd.Next(20);
+            user.Coinsspent = rnd.Next(user.Itemspurchased*200);
+            user.Coinsgathered = rnd.Next(user.Coins - user.Itemspurchased*200);
+            user.Timespassed = rnd.Next(100);
+
+            await _userManager.UpdateAsync(user);
+        }     
 
 
     }

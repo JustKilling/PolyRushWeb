@@ -35,6 +35,8 @@ namespace PolyRushWeb.Models
         {
             base.OnModelCreating(modelBuilder);
 
+
+
             modelBuilder.UseCollation("utf8_general_ci")
                 .HasCharSet("utf8");
 

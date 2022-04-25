@@ -23,17 +23,17 @@ namespace PolyRushWeb.Controllers.ApiControllers
         }
         [HttpGet]
         [Route("{amount}")]
-        public IActionResult GetTopUsers(int amount)
+        public async Task<IActionResult> GetTopUsers(int amount)
         {
-            return Ok(_leaderboardDa.GetTopUsers(amount));
+            return Ok(await _leaderboardDa.GetTopUsers(amount));
         }
         [HttpGet]
         [Route("getnextgoals/{amount}/{score}")]
-        public IActionResult GetNextGoals(int amount, int score)
+        public async Task<IActionResult> GetNextGoals(int amount, int score)
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
         
-            List<NextGoalResponse> response = _leaderboardDa.GetNextGoals(amount, score);
+            List<NextGoalResponse> response = await _leaderboardDa.GetNextGoals(amount, score);
             return Ok(response);
         }
         [HttpGet]
@@ -44,16 +44,16 @@ namespace PolyRushWeb.Controllers.ApiControllers
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             User? user = await _userDa.GetById(id);
             if (user == null) return BadRequest();
-            List<NextGoalResponse> response = _leaderboardDa.GetNextGoals(amount, user.Highscore);
+            List<NextGoalResponse> response = await _leaderboardDa.GetNextGoals(amount, user.Highscore);
             return Ok(response);
         }
-        
-        // [HttpGet]
-        // [Route("random/{username}")]
-        // public IActionResult GetTopUsers(string username)
-        // {
-        //     LeaderboardDA.UpdateRandom(username);
-        //     return Ok();
-        // }
+
+        [HttpGet]
+        [Route("random/{username}")]
+        public async Task<IActionResult> GetTopUsersAsync(string username)
+        {
+            await _leaderboardDa.UpdateRandomAsync(username);
+            return Ok();
+        }
     }
 }

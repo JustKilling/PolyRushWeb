@@ -30,6 +30,13 @@ namespace PolyRushWeb.DA
             return users;
         }
 
+        public async Task<List<UserDTO>> GetUsers()
+        {
+            var users = new List<UserDTO>();
+            users = await _userManager.Users.Select(u => u.ToUserDTO()).ToListAsync()!;
+            return users;
+        }
+
         public async Task Deactivate(int id, bool deactivate = true)
         {
             var user = new User

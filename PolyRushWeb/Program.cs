@@ -16,6 +16,7 @@ using PolyRushWeb.Models;
 using Microsoft.EntityFrameworkCore;
 using PolyRushWeb.Data;
 using PolyRushWeb.DA;
+using Newtonsoft.Json;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("PolyRushWebConnection");;
@@ -54,6 +55,11 @@ builder.Configuration.Bind("SecretSettings", secretSettings);
 builder.Services.AddSingleton(secretSettings);
 //builder.Services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+{
+    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+};
 builder.Services.AddControllers().AddNewtonsoftJson(o =>
 {
     o.SerializerSettings.ContractResolver = new DefaultContractResolver();
@@ -73,7 +79,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
 // Add progressive web app
 builder.Services.AddProgressiveWebApp();
 

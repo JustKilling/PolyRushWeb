@@ -33,10 +33,10 @@ $( document ).ready(function() {
 
             <caption style="caption-side: top; text-align:center; margin:auto; user-select:none">Top score</caption>
             <tbody>
-            @{var listTopHighscore = @leaderboardDa.GetTopUsers(10, true); }
+            @{var listTopHighscore = await leaderboardDa.GetTopUsers(10, true); }
                 @for (int i = 1; i <= @listTopHighscore.Count; i++)
                 {
-                    UserDTO user = @listTopHighscore[@i-1];
+                    UserDTO user = listTopHighscore[@i-1];
                     <tr style="user-select:none">
                         <td>@i</td>
                         <td><img style="user-select:none; max-width: 20px" src="data:image/jpg;base64,@user.Avatar"/></td>
