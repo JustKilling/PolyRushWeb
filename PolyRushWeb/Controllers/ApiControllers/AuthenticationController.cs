@@ -50,7 +50,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
                 registration.Avatar = ImageToBase64Helper.ConvertImagePathToBase64String("Media/user.png");
             }
 
-            //Make the user
+            //Make the user6
             User user = new()
             {
                 Email = registration.Email,
