@@ -1,20 +1,31 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PolyRushAPI.DA;
+using PolyRushLibrary;
 using PolyRushLibrary.Responses;
+using PolyRushWeb.DA;
+using PolyRushWeb.Models;
 
-namespace PolyRushApi.Controllers
+namespace PolyRushWeb.Controllers.ApiControllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class LeaderboardController : ControllerBase
     {
+        private readonly UserDA _userDa;
+        private readonly LeaderboardDA _leaderboardDa;
+
+        public LeaderboardController(UserDA userDa, LeaderboardDA leaderboardDa)
+        {
+            _userDa = userDa;
+            _leaderboardDa = leaderboardDa;
+        }
         [HttpGet]
         [Route("{amount}")]
         public IActionResult GetTopUsers(int amount)
         {
-            return Ok(LeaderboardDA.GetTopUsers(amount));
+            return Ok(_leaderboardDa.GetTopUsers(amount));
         }
         [HttpGet]
         [Route("getnextgoals/{amount}/{score}")]
@@ -22,18 +33,18 @@ namespace PolyRushApi.Controllers
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
         
-            var response = LeaderboardDA.GetNextGoals(amount, score);
+            List<NextGoalResponse> response = _leaderboardDa.GetNextGoals(amount, score);
             return Ok(response);
         }
         [HttpGet]
         [Authorize]
         [Route("getnextgoals/{amount}")]
-        public IActionResult GetNextGoals(int amount)
+        public async Task<IActionResult> GetNextGoals(int amount)
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            var user = UserDA.GetById(id);
+            User? user = await _userDa.GetById(id);
             if (user == null) return BadRequest();
-            var response = LeaderboardDA.GetNextGoals(amount, user.Highscore);
+            List<NextGoalResponse> response = _leaderboardDa.GetNextGoals(amount, user.Highscore);
             return Ok(response);
         }
         

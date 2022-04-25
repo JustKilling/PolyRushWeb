@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace PolyRushAPI.Helper
+namespace PolyRushWeb.Helper
 {
     public static class ImageToBase64Helper
     {
@@ -24,10 +24,10 @@ namespace PolyRushAPI.Helper
         //https://yeahexp.com/how-to-decrease-byte-array-size-representing-an-image/
         public static byte[] ReduceImageSize(this byte[] imageData, int width = 500, int height = 500)
         {
-            var type = ImageFormat.Png;
+            ImageFormat type = ImageFormat.Png;
             if (imageData.Length == 0)
                 return imageData;
-            using (MemoryStream myMemStream = new MemoryStream(imageData))
+            using (MemoryStream myMemStream = new(imageData))
             {
                 Image fullsizeImage = Image.FromStream(myMemStream);
                 if (width <= 0 || width > fullsizeImage.Width)
@@ -35,7 +35,7 @@ namespace PolyRushAPI.Helper
                 if (height <= 0 || height > fullsizeImage.Height)
                     height = fullsizeImage.Height;
                 Image newImage = fullsizeImage.GetThumbnailImage(width, height, null, IntPtr.Zero);
-                using (MemoryStream myResult = new MemoryStream())
+                using (MemoryStream myResult = new())
                 {
                     newImage.Save(myResult, type);
                     return myResult.ToArray();

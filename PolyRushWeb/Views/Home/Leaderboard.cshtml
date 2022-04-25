@@ -1,8 +1,72 @@
-﻿@model TModel
-
+﻿@using PolyRushWeb.DA
+@using PolyRushLibrary
+@inject LeaderboardDA leaderboardDa
+@model PolyRushLibrary.UserDTO?
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    Layout = "_HomeLayout";
 }
 
-<h2>title</h2>
+<script >
+@{
+    int index = 1;
+}
+$( document ).ready(function() {
+    $("#navs").children().eq(@index).addClass("active")
+});
+</script>
+<style>
+    #leaderboardsbackground{
+        padding: 1em;
+    }
+    .leaderboardTable{
+        margin: 0 2rem
+    }
+</style>
+
+
+<h1>Leaderboard</h1>
+<div id="leaderboardsbackground">
+
+    <div id="leaderboards" class="container">
+        <div class="row m-0">
+            <table class="table table-dark table-hover leaderboardTable" style="max-width:400px; margin-left: 0px">
+
+            <caption style="caption-side: top; text-align:center; margin:auto; user-select:none">Top score</caption>
+            <tbody>
+            @{var listTopHighscore = @leaderboardDa.GetTopUsers(10, true); }
+                @for (int i = 1; i <= @listTopHighscore.Count; i++)
+                {
+                    UserDTO user = @listTopHighscore[@i-1];
+                    <tr style="user-select:none">
+                        <td>@i</td>
+                        <td><img style="user-select:none; max-width: 20px" src="data:image/jpg;base64,@user.Avatar"/></td>
+                        <td>@user.Username</td>
+                        <td>@user.Highscore</td>
+                    </tr>
+                }
+            </tbody>
+
+            </table>
+            <table class="table table-dark table-hover leaderboardTable" style="max-width:400px">
+
+            <caption style="caption-side: top; text-align:center; margin:auto; user-select:none">Top playtime</caption>
+            <tbody>
+            @{List<(UserDTO, int TopPlayTime)> listPlaytime = await @leaderboardDa.GetTopPlaytime(10); }
+                @for (int i = 1; i <= @listPlaytime.Count; i++)
+                {
+                    UserDTO user = @listPlaytime[@i-1].Item1;
+                    int playtime = @listPlaytime[@i-1].Item2;
+                    <tr style="user-select:none">
+                        <td>@i</td>
+                        <td><img style="user-select:none; max-width: 20px" src="/File/GetUserImage?UserID=@user.ID"/></td>
+                        <td>@user.Username</td>
+                        @{TimeSpan tsPlayTime = @TimeSpan.FromSeconds(@playtime);}
+                        <td>@String.Format("{0:%h} hours, {0:%m} minutes, {0:%s} seconds", @tsPlayTime)</td>
+                    </tr>
+                }
+            </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

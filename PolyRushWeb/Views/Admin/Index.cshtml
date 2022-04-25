@@ -1,0 +1,59 @@
+﻿@{
+  Layout = "_HomeLayout";
+}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.5/fh-3.2.2/r-2.2.9/datatables.min.css"/>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+<h1>Admin</h1>
+
+
+<table id="myTable" class="hover responsive" style="max-width: 30%">
+<colgroup>
+    <col style="width: 10%">
+    <col style="width: 30%">
+</colgroup>
+    <thead>
+        <tr>
+            <th>Avatar</th>
+            <th>Username</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+</table>
+<script>
+$(document).ready( function () {
+
+   
+
+    $('#myTable').DataTable( {
+        responsive: true,
+        fixedHeader: true,
+        ajax: {
+            url: '/Admin/GetUsers'
+        },
+        autoWidth: true,
+        columns: [
+                { 
+                    data: "Avatar",
+                    responsivePriority: 2,
+                    render: function(data, type) {
+                        let link = "/File/GetUserImage?UserID="+data;
+                        return `<img style="max-height:40px;" src="data:image/jpg;base64,${data}" alt="" srcset="">`;
+                    }
+                },
+                { responsivePriority: 1, data: "Username" },
+                { responsivePriority: 1, data: "ID",
+                    render: function(data, type) {
+                        let link = "/File/GetUserImage?UserID="+data;
+                        return `<div class="btn-group" role="group" aria-label="Edit or delete">
+                                    <a href="/Admin/Edit/${data}" class="btn btn-primary">Edit</a>
+                                    <a href="/Admin/Deactivate/${data}" class="btn btn-danger">Deactivate</a>
+                                </div>`;
+                    }
+                }
+            ],
+        paging: "first_last_numbers"
+    } );
+} );
+
+</script>

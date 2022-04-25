@@ -1,4 +1,4 @@
-﻿namespace PolyRushAPI.Models
+﻿namespace PolyRushWeb.Models
 {
     public class SecretSettings
     {

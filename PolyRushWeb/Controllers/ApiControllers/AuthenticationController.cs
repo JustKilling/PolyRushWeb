@@ -1,82 +1,183 @@
 ﻿using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using Helper;
+using System.Security.Claims;
+using System.Text;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using PolyRushAPI.DA;
+using Microsoft.IdentityModel.Tokens;
 using PolyRushLibrary;
 using PolyRushLibrary.Responses;
+using PolyRushWeb.DA;
+using PolyRushWeb.Data;
+using PolyRushWeb.Helper;
+using PolyRushWeb.Models;
 
-namespace PolyRushApi.Controllers
+namespace PolyRushWeb.Controllers.ApiControllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IAuthenticationHelper _authenticationHelper;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+        private readonly IConfiguration _configuration;
+        private readonly SecretSettings _settings;
+        private readonly polyrushContext _context;
 
-
-        public AuthenticationController(IAuthenticationHelper authenticationHelper)
+        public AuthenticationController(UserManager<User> userManager,
+        SignInManager<User> signInManager,
+        IConfiguration configuration,
+        SecretSettings settings,
+        polyrushContext context
+        )
         {
-            _authenticationHelper = authenticationHelper;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _configuration = configuration;
+            _settings = settings;
+            _context = context;
         }
-
+        [AllowAnonymous]
         [HttpPost("register")]
-        public IActionResult Register(AuthenticationRequestRegister request)
+        public async Task<IActionResult> Register([FromBody] AuthenticationRequestRegister registration)
         {
-            try
-            {
-             Console.WriteLine(request);
-            (bool success, string content) = _authenticationHelper.Register(request.Username, request.Password,
-                request.Firstname, request.Lastname, request.Email, request.Avatar);
-            if (!success) return BadRequest(content);
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
 
-            return Login(request);
-            }
-            catch(Exception ex)
+            if (string.IsNullOrWhiteSpace(registration.Avatar))
             {
-                return BadRequest(ex.Message);
+                registration.Avatar = ImageToBase64Helper.ConvertImagePathToBase64String("Media/user.png");
             }
-           
+
+            //Make the user
+            User user = new()
+            {
+                Email = registration.Email,
+                UserName = registration.Username,
+                Avatar = registration.Avatar,
+                Firstname = registration.Firstname,
+                Lastname = registration.Lastname,
+            };
+
+            //try create the user
+            IdentityResult result = await _userManager.CreateAsync(user, registration.Password);
+
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(error.Code, error.Description);
+                }
+                return BadRequest(ModelState);
+            }
+            user = await _userManager.FindByNameAsync(user.UserName);
+
+            //add claim to application user
+            await _userManager.AddClaimAsync(user,
+            new("registration-date", DateTime.UtcNow.ToString("yy-MM-dd")));
+
+
+            //Save changes
+            await _context.SaveChangesAsync();
+
+
+            return await Login(registration);
         }
 
-
+        [AllowAnonymous]
         [HttpPost("login")]
-        public IActionResult Login(AuthenticationRequest request)
+        public async Task<ActionResult> Login([FromBody] AuthenticationRequest login)
         {
-            (bool success, string token, string refreshToken) =
-                _authenticationHelper.Login(request.Username, request.Password);
-            if (!success) return BadRequest(token);
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
 
-            UserDA.SetRefreshToken(request.Username, refreshToken);
+            //Get the matched email user details
+            var applicationUser = _userManager.Users.SingleOrDefault(x => x.Email == login.Email);
 
-            return Ok(new AuthenticationResponse
+            if (applicationUser == null) return Unauthorized();
+
+
+            var verificationResult = _userManager.PasswordHasher.VerifyHashedPassword(applicationUser, applicationUser.PasswordHash, login.Password);
+
+            //var result = await _signInManager.PasswordSignInAsync(login.Email, login.Password, isPersistent: false,
+            //lockoutOnFailure: false);
+
+            if (verificationResult != PasswordVerificationResult.Success)
             {
-                Token = token,
-                RefreshToken = refreshToken
+                return Unauthorized();
+            }
+             
+            //set last login time claim
+            var claims = await _userManager.GetClaimsAsync(applicationUser);
+            Claim? claim = claims.FirstOrDefault(x => x.Type == "last-login-date");
+            var updatedClaim = new Claim("last-login-date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            if (claim == null)
+            {
+                await _userManager.AddClaimsAsync(applicationUser, new Claim[]{ updatedClaim });
+            }
+            else
+            {
+                await _userManager.ReplaceClaimAsync(applicationUser, claim, updatedClaim);
+            }
+
+            applicationUser.LastLoginTime = DateTime.Now;
+
+            _context.Users.Update(applicationUser);
+
+            //Get the token
+            var token = await GenerateJwtTokenAsync(applicationUser);
+
+            //Save changes
+            await _context.SaveChangesAsync();
+
+            return Ok(new AuthenticationResponse()
+            {
+                Token = token
             });
         }
 
-        [HttpPost("refresh")]
-        public IActionResult Refresh([FromBody] RefreshRequest rr)
-        {
-            (bool success, string accessToken, string refreshToken) = _authenticationHelper.Refresh(rr);
-            if (!success) return BadRequest(accessToken);
-
-            return Ok(new AuthenticationResponse
-            {
-                Token = accessToken,
-                RefreshToken = refreshToken
-            });
-        }
-        
-        [HttpPost("logout")]
         [Authorize]
-        public IActionResult Refresh()
+        [HttpGet("check")]
+        public IActionResult CheckToken()
         {
-            int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            UserDA.Logout(id);
             return Ok();
+        }
+
+
+        //een nieuwe JWT aanmaken
+        private async Task<string> GenerateJwtTokenAsync(User user)
+        {
+            var claims = new List<Claim>();
+
+            var userClaims = await _userManager.GetClaimsAsync(user);
+
+            claims.AddRange(userClaims);        
+
+            var roleClaims = await _userManager.GetClaimsAsync(user);
+
+            //claims.AddRange(roleClaims);
+            //Add role claims to jwt
+            foreach (var roleClaim in roleClaims)
+            {
+                claims.Add(new(ClaimTypes.Role, roleClaim.Value));
+            }
+
+            claims.Add(new("id", user.Id.ToString()));
+            claims.Add(new("isAdmin", (await _userManager.IsInRoleAsync(user, "ADMIN")).ToString()));
+
+            byte[] key = Encoding.ASCII.GetBytes(_settings.TokenSecret);
+            var token = new JwtSecurityToken
+                (
+                claims: claims,
+                expires: DateTime.UtcNow.Add(TimeSpan.FromDays(7)),
+                notBefore: DateTime.UtcNow,
+                signingCredentials: new(new SymmetricSecurityKey(key),
+                SecurityAlgorithms.HmacSha256)
+                );
+
+            JwtSecurityTokenHandler tokenHandler = new();
+
+            return tokenHandler.WriteToken(token);
         }
     }
 }

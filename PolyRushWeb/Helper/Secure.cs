@@ -1,24 +1,60 @@
-*using System;
-using Microsoft.AspNetCore.Authorization;
+﻿using System;
+using System.Net.Http;
+using System.Text;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Newtonsoft.Json;
+using PolyRushLibrary;
+using PolyRushLibrary.Responses;
 
 namespace PolyRushWeb.Helper
 {
-    public class Secure : AuthorizeAttribute, IAuthorizationFilter
+    [AttributeUsage(AttributeTargets.All)]
+
+    public class Secure : Attribute, IActionFilter
     {
-        /// Checks to see if the user is authenticated and has a valid session object
-        
-
-        public void OnAuthorization(AuthorizationFilterContext httpContext)
+        private HttpClient? _client;
+        private bool isAdmin;
+        public Secure(bool admin = false)
         {
-            if (httpContext == null) throw new ArgumentNullException("httpContext");
+            isAdmin = admin;
+            SetHttpClient();
+        }
 
-            // Make sure the user is authenticated.
-            if (httpContext.User.Identity.IsAuthenticated == false) return false;
+        private void SetHttpClient()
+        {
+            
+        }
 
-            // This will check my session variable and a few other things.
-            return Helpers.SecurityHelper.IsSignedIn();
+        public void OnActionExecuting(ActionExecutingContext context)
+        {
+            SetHttpClient();
+            string? refreshToken = HttpHelper.HttpContext.Session.GetString("RefreshToken");
+            HttpResponseMessage result = _client.PostAsync("refresh", new StringContent(
+                JsonConvert.SerializeObject(new RefreshRequest
+                {
+                    RefreshToken = refreshToken
+                }), Encoding.UTF8, "application/json")).Result;
+            if (!result.IsSuccessStatusCode)
+            {
+                //if no permission, log the user out.
+                context.Result = new ViewResult{ViewName = "Login"};
+                context.HttpContext.Session.Remove("Token");
+                context.HttpContext.Session.Remove("RefreshToken");
+                return;
+            }
+            
+            AuthenticationResponse response =
+                JsonConvert.DeserializeObject<AuthenticationResponse>(result.Content.ReadAsStringAsync().Result);
+            context.HttpContext.Session.SetString("Token", response.Token);
+            context.HttpContext.Session.SetString("RefreshToken", response.RefreshToken);
+        }
+
+        public void OnActionExecuted(ActionExecutedContext context)
+        {
+            _client?.Dispose();
+            _client = null;
         }
     }
-}*/
+}

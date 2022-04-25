@@ -2,15 +2,22 @@
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PolyRushAPI.DA;
+using PolyRushWeb.DA;
 
-namespace PolyRushApi.Controllers
+namespace PolyRushWeb.Controllers.ApiControllers
 {
     [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class SettingController : ControllerBase
     {
+        private readonly SettingDA _settingDa;
+
+        public SettingController(SettingDA settingDa)
+        {
+            _settingDa = settingDa;
+        }
+
         [HttpPost("music/{strEnable}")]
         public IActionResult SetMusic(string strEnable)
         {
@@ -32,7 +39,7 @@ namespace PolyRushApi.Controllers
             }
 
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            SettingDA.SetSetting(id, EnumSetting.Music, intEnable);
+            _settingDa.SetSetting(id, EnumSetting.Music, intEnable);
             return Ok();
         }
 
@@ -57,7 +64,7 @@ namespace PolyRushApi.Controllers
             }
 
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            SettingDA.SetSetting(id, EnumSetting.Sfx, intEnable);
+            _settingDa.SetSetting(id, EnumSetting.Sfx, intEnable);
             return Ok();
         }
 
@@ -69,7 +76,7 @@ namespace PolyRushApi.Controllers
                 return BadRequest("Invalid format: Please provide an integer between 0 and 100");
             //gather the id from the jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            SettingDA.SetSetting(id, EnumSetting.MasterVolume, volume);
+            _settingDa.SetSetting(id, EnumSetting.MasterVolume, volume);
             return Ok();
         }
 
@@ -79,7 +86,7 @@ namespace PolyRushApi.Controllers
             //id ophalen uit jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
 
-            return Ok(SettingDA.GetSetting(id, EnumSetting.Sfx));
+            return Ok(_settingDa.GetSetting(id, EnumSetting.Sfx));
         }
 
         [HttpGet("music")]
@@ -87,7 +94,7 @@ namespace PolyRushApi.Controllers
         {
             //id ophalen uit jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            return Ok(SettingDA.GetSetting(id, EnumSetting.Music));
+            return Ok(_settingDa.GetSetting(id, EnumSetting.Music));
         }
 
         [HttpGet("mastervolume")]
@@ -95,7 +102,7 @@ namespace PolyRushApi.Controllers
         {
             //id ophalen uit jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            return Ok(SettingDA.GetSetting(id, EnumSetting.MasterVolume));
+            return Ok(_settingDa.GetSetting(id, EnumSetting.MasterVolume));
         }
     }
 }

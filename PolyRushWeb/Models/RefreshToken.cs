@@ -1,6 +1,7 @@
-﻿using PolyRushLibrary;
+﻿
+using PolyRushLibrary;
 
-namespace PolyRushAPI.Models
+namespace PolyRushWeb.Models
 {
     public class RefreshToken
     {

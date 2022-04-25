@@ -1,15 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using Helper;
-using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using PolyRushLibrary;
+using PolyRushWeb.Helper;
 
-namespace PolyRushAPI.DA
+namespace PolyRushWeb.DA
 {
-    public static class ItemDA
+    public class ItemDA
     {
-        public static int GetAmount(Item item, int id, bool isAdmin = false)
+        private readonly UserDA _userDa;
+
+        public ItemDA(UserDA userDa)
+        {
+            _userDa = userDa;
+        }
+        public int GetDiscountedPrice(Item i)
+        {
+      
+            //get the fresh item from the database
+            Item item = GetItemById(i.Iditem)!;
+            MySqlConnection conn = DatabaseConnector.MakeConnection();
+            string query =
+                @"SELECT DiscountPercentage FROM discount WHERE ItemID = @ItemID AND CURDATE() BETWEEN Startdate AND Enddate";
+            MySqlCommand cmd = new(query, conn);
+            cmd.Parameters.AddWithValue("@ItemID", item!.Iditem);
+            decimal discountPercentage = Convert.ToDecimal(cmd.ExecuteScalar());
+            decimal discount = Math.Round(item.Price * (discountPercentage / 100m), 2, MidpointRounding.ToEven);
+            decimal discountedPrice = item.Price - discount;
+
+            return (int)Math.Ceiling(discountedPrice);
+        }
+
+
+        public  int GetAmount(Item item, int id, bool isAdmin = false)
         {
             if (isAdmin) return 9999;
             MySqlConnection conn = DatabaseConnector.MakeConnection();
@@ -19,7 +42,7 @@ namespace PolyRushAPI.DA
                 WHERE UserID = @UserID and IDItem = @IDItem";
 
             MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@IDItem", item.Id);
+            cmd.Parameters.AddWithValue("@IDItem", item.Iditem);
             cmd.Parameters.AddWithValue("UserID", id);
             try
             {
@@ -36,7 +59,7 @@ namespace PolyRushAPI.DA
             }
         }
 
-        public static List<Item?> GetItemsFromType(ItemType type)
+        public  List<Item?> GetItemsFromType(ItemType type)
         {
             MySqlConnection conn = DatabaseConnector.MakeConnection();
             string query = @"SELECT * FROM item WHERE ItemTypeID = @ItemTypeID";
@@ -53,7 +76,7 @@ namespace PolyRushAPI.DA
             return items;
         }
 
-        public static Item? GetItemById(int id)
+        public  Item? GetItemById(int id)
         {
             MySqlConnection conn = DatabaseConnector.MakeConnection();
 
@@ -65,7 +88,7 @@ namespace PolyRushAPI.DA
 
             try
             {
-                var reader = cmd.ExecuteReader();
+                MySqlDataReader? reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
                     return Create(reader);
@@ -90,7 +113,7 @@ namespace PolyRushAPI.DA
 
             MySqlCommand cmd = new(query, conn);
             cmd.Parameters.AddWithValue("@userid", id);
-            cmd.Parameters.AddWithValue("@itemid", item.Id);
+            cmd.Parameters.AddWithValue("@itemid", item!.Iditem);
             //If user is an admin, provide a very high number.
             cmd.Parameters.AddWithValue("@amount", isAdmin ? 69420 : 0);
             
@@ -98,29 +121,29 @@ namespace PolyRushAPI.DA
             conn.Close();
         }
         //optional parameter for if the user is an admin
-        public static bool BuyItem(int id, Item? item, bool isAdmin = false)
+        public async Task<bool> BuyItem(int id, Item item, bool isAdmin = false)
         {
             if (!UserItemExists(id, item))
                 CreateUserItem(id, item, isAdmin);
             
             //get the discounted price
-            int price = DiscountDA.GetDiscountedPrice(item);
+            int price = GetDiscountedPrice(item);
             //if the user is an admin, set the price to 0;
             if (isAdmin) price = 0;
-            if (!UserDA.HasEnoughCoins(id, price)) return false;
+            if (!(await _userDa.HasEnoughCoins(id, price))) return false;
 
             MySqlConnection conn = DatabaseConnector.MakeConnection();
             //increment useritem amount
             string query = "UPDATE useritem SET Amount = Amount + 1 WHERE UserID = @UserID AND ItemID = @ItemID";
             MySqlCommand cmd = new(query, conn);
             cmd.Parameters.AddWithValue("@UserID", id);
-            cmd.Parameters.AddWithValue("@ItemID", item.Id);
+            cmd.Parameters.AddWithValue("@ItemID", item.Iditem);
             cmd.ExecuteNonQuery();
 
             //substract price
 
             query = "UPDATE user SET Coins = Coins - @Amount WHERE IDUser = @IDUser";
-            cmd = new MySqlCommand(query, conn);
+            cmd = new(query, conn);
             cmd.Parameters.AddWithValue("@Amount", price);
             cmd.Parameters.AddWithValue("@IDUser", id);
             cmd.ExecuteNonQuery();
@@ -130,13 +153,13 @@ namespace PolyRushAPI.DA
         }
 
         //Check if user has a record with this item.
-        private static bool UserItemExists(int id, Item? item)
+        private  bool UserItemExists(int id, Item? item)
         {
             MySqlConnection conn = DatabaseConnector.MakeConnection();
             string query = "SELECT COUNT(IDUserItem) from useritem WHERE UserID = @UserID AND ItemID = @ItemID";
             MySqlCommand cmd = new(query, conn);
             cmd.Parameters.AddWithValue("@UserID", id);
-            cmd.Parameters.AddWithValue("@ItemID", item.Id);
+            cmd.Parameters.AddWithValue("@ItemID", item.Iditem);
 
             try
             {
@@ -148,7 +171,7 @@ namespace PolyRushAPI.DA
             }
         }
 
-        public static List<Item?> GetOwnedItemsFromType(int id, ItemType type, bool getImage)
+        public  List<Item?> GetOwnedItemsFromType(int id, ItemType type, bool getImage)
         {
             MySqlConnection conn = DatabaseConnector.MakeConnection();
             //check to get the icon
@@ -157,15 +180,15 @@ namespace PolyRushAPI.DA
             cmd.Parameters.AddWithValue("@UserID", id);
             cmd.Parameters.AddWithValue("@ItemTypeID", (int) type);
 
-            var items = new List<Item?>();
-            var reader = cmd.ExecuteReader();
+            List<Item?> items = new();
+            MySqlDataReader? reader = cmd.ExecuteReader();
             
             while (reader.Read()) items.Add(getImage ? Create(reader) : CreateWithoutIcon(reader));
             reader.Close();
             conn.Close();
             return items;
         }
-        public static List<Item?> GetItemsFromType(ItemType type, bool getImage)
+        public  List<Item?> GetItemsFromType(ItemType type, bool getImage)
         {
             MySqlConnection conn = DatabaseConnector.MakeConnection();
             //check to get the icon
@@ -173,15 +196,15 @@ namespace PolyRushAPI.DA
             MySqlCommand cmd = new(query, conn);
             cmd.Parameters.AddWithValue("@ItemTypeID", (int) type);
 
-            var items = new List<Item?>();
-            var reader = cmd.ExecuteReader();
+            List<Item?> items = new();
+            MySqlDataReader? reader = cmd.ExecuteReader();
             
             while (reader.Read()) items.Add(getImage ? Create(reader) : CreateWithoutIcon(reader));
             reader.Close();
             conn.Close();
             return items;
         }
-        public static int GetItemAmount(int id, Item item)
+        public  int GetItemAmount(int id, Item item)
         {
             MySqlConnection conn = DatabaseConnector.MakeConnection();
 
@@ -189,7 +212,7 @@ namespace PolyRushAPI.DA
 
             MySqlCommand cmd = new(query, conn);
             cmd.Parameters.AddWithValue("@UserID", id);
-            cmd.Parameters.AddWithValue("@ItemID", item.Id);
+            cmd.Parameters.AddWithValue("@ItemID", item.Iditem);
 
             try
             {
@@ -202,7 +225,7 @@ namespace PolyRushAPI.DA
 
         }
 
-        public static bool Remove1Item(int id, Item item, bool isAdmin = false)
+        public  bool Remove1Item(int id, Item item, bool isAdmin = false)
         {
             if (isAdmin) return true;
             if (GetItemAmount(id, item) < 1) return false;
@@ -211,7 +234,7 @@ namespace PolyRushAPI.DA
             string query = "UPDATE useritem SET Amount = Amount - 1 WHERE UserID=@UserID AND ItemID = @ItemID";
             MySqlCommand cmd = new(query, conn);
             cmd.Parameters.AddWithValue("@UserID", id);
-            cmd.Parameters.AddWithValue("@ItemID", item.Id);
+            cmd.Parameters.AddWithValue("@ItemID", item.Iditem);
 
             try
             {
@@ -225,7 +248,7 @@ namespace PolyRushAPI.DA
             return true;
         }
 
-        public static List<Item?> GetDiscountedItemsFromType(ItemType type)
+        public  List<Item?> GetDiscountedItemsFromType(ItemType type)
         {
             MySqlConnection conn = DatabaseConnector.MakeConnection();
             string query = @"SELECT * FROM item WHERE ItemTypeID = @ItemTypeID";
@@ -238,8 +261,9 @@ namespace PolyRushAPI.DA
 
             while (reader.Read())
             {
-                var item = Create(reader);
-                item.Price = DiscountDA.GetDiscountedPrice(item);
+                Item? item = Create(reader);
+                if (item == null) throw new NullReferenceException();
+                item.Price = GetDiscountedPrice(item);
                 items.Add(item);
             }
 
@@ -247,27 +271,27 @@ namespace PolyRushAPI.DA
             reader.Close();
             return items;
         }
-
-        private static Item? Create(MySqlDataReader reader)
+      
+        private  Item? Create(MySqlDataReader reader)
         {
-            return new Item
+            return new()
             {
-                Id = Convert.ToInt32(reader["IDItem"]),
-                Name = reader["Name"].ToString(),
-                Icon = reader["Icon"].ToString(),
+                Iditem = Convert.ToInt32(reader["IDItem"]),
+                Name = reader["Name"].ToString()!,
+                Icon = reader["Icon"].ToString()!,
                 Price = Convert.ToInt32(reader["Price"]),
-                Type = (ItemType) Convert.ToInt32(reader["ItemTypeID"])
+                ItemTypeId = Convert.ToInt32(reader["ItemTypeID"])
             };
         }
-        private static Item? CreateWithoutIcon(MySqlDataReader reader)
+        private  Item? CreateWithoutIcon(MySqlDataReader reader)
         {
-            return new Item
+            return new()
             {
-                Id = Convert.ToInt32(reader["IDItem"]),
-                Name = reader["Name"].ToString(),
+                Iditem = Convert.ToInt32(reader["IDItem"]),
+                Name = reader["Name"].ToString()!,
                 Icon = "",
                 Price = Convert.ToInt32(reader["Price"]),
-                Type = (ItemType) Convert.ToInt32(reader["ItemTypeID"])
+                ItemTypeId = Convert.ToInt32(reader["ItemTypeID"])
             };
         }
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Security.Cryptography;
-using System.Text;
 using PolyRushLibrary;
 
 // static public class HashGenerator
@@ -36,28 +35,35 @@ using PolyRushLibrary;
 //     }
 // }
 //
-public static class HashAndSaltHelper
+namespace PolyRushAPI.Helper
 {
-    public static void ProvideSaltAndHash(this User user)
+    public static class HashAndSaltHelper
     {
-        var salt = GenerateSalt();
-        user.Salt = Convert.ToBase64String(salt);
-        user.Password = ComputeHash(user.Password, user.Salt);
-    }
-    private static byte[] GenerateSalt()
-    {
-        var rng = RandomNumberGenerator.Create();
-        var salt = new byte[24];
-        rng.GetBytes(salt);
-        return salt;
-    }
+        //extention method to provide the user with a salt and a hash.
+        public static void ProvideSaltAndHash(this User user)
+        {
+            byte[] salt = GenerateSalt();
+            user.Salt = Convert.ToBase64String(salt);
+            user.Password = ComputeHash(user.Password, user.Salt);
+        }
 
-    public static string ComputeHash(string strPassword, string strSalt)
-    {
-        byte[] salt = Convert.FromBase64String(strSalt);
-        using Rfc2898DeriveBytes hg = new(strPassword, salt);
-        hg.IterationCount = 14010;
-        var bytes = hg.GetBytes(24);
-        return Convert.ToBase64String(bytes);
+        //method to create a random salt
+        private static byte[] GenerateSalt()
+        {
+            RandomNumberGenerator rng = RandomNumberGenerator.Create();
+            byte[] salt = new byte[24];
+            rng.GetBytes(salt);
+            return salt;
+        }
+
+        //method for creating the hashed password
+        public static string ComputeHash(string strPassword, string strSalt)
+        {
+            byte[] salt = Convert.FromBase64String(strSalt);
+            using Rfc2898DeriveBytes hg = new(strPassword, salt);
+            hg.IterationCount = 14010;
+            byte[] bytes = hg.GetBytes(24);
+            return Convert.ToBase64String(bytes);
+        }
     }
 }

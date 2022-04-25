@@ -1,23 +1,40 @@
 ﻿namespace PolyRushLibrary
 {
-    public class User
+    public class UserDTO
     {
-        public int IDUser ;
-        public string Firstname ;
-        public string Lastname ;
-        public string Username ;
-        public string Email ;
-        public string Password ;
-        public string Salt ;
-        public bool IsAdmin ;
-        public bool SeesAds ;
-        public int Highscore ;
-        public int Itemspurchased ;
-        public int Coinsspent ;
-        public int Coinsgathered ;
-        public int Timespassed ;
+        public int ID;
         public string Avatar;
+        public int Coins;
+        public int Coinsgathered;
+        public int Coinsspent;
+        public string Email;
+        public string Firstname;
+        public int Highscore;
+        public bool IsAdmin;
+        public int Itemspurchased;
+        public string Lastname;
+        public bool? SeesAds;
+        public int Timespassed;
+        public string Username;
+
+        ////implicit operator to conver user to userdto
+        //public static implicit operator UserDTO(ApplicationUser user)
+        //{
+        //    return new UserDTO
+        //    {
+        //        ID = user.IDUser,
+        //        Avatar = user.Avatar.ToString(),
+        //        Coinsgathered = user.Coinsgathered,
+        //        Coinsspent = user.Coinsspent,
+        //        Email = user.Email,
+        //        Firstname = user.Firstname,
+        //        Lastname = user.Lastname,
+        //        Username = user.Username,
+        //        Highscore = user.Highscore,
+        //        IsAdmin = user.IsAdmin,
+        //        Itemspurchased = user.Itemspurchased,
+        //        Coins = user.Coins
+        //    };
+        //}
     }
 }
-
-

@@ -3,28 +3,34 @@ using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using PolyRushAPI.DA;
 using PolyRushLibrary;
+using PolyRushWeb.DA;
 
-namespace PolyRushApi.Controllers
+namespace PolyRushWeb.Controllers.ApiControllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class ItemController : ControllerBase
     {
+        private readonly ItemDA _itemDa;
+
+        public ItemController(ItemDA itemDa)
+        {
+            _itemDa = itemDa;
+        }
         [HttpGet]
         [Route("{itemid}")]
         public IActionResult GetItemByID(int itemid)
         {
             
-            return Ok(ItemDA.GetItemById(itemid));
+            return Ok(_itemDa.GetItemById(itemid));
         }
 
         [HttpGet]
         [Route("getitemsfromtype/{type}")]
         public IActionResult GetItemFromType(ItemType type)
         {
-            string result = JsonConvert.SerializeObject(ItemDA.GetItemsFromType(type));
+            string result = JsonConvert.SerializeObject(_itemDa.GetItemsFromType(type));
 
             return Ok(result);
         }
@@ -37,17 +43,17 @@ namespace PolyRushApi.Controllers
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
-            return Ok(items.Select(x => ItemDA.GetAmount(x, id, isAdmin)).ToList());
+            return Ok(items.Select(x => _itemDa.GetAmount(x, id, isAdmin)).ToList());
         }
 
         [HttpPost]
         [Authorize]
         [Route("buy")]
-        public IActionResult BuyItem([FromBody] Item? item)
+        public async Task<IActionResult> BuyItem([FromBody] Item? item)
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
-            if (ItemDA.BuyItem(id, item, isAdmin)) return Ok();
+            if (await _itemDa.BuyItem(id, item, isAdmin)) return Ok();
 
             return BadRequest("Not enough coins!");
         }
@@ -58,10 +64,10 @@ namespace PolyRushApi.Controllers
         public IActionResult GetDiscountedItemsFromType(ItemType type)
         {
             bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
-            var items = ItemDA.GetDiscountedItemsFromType(type);
+            List<Item?> items = _itemDa.GetDiscountedItemsFromType(type);
             if (!isAdmin) return Ok(items);
             //if an admin, put the price to 0
-            foreach (var item in items)
+            foreach (Item? item in items)
             {
                 item.Price = 0;
             }
@@ -76,8 +82,8 @@ namespace PolyRushApi.Controllers
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
-            if (isAdmin) return Ok(ItemDA.GetItemsFromType(type, getImage));
-            return Ok(ItemDA.GetOwnedItemsFromType(id, type, getImage));
+            if (isAdmin) return Ok(_itemDa.GetItemsFromType(type, getImage));
+            return Ok(_itemDa.GetOwnedItemsFromType(id, type, getImage));
         }
         [HttpGet]
         [Authorize]
@@ -86,8 +92,8 @@ namespace PolyRushApi.Controllers
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
-            if (isAdmin) return Ok(ItemDA.GetItemsFromType(type, true));
-            return Ok(ItemDA.GetOwnedItemsFromType(id, type, true));
+            if (isAdmin) return Ok(_itemDa.GetItemsFromType(type, true));
+            return Ok(_itemDa.GetOwnedItemsFromType(id, type, true));
         }
         
         
@@ -99,7 +105,7 @@ namespace PolyRushApi.Controllers
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
             
-            return Ok(ItemDA.Remove1Item(id, item, isAdmin));
+            return Ok(_itemDa.Remove1Item(id, item, isAdmin));
         }
     }
 }

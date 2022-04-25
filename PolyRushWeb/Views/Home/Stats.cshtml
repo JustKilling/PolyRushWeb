@@ -1,0 +1,146 @@
+﻿@using PolyRushWeb.DA
+@{
+    Layout = "_HomeLayout";
+}
+<script >
+@{
+    int index = 2;
+}
+$( document ).ready(function() {
+    $("#navs").children().eq(@index).addClass("active")
+});
+</script>
+<style>
+
+    /* CARDS */
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .card {
+      margin: 20px;
+      padding: 20px;
+      width: 500px;
+      min-height: 200px;
+      display: grid;
+      grid-template-rows: 20px 50px 1fr 50px;
+      border-radius: 10px;
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+      transition: all 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+      transform: scale(1.01);
+    }
+
+    .card__link,
+    .card__exit,
+    .card__icon {
+      position: relative;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .card__icon {
+      grid-row: 1/1;
+      grid-column: 1/1;
+      font-size: 30px;
+    }
+
+    .card__title {
+      grid-row: 1/1;
+      grid-column: 2/4;
+      font-weight: 400;
+      color: #ffffff;
+      display: inline;
+    }
+
+    .card__content {
+      grid-row: 2/5;
+      grid-column: 1/4;
+      align-self: center;
+      word-break:break-all;
+    }
+
+    /* CARD BACKGROUNDS */
+
+    .card-1 {
+      background: radial-gradient(#1fe4f5, #3fbafe);
+    }
+
+    .card-2 {
+      background: radial-gradient(#fbc1cc, #fa99b2);
+    }
+
+    .card-3 {
+      background: radial-gradient(#76b2fe, #b69efe);
+    }
+
+    .card-4 {
+      background: radial-gradient(#60efbc, #58d5c9);
+    }
+
+    .card-5 {
+      background: radial-gradient(#f588d8, #c0a3e5);
+    }
+
+    /* RESPONSIVE */
+
+    @@media (max-width: 1600px) {
+      .cards {
+        justify-content: center;
+      }
+    }
+
+</style>
+
+
+
+<div class="container">
+   <div class="cards">
+      <div class="card card-1">
+         <div class="card__icon"><i class="fas fa-trophy"></i></div>
+         <h2 class="card__title">Highscore</h2>
+         
+         <p class="card__content">
+            Test
+         </p>
+      </div>
+      <div class="card card-2">
+         <div class="card__icon"><i class="fas fa-stopwatch"></i></div>
+         
+         <h2 class="card__title">Playtime</h2>
+         <p class="card__content">
+            
+         </p>
+      </div>
+      <div class="card card-3">
+         <div class="card__icon"><i class="fas fa-users"></i></div>
+         
+         <h2 class="card__title">People passed</h2>
+         <p class="card__content">
+            
+         </p>
+      </div>
+      <div class="card card-4">
+         <div class="card__icon"><i class="fas fa-coins"></i></div>
+         
+         <h2 class="card__title">Coins gathered</h2>
+         <p class="card__content">
+            
+         </p>
+      </div>
+      <div class="card card-5">
+         <div class="card__icon"><i class="fas fa-star"></i></div>
+         
+         <h2 class="card__title">Score gathered</h2>
+         <p class="card__content">
+            
+         </p>
+      </div>
+   </div>
+</div>

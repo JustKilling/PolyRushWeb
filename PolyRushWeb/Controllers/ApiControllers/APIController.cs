@@ -1,10 +1,10 @@
 ﻿using System;
-using Helper;
+using System.Data;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
-using Newtonsoft.Json;
+using PolyRushWeb.Helper;
 
-namespace PolyRushApi.Controllers
+namespace PolyRushWeb.Controllers.ApiControllers
 {
     [ApiController]
     public class APIController : ControllerBase
@@ -18,7 +18,7 @@ namespace PolyRushApi.Controllers
             try
             {
                 con = DatabaseConnector.MakeConnection();
-                return Ok(true);
+                return Ok(con.State == ConnectionState.Open);
             }
             catch (Exception e)
             {

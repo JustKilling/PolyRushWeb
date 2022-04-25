@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.IO;
-using Helper;
 using MySql.Data.MySqlClient;
-using PolyRushAPI.Helper;
 using PolyRushLibrary;
 using PolyRushLibrary.Responses;
+using PolyRushWeb.Helper;
 
-namespace PolyRushAPI.DA
+namespace PolyRushWeb.DA
 {
-    public static class LeaderboardDA
+    public class LeaderboardDA
     {
-        public static List<UserDTO> GetTopUsers(int amount)
+        private readonly UserDA _userDa;
+
+        public LeaderboardDA(UserDA userDa)
+        {
+            _userDa = userDa;
+        }
+        public  List<UserDTO> GetTopUsers(int amount, bool getImages = true)
         {
             MySqlConnection conn = DatabaseConnector.MakeConnection();
-            string query = "SELECT * from user WHERE IsAdmin NOT LIKE 1 ORDER BY Highscore DESC LIMIT @Limit";
+            string avatar = getImages ? ", avatar" : "";
+            string query = $"SELECT iduser, firstname, lastname, username, email, isadmin, seesads, coins, highscore, scoregathered, itemspurchased, coinsspent, coinsgathered, timespassed, createddate, isactive {avatar} from user WHERE IsAdmin NOT LIKE 1 AND IsActive = 1 ORDER BY Highscore DESC LIMIT @Limit";
             MySqlCommand cmd = new(query, conn);
             cmd.Parameters.AddWithValue("@Limit", amount); 
             MySqlDataReader? reader = cmd.ExecuteReader();
@@ -23,7 +27,7 @@ namespace PolyRushAPI.DA
 
             try
             {
-                while (reader.Read()) users.Add(UserDA.CreateDTO(reader));
+                while (reader.Read()) users.Add(_userDa.CreateDTO(reader));
 
                 return users;
             }
@@ -34,7 +38,36 @@ namespace PolyRushAPI.DA
                 conn.Close();
             }
         }
-        public static List<NextGoalResponse> GetNextGoals(int amount, int highscore)
+        
+        //method to return the top users with playtime
+        public async Task<List<(UserDTO, int TopPlayTime)>> GetTopPlaytime(int amount)
+        {
+            MySqlConnection conn = DatabaseConnector.MakeConnection();
+            //user top playtime query
+            string query = "select UserID, IsActive, sum(timediff(EndDateTime, StartDateTime)) AS 'PlayTime' from gamesession INNER JOIN user WHERE IsActive = 1 group by UserID Order by PlayTime DESC LIMIT @Limit";
+            MySqlCommand cmd = new(query, conn);
+            cmd.Parameters.AddWithValue("@Limit", amount);
+            MySqlDataReader? reader = cmd.ExecuteReader();
+            List<(UserDTO, int TopPlayTime)> users = new();
+
+            try
+            {
+                while (reader.Read()) {
+                    UserDTO user = (await _userDa.GetById(Convert.ToInt32(reader["UserID"]), false))!.ToUserDTO()!;
+                    users.Add((user, Convert.ToInt32(reader["PlayTime"]))); 
+                }
+
+                return users;
+            }
+            finally
+            {
+                reader.Close();
+
+                conn.Close();
+            }
+        }
+        
+        public  List<NextGoalResponse> GetNextGoals(int amount, int highscore)
         {
             MySqlConnection conn = DatabaseConnector.MakeConnection();
             //select the first record of the lowest highscore that is higher then the current highscore.
@@ -55,21 +88,21 @@ namespace PolyRushAPI.DA
                 conn.Close(); 
                 reader.Close();
 
-                var avatar = ImageToBase64Helper.ConvertImagePathToBase64String("Media/success.png");
-                return new List<NextGoalResponse>()
+                string avatar = ImageToBase64Helper.ConvertImagePathToBase64String("Media/success.png");
+                return new()
                 {
-                    new NextGoalResponse {Avatar = avatar, Goal = Convert.ToInt32(highscore * 1.25f), Rank = 0}
+                    new() {Avatar = avatar, Goal = Convert.ToInt32(highscore * 1.25f), Rank = 0}
                 };
             }
 
             try
             {
-                List<NextGoalResponse> goalResponses = new List<NextGoalResponse>();
+                List<NextGoalResponse> goalResponses = new();
                 do
                 {
-                    goalResponses.Add(new NextGoalResponse()
+                    goalResponses.Add(new()
                     {
-                        Avatar = reader["Avatar"].ToString(), Goal = Convert.ToInt32(reader["Highscore"]),
+                        Avatar = reader["Avatar"].ToString()!, Goal = Convert.ToInt32(reader["Highscore"]),
                         Rank = Convert.ToInt32(reader["Rank"])
                     });
                 } while (reader.Read());
@@ -83,7 +116,7 @@ namespace PolyRushAPI.DA
             }
         }
 
-        // private static int GetUserPosition(int id)
+        // private  int GetUserPosition(int id)
         // {
         //     MySqlConnection conn = DatabaseConnector.MakeConnection();
         //     //select the first record of the lowest highscore that is higher then the current highscore.
@@ -104,7 +137,7 @@ namespace PolyRushAPI.DA
         //     }
         // }
 
-        public static void UpdateRandom(string username)
+        public  void UpdateRandom(string username)
         {
             Random rnd = new();
             MySqlConnection conn = DatabaseConnector.MakeConnection();

@@ -1,9 +1,9 @@
 ﻿using System;
-using Helper;
 using MySql.Data.MySqlClient;
 using PolyRushLibrary;
+using PolyRushWeb.Helper;
 
-namespace PolyRushAPI.DA
+namespace PolyRushWeb.DA
 {
     public enum EnumSetting
     {
@@ -14,7 +14,7 @@ namespace PolyRushAPI.DA
 
     public class SettingDA
     {
-        public static int? GetSetting(int id, EnumSetting enumSetting)
+        public int? GetSetting(int id, EnumSetting enumSetting)
         {
             if (!SettingExists(id, enumSetting)) CreateSetting(id, enumSetting);
 
@@ -30,10 +30,10 @@ namespace PolyRushAPI.DA
             Setting setting = Create(reader);
             reader.Close();
             conn.Close();
-            return setting.State;
+            return setting.Idsetting;
         }
 
-        private static void CreateSetting(int id, EnumSetting setting)
+        private void CreateSetting(int id, EnumSetting setting)
         {
             MySqlConnection conn = DatabaseConnector.MakeConnection();
 
@@ -54,7 +54,7 @@ namespace PolyRushAPI.DA
         }
 
         //Check if user has a record with this setting.
-        private static bool SettingExists(int id, EnumSetting setting)
+        private bool SettingExists(int id, EnumSetting setting)
         {
             MySqlConnection conn = DatabaseConnector.MakeConnection();
             string query =
@@ -73,18 +73,17 @@ namespace PolyRushAPI.DA
             }
         }
 
-        private static Setting Create(MySqlDataReader reader)
+        private Setting Create(MySqlDataReader reader)
         {
-            return new Setting
+            return new()
             {
-                IDSetting = Convert.ToInt32(reader["IDSetting"]),
-                Name = reader["Name"].ToString(),
-                Description = reader["Description"].ToString(),
-                State = Convert.ToInt16(reader["State"])
+                Idsetting = Convert.ToInt32(reader["IDSetting"]),
+                Name = reader["Name"].ToString()!,
+                Description = reader["Description"].ToString()!
             };
         }
 
-        public static void SetSetting(int id, EnumSetting setting, int state)
+        public void SetSetting(int id, EnumSetting setting, int state)
         {
             if (!SettingExists(id, setting))
                 CreateSetting(id, setting);

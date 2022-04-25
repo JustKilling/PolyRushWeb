@@ -1,172 +1,80 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.IO;
+﻿using System.Data;
 using System.Net.Mail;
-using Helper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
-using PolyRushAPI.Helper;
-using PolyRushAPI.Models;
-using PolyRushLibrary;
+using PolyRushWeb.Helper;
+using PolyRushWeb.Models;
 
-namespace PolyRushAPI.DA
+namespace PolyRushWeb.DA
 {
-    public static class UserDA
+    public class UserDA
     {
-        public static List<User> GetUsers()
+        private readonly polyrushContext _context;
+        private readonly UserManager<User> _userManager;
+
+        public UserDA(polyrushContext context, UserManager<User> userManager)
         {
-            try
+            _context = context;
+            _userManager = userManager;
+        }
+
+        public async Task<List<UserDTO>> GetUsers(bool getAvatar = true)
+        {
+            var users = new List<UserDTO>();
+            if (getAvatar)
             {
-                MySqlConnection conn = DatabaseConnector.MakeConnection();
-                string query = "select * from user";
-                MySqlCommand cmd = new(query, conn);
-                MySqlDataReader? reader = cmd.ExecuteReader();
-                List<User> users = new();
-                while (reader.Read()) users.Add(Create(reader));
-                return users;
-                DatabaseConnector.CloseConnection(conn);
+                users = await _userManager.Users.Select(u => u.ToUserDTO()).ToListAsync()!;
             }
-            catch (Exception e)
+         
+            return users;
+        }
+
+        public async Task Deactivate(int id, bool deactivate = true)
+        {
+            var user = new User
             {
-                Console.WriteLine(e.Source + e.Message);
-            }
-
-            return new List<User>();
+                Id = id,
+                IsActive = !deactivate
+            };
+            _context.Entry(user).Property(u => u.IsActive).IsModified = true;
+            await _context.SaveChangesAsync();
         }
 
-
-        public static void AddUser(User user)
+        public  async Task<IdentityResult> AddUser(User user)
         {
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
-
-            string query =
-                "INSERT INTO user (Firstname, Lastname, Username, Email, Password, Salt, Avatar) VALUES (@Firstname, @Lastname, @Username, @Email, @Password, @Salt, @Avatar)";
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@Firstname", user.Firstname);
-            cmd.Parameters.AddWithValue("@Lastname", user.Lastname);
-            cmd.Parameters.AddWithValue("@Username", user.Username);
-            cmd.Parameters.AddWithValue("@Email", user.Email);
-            cmd.Parameters.AddWithValue("@Password", user.Password);
-            cmd.Parameters.AddWithValue("@Salt", user.Salt);
-
-            var avatar = ImageToBase64Helper.ConvertImagePathToBase64String("Media/user.png");
             
-            //if no avatar has been provided, use the default image
-            if (string.IsNullOrWhiteSpace(user.Avatar)) user.Avatar = avatar;
-            user.Avatar = Convert.ToBase64String(ImageToBase64Helper.ReduceImageSize(Convert.FromBase64String(user.Avatar)));
-            
-            cmd.Parameters.AddWithValue("@Avatar", user.Avatar);
-
-            cmd.ExecuteNonQuery();
-            conn.Close();
+            return IdentityResult.Success;
         }
 
-        public static bool Login(User u)
+        public  User? UserExists(string usernameoremail)
         {
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
-            if (UserExists(u.Username) == null) return false;
 
-            string query = "SELECT COUNT(*) FROM USER WHERE Username=@Username AND Password=@Password";
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@Username", u.Username);
-            cmd.Parameters.AddWithValue("@Password", u.Password);
-
-            bool output = Convert.ToInt16(cmd.ExecuteScalar()) >= 1;
-            conn.Close();
-            return output;
-        }
-        public static void Logout(int id)
-        {
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
-
-            string query = "UPDATE user SET RefreshToken = '' WHERE IDUser = @IDUser";
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@IDUser", id);
-            cmd.ExecuteNonQuery();
-            
-            conn.Close();
-        }
-        public static User? UserExists(string usernameoremail)
-        {
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
-
-            string query =
-                $"SELECT * FROM USER WHERE {(IsEmail(usernameoremail) ? "Email" : "Username")}=@usernameoremail";
-
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@usernameoremail", usernameoremail);
-
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
-                User u = Create(reader);
-                reader.Close();
-                conn.Close();
-                return u;
-            }
-
-            conn.Close();
+            _context.Users.AnyAsync(u =>
+                u.NormalizedEmail == usernameoremail.ToUpper() || u.NormalizedUserName == usernameoremail.ToUpper());
             return null;
         }
 
-        public static void SetRefreshToken(string usernameoremail, string refreshToken)
+        public async Task<User?> GetById(int userId, bool getAvatar = true)
         {
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
-
-            string query =
-                $"UPDATE user SET RefreshToken = @refreshToken WHERE {(IsEmail(usernameoremail) ? "Email" : "Username")} = @usernameoremail";
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@refreshToken", refreshToken);
-            cmd.Parameters.AddWithValue("@usernameoremail", usernameoremail);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-        }
-
-        public static User? GetById(int userIdUser)
-        {
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
-
-            string query = "SELECT * from user WHERE IDUser=@IDUser";
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@IDUser", userIdUser);
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (!reader.Read()) return null;
-
-            User user = Create(reader);
-            reader.Close();
-            conn.Close();
+            var user = await _context.Users.Where(u => u.Id == userId).FirstOrDefaultAsync();
             return user;
         }
 
-        public static bool HasEnoughCoins(int id, int price)
+        public async Task<string?> GetAvatarById(int userId)
         {
-            return price < GetCoins(id);
+            var avatar = await _context.Users.Where(u => u.Id == userId).Select(u => u.Avatar).FirstOrDefaultAsync();
+            return avatar;
         }
 
 
-        public static RefreshToken? GetRefreshToken(RefreshRequest refreshRequestRefreshToken)
+        public async Task<bool> HasEnoughCoins(int id, int price)
         {
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
-
-            string query = "SELECT * from user WHERE RefreshToken=@RefreshToken";
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@RefreshToken", refreshRequestRefreshToken.RefreshToken);
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (!reader.Read()) return null;
-
-            RefreshToken rt = new()
-            {
-                Token = refreshRequestRefreshToken.RefreshToken,
-                User = Create(reader)
-            };
-
-            reader.Close();
-            conn.Close();
-            return rt;
+            return price < await GetCoinsAsync(id);
         }
-
+        
         //Een methode om te kijken of dit een email is.
-        private static bool IsEmail(string emailaddress)
+        private  bool IsEmail(string emailaddress)
         {
             try
             {
@@ -178,108 +86,103 @@ namespace PolyRushAPI.DA
                 return false;
             }
         }
-        public static int GetCoins(int id)
+        public async Task<int> GetCoinsAsync(int id)
         {
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
-
-            string query = "SELECT Coins from user WHERE IDUser=@IDUser";
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@IDUser", id);
-
-            try
-            {
-                return Convert.ToInt32(cmd.ExecuteScalar());
-            }
-            finally
-            {
-                conn.Close();
-            }
+            var coins = _context.Users;
+            var coins2 = coins.Where(u => u.Id == id);
+            var coins3 = coins2.Select(u => u.Coins);
+            var coins4 = await coins3.FirstOrDefaultAsync();
+                
+            return coins4;
         }
         
-        public static bool RemoveCoins(int id, int coins = -1)
+        public async Task<bool> RemoveCoins(int id, int coins = -1)
         {
-            var userCoinAmount = UserDA.GetCoins(id);
+            int userCoinAmount = await GetCoinsAsync(id);
             if (userCoinAmount < coins) return false;
             
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
+            var user = await _userManager.Users.Where(u => u.Id == id).FirstOrDefaultAsync();
 
-            string query = "UPDATE user SET Coins = Coins - @Coins WHERE IDUser=@IDUser";
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@IDUser", id);
             //if no coins have been given, remove all coins.
-            var amount = coins == -1 ? userCoinAmount : coins;
-            cmd.Parameters.AddWithValue("@Coins", amount);
-            cmd.ExecuteNonQuery();
-            
-            conn.Close();
+            int amount = coins <= 0 ? userCoinAmount : coins;
+            user.Coins -= amount;
+
             return true;
         }
         
-        public static void UploadGameResult(GameSession session)
+        public async Task UploadGameResult(Gamesession session)
         {
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
-            var highscore = GetById(session.UserID)?.Highscore;
+
+            int highscore = (await GetById(session.UserId))!.Highscore;
             if (session.ScoreGathered > highscore)
             {
                 highscore = session.ScoreGathered;
             }
-            
-            string query = 
-                @"UPDATE user 
-                SET Coins = Coins + @Coins, Coinsgathered = Coinsgathered + @Coins, 
-                Timespassed = Timespassed + @Timespassed,
-                Highscore = @Highscore,
-                Scoregathered = Scoregathered + @Score
-                WHERE IDUser=@IDUser";
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@IDUser", session.UserID);
-            cmd.Parameters.AddWithValue("@Coins", session.CoinsGathered);
-            cmd.Parameters.AddWithValue("@Timespassed", session.PeoplePassed);
-            cmd.Parameters.AddWithValue("@Score", session.ScoreGathered);
-            cmd.Parameters.AddWithValue("@Highscore", highscore);
-            cmd.ExecuteNonQuery();
+
+            var user = await _userManager.Users.Where(u => u.Id == session.UserId).FirstOrDefaultAsync();
+
+            user.Coins += session.CoinsGathered;
+            user.Timespassed += session.PeoplePassed;
+            user.Scoregathered += session.ScoreGathered;
+            user.Highscore = highscore;
+
+            await _userManager.UpdateAsync(user);
         }
         
-        private static User Create(IDataRecord reader)
+        private  User Create(IDataRecord reader)
         {
-            return new User
+            User user = new();
+            try
             {
-                Avatar = reader["Avatar"].ToString(),
-                Coinsgathered = Convert.ToInt32(reader["Coinsgathered"]),
-                Coinsspent = Convert.ToInt16(reader["Coinsspent"]),
-                Email = reader["Email"].ToString(),
-                Firstname = reader["Firstname"].ToString(),
-                Lastname = reader["Lastname"].ToString(),
-                Username = reader["Username"].ToString(),
-                Highscore = Convert.ToInt32(reader["Highscore"]),
-                IDUser = Convert.ToInt32(reader["IDuser"]),
-                IsAdmin = Convert.ToBoolean(reader["IsAdmin"]),
-                Itemspurchased = Convert.ToInt32(reader["Itemspurchased"]),
-                Password = reader["Password"].ToString(),
-                Salt = reader["Salt"].ToString(),
-                IsActive = Convert.ToBoolean(reader["IsActive"]),
-                Coins = Convert.ToInt32(reader["Coins"])
-            };
+                user.Avatar = reader["Avatar"].ToString()!;
+            }
+            catch (Exception e)
+            {
+                user.Avatar = "";
+            }
+            user.Coinsgathered = Convert.ToInt32(reader["Coinsgathered"]);
+            user.Coinsspent = Convert.ToInt16(reader["Coinsspent"]);
+            user.Email = reader["Email"].ToString();
+            user.Firstname = reader["Firstname"].ToString()!;
+            user.Lastname = reader["Lastname"].ToString()!;
+            user.UserName = reader["Username"].ToString();
+            user.Highscore = Convert.ToInt32(reader["Highscore"]);
+            user.Id = Convert.ToInt32(reader["IDuser"]);
+            user.IsAdmin = Convert.ToBoolean(reader["IsAdmin"]);
+            user.Itemspurchased = Convert.ToInt32(reader["Itemspurchased"]);
+            user.PasswordHash = reader["Password"].ToString();
+            user.IsActive = Convert.ToBoolean(reader["IsActive"]);
+            user.Coins = Convert.ToInt32(reader["Coins"]);
+            return user;
         }
         
         
-        public static UserDTO CreateDTO(IDataRecord reader)
+        public  UserDTO CreateDTO(IDataRecord reader)
         {
-            return new UserDTO
+            UserDTO dto = new()
             {
-                ID = Convert.ToInt32(reader["IDUser"]),
-                Avatar = reader["Avatar"].ToString(),
-                Coinsgathered = Convert.ToInt32(reader["Coinsgathered"]),
-                Coinsspent = Convert.ToInt16(reader["Coinsspent"]),
-                Email = reader["Email"].ToString(),
-                Firstname = reader["Firstname"].ToString(),
-                Lastname = reader["Lastname"].ToString(),
-                Username = reader["Username"].ToString(),
-                Highscore = Convert.ToInt32(reader["Highscore"]),
-                IsAdmin = Convert.ToBoolean(reader["IsAdmin"]),
-                Itemspurchased = Convert.ToInt32(reader["Itemspurchased"]),
-                Coins = Convert.ToInt32(reader["Coins"])
+                ID = Convert.ToInt32(reader["IDUser"])
             };
+            try
+            {
+                dto.Avatar = reader["Avatar"].ToString() ?? "";
+            }
+            catch (Exception e)
+            {
+                dto.Avatar = "";
+            }
+           
+            dto.Coinsgathered = Convert.ToInt32(reader["Coinsgathered"]);
+            dto.Coinsspent = Convert.ToInt16(reader["Coinsspent"]);
+            dto.Email = reader["Email"].ToString()!;
+            dto.Firstname = reader["Firstname"].ToString()!;
+            dto.Lastname = reader["Lastname"].ToString()!;
+            dto.Username = reader["Username"].ToString()!;
+            dto.Highscore = Convert.ToInt32(reader["Highscore"]);
+            dto.IsAdmin = Convert.ToBoolean(reader["IsAdmin"]);
+            dto.Itemspurchased = Convert.ToInt32(reader["Itemspurchased"]);
+            dto.Coins = Convert.ToInt32(reader["Coins"]);
+            return dto;
         }
 
 

@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Data;
-using Helper;
 using MySql.Data.MySqlClient;
 using PolyRushLibrary;
+using PolyRushWeb.Helper;
 
-namespace PolyRushAPI.DA
+namespace PolyRushWeb.DA
 {
-    public static class GameSessionDA
+    public  class GameSessionDA
     {
-        public static void UploadGameSession(int id, GameSession session)
+        private readonly UserDA _userDa;
+
+        public GameSessionDA(UserDA userDa)
+        {
+            _userDa = userDa;
+        }
+        public async Task UploadGameSession(int id, Gamesession session)
         {
             MySqlConnection conn = DatabaseConnector.MakeConnection();
 
@@ -26,17 +32,17 @@ namespace PolyRushAPI.DA
 
             cmd.ExecuteNonQuery();
             conn.Close();
-            
+
             //update the user with the results
-            UserDA.UploadGameResult(session);
+            await _userDa.UploadGameResult(session);
         }
         
-        private static GameSession Create(IDataReader reader)
+        private static Gamesession Create(IDataReader reader)
         {
-            return new GameSession()
+            return new()
             {
-                IDGameSession = Convert.ToInt32(reader["IDGameSession"]),
-                UserID = Convert.ToInt32(reader["UserID"]),
+                IdgameSession = Convert.ToInt32(reader["IDGameSession"]),
+                UserId = Convert.ToInt32(reader["UserID"]),
                 StartDateTime = Convert.ToDateTime(reader["StartDateTime"]),
                 EndDateTime = Convert.ToDateTime(reader["EndDateTime"]),
                 CoinsGathered = Convert.ToInt32(reader["CoinsGathered"]),

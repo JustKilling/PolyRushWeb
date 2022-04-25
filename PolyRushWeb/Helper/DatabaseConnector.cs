@@ -2,9 +2,8 @@
 using System.IO;
 using System.Text;
 using MySql.Data.MySqlClient;
-using PolyRushLibrary;
 
-namespace Helper
+namespace PolyRushWeb.Helper
 {
     public class DatabaseConnector
     {
@@ -18,32 +17,34 @@ namespace Helper
         {
             //Opstellen connectiestring
             MySqlConnectionStringBuilder connStringBuilder = new();
-            var type = ApiType.Local;
-            switch (type)
-            {
-                case ApiType.Cloud:{}
-                    connStringBuilder.Server = "polyrushmysql.mysql.database.azure.com";
-                    connStringBuilder.Port = 3306;
-                    connStringBuilder.UserID = "emield";
-                    connStringBuilder.Database = "polyrush";
-                    string text;
-                    var fileStream = new FileStream(@"password.txt", FileMode.Open, FileAccess.Read);
-                    using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
-                    {
-                        text = streamReader.ReadToEnd();
-                    }
-                    connStringBuilder.Password = text;
-                    break;
-                case ApiType.Local:
-                    connStringBuilder.Server = "localhost";
-                    connStringBuilder.Port = 3307;
-                    connStringBuilder.UserID = "root";
-                    connStringBuilder.Password = "usbw";
-                    connStringBuilder.Database = "polyrush";
-                    break;
-            }
+
+            //if debugging, use the local database, otherwise use the clous database.
+            #if DEBUG
+                connStringBuilder.Server = "polyrushmysql.mysql.database.azure.com";
+                connStringBuilder.Port = 3306;
+                connStringBuilder.UserID = "emield";
+                connStringBuilder.Database = "polyrush";
+                string text = "PolyRush123";
+                //var fileStream = new FileStream(@"password.txt", FileMode.Open, FileAccess.Read);
+                //using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
+                //{
+                //    text = streamReader.ReadToEnd();
+                //}
+                connStringBuilder.Password = text;
+
+            #else
+                connStringBuilder.Server = "localhost";
+                connStringBuilder.Port = 3307;
+                connStringBuilder.UserID = "root";
+                connStringBuilder.Password = "usbw";
+                connStringBuilder.Database = "polyrush";
+            #endif
+                
+
+          
             
-            var conn = new MySqlConnection(connStringBuilder.ConnectionString);
+            
+            MySqlConnection conn = new(connStringBuilder.ConnectionString);
            
             conn.Open();
             return conn;

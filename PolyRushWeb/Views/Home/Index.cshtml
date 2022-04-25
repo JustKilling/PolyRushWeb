@@ -1,8 +1,24 @@
-﻿@model UserDTO?
+﻿@model PolyRushLibrary.UserDTO?
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Start";
+    ViewBag.Avatar = Model.Avatar;
     Layout = "_HomeLayout";
-}
 
-<h2>title</h2>
+}
+<head>
+    <link rel="stylesheet" href="~/css/index.css"/>
+</head>
+<script >
+@{
+    int index = 0;
+}
+$( document ).ready(function() {
+    $("#navs").children().eq(@index).addClass("active")
+});
+   
+</script>
+
+<h1>Start</h1>
+<h2>Welcome @Model.Firstname!</h2>
+
