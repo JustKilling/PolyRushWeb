@@ -35,11 +35,21 @@ namespace PolyRushWeb.DA
 
             MySqlConnection conn = DatabaseConnector.MakeConnection();
             //user top playtime query
-            string query = "select UserID, IsActive, sum(timediff(EndDateTime, StartDateTime)) AS 'PlayTime' from gamesession INNER JOIN user WHERE IsActive = 1 group by UserID Order by PlayTime DESC LIMIT @Limit";
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@Limit", amount);
-            MySqlDataReader? reader = cmd.ExecuteReader();
-            List<(UserDTO, int TopPlayTime)> users = new();
+            List<Gamesession> gameSessions = await _context.Users.FromSqlInterpolated(
+                @$"select UserID, IsActive, sum(timediff(EndDateTime, StartDateTime)) 
+                AS 'PlayTime' from gamesession INNER JOIN user WHERE IsActive = 1 group by UserID 
+                Order by PlayTime DESC LIMIT {amount}").Select(u => u.ToUserDTO()).ToListAsync();
+
+            var result = (from gs in _context.Gamesession
+                join u in _context.Users on gs.UserId equals u.Id
+                where u.IsActive == true
+                group new UserPlaytime() by u.Id TimeSpan g
+                select
+                new GraphViewModel
+                {
+                    Reader = g.Key,
+                    PagesRead = g.Sum(x => x.b.Pages)
+                }).ToList();
 
             try
             {
@@ -54,7 +64,7 @@ namespace PolyRushWeb.DA
             {
                 reader.Close();
 
-                conn.Close();
+                await conn.CloseAsync();
             }
         }
         
