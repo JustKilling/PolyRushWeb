@@ -40,10 +40,6 @@ namespace PolyRushWeb.Helper
                 connStringBuilder.Database = "polyrush";
             #endif
                 
-
-          
-            
-            
             MySqlConnection conn = new(connStringBuilder.ConnectionString);
            
             conn.Open();

@@ -1,7 +1,9 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
 using PolyRushLibrary;
 using PolyRushWeb.Helper;
+using PolyRushWeb.Models;
 
 namespace PolyRushWeb.DA
 {
@@ -14,23 +16,36 @@ namespace PolyRushWeb.DA
 
     public class SettingDA
     {
-        public int? GetSetting(int id, EnumSetting enumSetting)
+        private readonly polyrushContext _context;
+
+        public SettingDA(polyrushContext context)
         {
+            _context = context;
+        }
+
+        public async Task<int> GetUserSetting(int id, EnumSetting enumSetting)
+        {
+            //make the setting record for the user if it doesn't exists
             if (!SettingExists(id, enumSetting)) CreateSetting(id, enumSetting);
 
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
 
-            string query =
-                "SELECT * from usersetting INNER JOIN setting WHERE UserID = @UserID AND SettingID = @SettingID";
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@UserID", id);
-            cmd.Parameters.AddWithValue("@SettingID", enumSetting);
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (!reader.Read()) return null;
-            Setting setting = Create(reader);
-            reader.Close();
-            conn.Close();
-            return setting.Idsetting;
+
+
+            //MySqlConnection conn = DatabaseConnector.MakeConnection();
+
+            //string query =
+            //    "SELECT * from usersetting WHERE UserID = @UserID AND SettingID = @SettingID";
+            //MySqlCommand cmd = new(query, conn);
+            //cmd.Parameters.AddWithValue("@UserID", id);
+            //cmd.Parameters.AddWithValue("@SettingID", enumSetting);
+            //MySqlDataReader reader = cmd.ExecuteReader();
+            //if (!reader.Read()) return null;
+            //Usersetting setting = Create(reader);
+            //reader.Close();
+            //await conn.CloseAsync();
+
+
+            return (await _context.Usersetting.Where(us => us.UserId == id && us.SettingId == (int)enumSetting).FirstOrDefaultAsync())!.State;
         }
 
         private void CreateSetting(int id, EnumSetting setting)
@@ -73,16 +88,19 @@ namespace PolyRushWeb.DA
             }
         }
 
-        private Setting Create(MySqlDataReader reader)
+        private Usersetting Create(MySqlDataReader reader)
         {
             return new()
             {
-                Idsetting = Convert.ToInt32(reader["IDSetting"]),
-                Name = reader["Name"].ToString()!,
-                Description = reader["Description"].ToString()!
+                UserId = Convert.ToInt32(reader["UserID"]),
+                SettingId = Convert.ToInt32(reader["SettingID"]),
+                State = Convert.ToInt32(reader["State"])
+                //Idsetting = Convert.ToInt32(reader["IDSetting"]),
+                //Name = reader["Name"].ToString()!,
+                //Description = reader["Description"].ToString()!
             };
         }
-
+      
         public void SetSetting(int id, EnumSetting setting, int state)
         {
             if (!SettingExists(id, setting))

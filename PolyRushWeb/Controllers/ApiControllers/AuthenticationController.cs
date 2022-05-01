@@ -22,7 +22,6 @@ namespace PolyRushWeb.Controllers.ApiControllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly IConfiguration _configuration;
         private readonly SecretSettings _settings;
         private readonly polyrushContext _context;
 
@@ -35,7 +34,6 @@ namespace PolyRushWeb.Controllers.ApiControllers
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _configuration = configuration;
             _settings = settings;
             _context = context;
         }

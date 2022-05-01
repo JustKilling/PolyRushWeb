@@ -48,7 +48,7 @@ namespace PolyRushWeb.DA
             await _context.SaveChangesAsync();
         }
 
-        public  async Task<IdentityResult> AddUser(User user)
+        public async Task<IdentityResult> AddUser(User user)
         {
             
             return IdentityResult.Success;
@@ -135,36 +135,9 @@ namespace PolyRushWeb.DA
 
             await _userManager.UpdateAsync(user);
         }
-        
-        private  User Create(IDataRecord reader)
-        {
-            User user = new();
-            try
-            {
-                user.Avatar = reader["Avatar"].ToString()!;
-            }
-            catch (Exception e)
-            {
-                user.Avatar = "";
-            }
-            user.Coinsgathered = Convert.ToInt32(reader["Coinsgathered"]);
-            user.Coinsspent = Convert.ToInt16(reader["Coinsspent"]);
-            user.Email = reader["Email"].ToString();
-            user.Firstname = reader["Firstname"].ToString()!;
-            user.Lastname = reader["Lastname"].ToString()!;
-            user.UserName = reader["Username"].ToString();
-            user.Highscore = Convert.ToInt32(reader["Highscore"]);
-            user.Id = Convert.ToInt32(reader["IDuser"]);
-            user.IsAdmin = Convert.ToBoolean(reader["IsAdmin"]);
-            user.Itemspurchased = Convert.ToInt32(reader["Itemspurchased"]);
-            user.PasswordHash = reader["Password"].ToString();
-            user.IsActive = Convert.ToBoolean(reader["IsActive"]);
-            user.Coins = Convert.ToInt32(reader["Coins"]);
-            return user;
-        }
-        
-        
-        public  UserDTO CreateDTO(IDataRecord reader)
+
+
+        public  UserDTO CreateDto(IDataRecord reader)
         {
             UserDTO dto = new()
             {

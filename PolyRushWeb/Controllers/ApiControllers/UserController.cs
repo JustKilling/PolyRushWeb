@@ -33,11 +33,13 @@ namespace PolyRushWeb.Controllers.ApiControllers
 
         [HttpGet]
         public async Task<IActionResult> GetAsync()
-        {
+         {
             //id ophalen uit jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-
-            return Ok(await _userDa.GetById(id));
+            var user = await _userDa.GetById(id);
+            //check if user with that id exists
+            if (user == null) return BadRequest("User not found!");
+            return Ok(user);
         }
 
         [HttpGet]

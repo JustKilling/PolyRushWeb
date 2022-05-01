@@ -81,28 +81,28 @@ namespace PolyRushWeb.Controllers.ApiControllers
         }
 
         [HttpGet("sfx")]
-        public IActionResult GetSfx()
+        public async Task<IActionResult> GetSfx()
         {
             //id ophalen uit jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
 
-            return Ok(_settingDa.GetSetting(id, EnumSetting.Sfx));
+            return Ok(await _settingDa.GetUserSetting(id, EnumSetting.Sfx));
         }
 
         [HttpGet("music")]
-        public IActionResult GetMusic()
+        public async Task<IActionResult> GetMusic()
         {
             //id ophalen uit jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            return Ok(_settingDa.GetSetting(id, EnumSetting.Music));
+            return Ok(await _settingDa.GetUserSetting(id, EnumSetting.Music));
         }
 
         [HttpGet("mastervolume")]
-        public IActionResult GetMasterVolume()
+        public async Task<IActionResult> GetMasterVolume()
         {
             //id ophalen uit jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            return Ok(_settingDa.GetSetting(id, EnumSetting.MasterVolume));
+            return Ok(await _settingDa.GetUserSetting(id, EnumSetting.MasterVolume));
         }
     }
 }

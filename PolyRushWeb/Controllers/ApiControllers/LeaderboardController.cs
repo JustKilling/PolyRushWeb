@@ -25,7 +25,8 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Route("{amount}")]
         public async Task<IActionResult> GetTopUsers(int amount)
         {
-            return Ok(await _leaderboardDa.GetTopUsers(amount));
+            var result = await _leaderboardDa.GetTopUsers(amount);
+            return Ok(result);
         }
         [HttpGet]
         [Route("getnextgoals/{amount}/{score}")]
@@ -50,7 +51,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
 
         [HttpGet]
         [Route("random/{username}")]
-        public async Task<IActionResult> GetTopUsersAsync(string username)
+        public async Task<IActionResult> UpdateRandom(string username)
         {
             await _leaderboardDa.UpdateRandomAsync(username);
             return Ok();

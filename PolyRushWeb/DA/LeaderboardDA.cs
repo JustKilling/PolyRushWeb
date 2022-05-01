@@ -25,37 +25,27 @@ namespace PolyRushWeb.DA
         }
         public async Task<List<UserDTO>> GetTopUsers(int amount, bool getImages = true)
         {
-            return await _context.Users.Where(u => u.IsAdmin == true).OrderByDescending(u => u.Highscore).Take(amount).Select(u => u.ToUserDTO()).ToListAsync();
+            return await _context.Users.Where(u => u.IsAdmin == false).OrderByDescending(u => u.Highscore).Take(amount).Select(u => u.ToUserDTO()).ToListAsync();
         }
         
         //method to return the top users with playtime
         public async Task<List<(UserDTO, int TopPlayTime)>> GetTopPlaytime(int amount)
         {
 
-
             MySqlConnection conn = DatabaseConnector.MakeConnection();
             //user top playtime query
-            List<Gamesession> gameSessions = await _context.Users.FromSqlInterpolated(
-                @$"select UserID, IsActive, sum(timediff(EndDateTime, StartDateTime)) 
-                AS 'PlayTime' from gamesession INNER JOIN user WHERE IsActive = 1 group by UserID 
-                Order by PlayTime DESC LIMIT {amount}").Select(u => u.ToUserDTO()).ToListAsync();
-
-            var result = (from gs in _context.Gamesession
-                join u in _context.Users on gs.UserId equals u.Id
-                where u.IsActive == true
-                group new UserPlaytime() by u.Id TimeSpan g
-                select
-                new GraphViewModel
-                {
-                    Reader = g.Key,
-                    PagesRead = g.Sum(x => x.b.Pages)
-                }).ToList();
+            string query = "select UserID, sum(timediff(EndDateTime, StartDateTime)) AS 'PlayTime' from gamesession group by UserID Order by PlayTime DESC LIMIT @Limit";
+            MySqlCommand cmd = new(query, conn);
+            cmd.Parameters.AddWithValue("@Limit", amount);
+            MySqlDataReader? reader = cmd.ExecuteReader();
+            List<(UserDTO, int TopPlayTime)> users = new();
 
             try
             {
-                while (reader.Read()) {
-                    UserDTO user = (await _userDa.GetById(Convert.ToInt32(reader["UserID"]), false))!.ToUserDTO()!;
-                    users.Add((user, Convert.ToInt32(reader["PlayTime"]))); 
+                while (reader.Read())
+                {
+                    UserDTO user = (await _userDa.GetById(Convert.ToInt32(reader["UserID"]), false))!.ToUserDTO();
+                    users.Add((user, Convert.ToInt32(reader["PlayTime"])));
                 }
 
                 return users;
@@ -64,17 +54,18 @@ namespace PolyRushWeb.DA
             {
                 reader.Close();
 
-                await conn.CloseAsync();
+                conn.Close();
             }
+
         }
         
         public async Task<List<NextGoalResponse>> GetNextGoals(int amount, int highscore)
         {
 
-            var users = await _context.Users.FromSqlRaw("select Id, Highscore, Avatar from user").Where(u => u.Highscore > highscore).OrderBy(u => u.Highscore).Take(amount).ToListAsync();           
-            
+            //var usefrs = await _context.Users.FromSqlRaw("select Id, Highscore, Avatar from user").Where(u => u.Highscore > highscore).OrderBy(u => u.Highscore).Take(amount).ToListAsync();
+            var users = await _context.Users.Select(u => new UserDTO() {ID = u.Id,Highscore = u.Highscore, Avatar = u.Avatar }).ToListAsync();
 
-            if(users == null)
+            if(users.Count <= 0)
             {
                 string avatar = ImageToBase64Helper.ConvertImagePathToBase64String("Media/success.png");
                 return new()
