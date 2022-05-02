@@ -24,7 +24,9 @@ var connectionString = builder.Configuration.GetConnectionString("PolyRushWebCon
 builder.Services.AddDbContext<PolyRushWebContext>(options =>
     options.UseMySql(connectionString, ServerVersion.Parse("5.7")));
 builder.Services.AddDbContext<polyrushContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.Parse("5.7")));
+{
+    options.UseMySql(connectionString, ServerVersion.Parse("5.7"));
+}, ServiceLifetime.Transient);
 
 //Add DA dependencies
 builder.Services.AddTransient<UserDA>();

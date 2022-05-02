@@ -56,5 +56,12 @@ namespace PolyRushWeb.Controllers.ApiControllers
             await _leaderboardDa.UpdateRandomAsync(username);
             return Ok();
         }
+        [HttpGet]
+        [Route("playtime/{amount}")]
+        public async Task<IActionResult> GetTopPlayTimes(int amount = 10)
+        {
+               
+            return Ok(await _leaderboardDa.GetTopPlaytime(amount));
+        }
     }
 }

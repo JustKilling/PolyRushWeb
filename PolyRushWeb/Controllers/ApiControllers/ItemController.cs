@@ -20,17 +20,17 @@ namespace PolyRushWeb.Controllers.ApiControllers
         }
         [HttpGet]
         [Route("{itemid}")]
-        public IActionResult GetItemByID(int itemid)
+        public async Task<IActionResult> GetItemByIDAsync(int itemid)
         {
             
-            return Ok(_itemDa.GetItemById(itemid));
+            return Ok(await _itemDa.GetItemById(itemid));
         }
 
         [HttpGet]
         [Route("getitemsfromtype/{type}")]
         public IActionResult GetItemFromType(ItemType type)
         {
-            string result = JsonConvert.SerializeObject(_itemDa.GetItemsFromType(type));
+            string result = JsonConvert.SerializeObject(_itemDa.GetItemsFromTypeAsync(type));
 
             return Ok(result);
         }
@@ -43,7 +43,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
-            return Ok(items.Select(x => _itemDa.GetAmount(x, id, isAdmin)).ToList());
+            return Ok(items.Select(async x => await _itemDa.GetAmountAsync(x, id, isAdmin)).ToList());
         }
 
         [HttpPost]
@@ -61,10 +61,10 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [HttpGet]
         [Authorize]
         [Route("getdiscounteditemsfromtype/{type}")]
-        public IActionResult GetDiscountedItemsFromType(ItemType type)
+        public async Task<IActionResult> GetDiscountedItemsFromTypeAsync(ItemType type)
         {
             bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
-            List<Item?> items = _itemDa.GetDiscountedItemsFromType(type);
+            List<Item> items = await _itemDa.GetDiscountedItemsFromTypeAsync(type);
             if (!isAdmin) return Ok(items);
             //if an admin, put the price to 0
             foreach (Item? item in items)
@@ -78,34 +78,34 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [HttpGet]
         [Authorize]
         [Route("getowneditemsfromtype/{type}/{getImage}")]
-        public IActionResult GetOwnedItemsFromType(ItemType type, bool getImage)
+        public async Task<IActionResult> GetOwnedItemsFromTypeAsync(ItemType type, bool getImage)
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
-            if (isAdmin) return Ok(_itemDa.GetItemsFromType(type, getImage));
-            return Ok(_itemDa.GetOwnedItemsFromType(id, type, getImage));
+            if (isAdmin) return Ok(await _itemDa.GetItemsFromType(type, getImage));
+            return Ok(await _itemDa.GetOwnedItemsFromTypeAsync(id, type, getImage));
         }
         [HttpGet]
         [Authorize]
         [Route("getowneditemsfromtype/{type}")]
-        public IActionResult GetOwnedItemsFromType(ItemType type)
+        public async Task<IActionResult> GetOwnedItemsFromTypeAsync(ItemType type)
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
-            if (isAdmin) return Ok(_itemDa.GetItemsFromType(type, true));
-            return Ok(_itemDa.GetOwnedItemsFromType(id, type, true));
+            if (isAdmin) return Ok(await _itemDa.GetItemsFromType(type, true));
+            return Ok(await _itemDa.GetOwnedItemsFromTypeAsync(id, type, true));
         }
         
         
         [HttpPost]
         [Authorize]
         [Route("useability")]
-        public IActionResult Remove1Item([FromBody] Item item)
+        public async Task<IActionResult> Remove1ItemAsync([FromBody] Item item)
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
             
-            return Ok(_itemDa.Remove1Item(id, item, isAdmin));
+            return Ok(await _itemDa.Remove1ItemAsync(id, item, isAdmin));
         }
     }
 }

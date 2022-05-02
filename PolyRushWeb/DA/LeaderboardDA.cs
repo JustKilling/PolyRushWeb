@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using MySql.Data.MySqlClient;
-using PolyRushLibrary;
 using PolyRushLibrary.Responses;
 using PolyRushWeb.Helper;
 using PolyRushWeb.Models;
 
 namespace PolyRushWeb.DA
 {
-    public class UserPlaytime
-    {
-        public UserDTO User { get; set; }
-        public TimeSpan Playtime { get; set; }
-    }
+
     public class LeaderboardDA
     {
         private readonly UserDA _userDa;
@@ -36,14 +28,20 @@ namespace PolyRushWeb.DA
 
 
         //method to return the top users with playtime
-        public async Task<List<(UserDTO, int TopPlayTime)>> GetTopPlaytime(int amount)
+        public async Task<List<UserPlaytime>> GetTopPlaytime(int amount)
         {
 
             //var gamesessions = await _context.Gamesession.FromSqlInterpolated(
             //    $"select * from gamesession LIMIT {amount}").ToListAsync();
 
-            //var gamesessions = _context.Gamesession.GroupBy(u => u.UserId).Select(gs => new UserPlaytime {Playtime = gs.(x => x.EndDateTime.Subtract(x.StartDateTime)) })
-            
+            //var gamesessions = _context.Gamesession.Select(gs => new UserPlaytime
+            //{ Playtime = gs.EndDateTime.Subtract(gs.StartDateTime), User = _userDa.GetById(gs.UserId, true).Result!.ToUserDTO() })
+            //    .GroupBy(gs => gs.User.ID).ToListAsync().Result;
+
+            var gamesessions = (from gs in _context.Gamesession select new UserPlaytime{ User = new UserDTO { ID = gs.UserId}, Playtime = gs.EndDateTime.Subtract(gs.EndDateTime) });
+
+            return await gamesessions.ToListAsync();
+   
             //        var teamTotalScores =
             //from player in players
             //group player by player.Team into playerGroup
@@ -53,30 +51,30 @@ namespace PolyRushWeb.DA
             //    TotalScore = playerGroup.Sum(x => x.Score),
             //};
 
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
-            //user top playtime query
-            string query = "select UserID, sum(timediff(EndDateTime, StartDateTime)) AS 'PlayTime' from gamesession group by UserID Order by PlayTime DESC LIMIT @Limit";
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@Limit", amount);
-            MySqlDataReader? reader = cmd.ExecuteReader();
-            List<(UserDTO, int TopPlayTime)> users = new();
+            //MySqlConnection conn = DatabaseConnector.MakeConnection();
+            ////user top playtime query
+            //string query = "select UserID, sum(timediff(EndDateTime, StartDateTime)) AS 'PlayTime' from gamesession group by UserID Order by PlayTime DESC LIMIT @Limit";
+            //MySqlCommand cmd = new(query, conn);
+            //cmd.Parameters.AddWithValue("@Limit", amount);
+            //MySqlDataReader? reader = cmd.ExecuteReader();
+            //List<(UserDTO, int TopPlayTime)> users = new();
 
-            try
-            {
-                while (reader.Read())
-                {
-                    UserDTO user = (await _userDa.GetById(Convert.ToInt32(reader["UserID"]), false))!.ToUserDTO();
-                    users.Add((user, Convert.ToInt32(reader["PlayTime"])));
-                }
+            //try
+            //{
+            //    while (reader.Read())
+            //    {
+            //        UserDTO user = (await _userDa.GetById(Convert.ToInt32(reader["UserID"]), false))!.ToUserDTO();
+            //        users.Add((user, Convert.ToInt32(reader["PlayTime"])));
+            //    }
 
-                return users;
-            }
-            finally
-            {
-                reader.Close();
+            //    return users;
+            //}
+            //finally
+            //{
+            //    reader.Close();
 
-                conn.Close();
-            }
+            //    conn.Close();
+            //}
 
         }
         
@@ -84,7 +82,9 @@ namespace PolyRushWeb.DA
         {
 
             //var usefrs = await _context.Users.FromSqlRaw("select Id, Highscore, Avatar from user").Where(u => u.Highscore > highscore).OrderBy(u => u.Highscore).Take(amount).ToListAsync();
-            var users = await _context.Users.Select(u => new UserDTO() {ID = u.Id,Highscore = u.Highscore, Avatar = u.Avatar }).ToListAsync();
+            var users = await _context.Users.Where(u => u.Highscore > 100 && u.Highscore > highscore)
+                .OrderBy(u => u.Highscore).Take(amount)
+                .Select(u => new UserDTO() {ID = u.Id,Highscore = u.Highscore, Avatar = u.Avatar }).ToListAsync();
 
             if(users.Count <= 0)
             {

@@ -17,11 +17,11 @@ namespace PolyRushWeb.Controllers.ApiControllers
         }
         //return OK response in the base domain when asked. This can be used to see if the API is online
         [HttpPost]
-        public void PutGameSession([FromBody] Gamesession session)
+        public async Task PutGameSessionAsync([FromBody] Gamesession session)
         {            
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             session.UserId = id;
-            _gameSessionDa.UploadGameSession(id, session);
+            await _gameSessionDa.UploadGameSession(session);
         }
         
     }

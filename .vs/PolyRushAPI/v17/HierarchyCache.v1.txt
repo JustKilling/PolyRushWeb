@@ -4,27 +4,39 @@ i:{00000000-0000-0000-0000-000000000000}:PolyRushAPI.sln
 i:{00000000-0000-0000-0000-000000000000}:PolyRushAPI
 ++PolyRushLibrary
 i:{00000000-0000-0000-0000-000000000000}:PolyRushLibrary
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\bin\debug\net6.0\polyrushlibrary.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\polyrushlibrary.csproj
 ++Dependencies
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:>511
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9658
-++Requests
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\requests\
-++Responses
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\responses\
-++GameSession.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:>785
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1480
+++Entities
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\entities\
+++Discount.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\entities\discount.cs
+++Gamesession.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\entities\gamesession.cs
 ++Item.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\entities\item.cs
-++ItemType.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\itemtype.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\entities\item.cs
+++Itemtype.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\entities\itemtype.cs
 ++Setting.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\entities\setting.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\entities\setting.cs
+++Useritem.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\entities\useritem.cs
+++Usersetting.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\entities\usersetting.cs
+++Requests
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\requests\
+++Responses
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\responses\
+++ItemType.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\itemtype.cs
 ++Settings.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\settings.cs
-++User.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\models\user.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\settings.cs
 ++UserDTO.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\userdto.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\userdto.cs
+++UserPlaytime.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\userplaytime.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\userplaytime.cs
 ++Analyzers
 i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:analyzers
 i:{0836ac50-7885-46bf-b207-8a7c894e0567}:analyzers
@@ -32,11 +44,11 @@ i:{0836ac50-7885-46bf-b207-8a7c894e0567}:analyzers
 i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:frameworks
 i:{0836ac50-7885-46bf-b207-8a7c894e0567}:frameworks
 ++AuthenticationRequest.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\requests\authenticationrequest.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\requests\authenticationrequest.cs
 ++AuthenticationResponse.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\responses\authenticationresponse.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\responses\authenticationresponse.cs
 ++NextGoalResponse.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\responses\nextgoalresponse.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\responses\nextgoalresponse.cs
 ++Microsoft.CodeAnalysis.CSharp.NetAnalyzers
 i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
 i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
@@ -47,246 +59,185 @@ i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.202\sdk
 i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.4\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
 i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.4\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
 ++Microsoft.NETCore.App
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\microsoft.netcore.app
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\microsoft.netcore.app
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\microsoft.netcore.app
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\microsoft.netcore.app
 ++PolyRushWeb
 i:{00000000-0000-0000-0000-000000000000}:PolyRushWeb
 ++Connected Services 
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9659
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1481
 ++Properties
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\properties\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\
 ++wwwroot
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\
-++css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\css\
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\
-++img
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\
-++icons
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\icons\
-++userimages
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\
-++SS-2022.04.14.19.55.21.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\ss-2022.04.14.19.55.21.jpg
-++SS-2022.04.14.19.55.21.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\ss-2022.04.14.19.55.21.png
-++SS-2022.04.14.19.57.35.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\ss-2022.04.14.19.57.35.png
-++ss-2022-04-14-19-55-21.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\ss-2022-04-14-19-55-21.jpg
-++js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\js\
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\js\
-++lib
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\
-++favicon.ico
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\favicon.ico
-++manifest.json
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\manifest.json
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\
 ++Areas
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\areas\
-++Identity
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\areas\identity\
-++Data
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\areas\identity\data\
-++PolyRushWebContext.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\areas\identity\data\polyrushwebcontext.cs
-++Identity.zip
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\areas\identity.zip
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\areas\
 ++Controllers
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\controllers\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\
 ++ApiControllers
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\controllers\apicontrollers\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\
 ++APIController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\controllers\apicontrollers\apicontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\apicontroller.cs
 ++AuthenticationController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\controllers\apicontrollers\authenticationcontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\authenticationcontroller.cs
 ++GameSessionController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\controllers\apicontrollers\gamesessioncontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\gamesessioncontroller.cs
 ++ItemController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\controllers\apicontrollers\itemcontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\itemcontroller.cs
 ++LeaderboardController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\controllers\apicontrollers\leaderboardcontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\leaderboardcontroller.cs
 ++SettingController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\controllers\apicontrollers\settingcontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\settingcontroller.cs
 ++UserController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\controllers\apicontrollers\usercontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\usercontroller.cs
 ++AdminController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\controllers\admincontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\admincontroller.cs
 ++FileController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\controllers\filecontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\filecontroller.cs
 ++HomeController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\controllers\homecontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\homecontroller.cs
 ++LoginController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\controllers\logincontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\logincontroller.cs
 ++DA
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\da\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\da\
 ++DiscountDA.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\da\discountda.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\da\discountda.cs
 ++GameSessionDA.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\da\gamesessionda.cs
-++IDataAccess.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\da\gamesessionda.cs
 ++ItemDA.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\da\itemda.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\da\itemda.cs
 ++LeaderboardDA.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\da\leaderboardda.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\da\leaderboardda.cs
 ++SettingDA.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\da\settingda.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\da\settingda.cs
 ++UserDA.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\da\userda.cs
-++Entities
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\entities\
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\entities\
-++ApplicationUser.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\da\userda.cs
 ++Helper
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\helper\
-++AuthenticationHelper.cs
-++DatabaseConnector.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\helper\databaseconnector.cs
-++HttpHelper.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\helper\httphelper.cs
-++ImageToBase64Helper.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\helper\imagetobase64helper.cs
-++Secure.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\helper\secure.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\helper\
 ++Media
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\media\
-++success.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\media\success.png
-++user.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\media\user.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\media\
+++Migrations
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\migrations\
 ++Models
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\models\
-++EFCore
-++Discount.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\entities\discount.cs
-++Gamesession.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\entities\gamesession.cs
-++IpolyrushContext.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\models\ipolyrushcontext.cs
-++Itemtype.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\entities\itemtype.cs
-++polyrushContext.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\models\polyrushcontext.cs
-++Useritem.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\entities\useritem.cs
-++Usersetting.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushlibrary\entities\usersetting.cs
-++Class.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\models\class.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\
 ++ErrorViewModel.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\models\errorviewmodel.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\errorviewmodel.cs
 ++ForgotPasswordModel.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\models\forgotpasswordmodel.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\forgotpasswordmodel.cs
+++IpolyrushContext.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\ipolyrushcontext.cs
 ++LoginModel.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\models\loginmodel.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\loginmodel.cs
+++polyrushContext.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\polyrushcontext.cs
 ++RefreshToken.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\models\refreshtoken.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\refreshtoken.cs
 ++RegisterModel.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\models\registermodel.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\registermodel.cs
 ++SecretSettings.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\models\secretsettings.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\secretsettings.cs
+++User.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\user.cs
 ++Views
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\
 ++Admin
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\admin\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\admin\
 ++Home
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\home\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\home\
+++Index.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\home\index.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\admin\index.cshtml
+++Leaderboard.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\home\leaderboard.cshtml
+++Privacy.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\home\privacy.cshtml
+++Stats.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\home\stats.cshtml
 ++Login
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\login\
-++Register.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\login\register.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\login\
 ++Shared
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\shared\
-++_HomeLayout.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\shared\_homelayout.cshtml
-++_Layout.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\shared\_layout.cshtml
-++_ValidationScriptsPartial.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\shared\_validationscriptspartial.cshtml
-++Error.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\shared\error.cshtml
-++Login.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\shared\login.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\shared\
 ++_ViewImports.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\_viewimports.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\_viewimports.cshtml
 ++_ViewStart.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\_viewstart.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\_viewstart.cshtml
 ++appsettings.json
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\appsettings.json
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\appsettings.json
 ++Program.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\program.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\program.cs
 ++ScaffoldingReadMe.txt
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\scaffoldingreadme.txt
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\scaffoldingreadme.txt
 ++SQL Server Express LocalDB (Local) (ConnectionStrings:PolyRushWebContextConnection)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9704
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1531
 ++Packages
 i:{0836ac50-7885-46bf-b207-8a7c894e0567}:packages
 ++Projects
 i:{0836ac50-7885-46bf-b207-8a7c894e0567}:projects
 ++PublishProfiles
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\properties\publishprofiles\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\publishprofiles\
 ++ServiceDependencies
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\properties\servicedependencies\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\servicedependencies\
 ++launchSettings.json
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\properties\launchsettings.json
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\launchsettings.json
 ++serviceDependencies.json
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\properties\servicedependencies.json
-++datatable.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\css\datatable.css
-++index.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\css\index.css
-++sidebar.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\css\sidebar.css
-++site.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\css\site.css
-++icon-128x128.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\icons\icon-128x128.png
-++icon-144x144.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\icons\icon-144x144.png
-++icon-152x152.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\icons\icon-152x152.png
-++icon-192x192.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\icons\icon-192x192.png
-++icon-384x384.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\icons\icon-384x384.png
-++icon-512x512.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\icons\icon-512x512.png
-++icon-72x72.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\icons\icon-72x72.png
-++icon-96x96.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\icons\icon-96x96.png
-++20220418
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\
-++sidebar.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\js\sidebar.js
-++site.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\js\site.js
-++bootstrap
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\
-++jquery
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\jquery\
-++jquery-validation
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\jquery-validation\
-++jquery-validation-unobtrusive
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\jquery-validation-unobtrusive\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\servicedependencies.json
+++css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\css\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\
+++img
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\
+++js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\js\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\
+++lib
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\
+++favicon.ico
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\favicon.ico
+++manifest.json
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\manifest.json
+++Identity
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\areas\identity\
+++Identity.zip
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\areas\identity.zip
+++ConverterHelper.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\helper\converterhelper.cs
+++DatabaseConnector.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\helper\databaseconnector.cs
+++HttpHelper.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\helper\httphelper.cs
+++ImageToBase64Helper.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\helper\imagetobase64helper.cs
+++Secure.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\helper\secure.cs
+++success.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\media\success.png
+++user.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\media\user.png
+++20220424173322_intial.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\migrations\20220424173322_intial.cs
+++20220424201439_item.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\migrations\20220424201439_item.cs
+++20220425195751_tablerenames.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\migrations\20220425195751_tablerenames.cs
+++polyrushContextModelSnapshot.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\migrations\polyrushcontextmodelsnapshot.cs
 ++Edit.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\admin\edit.cshtml
-++Index.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\admin\index.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\home\index.cshtml
-++Leaderboard.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\home\leaderboard.cshtml
-++Privacy.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\home\privacy.cshtml
-++Stats.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\home\stats.cshtml
-++_Layout.cshtml.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\views\shared\_layout.cshtml.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\admin\edit.cshtml
+++Register.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\login\register.cshtml
+++_HomeLayout.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\shared\_homelayout.cshtml
+++_Layout.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\shared\_layout.cshtml
+++_ValidationScriptsPartial.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\shared\_validationscriptspartial.cshtml
+++Error.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\shared\error.cshtml
+++Login.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\shared\login.cshtml
 ++appsettings.Development.json
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\appsettings.development.json
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\appsettings.development.json
 ++MessagePackAnalyzer
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\.nuget\packages\messagepackanalyzer\2.1.152\analyzers\dotnet\messagepackanalyzer.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\.nuget\packages\messagepackanalyzer\2.1.152\analyzers\dotnet\messagepackanalyzer.dll
 ++Microsoft.AspNetCore.Analyzers
 i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.analyzers.dll
 ++Microsoft.AspNetCore.App.Analyzers
@@ -300,417 +251,459 @@ i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.202\sdk
 ++Microsoft.AspNetCore.Razor.SourceGenerator.Tooling.Internal
 i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk.razor\source-generators\microsoft.aspnetcore.razor.sourcegenerator.tooling.internal.dll
 ++Microsoft.CodeAnalysis.Analyzers
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.2\analyzers\dotnet\cs\microsoft.codeanalysis.analyzers.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.2\analyzers\dotnet\cs\microsoft.codeanalysis.analyzers.dll
 ++Microsoft.CodeAnalysis.CSharp.Analyzers
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.2\analyzers\dotnet\cs\microsoft.codeanalysis.csharp.analyzers.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.2\analyzers\dotnet\cs\microsoft.codeanalysis.csharp.analyzers.dll
 ++Microsoft.EntityFrameworkCore.Analyzers
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.4\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.4\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
 ++Microsoft.Extensions.Logging.Generators
 i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.4\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
 ++Microsoft.NET.Sdk.Razor.SourceGenerators
 i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk.razor\source-generators\microsoft.net.sdk.razor.sourcegenerators.dll
 ++Microsoft.AspNetCore.App
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\microsoft.aspnetcore.app
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\microsoft.aspnetcore.app
 ++Microsoft.AspNetCore.Authentication.JwtBearer (6.0.4)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9695
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1501
 ++Microsoft.AspNetCore.Identity.EntityFrameworkCore (6.0.4)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9693
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1499
 ++Microsoft.AspNetCore.Identity.UI (6.0.4)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9701
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1507
 ++Microsoft.AspNetCore.Mvc.NewtonsoftJson (6.0.4)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9692
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1498
 ++Microsoft.EntityFrameworkCore.SqlServer (6.0.4)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9688
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1494
 ++Microsoft.EntityFrameworkCore.Tools (6.0.4)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9697
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1503
 ++Microsoft.IdentityModel.Tokens (6.16.0)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9696
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1502
 ++Microsoft.VisualStudio.Web.CodeGeneration.Design (6.0.3)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9700
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1506
 ++MySql.Data (8.0.28)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9698
 ++Newtonsoft.Json (13.0.1)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9691
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1497
 ++Pomelo.EntityFrameworkCore.MySql (6.0.1)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9699
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1505
 ++Swashbuckle.AspNetCore (6.3.0)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9690
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1496
 ++System.Drawing.Common (6.0.0)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9687
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1493
 ++System.IdentityModel.Tokens.Jwt (6.16.0)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9689
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1495
 ++WebEssentials.AspNetCore.PWA (1.0.65)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>9694
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1500
 ++FolderProfile.pubxml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\properties\publishprofiles\folderprofile.pubxml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\publishprofiles\folderprofile.pubxml
 ++FolderProfile1.pubxml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\properties\publishprofiles\folderprofile1.pubxml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\publishprofiles\folderprofile1.pubxml
 ++PolyRushApi - Web Deploy.pubxml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\properties\publishprofiles\polyrushapi - web deploy.pubxml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\publishprofiles\polyrushapi - web deploy.pubxml
 ++PolyRushApi - Web Deploy1.pubxml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\properties\publishprofiles\polyrushapi - web deploy1.pubxml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\publishprofiles\polyrushapi - web deploy1.pubxml
 ++PolyRushApi - Web Deploy
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\properties\servicedependencies\polyrushapi - web deploy\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\servicedependencies\polyrushapi - web deploy\
 ++PolyRushApi - Web Deploy1
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\properties\servicedependencies\polyrushapi - web deploy1\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\servicedependencies\polyrushapi - web deploy1\
 ++serviceDependencies.local.json
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\properties\servicedependencies.local.json
-++100-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\100-20220418.jpg
-++101-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\101-20220418.jpg
-++10-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\10-20220418.jpg
-++107-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\107-20220418.jpg
-++108-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\108-20220418.jpg
-++109-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\109-20220418.jpg
-++111-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\111-20220418.jpg
-++11-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\11-20220418.jpg
-++113-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\113-20220418.jpg
-++114-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\114-20220418.jpg
-++116-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\116-20220418.jpg
-++1-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\1-20220418.jpg
-++12-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\12-20220418.jpg
-++13-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\13-20220418.jpg
-++14-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\14-20220418.jpg
-++15-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\15-20220418.jpg
-++16-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\16-20220418.jpg
-++17-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\17-20220418.jpg
-++18-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\18-20220418.jpg
-++19-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\19-20220418.jpg
-++20-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\20-20220418.jpg
-++21-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\21-20220418.jpg
-++2-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\2-20220418.jpg
-++22-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\22-20220418.jpg
-++23-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\23-20220418.jpg
-++24-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\24-20220418.jpg
-++25-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\25-20220418.jpg
-++26-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\26-20220418.jpg
-++27-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\27-20220418.jpg
-++28-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\28-20220418.jpg
-++29-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\29-20220418.jpg
-++30-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\30-20220418.jpg
-++31-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\31-20220418.jpg
-++3-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\3-20220418.jpg
-++32-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\32-20220418.jpg
-++33-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\33-20220418.jpg
-++34-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\34-20220418.jpg
-++35-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\35-20220418.jpg
-++36-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\36-20220418.jpg
-++37-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\37-20220418.jpg
-++38-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\38-20220418.jpg
-++39-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\39-20220418.jpg
-++40-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\40-20220418.jpg
-++41-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\41-20220418.jpg
-++4-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\4-20220418.jpg
-++42-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\42-20220418.jpg
-++43-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\43-20220418.jpg
-++44-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\44-20220418.jpg
-++45-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\45-20220418.jpg
-++46-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\46-20220418.jpg
-++47-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\47-20220418.jpg
-++48-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\48-20220418.jpg
-++49-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\49-20220418.jpg
-++50-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\50-20220418.jpg
-++51-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\51-20220418.jpg
-++5-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\5-20220418.jpg
-++52-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\52-20220418.jpg
-++53-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\53-20220418.jpg
-++54-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\54-20220418.jpg
-++55-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\55-20220418.jpg
-++56-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\56-20220418.jpg
-++57-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\57-20220418.jpg
-++58-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\58-20220418.jpg
-++59-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\59-20220418.jpg
-++60-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\60-20220418.jpg
-++61-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\61-20220418.jpg
-++6-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\6-20220418.jpg
-++62-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\62-20220418.jpg
-++63-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\63-20220418.jpg
-++64-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\64-20220418.jpg
-++65-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\65-20220418.jpg
-++66-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\66-20220418.jpg
-++67-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\67-20220418.jpg
-++68-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\68-20220418.jpg
-++69-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\69-20220418.jpg
-++70-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\70-20220418.jpg
-++71-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\71-20220418.jpg
-++7-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\7-20220418.jpg
-++72-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\72-20220418.jpg
-++73-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\73-20220418.jpg
-++74-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\74-20220418.jpg
-++75-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\75-20220418.jpg
-++76-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\76-20220418.jpg
-++77-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\77-20220418.jpg
-++78-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\78-20220418.jpg
-++79-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\79-20220418.jpg
-++80-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\80-20220418.jpg
-++81-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\81-20220418.jpg
-++8-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\8-20220418.jpg
-++82-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\82-20220418.jpg
-++83-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\83-20220418.jpg
-++84-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\84-20220418.jpg
-++85-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\85-20220418.jpg
-++86-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\86-20220418.jpg
-++87-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\87-20220418.jpg
-++88-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\88-20220418.jpg
-++89-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\89-20220418.jpg
-++90-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\90-20220418.jpg
-++91-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\91-20220418.jpg
-++9-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\9-20220418.jpg
-++92-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\92-20220418.jpg
-++93-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\93-20220418.jpg
-++94-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\94-20220418.jpg
-++95-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\95-20220418.jpg
-++96-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\96-20220418.jpg
-++97-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\97-20220418.jpg
-++98-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\98-20220418.jpg
-++99-20220418.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\img\userimages\20220418\99-20220418.jpg
-++dist
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\jquery\dist\
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\jquery-validation\dist\
-++LICENSE
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\license
-++LICENSE.txt
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\jquery\license.txt
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\jquery-validation-unobtrusive\license.txt
-++LICENSE.md
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\jquery-validation\license.md
-++jquery.validate.unobtrusive.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
-++profile.arm.json
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\properties\servicedependencies\polyrushapi - web deploy\profile.arm.json
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\properties\servicedependencies\polyrushapi - web deploy1\profile.arm.json
-++jquery.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\jquery\dist\jquery.js
-++additional-methods.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\jquery-validation\dist\additional-methods.js
-++jquery.validate.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\jquery-validation\dist\jquery.validate.js
-++jquery.validate.unobtrusive.min.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
-++bootstrap.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.css
-++bootstrap-grid.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
-++bootstrap-reboot.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
-++bootstrap-utilities.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
-++bootstrap.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.js
-++jquery.min.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\jquery\dist\jquery.min.js
-++additional-methods.min.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
-++jquery.validate.min.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
-++bootstrap.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
-++bootstrap.min.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
-++bootstrap.rtl.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
-++bootstrap-grid.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
-++bootstrap-grid.min.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
-++bootstrap-grid.rtl.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
-++bootstrap-reboot.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
-++bootstrap-reboot.min.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
-++bootstrap-reboot.rtl.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
-++bootstrap-utilities.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
-++bootstrap-utilities.min.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
-++bootstrap-utilities.rtl.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
-++bootstrap.bundle.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
-++bootstrap.esm.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
-++bootstrap.js.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
-++bootstrap.min.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
-++jquery.min.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\jquery\dist\jquery.min.map
-++bootstrap.min.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
-++bootstrap.min.css.old
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.old
-++bootstrap.rtl.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
-++bootstrap.rtl.min.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
-++bootstrap-grid.min.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
-++bootstrap-grid.rtl.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
-++bootstrap-grid.rtl.min.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
-++bootstrap-reboot.min.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
-++bootstrap-reboot.rtl.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
-++bootstrap-reboot.rtl.min.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
-++bootstrap-utilities.min.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
-++bootstrap-utilities.rtl.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
-++bootstrap-utilities.rtl.min.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
-++bootstrap.bundle.js.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
-++bootstrap.bundle.min.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
-++bootstrap.esm.js.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
-++bootstrap.esm.min.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
-++bootstrap.min.js.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
-++bootstrap.rtl.min.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
-++bootstrap-grid.rtl.min.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
-++bootstrap-reboot.rtl.min.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
-++bootstrap-utilities.rtl.min.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
-++bootstrap.bundle.min.js.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
-++bootstrap.esm.min.js.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
-++Migrations
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\migrations\
-++20220424131650_intial.cs
-++PolyRushWebContextModelSnapshot.cs
-++20220424131650_intial.Designer.cs
-++20220424132201_intial.cs
-++polyrushContextModelSnapshot.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\migrations\polyrushcontextmodelsnapshot.cs
-++20220424132201_intial.Designer.cs
-++ImplicitOperatorHelper.cs
-++TypeConverterHelper.cs
-++ConverterHelper.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\helper\converterhelper.cs
-++20220424173322_intial.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\migrations\20220424173322_intial.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\servicedependencies.local.json
+++datatable.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\css\datatable.css
+++index.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\css\index.css
+++sidebar.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\css\sidebar.css
+++site.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\css\site.css
+++icons
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\
+++userimages
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\
+++SS-2022.04.14.19.55.21.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\ss-2022.04.14.19.55.21.jpg
+++SS-2022.04.14.19.55.21.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\ss-2022.04.14.19.55.21.png
+++SS-2022.04.14.19.57.35.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\ss-2022.04.14.19.57.35.png
+++ss-2022-04-14-19-55-21.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\ss-2022-04-14-19-55-21.jpg
+++sidebar.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\js\sidebar.js
+++site.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\js\site.js
+++bootstrap
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\
+++jquery
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\
+++jquery-validation
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\
+++jquery-validation-unobtrusive
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation-unobtrusive\
+++Data
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\areas\identity\data\
 ++20220424173322_intial.Designer.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\migrations\20220424173322_intial.designer.cs
-++20220424201439_item.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\migrations\20220424201439_item.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\migrations\20220424173322_intial.designer.cs
 ++20220424201439_item.Designer.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:e:\my drive\6ni\gip\sofo\gip transfer\polyrushapi - identity\polyrushweb\migrations\20220424201439_item.designer.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\migrations\20220424201439_item.designer.cs
+++20220425195751_tablerenames.Designer.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\migrations\20220425195751_tablerenames.designer.cs
+++_Layout.cshtml.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\shared\_layout.cshtml.css
+++profile.arm.json
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\servicedependencies\polyrushapi - web deploy\profile.arm.json
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\servicedependencies\polyrushapi - web deploy1\profile.arm.json
+++icon-128x128.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-128x128.png
+++icon-144x144.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-144x144.png
+++icon-152x152.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-152x152.png
+++icon-192x192.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-192x192.png
+++icon-384x384.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-384x384.png
+++icon-512x512.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-512x512.png
+++icon-72x72.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-72x72.png
+++icon-96x96.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-96x96.png
+++20220418
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\
+++dist
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\dist\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\dist\
+++LICENSE
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\license
+++LICENSE.txt
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\license.txt
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation-unobtrusive\license.txt
+++LICENSE.md
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\license.md
+++jquery.validate.unobtrusive.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
+++PolyRushWebContext.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\areas\identity\data\polyrushwebcontext.cs
+++100-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\100-20220418.jpg
+++101-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\101-20220418.jpg
+++10-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\10-20220418.jpg
+++107-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\107-20220418.jpg
+++108-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\108-20220418.jpg
+++109-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\109-20220418.jpg
+++111-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\111-20220418.jpg
+++11-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\11-20220418.jpg
+++113-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\113-20220418.jpg
+++114-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\114-20220418.jpg
+++116-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\116-20220418.jpg
+++1-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\1-20220418.jpg
+++12-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\12-20220418.jpg
+++13-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\13-20220418.jpg
+++14-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\14-20220418.jpg
+++15-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\15-20220418.jpg
+++16-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\16-20220418.jpg
+++17-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\17-20220418.jpg
+++18-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\18-20220418.jpg
+++19-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\19-20220418.jpg
+++20-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\20-20220418.jpg
+++21-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\21-20220418.jpg
+++2-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\2-20220418.jpg
+++22-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\22-20220418.jpg
+++23-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\23-20220418.jpg
+++24-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\24-20220418.jpg
+++25-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\25-20220418.jpg
+++26-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\26-20220418.jpg
+++27-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\27-20220418.jpg
+++28-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\28-20220418.jpg
+++29-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\29-20220418.jpg
+++30-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\30-20220418.jpg
+++31-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\31-20220418.jpg
+++3-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\3-20220418.jpg
+++32-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\32-20220418.jpg
+++33-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\33-20220418.jpg
+++34-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\34-20220418.jpg
+++35-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\35-20220418.jpg
+++36-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\36-20220418.jpg
+++37-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\37-20220418.jpg
+++38-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\38-20220418.jpg
+++39-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\39-20220418.jpg
+++40-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\40-20220418.jpg
+++41-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\41-20220418.jpg
+++4-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\4-20220418.jpg
+++42-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\42-20220418.jpg
+++43-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\43-20220418.jpg
+++44-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\44-20220418.jpg
+++45-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\45-20220418.jpg
+++46-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\46-20220418.jpg
+++47-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\47-20220418.jpg
+++48-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\48-20220418.jpg
+++49-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\49-20220418.jpg
+++50-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\50-20220418.jpg
+++51-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\51-20220418.jpg
+++5-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\5-20220418.jpg
+++52-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\52-20220418.jpg
+++53-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\53-20220418.jpg
+++54-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\54-20220418.jpg
+++55-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\55-20220418.jpg
+++56-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\56-20220418.jpg
+++57-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\57-20220418.jpg
+++58-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\58-20220418.jpg
+++59-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\59-20220418.jpg
+++60-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\60-20220418.jpg
+++61-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\61-20220418.jpg
+++6-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\6-20220418.jpg
+++62-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\62-20220418.jpg
+++63-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\63-20220418.jpg
+++64-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\64-20220418.jpg
+++65-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\65-20220418.jpg
+++66-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\66-20220418.jpg
+++67-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\67-20220418.jpg
+++68-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\68-20220418.jpg
+++69-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\69-20220418.jpg
+++70-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\70-20220418.jpg
+++71-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\71-20220418.jpg
+++7-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\7-20220418.jpg
+++72-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\72-20220418.jpg
+++73-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\73-20220418.jpg
+++74-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\74-20220418.jpg
+++75-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\75-20220418.jpg
+++76-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\76-20220418.jpg
+++77-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\77-20220418.jpg
+++78-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\78-20220418.jpg
+++79-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\79-20220418.jpg
+++80-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\80-20220418.jpg
+++81-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\81-20220418.jpg
+++8-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\8-20220418.jpg
+++82-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\82-20220418.jpg
+++83-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\83-20220418.jpg
+++84-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\84-20220418.jpg
+++85-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\85-20220418.jpg
+++86-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\86-20220418.jpg
+++87-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\87-20220418.jpg
+++88-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\88-20220418.jpg
+++89-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\89-20220418.jpg
+++90-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\90-20220418.jpg
+++91-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\91-20220418.jpg
+++9-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\9-20220418.jpg
+++92-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\92-20220418.jpg
+++93-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\93-20220418.jpg
+++94-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\94-20220418.jpg
+++95-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\95-20220418.jpg
+++96-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\96-20220418.jpg
+++97-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\97-20220418.jpg
+++98-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\98-20220418.jpg
+++99-20220418.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\userimages\20220418\99-20220418.jpg
+++jquery.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\dist\jquery.js
+++additional-methods.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\dist\additional-methods.js
+++jquery.validate.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\dist\jquery.validate.js
+++jquery.validate.unobtrusive.min.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
+++bootstrap.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+++bootstrap-grid.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+++bootstrap-reboot.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+++bootstrap-utilities.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+++bootstrap.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.js
+++jquery.min.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\dist\jquery.min.js
+++additional-methods.min.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+++jquery.validate.min.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+++bootstrap.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+++bootstrap.min.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+++bootstrap.rtl.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+++bootstrap-grid.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+++bootstrap-grid.min.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+++bootstrap-grid.rtl.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+++bootstrap-reboot.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+++bootstrap-reboot.min.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+++bootstrap-reboot.rtl.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+++bootstrap-utilities.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+++bootstrap-utilities.min.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+++bootstrap-utilities.rtl.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+++bootstrap.bundle.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+++bootstrap.esm.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+++bootstrap.js.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+++bootstrap.min.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+++jquery.min.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\dist\jquery.min.map
+++bootstrap.min.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+++bootstrap.min.css.old
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.old
+++bootstrap.rtl.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+++bootstrap.rtl.min.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+++bootstrap-grid.min.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+++bootstrap-grid.rtl.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+++bootstrap-grid.rtl.min.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+++bootstrap-reboot.min.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+++bootstrap-reboot.rtl.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+++bootstrap-reboot.rtl.min.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+++bootstrap-utilities.min.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+++bootstrap-utilities.rtl.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+++bootstrap-utilities.rtl.min.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+++bootstrap.bundle.js.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+++bootstrap.bundle.min.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+++bootstrap.esm.js.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+++bootstrap.esm.min.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+++bootstrap.min.js.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+++bootstrap.rtl.min.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+++bootstrap-grid.rtl.min.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+++bootstrap-reboot.rtl.min.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+++bootstrap-utilities.rtl.min.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+++bootstrap.bundle.min.js.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+++bootstrap.esm.min.js.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
+++Z.EntityFramework.Plus.EF6 (6.13.18)
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>1538

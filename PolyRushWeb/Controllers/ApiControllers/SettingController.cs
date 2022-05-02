@@ -19,7 +19,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         }
 
         [HttpPost("music/{strEnable}")]
-        public IActionResult SetMusic(string strEnable)
+        public async Task<IActionResult> SetMusicAsync(string strEnable)
         {
             int intEnable;
             try
@@ -39,12 +39,12 @@ namespace PolyRushWeb.Controllers.ApiControllers
             }
 
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            _settingDa.SetSetting(id, EnumSetting.Music, intEnable);
+            await _settingDa.SetSettingAsync(id, EnumSetting.Music, intEnable);
             return Ok();
         }
 
         [HttpPost("sfx/{strEnable}")]
-        public IActionResult SetSfx(string strEnable)
+        public async Task<IActionResult> SetSfxAsync(string strEnable)
         {
             int intEnable;
             try
@@ -64,19 +64,19 @@ namespace PolyRushWeb.Controllers.ApiControllers
             }
 
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            _settingDa.SetSetting(id, EnumSetting.Sfx, intEnable);
+            await _settingDa.SetSettingAsync(id, EnumSetting.Sfx, intEnable);
             return Ok();
         }
 
         [HttpPost("mastervolume/{volume}")]
-        public IActionResult SetMasterVolume(int volume)
+        public async Task<IActionResult> SetMasterVolumeAsync(int volume)
         {
             //check if the volume is in a correct format
             if (volume is < 0 or > 100)
                 return BadRequest("Invalid format: Please provide an integer between 0 and 100");
             //gather the id from the jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            _settingDa.SetSetting(id, EnumSetting.MasterVolume, volume);
+            await _settingDa.SetSettingAsync(id, EnumSetting.MasterVolume, volume);
             return Ok();
         }
 

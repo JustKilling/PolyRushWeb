@@ -2,7 +2,6 @@
 using System.Net.Mail;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using MySql.Data.MySqlClient;
 using PolyRushWeb.Helper;
 using PolyRushWeb.Models;
 
@@ -46,12 +45,6 @@ namespace PolyRushWeb.DA
             };
             _context.Entry(user).Property(u => u.IsActive).IsModified = true;
             await _context.SaveChangesAsync();
-        }
-
-        public async Task<IdentityResult> AddUser(User user)
-        {
-            
-            return IdentityResult.Success;
         }
 
         public  User? UserExists(string usernameoremail)

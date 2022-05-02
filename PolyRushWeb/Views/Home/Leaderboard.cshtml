@@ -51,17 +51,15 @@ $( document ).ready(function() {
 
             <caption style="caption-side: top; text-align:center; margin:auto; user-select:none">Top playtime</caption>
             <tbody>
-            @{List<(UserDTO, int TopPlayTime)> listPlaytime = await @leaderboardDa.GetTopPlaytime(10); }
+            @{var listPlaytime = await @leaderboardDa.GetTopPlaytime(10); }
                 @for (int i = 1; i <= @listPlaytime.Count; i++)
                 {
-                    UserDTO user = @listPlaytime[@i-1].Item1;
-                    int playtime = @listPlaytime[@i-1].Item2;
+                    UserDTO user = @listPlaytime[@i-1].User;
                     <tr style="user-select:none">
                         <td>@i</td>
                         <td><img style="user-select:none; max-width: 20px" src="/File/GetUserImage?UserID=@user.ID"/></td>
                         <td>@user.Username</td>
-                        @{TimeSpan tsPlayTime = @TimeSpan.FromSeconds(@playtime);}
-                        <td>@String.Format("{0:%h} hours, {0:%m} minutes, {0:%s} seconds", @tsPlayTime)</td>
+                        <td>@String.Format("{0:%h} hours, {0:%m} minutes, {0:%s} seconds", @listPlaytime)</td>
                     </tr>
                 }
             </tbody>
