@@ -55,9 +55,10 @@ namespace PolyRushWeb.DA
             return null;
         }
 
-        public async Task<User?> GetById(int userId, bool getAvatar = true)
+        public async Task<User> GetById(int userId, bool getAvatar = true)
         {
-            var user = await _context.Users.Where(u => u.Id == userId).FirstOrDefaultAsync();
+            //var user = await _context.Users.Where(u => u.Id == userId).FirstOrDefaultAsync();
+            User user = await _userManager.FindByIdAsync(userId.ToString());
             return user;
         }
 
