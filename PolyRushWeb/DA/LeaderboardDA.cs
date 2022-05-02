@@ -10,6 +10,11 @@ using PolyRushWeb.Models;
 
 namespace PolyRushWeb.DA
 {
+    public class UserPlaytime
+    {
+        public UserDTO User { get; set; }
+        public TimeSpan Playtime { get; set; }
+    }
     public class LeaderboardDA
     {
         private readonly UserDA _userDa;
@@ -28,9 +33,25 @@ namespace PolyRushWeb.DA
             return await _context.Users.Where(u => u.IsAdmin == false).OrderByDescending(u => u.Highscore).Take(amount).Select(u => u.ToUserDTO()).ToListAsync();
         }
         
+
+
         //method to return the top users with playtime
         public async Task<List<(UserDTO, int TopPlayTime)>> GetTopPlaytime(int amount)
         {
+
+            //var gamesessions = await _context.Gamesession.FromSqlInterpolated(
+            //    $"select * from gamesession LIMIT {amount}").ToListAsync();
+
+            //var gamesessions = _context.Gamesession.GroupBy(u => u.UserId).Select(gs => new UserPlaytime {Playtime = gs.(x => x.EndDateTime.Subtract(x.StartDateTime)) })
+            
+            //        var teamTotalScores =
+            //from player in players
+            //group player by player.Team into playerGroup
+            //select new
+            //{
+            //    Team = playerGroup.Key,
+            //    TotalScore = playerGroup.Sum(x => x.Score),
+            //};
 
             MySqlConnection conn = DatabaseConnector.MakeConnection();
             //user top playtime query

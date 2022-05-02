@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using PolyRushLibrary;
 using PolyRushWeb.Helper;
+using PolyRushWeb.Models;
 
 namespace PolyRushWeb.DA
 {
     public class ItemDA
     {
         private readonly UserDA _userDa;
+        private readonly polyrushContext _context;
 
-        public ItemDA(UserDA userDa)
+        public ItemDA(UserDA userDa, polyrushContext context)
         {
             _userDa = userDa;
+            _context = context;
+
         }
         public int GetDiscountedPrice(Item i)
         {
@@ -104,50 +108,62 @@ namespace PolyRushWeb.DA
             }
         }
 
-        private static void CreateUserItem(int id, Item? item, bool isAdmin = false)
+        private async Task CreateUserItemAsync(int id, Item item, bool isAdmin = false)
         {
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
+            Useritem useritem = new Useritem { ItemId = item.Iditem, Amount = isAdmin ? 69420 : 0, UserId = id};
+            await _context.Useritem.AddAsync(useritem);
+            await _context.SaveChangesAsync();
+            //MySqlConnection conn = DatabaseConnector.MakeConnection();
 
-            string query =
-                "INSERT INTO useritem (UserID, ItemID, Amount) VALUES (@userid, @itemid, @amount)";
+            //string query =
+            //    "INSERT INTO useritem (UserID, ItemID, Amount) VALUES (@userid, @itemid, @amount)";
 
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@userid", id);
-            cmd.Parameters.AddWithValue("@itemid", item!.Iditem);
-            //If user is an admin, provide a very high number.
-            cmd.Parameters.AddWithValue("@amount", isAdmin ? 69420 : 0);
+            //MySqlCommand cmd = new(query, conn);
+            //cmd.Parameters.AddWithValue("@userid", id);
+            //cmd.Parameters.AddWithValue("@itemid", item!.Iditem);
+            ////If user is an admin, provide a very high number.
+            //cmd.Parameters.AddWithValue("@amount", isAdmin ? 69420 : 0);
             
-            cmd.ExecuteNonQuery();
-            conn.Close();
+            //cmd.ExecuteNonQuery();
+            //conn.Close();
         }
         //optional parameter for if the user is an admin
         public async Task<bool> BuyItem(int id, Item item, bool isAdmin = false)
         {
             if (!UserItemExists(id, item))
-                CreateUserItem(id, item, isAdmin);
+                await CreateUserItemAsync(id, item, isAdmin);
             
-            //get the discounted price
+                        //get the discounted price
             int price = GetDiscountedPrice(item);
             //if the user is an admin, set the price to 0;
             if (isAdmin) price = 0;
             if (!(await _userDa.HasEnoughCoins(id, price))) return false;
 
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
-            //increment useritem amount
-            string query = "UPDATE useritem SET Amount = Amount + 1 WHERE UserID = @UserID AND ItemID = @ItemID";
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@UserID", id);
-            cmd.Parameters.AddWithValue("@ItemID", item.Iditem);
-            cmd.ExecuteNonQuery();
+           
+            var useritem = _context.Useritem.Where(ui => ui.UserId == id && ui.ItemId == item.Iditem).FirstOrDefault();
+            useritem.Amount++;
+            _context.Useritem.Update(useritem);
+
+            //MySqlConnection conn = DatabaseConnector.MakeConnection();
+            ////increment useritem amount
+            //string query = "UPDATE useritem SET Amount = Amount + 1 WHERE UserID = @UserID AND ItemID = @ItemID";
+            //MySqlCommand cmd = new(query, conn);
+            //cmd.Parameters.AddWithValue("@UserID", id);
+            //cmd.Parameters.AddWithValue("@ItemID", item.Iditem);
+            //cmd.ExecuteNonQuery();
 
             //substract price
 
-            query = "UPDATE user SET Coins = Coins - @Amount WHERE IDUser = @IDUser";
-            cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@Amount", price);
-            cmd.Parameters.AddWithValue("@IDUser", id);
-            cmd.ExecuteNonQuery();
-            conn.Close();
+            var user = _context.Users.Where(u => u.Id == id).FirstOrDefault();
+            user.Coins -= price;
+            _context.Users.Update(user);
+
+            //query = "UPDATE user SET Coins = Coins - @Amount WHERE IDUser = @IDUser";
+            //cmd = new(query, conn);
+            //cmd.Parameters.AddWithValue("@Amount", price);
+            //cmd.Parameters.AddWithValue("@IDUser", id);
+            //cmd.ExecuteNonQuery();
+            //conn.Close();
 
             return true;
         }
