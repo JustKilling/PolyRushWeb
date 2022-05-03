@@ -24,7 +24,8 @@ namespace PolyRushWeb.DA
         }
         public async Task<List<UserDTO>> GetTopUsers(int amount, bool getImages = true)
         {
-            return await _context.Users.Where(u => u.IsAdmin == false).OrderByDescending(u => u.Highscore).Take(amount).Select(u => u.ToUserDTO()).ToListAsync();
+            var adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
+            return await _userManager.Users.Where(u => !adminUsers.Contains(u)).OrderByDescending(u => u.Highscore).Take(amount).Select(u => u.ToUserDTO()).ToListAsync();
         }
 
 
@@ -104,9 +105,8 @@ namespace PolyRushWeb.DA
 
         public async Task<List<NextGoalResponse>> GetNextGoals(int amount, int highscore)
         {
-
-            //var usefrs = await _context.Users.FromSqlRaw("select Id, Highscore, Avatar from user").Where(u => u.Highscore > highscore).OrderBy(u => u.Highscore).Take(amount).ToListAsync();
-            var users = await _context.Users.Where(u => u.Highscore > 100 && u.Highscore > highscore)
+            var adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
+            var users = await _context.Users.Where(u => !adminUsers.Contains(u)).Where(u => u.Highscore > 100 && u.Highscore > highscore)
                 .OrderBy(u => u.Highscore).Take(amount)
                 .Select(u => new UserDTO() { ID = u.Id, Highscore = u.Highscore, Avatar = u.Avatar }).ToListAsync();
 
@@ -127,32 +127,16 @@ namespace PolyRushWeb.DA
                 {
                     Avatar = user.Avatar,
                     Goal = user.Highscore,
-                    Rank = GetUserPosition(user.ID)
+                    Rank = GetPositionByHighscore(user.Highscore)
                 }); ;
             }
 
             return goalResponses;
         }
 
-        private int GetUserPosition(int id)
+        private int GetPositionByHighscore(int highscore)
         {
-            MySqlConnection conn = DatabaseConnector.MakeConnection();
-            //select the first record of the lowest highscore that is higher then the current highscore.
-            string query = @"SELECT IDUser, Avatar, Highscore FROM user WHERE Highscore > @Current
-                             ORDER BY Highscore
-                             LIMIT 1";
-            MySqlCommand cmd = new(query, conn);
-            cmd.Parameters.AddWithValue("@Current", highscore);
-
-
-            try
-            {
-                return new NextGoalResponse() { Avatar = reader["Avatar"].ToString(), Goal = Convert.ToInt32(reader["Highscore"]) };
-            }
-            finally
-            {
-                conn.Close();
-            }
+            return _context.Users.Where(u => u.Highscore >= highscore).Select(u => u.Id).Count();
         }
 
         public async Task UpdateRandomAsync(string username)
