@@ -38,6 +38,9 @@ namespace PolyRushWeb.DA
         {
             if (isAdmin) return 9999;
 
+            if (!await UserItemExistsAsync(id, item))
+                await CreateUserItemAsync(id, item, isAdmin);
+
             try
             {
                 int result = await _context.Useritem.Where(ui => ui.UserId == id)
@@ -100,6 +103,8 @@ namespace PolyRushWeb.DA
             //cmd.Parameters.AddWithValue("@IDUser", id);
             //cmd.ExecuteNonQuery();
             //conn.Close();
+
+            await _context.SaveChangesAsync();
 
             return true;
         }

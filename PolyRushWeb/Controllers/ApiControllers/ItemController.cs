@@ -28,22 +28,27 @@ namespace PolyRushWeb.Controllers.ApiControllers
 
         [HttpGet]
         [Route("getitemsfromtype/{type}")]
-        public IActionResult GetItemFromType(ItemType type)
+        public async Task<IActionResult> GetItemFromTypeAsync(ItemType type)
         {
-            string result = JsonConvert.SerializeObject(_itemDa.GetItemsFromTypeAsync(type));
-
-            return Ok(result);
+            return Ok(await _itemDa.GetItemsFromTypeAsync(type));
         }
 
 
         [HttpGet]
         [Authorize]
         [Route("amounts")]
-        public IActionResult GetAmounts([FromBody] List<Item> items)
+        public async Task<IActionResult> GetAmounts([FromBody] List<Item> items)
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
-            return Ok(items.Select(async x => await _itemDa.GetAmountAsync(x, id, isAdmin)).ToList());
+
+            List<int> amounts = new();
+            foreach (var item in items)
+            {
+                amounts.Add(await _itemDa.GetAmountAsync(item, id, isAdmin));
+            }
+
+            return Ok(amounts);
         }
 
         [HttpPost]

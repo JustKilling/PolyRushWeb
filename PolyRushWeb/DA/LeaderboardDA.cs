@@ -34,7 +34,7 @@ namespace PolyRushWeb.DA
         {
 
 
-            //1
+            //Get user playtimes
             List<UserPlaytime> userplaytimesUngrouped = await _context.Gamesession
                 .Select(gs => new UserPlaytime
                 {
@@ -54,7 +54,7 @@ namespace PolyRushWeb.DA
                 }
                 foreach(var upt2 in uptGroup)
                 {
-                    uptToAdd.Playtime.Add(upt2.Playtime);
+                    uptToAdd.Playtime = uptToAdd.Playtime.Add(upt2.Playtime);
                 }
                 upts.Add(uptToAdd);
             }
@@ -121,40 +121,39 @@ namespace PolyRushWeb.DA
 
             List<NextGoalResponse> goalResponses = new();
 
-            for (int i = 0; i < users.Count(); i++)
+            foreach(var user in users)
             {
-                var user = users[i];
                 goalResponses.Add(new()
                 {
                     Avatar = user.Avatar,
                     Goal = user.Highscore,
-                    Rank = i + 1
-                });
+                    Rank = GetUserPosition(user.ID)
+                }); ;
             }
 
             return goalResponses;
         }
 
-        // private  int GetUserPosition(int id)
-        // {
-        //     MySqlConnection conn = DatabaseConnector.MakeConnection();
-        //     //select the first record of the lowest highscore that is higher then the current highscore.
-        //     string query = @"SELECT IDUser, Avatar, Highscore FROM user WHERE Highscore > @Current
-        //                     ORDER BY Highscore
-        //                     LIMIT 1";
-        //     MySqlCommand cmd = new(query, conn);
-        //     cmd.Parameters.AddWithValue("@Current", highscore);
-        //     
-        //     
-        //     try
-        //     {
-        //         return new NextGoalResponse(){Avatar = reader["Avatar"].ToString(), Goal = Convert.ToInt32(reader["Highscore"])};
-        //     }
-        //     finally
-        //     {
-        //         conn.Close();
-        //     }
-        // }
+        private int GetUserPosition(int id)
+        {
+            MySqlConnection conn = DatabaseConnector.MakeConnection();
+            //select the first record of the lowest highscore that is higher then the current highscore.
+            string query = @"SELECT IDUser, Avatar, Highscore FROM user WHERE Highscore > @Current
+                             ORDER BY Highscore
+                             LIMIT 1";
+            MySqlCommand cmd = new(query, conn);
+            cmd.Parameters.AddWithValue("@Current", highscore);
+
+
+            try
+            {
+                return new NextGoalResponse() { Avatar = reader["Avatar"].ToString(), Goal = Convert.ToInt32(reader["Highscore"]) };
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
 
         public async Task UpdateRandomAsync(string username)
         {
