@@ -24,12 +24,12 @@ namespace PolyRushWeb.Helper
 
         private void SetHttpClient()
         {
-            
+           
         }
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            
+          
         }
 
         public void OnActionExecuted(ActionExecutedContext context)

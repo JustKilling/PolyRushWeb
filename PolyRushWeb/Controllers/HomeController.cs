@@ -26,19 +26,21 @@ using PolyRushWeb.Models;
 
 namespace PolyRushWeb.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly ClientHelper _clientHelper;
         private readonly IConfiguration _configuration;
-
+        private readonly AuthenticationHelper _authenticationHelper;
         private static HttpClient _httpClient;
         private static string URI;
-        public HomeController(IHttpClientFactory _httpClientFactory, IConfiguration configuration)
+        public HomeController(
+            ClientHelper clientHelper,
+            IConfiguration configuration,
+            AuthenticationHelper authenticationHelper)
         {
-            this._httpClientFactory = _httpClientFactory;
+            _clientHelper = clientHelper;
             _configuration = configuration;
-            _httpClient = _httpClientFactory.CreateClient("api");
+            this._authenticationHelper = authenticationHelper;
             URI = _configuration["Api:Uri"];
         }
 
@@ -47,13 +49,26 @@ namespace PolyRushWeb.Controllers
             return View();
         }*/
                    
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            
+            if(!await _authenticationHelper.IsAuthenticatedAsync())
+            {
+                try
+                {
+                    return Unauthorized();
+                }
+                finally
+                {
+                    _authenticationHelper.CheckFail(); //Check if logged in, if not, return to start 
+                }
+            } 
+
+
             //return the page with the user info
             return View("Index", new UserDTO());
         }
 
-        [Secure]
         public IActionResult Logout()
         {
             //Set the request header

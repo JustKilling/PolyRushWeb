@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Web;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Encodings.Web;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using PolyRushLibrary;
 using PolyRushLibrary.Responses;
+using PolyRushWeb.Helper;
 using PolyRushWeb.Models;
 
 
@@ -25,14 +27,15 @@ namespace PolyRushWeb.Controllers
 
 
         private readonly ILogger<RegisterModel> _logger;
-
+        private readonly ClientHelper _clientHelper;
 
         public LoginController(
-
+            ClientHelper clientHelper,
             ILogger<RegisterModel> logger)
 
         {
-            
+            _logger = logger;
+            _clientHelper = clientHelper;
         }
         // GET
         public IActionResult Index()
@@ -42,6 +45,17 @@ namespace PolyRushWeb.Controllers
         public IActionResult Register()
         {
             return View();
+        }
+        public async Task<IActionResult> Login(AuthenticationRequest request)
+        {
+            var client = _clientHelper.GetHttpClient();
+            var response = await client.PostAsJsonAsync("/login/", request);
+            if (response.IsSuccessStatusCode)
+            {
+                HttpContext.Response.Cookies.Append
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction(nameof(Index));
         }
         //public async Task<IActionResult> Logout()
         //{

@@ -64,7 +64,8 @@ builder.Configuration.Bind("SecretSettings", secretSettings);
 builder.Services.AddSingleton(secretSettings);
 //builder.Services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
+builder.Services.AddSingleton<ClientHelper>();
+builder.Services.AddScoped<AuthenticationHelper>();
 
 JsonConvert.DefaultSettings = () => new JsonSerializerSettings
 {
@@ -93,12 +94,12 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddProgressiveWebApp();
 
 //Add httpclient
-builder.Services.AddHttpClient("polyrush", httpClient =>
+builder.Services.AddHttpClient("api", httpClient =>
 {
     httpClient.BaseAddress = new(builder.Configuration["Api:Uri"]); 
 });
 
-builder.Services.AddSingleton<ClientHelper>();
+builder.Services.AddSession();
 
 WebApplication app = builder.Build();
 
