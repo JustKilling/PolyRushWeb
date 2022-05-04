@@ -29,26 +29,7 @@ namespace PolyRushWeb.Helper
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            SetHttpClient();
-            string? refreshToken = HttpHelper.HttpContext.Session.GetString("RefreshToken");
-            HttpResponseMessage result = _client.PostAsync("refresh", new StringContent(
-                JsonConvert.SerializeObject(new RefreshRequest
-                {
-                    RefreshToken = refreshToken
-                }), Encoding.UTF8, "application/json")).Result;
-            if (!result.IsSuccessStatusCode)
-            {
-                //if no permission, log the user out.
-                context.Result = new ViewResult{ViewName = "Login"};
-                context.HttpContext.Session.Remove("Token");
-                context.HttpContext.Session.Remove("RefreshToken");
-                return;
-            }
             
-            AuthenticationResponse response =
-                JsonConvert.DeserializeObject<AuthenticationResponse>(result.Content.ReadAsStringAsync().Result);
-            context.HttpContext.Session.SetString("Token", response.Token);
-            context.HttpContext.Session.SetString("RefreshToken", response.RefreshToken);
         }
 
         public void OnActionExecuted(ActionExecutedContext context)

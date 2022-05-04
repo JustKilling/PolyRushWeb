@@ -16,7 +16,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         private readonly UserDA _userDa;
         private readonly LeaderboardDA _leaderboardDa;
 
-        public LeaderboardController(UserDA userDa, LeaderboardDA leaderboardDa)
+        public LeaderboardController(UserDA userDa, LeaderboardDA leaderboardDa, IHttpClientFactory httpClientFactory)
         {
             _userDa = userDa;
             _leaderboardDa = leaderboardDa;
@@ -60,7 +60,6 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Route("playtime/{amount}")]
         public async Task<IActionResult> GetTopPlayTimes(int amount = 10)
         {
-               
             return Ok(await _leaderboardDa.GetTopPlaytime(amount));
         }
     }

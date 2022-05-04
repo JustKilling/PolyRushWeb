@@ -41,6 +41,7 @@ builder.Services.AddTransient<ItemDA>();
 builder.Services.AddTransient<SettingDA>();
 builder.Services.AddTransient<GameSessionDA>();
 
+
 //Add identity
 builder.Services.AddIdentityCore<User>(options =>
 {
@@ -63,6 +64,7 @@ builder.Configuration.Bind("SecretSettings", secretSettings);
 builder.Services.AddSingleton(secretSettings);
 //builder.Services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 
 JsonConvert.DefaultSettings = () => new JsonSerializerSettings
 {
@@ -96,6 +98,8 @@ builder.Services.AddHttpClient("polyrush", httpClient =>
     httpClient.BaseAddress = new(builder.Configuration["Api:Uri"]); 
 });
 
+builder.Services.AddSingleton<ClientHelper>();
+
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -105,6 +109,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseSession();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

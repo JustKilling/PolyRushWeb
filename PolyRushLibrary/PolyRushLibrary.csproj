@@ -6,6 +6,6 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
     <Target Name="CopyFiles" AfterTargets="Build">
-        <Copy SourceFiles="bin\Debug\net6.0\PolyRushLibrary.dll" DestinationFolder="C:\Users\lolpv\Documents\Unity Games\GIP (2)\Assets\Scripts\DLL" />
+        
     </Target>
 </Project>

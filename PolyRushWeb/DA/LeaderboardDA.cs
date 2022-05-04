@@ -115,7 +115,7 @@ namespace PolyRushWeb.DA
                 string avatar = ImageToBase64Helper.ConvertImagePathToBase64String("Media/success.png");
                 return new()
                 {
-                    new() { Avatar = avatar, Goal = Convert.ToInt32(highscore * 1.25f), Rank = 0 }
+                    new() { Avatar = avatar, Goal = Convert.ToInt32(Math.Ceiling(highscore * 1.25 / 1000)) * 1000, Rank = 0 }
                 };
             }
 

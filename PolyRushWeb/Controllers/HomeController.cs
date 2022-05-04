@@ -79,8 +79,11 @@ namespace PolyRushWeb.Controllers
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
 
-        public IActionResult Leaderboard()
+        public async Task<IActionResult> LeaderboardAsync()
         {
+            // TO DO http client
+            var listTopHighscore = new List<UserDTO>();
+            ViewData["TopUsers"] = listTopHighscore;
             return View();
         }
         public IActionResult Stats()

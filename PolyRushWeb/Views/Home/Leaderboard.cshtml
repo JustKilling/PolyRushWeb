@@ -23,6 +23,10 @@ $( document ).ready(function() {
     }
 </style>
 
+@{
+    List<UserDTO>? topUsers = ViewData["TopUsers"] as List<UserDTO>;
+    if (topUsers == null) throw new ArgumentNullException("Topusers not found in view!");
+}
 
 <h1>Leaderboard</h1>
 <div id="leaderboardsbackground">
