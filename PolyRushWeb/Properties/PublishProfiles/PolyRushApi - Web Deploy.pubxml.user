@@ -3,10 +3,15 @@
 This file is used by the publish/package process of your Web project. You can customize the behavior of this process
 by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
 -->
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project>
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjZgXMWst8EKc/6JlepbavwAAAAACAAAAAAAQZgAAAAEAACAAAAAPJrTj25o7vlmw4OAVwOIaMpNXHQFG9j8aroCAbm64HgAAAAAOgAAAAAIAACAAAAD5wDzq1TNdlg+4nwvOwAWpdstVlCHcBCe+SGj24LunsYAAAAC5R0RvuphoclT+YonCyqgMIs6tP4d/EuSkXQV7OXVggfRvS8Mhkvg0rAft0S/PEWkM9Em+Lf8uzYDzzhXhkuxPAihvqdxhzQQigJkBmebm2wtOxm8asuMHelUxKm/g8Y3KVN4jIO7LPk8Rr7N+me3ISJgaQCOM0Sk6KS6cCwH9wkAAAACUMB3RAe7l5iX9E67mUpEziN5DDg5ND03ugKyoT/Kl2Vx7pHZuZAvMPaVSELM1eohx7OXgKOr8VOsm/ZHdv42c</EncryptedPassword>
-    <History>False|2022-04-17T11:29:03.2852052Z;</History>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAw5o//OdpjESe5pIofFqfvgAAAAACAAAAAAAQZgAAAAEAACAAAAD/l9Ee/0aWuiw6yRLCnD3mRfe0xn+Ja2sxlWrAn4J6QAAAAAAOgAAAAAIAACAAAADrz5dGmm4SRkcfwZNv68KVGNenBEgs2TkaL1a36LUnUIAAAAAMyaewuTG/Qp9GcImjDdFYjlGwYOiHvDS568BZQxD4h+4KyHjOPVB7XnMv9ul2Epf7PQeG+WMKgJkq4CAvKvTjiOZLSG7a4P7HE9kUYNXM3wGzcEWNlpSI1NiOsRhbqizuD5p+iyQW00dDBZjrQfqIk0Bq64TMEMcXTnLKcEovl0AAAAD0fJKmQNHg7U9FzF4Vqpv9wqg9wtmxaJQSXAmPWR/gMsHpCxo0f04RSFctnqGjauO5Q0VKl1HTMDqB3aQ4rUvc</EncryptedPassword>
+    <History>True|2022-05-04T21:04:04.5927229Z;True|2022-05-04T22:57:59.3178210+02:00;True|2022-05-04T22:46:26.8085226+02:00;</History>
   </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="PolyRushWebConnection">
+      <Value>server=polyrushmysql.mysql.database.azure.com%3buid=emield%3bpwd=PolyRush123%3bdatabase=polyrush</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
 </Project>
