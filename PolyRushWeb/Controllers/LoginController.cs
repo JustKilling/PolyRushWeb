@@ -52,7 +52,7 @@ namespace PolyRushWeb.Controllers
             var response = await client.PostAsJsonAsync("/login/", request);
             if (response.IsSuccessStatusCode)
             {
-                HttpContext.Response.Cookies.Append
+               // HttpContext.Response.Cookies.Append;
                 return RedirectToAction("Index", "Home");
             }
             return RedirectToAction(nameof(Index));
