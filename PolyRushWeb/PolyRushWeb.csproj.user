@@ -12,5 +12,6 @@
     <_SelectedScaffolderID>IdentityScaffolder</_SelectedScaffolderID>
     <_SelectedScaffolderCategoryPath>root/Identity</_SelectedScaffolderCategoryPath>
     <WebStackScaffolding_DbContextDialogWidth>650</WebStackScaffolding_DbContextDialogWidth>
+    <WebStackScaffolding_DbContextTypeFullName>PolyRushWeb.Models.polyrushContext</WebStackScaffolding_DbContextTypeFullName>
   </PropertyGroup>
 </Project>

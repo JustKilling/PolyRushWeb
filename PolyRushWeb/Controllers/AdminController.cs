@@ -50,25 +50,8 @@ namespace PolyRushWeb.Controllers
             {
                 var httpClient = _clientHelper.GetHttpClient();
 
-                var user = JsonConvert.DeserializeObject<UserDTO>(await httpClient.GetStringAsync("User"));
-                
+                var response = await httpClient.PostAsJsonAsync("user/update", editModel);
 
-
-                user.IsAdmin = editModel.IsAdmin;
-                user.Highscore = editModel.Highscore;
-                user.Coins = editModel.Coins;
-                user.Coinsgathered = editModel.Coinsgathered;
-                user.Coinsspent = editModel.Coinsspent;
-                user.Firstname = editModel.Firstname;
-                user.Lastname = editModel.Lastname;
-                user.SeesAds = editModel.SeesAds;
-
-                await _userManager.SetUserNameAsync(user, editModel.Username);
-                await _userManager.SetEmailAsync(user, editModel.Email);
-
-                //change the password
-                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-                _userManager.ResetPasswordAsync(user, token, editModel.Password);
                 return View("Index");
 
             }
@@ -76,8 +59,10 @@ namespace PolyRushWeb.Controllers
         }
         public async Task<IActionResult> Deactivate(int id)
         {
-            await _userDA.Deactivate(id);
-            return View(nameof(Index));
+            var httpClient = _clientHelper.GetHttpClient();
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, $"api/User/deactivate/{id}");
+            await httpClient.SendAsync(request);
+            return Ok();
         }
     }
 }

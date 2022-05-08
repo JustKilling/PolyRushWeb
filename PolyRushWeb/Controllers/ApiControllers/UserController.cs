@@ -51,25 +51,33 @@ namespace PolyRushWeb.Controllers.ApiControllers
             return Ok(await _userDa.GetCoinsAsync(id));
         }
 
-        [HttpPatch]
-        public async Task<IActionResult> PatchAsync(UserDTO userDto)
+        [HttpPost]
+        [Route("update")]
+        public async Task<IActionResult> UpdateUser(UserEditAdminModel userDto)
         {
-            var user = await _userDa.GetByIdAsync(userDto.ID);
-            user.IsAdmin = userDto.IsAdmin;
-            user.Highscore = userDto.Highscore;
-            user.Coins = userDto.Coins;
-            user.Coinsgathered = userDto.Coinsgathered;
-            user.Coinsspent = userDto.Coinsspent;
-            user.Firstname = userDto.Firstname;
-            user.Lastname = userDto.Lastname;
-            user.SeesAds = userDto.SeesAds;
+            if (await _userDa.UpdateUser(userDto))
+            {
+                return Ok();
+            }
+            return BadRequest("Error updating user!");
+        }
+        [HttpPost]
+        [Route("deactivate")]
+        public async Task<IActionResult> Deactivate()
+        {
+            int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
+            await _userDa.DeactivateAsync(id);
+            return Ok();
+        }
 
-            await _userManager.SetUserNameAsync(user, editModel.Username);
-            await _userManager.SetEmailAsync(user, editModel.Email);
-
-            //change the password
-            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-            _userManager.ResetPasswordAsync(user, token, editModel.Password);
+        //deactivate given id
+        [HttpPost]
+        [Route("deactivate/{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Deactivate(int id)
+        {
+            await _userDa.DeactivateAsync(id);
+            return Ok();
         }
 
         [HttpPost]

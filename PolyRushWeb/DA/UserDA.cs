@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Net.Mail;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PolyRushWeb.Helper;
@@ -35,7 +36,7 @@ namespace PolyRushWeb.DA
             return users;
         }
 
-        public async Task Deactivate(int id, bool deactivate = true)
+        public async Task DeactivateAsync(int id, bool deactivate = true)
         {
             User? user = new()
             {
@@ -109,7 +110,35 @@ namespace PolyRushWeb.DA
 
             return true;
         }
-        
+
+        public async Task<bool> UpdateUser(UserEditAdminModel model)
+        {
+            try
+            {
+                var user = await GetByIdAsync(model.Id);
+                user.IsAdmin = model.IsAdmin;
+                user.Highscore = model.Highscore;
+                user.Coins = model.Coins;
+                user.Coinsgathered = model.Coinsgathered;
+                user.Coinsspent = model.Coinsspent;
+                user.Firstname = model.Firstname;
+                user.Lastname = model.Lastname;
+                user.SeesAds = model.SeesAds;
+
+                await _userManager.SetUserNameAsync(user, model.Username);
+                await _userManager.SetEmailAsync(user, model.Email);
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                await _userManager.ResetPasswordAsync(user, token, model.Password);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+
         public async Task UploadGameResult(Gamesession session)
         {
 
