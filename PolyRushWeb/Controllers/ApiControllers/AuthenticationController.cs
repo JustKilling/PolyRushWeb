@@ -149,6 +149,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [HttpGet("checkadmin")]
         public IActionResult CheckAdminToken()
         {
+            var stop = User.Identity as ClaimsIdentity;
             return Ok();
         }
 
@@ -163,7 +164,6 @@ namespace PolyRushWeb.Controllers.ApiControllers
 
             var roleClaims = await _userManager.GetRolesAsync(user);
 
-            //claims.AddRange(roleClaims);
             //Add role claims to jwt
             foreach (var roleClaim in roleClaims)
             {
@@ -171,7 +171,9 @@ namespace PolyRushWeb.Controllers.ApiControllers
             }
 
             claims.Add(new Claim("id", user.Id.ToString()));
-            claims.Add(new Claim("isAdmin", (await _userManager.IsInRoleAsync(user, "ADMIN")).ToString()));
+            //if user is admin TODO REMOVE THIS
+            if(user.IsAdmin)
+                claims.Add(new Claim("isAdmin", (await _userManager.IsInRoleAsync(user, "ADMIN")).ToString()));
 
             byte[] key = Encoding.ASCII.GetBytes(_settings.TokenSecret);
             JwtSecurityToken? token = new(

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -42,10 +43,19 @@ namespace PolyRushWeb.Controllers
             return Json(new {data = users});
         }
 
-        public async Task< IActionResult > Edit(UserEditAdminModel editModel)
+        public async Task< IActionResult > Edit(int id)
         {
+            var httpClient = _clientHelper.GetHttpClient();
 
+            var response = await httpClient.GetStringAsync($"user/{id}");
+         
 
+            UserEditAdminModel editModel = JsonConvert.DeserializeObject<User>(response)!.ToUserEditAdminModel();
+
+            return View(editModel);
+        } 
+        public async Task< IActionResult > EditUser(UserEditAdminModel editModel)
+        {
             if (ModelState.IsValid)
             {
                 var httpClient = _clientHelper.GetHttpClient();
@@ -55,8 +65,12 @@ namespace PolyRushWeb.Controllers
                 return View("Index");
 
             }
-            return View();
+            return View(nameof(Edit));
         }
+
+
+
+
         public async Task<IActionResult> Deactivate(int id)
         {
             var httpClient = _clientHelper.GetHttpClient();

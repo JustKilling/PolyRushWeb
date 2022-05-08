@@ -127,9 +127,10 @@ namespace PolyRushWeb.DA
 
                 await _userManager.SetUserNameAsync(user, model.Username);
                 await _userManager.SetEmailAsync(user, model.Email);
-                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-                await _userManager.ResetPasswordAsync(user, token, model.Password);
 
+                if(user.IsAdmin) await _userManager.AddToRoleAsync(user, "Admin");
+                else await _userManager.RemoveFromRoleAsync(user, "Admin");
+                
                 return true;
             }
             catch (Exception e)

@@ -49,7 +49,7 @@
                     <a asp-action="Stats" asp-controller="Home" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a>
                     @{
 
-                        if (authenticationHelper.IsAdmin().GetAwaiter().GetResult())
+                        if (await authenticationHelper.IsAdmin())
                         {
                             <a asp-action="Index" asp-controller="Admin" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a> 
                         }

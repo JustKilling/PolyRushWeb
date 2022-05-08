@@ -46,7 +46,7 @@ namespace PolyRushWeb.Controllers
         {
             if (await _authenticationHelper.IsAuthenticatedAsync())
             {
-                RedirectToAction(nameof(Login));
+                return RedirectToAction("Index", "Home");
             }
             return View("Login");
         }
@@ -56,12 +56,6 @@ namespace PolyRushWeb.Controllers
         }
         public async Task<IActionResult> Login(LoginInputModel request)
         {
-            if (await _authenticationHelper.IsAuthenticatedAsync())
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
-
             HttpClient? client = _clientHelper.GetHttpClient();
             HttpResponseMessage? response = await client.PostAsJsonAsync("login/", request);
             if (response.IsSuccessStatusCode)

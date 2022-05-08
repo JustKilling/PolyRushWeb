@@ -11,8 +11,6 @@ namespace PolyRushWeb.Models
         [Required]
         public string Email { get; set; }
         [Required]
-        public string Password { get; set; }
-        [Required]
         public string Firstname { get; set; } = null!;
         [Required]
         public string Lastname { get; set; } = null!;
@@ -33,6 +31,6 @@ namespace PolyRushWeb.Models
         public int Coinsgathered { get; set; }
         [Required]
         public int Timespassed { get; set; }
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
     }
 }

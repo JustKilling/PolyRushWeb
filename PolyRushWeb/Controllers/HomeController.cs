@@ -61,8 +61,6 @@ namespace PolyRushWeb.Controllers
 
             var user = JsonConvert.DeserializeObject<UserDTO>(await result.Content.ReadAsStringAsync());
 
-            ViewBag.IsAdmin = (await httpClient.GetAsync("api/checkadmin")).IsSuccessStatusCode;
-
             //return the page with the user info
             return View("Index", user);
         }

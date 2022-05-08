@@ -30,7 +30,7 @@ namespace PolyRushWeb.Helper
         public string Fail()
         {
             HttpContext? httpContext = _httpContextAccessor.HttpContext!;
-            httpContext.Response.Cookies.Append("token", "");
+            httpContext.Response.Cookies.Append("Token", "");
             httpContext.Response.Redirect("");
             return "default";
         }
