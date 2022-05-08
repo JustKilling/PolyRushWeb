@@ -46,9 +46,11 @@ $(document).ready( function () {
                     render: function(data, type) {
                         let link = "/File/GetUserImage?UserID="+data;
                         return `<div class="btn-group" role="group" aria-label="Edit or delete">
-                                    <a href="/Admin/Edit/${data}" class="btn btn-primary">Edit</a>
-                                    <a href="/Admin/Deactivate/${data}" class="btn btn-danger">Deactivate</a>
-                                </div>`;
+                                    <a href="/Admin/Edit/${data}" class="btn btn-primary">Edit</a>` +
+                                    
+                                    `<a href="/Admin/Deactivate/${data}" class="btn btn-danger">Deactivate</a>`+
+
+                                `</div>`;
                     }
                 }
             ],

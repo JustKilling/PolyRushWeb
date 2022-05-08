@@ -78,7 +78,15 @@ namespace PolyRushWeb.Controllers.ApiControllers
             await _userDa.DeactivateAsync(id);
             return Ok();
         }
-
+        //activate given id
+        [HttpPost]
+        [Route("activate/{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Activate(int id)
+        {
+            await _userDa.DeactivateAsync(id, false);
+            return Ok();
+        }
         //deactivate given id
         [HttpPost]
         [Route("deactivate/{id}")]

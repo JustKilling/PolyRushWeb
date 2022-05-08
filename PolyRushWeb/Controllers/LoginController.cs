@@ -23,9 +23,6 @@ namespace PolyRushWeb.Controllers
 {
     public class LoginController : Controller
     {
-
-
-
         private readonly ILogger<RegisterModel> _logger;
         private readonly AuthenticationHelper _authenticationHelper;
         private readonly ClientHelper _clientHelper;
@@ -75,6 +72,18 @@ namespace PolyRushWeb.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> RegisterUser(RegisterModel request)
+        {
+            HttpClient? client = _clientHelper.GetHttpClient();
+            HttpResponseMessage? response = await client.PostAsJsonAsync("register/", request);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction(nameof(Login), request);
+            }
+            return RedirectToAction(nameof(Register));
+        }
+
         //public async Task<IActionResult> Logout()
         //{
         //    throw new NotImplementedException();

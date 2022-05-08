@@ -74,9 +74,16 @@ namespace PolyRushWeb.Controllers
         public async Task<IActionResult> Deactivate(int id)
         {
             var httpClient = _clientHelper.GetHttpClient();
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, $"api/User/deactivate/{id}");
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, $"User/deactivate/{id}");
             await httpClient.SendAsync(request);
-            return Ok();
+            return View(nameof(Index));
+        }
+        public async Task<IActionResult> Activate(int id)
+        {
+            var httpClient = _clientHelper.GetHttpClient();
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, $"User/activate/{id}");
+            await httpClient.SendAsync(request);
+            return View(nameof(Index));
         }
     }
 }
