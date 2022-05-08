@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using PolyRushLibrary;
 using PolyRushWeb.Data;
+using PolyRushWeb.Models;
 
 
 namespace PolyRushWeb.Models
@@ -138,18 +139,18 @@ namespace PolyRushWeb.Models
 
 
             //Seed items
-            var itemsList = new List<Item>()
+            List<Item>? itemsList = new()
             {
-                new() { Iditem = 1, ItemTypeId = 2, Name = "Double score", Price = 69, Icon =  iconArray[0] },
-                new() { Iditem = 2, ItemTypeId = 2, Name = "Forcefield", Price = 200, Icon =  iconArray[1] },
-                new() { Iditem = 3, ItemTypeId = 1, Name = "Playerskin1", Price = 200, Icon =  iconArray[2] },
-                new() { Iditem = 4, ItemTypeId = 1, Name = "Playerskin2", Price = 1000, Icon =  iconArray[3] },
-                new() { Iditem = 5, ItemTypeId = 1, Name = "Playerskin3", Price = 5000, Icon =  iconArray[4] },
-                new() { Iditem = 6, ItemTypeId = 1, Name = "Playerskin4", Price = 20000, Icon =  iconArray[5] },
+                new Item { Iditem = 1, ItemTypeId = 2, Name = "Double score", Price = 69, Icon =  iconArray[0] },
+                new Item { Iditem = 2, ItemTypeId = 2, Name = "Forcefield", Price = 200, Icon =  iconArray[1] },
+                new Item { Iditem = 3, ItemTypeId = 1, Name = "Playerskin1", Price = 200, Icon =  iconArray[2] },
+                new Item { Iditem = 4, ItemTypeId = 1, Name = "Playerskin2", Price = 1000, Icon =  iconArray[3] },
+                new Item { Iditem = 5, ItemTypeId = 1, Name = "Playerskin3", Price = 5000, Icon =  iconArray[4] },
+                new Item { Iditem = 6, ItemTypeId = 1, Name = "Playerskin4", Price = 20000, Icon =  iconArray[5] },
 
             };
 
-            foreach (var item in itemsList)
+            foreach (Item? item in itemsList)
             {
                 modelBuilder.Entity<Item>().HasData(item);
             }
@@ -172,14 +173,14 @@ namespace PolyRushWeb.Models
             });
 
             //Seed itemType
-            var itemTypes = new List<Itemtype>
+            List<Itemtype>? itemTypes = new()
             {
-                new() {IditemType = 1, Name ="Skin"},
-                new() {IditemType = 2, Name ="Ability"},
+                new Itemtype {IditemType = 1, Name ="Skin"},
+                new Itemtype {IditemType = 2, Name ="Ability"},
 
             };
 
-            foreach (var itemType in itemTypes)
+            foreach (Itemtype? itemType in itemTypes)
             {
                 modelBuilder.Entity<Itemtype>().HasData(itemType);
             }
@@ -205,13 +206,13 @@ namespace PolyRushWeb.Models
 
 
             //SEeding settings
-            var settings = new List<Setting>
+            List<Setting>? settings = new()
             {
-                new() { Idsetting =1, Name = "Master Volume", Description = "The master volume of the game (0-100)" },
-                new() { Idsetting =2, Name = "Sfx", Description = "Are the sounds effects of the game enabled?" },
-                new() { Idsetting =3, Name = "Music", Description = "Is the music in the game enabled?" }
+                new Setting { Idsetting =1, Name = "Master Volume", Description = "The master volume of the game (0-100)" },
+                new Setting { Idsetting =2, Name = "Sfx", Description = "Are the sounds effects of the game enabled?" },
+                new Setting { Idsetting =3, Name = "Music", Description = "Is the music in the game enabled?" }
             };
-            foreach (var setting in settings)
+            foreach (Setting? setting in settings)
             {
                 modelBuilder.Entity<Setting>().HasData(setting);
             }
@@ -327,5 +328,7 @@ namespace PolyRushWeb.Models
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public DbSet<PolyRushWeb.Models.UserEditAdminModel> UserEditAdminModel { get; set; }
     }
 }

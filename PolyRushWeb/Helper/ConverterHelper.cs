@@ -6,7 +6,7 @@ namespace PolyRushWeb.Helper
     {
         public static UserDTO ToUserDTO(this User user)
         {
-            return new()
+            return new UserDTO
             {
                 Username = user.UserName,
                 Avatar = user.Avatar,

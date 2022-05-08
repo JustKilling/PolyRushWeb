@@ -27,32 +27,56 @@ namespace PolyRushWeb.Controllers
 
 
         private readonly ILogger<RegisterModel> _logger;
+        private readonly AuthenticationHelper _authenticationHelper;
         private readonly ClientHelper _clientHelper;
 
         public LoginController(
             ClientHelper clientHelper,
-            ILogger<RegisterModel> logger)
+            ILogger<RegisterModel> logger,
+            AuthenticationHelper authenticationHelper)
 
         {
             _logger = logger;
+            _authenticationHelper = authenticationHelper;
             _clientHelper = clientHelper;
+            
         }
         // GET
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            if (await _authenticationHelper.IsAuthenticatedAsync())
+            {
+                RedirectToAction(nameof(Login));
+            }
             return View("Login");
         }
         public IActionResult Register()
         {
             return View();
         }
-        public async Task<IActionResult> Login(AuthenticationRequest request)
+        public async Task<IActionResult> Login(LoginInputModel request)
         {
-            var client = _clientHelper.GetHttpClient();
-            var response = await client.PostAsJsonAsync("/login/", request);
+            if (await _authenticationHelper.IsAuthenticatedAsync())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+
+            HttpClient? client = _clientHelper.GetHttpClient();
+            HttpResponseMessage? response = await client.PostAsJsonAsync("login/", request);
             if (response.IsSuccessStatusCode)
             {
-               // HttpContext.Response.Cookies.Append;
+                var responseString = await response.Content.ReadAsStringAsync();
+                AuthenticationResponse authenticationResponse =
+                    JsonConvert.DeserializeObject<AuthenticationResponse>(responseString)!;
+
+                var cookieOptions = new CookieOptions
+                {
+                    Secure = true,
+                    Expires = DateTime.Now.AddDays(7),
+                };
+
+                HttpContext.Response.Cookies.Append("Token", authenticationResponse.Token, cookieOptions);
                 return RedirectToAction("Index", "Home");
             }
             return RedirectToAction(nameof(Index));

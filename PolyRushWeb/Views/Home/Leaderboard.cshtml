@@ -1,6 +1,5 @@
 ﻿@using PolyRushWeb.DA
 @using PolyRushLibrary
-@inject LeaderboardDA leaderboardDa
 @model PolyRushLibrary.UserDTO?
 @{
     Layout = "_HomeLayout";
@@ -25,7 +24,9 @@ $( document ).ready(function() {
 
 @{
     List<UserDTO>? topUsers = ViewData["TopUsers"] as List<UserDTO>;
+    List<UserPlaytime>? topPlayTimes = ViewData["TopPlaytimes"] as List<UserPlaytime>;
     if (topUsers == null) throw new ArgumentNullException("Topusers not found in view!");
+    if (topPlayTimes == null) throw new ArgumentNullException("TopPlaytimes not found in view!");
 }
 
 <h1>Leaderboard</h1>
@@ -37,7 +38,7 @@ $( document ).ready(function() {
 
             <caption style="caption-side: top; text-align:center; margin:auto; user-select:none">Top score</caption>
             <tbody>
-            @{var listTopHighscore = await leaderboardDa.GetTopUsers(10, true); }
+            @{List<UserDTO>? listTopHighscore = topUsers; }
                 @for (int i = 1; i <= @listTopHighscore.Count; i++)
                 {
                     UserDTO user = listTopHighscore[@i-1];
@@ -55,15 +56,16 @@ $( document ).ready(function() {
 
             <caption style="caption-side: top; text-align:center; margin:auto; user-select:none">Top playtime</caption>
             <tbody>
-            @{var listPlaytime = await @leaderboardDa.GetTopPlaytime(10); }
+            @{var listPlaytime = topPlayTimes; }
                 @for (int i = 1; i <= @listPlaytime.Count; i++)
                 {
-                    UserDTO user = @listPlaytime[@i-1].User;
+                    UserPlaytime pt = @listPlaytime[@i-1];
                     <tr style="user-select:none">
                         <td>@i</td>
-                        <td><img style="user-select:none; max-width: 20px" src="/File/GetUserImage?UserID=@user.ID"/></td>
-                        <td>@user.Username</td>
-                        <td>@String.Format("{0:%h} hours, {0:%m} minutes, {0:%s} seconds", @listPlaytime)</td>
+                        <!-- <td><img style="user-select:none; max-width: 20px" src="/File/GetUserImage?UserID=@pt.User.ID"/></td> -->
+                        <td><img style="user-select:none; max-width: 20px" src="data:image/jpg;base64,@pt.User.Avatar"/></td>
+                        <td>@pt.User.Username</td>
+                        <td>@String.Format("{0:%h} hours, {0:%m} minutes, {0:%s} seconds", pt.Playtime)</td>
                     </tr>
                 }
             </tbody>

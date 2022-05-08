@@ -58,12 +58,16 @@ namespace PolyRushWeb.Controllers.ApiControllers
                 Lastname = registration.Lastname,
             };
 
+
+            
+
+
             //try create the user
             IdentityResult result = await _userManager.CreateAsync(user, registration.Password);
 
             if (!result.Succeeded)
             {
-                foreach (var error in result.Errors)
+                foreach (IdentityError? error in result.Errors)
                 {
                     ModelState.AddModelError(error.Code, error.Description);
                 }
@@ -73,7 +77,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
 
             //add claim to application user
             await _userManager.AddClaimAsync(user,
-            new("registration-date", DateTime.UtcNow.ToString("yy-MM-dd")));
+            new Claim("registration-date", DateTime.UtcNow.ToString("yy-MM-dd")));
 
 
             //Save changes
@@ -90,12 +94,12 @@ namespace PolyRushWeb.Controllers.ApiControllers
             if (!ModelState.IsValid) { return BadRequest(ModelState); }
 
             //Get the matched email user details
-            var applicationUser = _userManager.Users.SingleOrDefault(x => x.Email == login.Email);
+            User? applicationUser = _userManager.Users.SingleOrDefault(x => x.Email == login.Email);
 
             if (applicationUser == null) return Unauthorized();
 
 
-            var verificationResult = _userManager.PasswordHasher.VerifyHashedPassword(applicationUser, applicationUser.PasswordHash, login.Password);
+            PasswordVerificationResult verificationResult = _userManager.PasswordHasher.VerifyHashedPassword(applicationUser, applicationUser.PasswordHash, login.Password);
 
             //var result = await _signInManager.PasswordSignInAsync(login.Email, login.Password, isPersistent: false,
             //lockoutOnFailure: false);
@@ -106,9 +110,9 @@ namespace PolyRushWeb.Controllers.ApiControllers
             }
              
             //set last login time claim
-            var claims = await _userManager.GetClaimsAsync(applicationUser);
+            IList<Claim>? claims = await _userManager.GetClaimsAsync(applicationUser);
             Claim? claim = claims.FirstOrDefault(x => x.Type == "last-login-date");
-            var updatedClaim = new Claim("last-login-date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            Claim? updatedClaim = new("last-login-date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
             if (claim == null)
             {
                 await _userManager.AddClaimsAsync(applicationUser, new Claim[]{ updatedClaim });
@@ -123,7 +127,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             _context.Users.Update(applicationUser);
 
             //Get the token
-            var token = await GenerateJwtTokenAsync(applicationUser);
+            string? token = await GenerateJwtTokenAsync(applicationUser);
 
             //Save changes
             await _context.SaveChangesAsync();
@@ -141,35 +145,40 @@ namespace PolyRushWeb.Controllers.ApiControllers
             return Ok();
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpGet("checkadmin")]
+        public IActionResult CheckAdminToken()
+        {
+            return Ok();
+        }
 
         //een nieuwe JWT aanmaken
         private async Task<string> GenerateJwtTokenAsync(User user)
         {
-            var claims = new List<Claim>();
+            List<Claim>? claims = new();
 
-            var userClaims = await _userManager.GetClaimsAsync(user);
+            IList<Claim>? userClaims = await _userManager.GetClaimsAsync(user);
 
             claims.AddRange(userClaims);        
 
-            var roleClaims = await _userManager.GetClaimsAsync(user);
+            var roleClaims = await _userManager.GetRolesAsync(user);
 
             //claims.AddRange(roleClaims);
             //Add role claims to jwt
             foreach (var roleClaim in roleClaims)
             {
-                claims.Add(new(ClaimTypes.Role, roleClaim.Value));
+                claims.Add(new Claim(ClaimTypes.Role, roleClaim));
             }
 
-            claims.Add(new("id", user.Id.ToString()));
-            claims.Add(new("isAdmin", (await _userManager.IsInRoleAsync(user, "ADMIN")).ToString()));
+            claims.Add(new Claim("id", user.Id.ToString()));
+            claims.Add(new Claim("isAdmin", (await _userManager.IsInRoleAsync(user, "ADMIN")).ToString()));
 
             byte[] key = Encoding.ASCII.GetBytes(_settings.TokenSecret);
-            var token = new JwtSecurityToken
-                (
+            JwtSecurityToken? token = new(
                 claims: claims,
                 expires: DateTime.UtcNow.Add(TimeSpan.FromDays(7)),
                 notBefore: DateTime.UtcNow,
-                signingCredentials: new(new SymmetricSecurityKey(key),
+                signingCredentials: new SigningCredentials(new SymmetricSecurityKey(key),
                 SecurityAlgorithms.HmacSha256)
                 );
 

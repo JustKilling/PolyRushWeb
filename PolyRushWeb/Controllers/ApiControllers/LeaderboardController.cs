@@ -25,7 +25,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Route("{amount}")]
         public async Task<IActionResult> GetTopUsers(int amount)
         {
-            var result = await _leaderboardDa.GetTopUsers(amount);
+            List<UserDTO>? result = await _leaderboardDa.GetTopUsers(amount);
             return Ok(result);
         }
         [HttpGet]
@@ -43,7 +43,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         public async Task<IActionResult> GetNextGoals(int amount)
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            User? user = await _userDa.GetById(id);
+            User? user = await _userDa.GetByIdAsync(id);
             if (user == null) return BadRequest();
             List<NextGoalResponse> response = await _leaderboardDa.GetNextGoals(amount, user.Highscore);
             return Ok(response);

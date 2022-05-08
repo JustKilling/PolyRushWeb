@@ -5,6 +5,7 @@ using PolyRushLibrary;
 using PolyRushWeb.Helper;
 using PolyRushWeb.Models;
 
+
 namespace PolyRushWeb.DA
 {
     public enum EnumSetting
@@ -45,7 +46,7 @@ namespace PolyRushWeb.DA
             //reader.Close();
             //await conn.CloseAsync();
 
-            var context = await _contextFactory.CreateDbContextAsync();
+            polyrushContext context = await _contextFactory.CreateDbContextAsync();
             return (await context.Usersetting.Where(us => us.UserId == id && us.SettingId == (int)enumSetting).FirstOrDefaultAsync())!.State;
         }
 
@@ -53,7 +54,7 @@ namespace PolyRushWeb.DA
         {
             int state = 1;
             if (setting is EnumSetting.MasterVolume) state = 100;
-            var context = await _contextFactory.CreateDbContextAsync();
+            polyrushContext context = await _contextFactory.CreateDbContextAsync();
             await context.Usersetting.AddAsync(new Usersetting { SettingId = (int)setting, State = state, UserId = id });
         }
 
@@ -61,7 +62,7 @@ namespace PolyRushWeb.DA
         private async Task<bool> SettingExistsAsync(int id, EnumSetting setting)
         {
             bool result = false;
-            var context = await _contextFactory.CreateDbContextAsync();
+            polyrushContext context = await _contextFactory.CreateDbContextAsync();
             result = context.Usersetting.Where(u => u.UserId == id && u.SettingId == (int)setting).FirstOrDefaultAsync() != null;
             
             return result;
@@ -72,11 +73,12 @@ namespace PolyRushWeb.DA
                 await CreateSettingAsync(id, setting);
 
 
-            var context = await _contextFactory.CreateDbContextAsync();
-
-            await context.Usersetting
-              .Where(us => us.UserId == id && us.SettingId == (int)setting)
-              .UpdateFromQueryAsync(us => new Usersetting { State = state });
+            polyrushContext context = await _contextFactory.CreateDbContextAsync();
+            
+            Usersetting usersetting = await context.Usersetting.SingleAsync(us => us.UserId == id && us.SettingId == (int)setting);
+            usersetting.State = state;
+            context.Usersetting.Update(usersetting);
+            await context.SaveChangesAsync();
 
             //MySqlConnection conn = DatabaseConnector.MakeConnection();
             //string query = "UPDATE usersetting SET State = @State WHERE UserID = @UserID AND SettingID = @SettingID";

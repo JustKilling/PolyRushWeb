@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PolyRushWeb.Models;
 
+
 namespace PolyRushWeb.DA
 {
     public class ItemDA
@@ -20,11 +21,11 @@ namespace PolyRushWeb.DA
             Item item = await GetItemById(i.Iditem)!;
 
             //get discounted percentage between dates
-            var query = _context.Discount.Where(d => d.ItemId == i.Iditem && (d.Startdate < DateTime.Now && DateTime.Now < d.Enddate));
+            IQueryable<Discount> query = _context.Discount.Where(d => d.ItemId == i.Iditem && (d.Startdate < DateTime.Now && DateTime.Now < d.Enddate));
             if (!query.Any()) return item.Price;
 
             //select only highest percentage.
-            var discountResult = query.Select(d => d.DiscountPercentage).MaxAsync();
+            Task<int> discountResult = query.Select(d => d.DiscountPercentage).MaxAsync();
 
             decimal discountPercentage = Convert.ToDecimal(discountResult);
             decimal discount = Math.Round(item.Price * (discountPercentage / 100m), 2, MidpointRounding.ToEven);
@@ -62,7 +63,7 @@ namespace PolyRushWeb.DA
         private async Task CreateUserItemAsync(int id, Item item, bool isAdmin = false)
         {
 
-            Useritem useritem = new Useritem { ItemId = item.Iditem, Amount = isAdmin ? 69420 : 0, UserId = id};
+            Useritem useritem = new() { ItemId = item.Iditem, Amount = isAdmin ? 69420 : 0, UserId = id};
             await _context.Useritem.AddAsync(useritem);
             await _context.SaveChangesAsync();
         }
@@ -79,7 +80,7 @@ namespace PolyRushWeb.DA
             if (!(await _userDa.HasEnoughCoins(id, price))) return false;
 
            
-            var useritem = _context.Useritem.Where(ui => ui.UserId == id && ui.ItemId == item.Iditem).FirstOrDefault();
+            Useritem? useritem = _context.Useritem.FirstOrDefault(ui => ui.UserId == id && ui.ItemId == item.Iditem);
             useritem.Amount++;
             _context.Useritem.Update(useritem);
 
@@ -93,7 +94,7 @@ namespace PolyRushWeb.DA
 
             //substract price
 
-            var user = _context.Users.Where(u => u.Id == id).FirstOrDefault();
+            User? user = _context.Users.FirstOrDefault(u => u.Id == id);
             user.Coins -= price;
             _context.Users.Update(user);
 
@@ -128,83 +129,26 @@ namespace PolyRushWeb.DA
             if (isAdmin) return true;
             if (await GetItemAmountAsync(id, item) < 1) return false;
 
-            await _context.Useritem.Where(ui => ui.UserId == id && ui.ItemId == item.Iditem)
-                .UpdateFromQueryAsync(ui => new Useritem { Amount = ui.Amount +1});
-
-            //MySqlConnection conn = DatabaseConnector.MakeConnection();
-
-            //string query = "UPDATE useritem SET Amount = Amount - 1 WHERE UserID=@UserID AND ItemID = @ItemID";
-            //MySqlCommand cmd = new(query, conn);
-            //cmd.Parameters.AddWithValue("@UserID", id);
-            //cmd.Parameters.AddWithValue("@ItemID", item.Iditem);
-
-            //try
-            //{
-            //    cmd.ExecuteReader();
-            //}
-            //finally
-            //{
-            //    conn.Close();
-            //}
-
+            var useritem = await _context.Useritem.SingleAsync(ui => ui.UserId == id && ui.ItemId == item.Iditem);
+            useritem.Amount--;
+            _context.Update(useritem);
+            
             return true;
         }
 
         public async Task<List<Item>> GetDiscountedItemsFromTypeAsync(ItemType type)
         {
-            var items = await _context.Item.Where(i => i.ItemTypeId == (int)type).ToListAsync();
+            List<Item> items = await _context.Item.Where(i => i.ItemTypeId == (int)type).ToListAsync();
 
-            foreach (var item in items)
+            foreach (Item item in items)
             {
                 item.Price = await GetDiscountedPriceAsync(item);
             }
 
             return items;
-            //MySqlConnection conn = DatabaseConnector.MakeConnection();
-            //string query = @"SELECT * FROM item WHERE ItemTypeID = @ItemTypeID";
-
-            //MySqlCommand cmd = new(query, conn);
-            //cmd.Parameters.AddWithValue("@ItemTypeID", (int) type);
-            //MySqlDataReader? reader = cmd.ExecuteReader();
-
-            //List<Item?> items = new();
-
-            //while (reader.Read())
-            //{
-            //    Item? item = Create(reader);
-            //    if (item == null) throw new NullReferenceException();
-            //    item.Price = GetDiscountedPriceAsync(item);
-            //    items.Add(item);
-            //}
-
-            //conn.Close();
-            //reader.Close();
-            //return items;
+            
         }
-      
-        //private  Item? Create(MySqlDataReader reader)
-        //{
-        //    return new()
-        //    {
-        //        Iditem = Convert.ToInt32(reader["IDItem"]),
-        //        Name = reader["Name"].ToString()!,
-        //        Icon = reader["Icon"].ToString()!,
-        //        Price = Convert.ToInt32(reader["Price"]),
-        //        ItemTypeId = Convert.ToInt32(reader["ItemTypeID"])
-        //    };
-        //}
-        //private  Item? CreateWithoutIcon(MySqlDataReader reader)
-        //{
-        //    return new()
-        //    {
-        //        Iditem = Convert.ToInt32(reader["IDItem"]),
-        //        Name = reader["Name"].ToString()!,
-        //        Icon = "",
-        //        Price = Convert.ToInt32(reader["Price"]),
-        //        ItemTypeId = Convert.ToInt32(reader["ItemTypeID"])
-        //    };
-        //}
 
-        
+
     }
 }

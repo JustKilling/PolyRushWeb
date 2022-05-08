@@ -16,11 +16,10 @@ namespace PolyRushWeb.Helper
 
         public HttpClient GetHttpClient()
         {
-            var httpClient = _httpClientFactory.CreateClient("api");
+            HttpClient? httpClient = _httpClientFactory.CreateClient("api");
 
-            var token = _httpContextAccesor.HttpContext?.Request.Cookies["token"];
-            if (token == null) token = "";
-          
+            string? token = _httpContextAccesor.HttpContext?.Request.Cookies["token"] ?? "";
+
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             return httpClient;
         }

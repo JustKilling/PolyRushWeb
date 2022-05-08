@@ -27,7 +27,7 @@ namespace PolyRushWeb.DA
         
         private static Gamesession Create(IDataReader reader)
         {
-            return new()
+            return new Gamesession
             {
                 IdgameSession = Convert.ToInt32(reader["IDGameSession"]),
                 UserId = Convert.ToInt32(reader["UserID"]),

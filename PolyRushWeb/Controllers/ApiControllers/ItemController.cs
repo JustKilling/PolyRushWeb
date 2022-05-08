@@ -43,7 +43,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
 
             List<int> amounts = new();
-            foreach (var item in items)
+            foreach (Item? item in items)
             {
                 amounts.Add(await _itemDa.GetAmountAsync(item, id, isAdmin));
             }

@@ -20,7 +20,7 @@ namespace PolyRushWeb.DA
 
         public async Task<List<UserDTO>> GetUsers(bool getAvatar = true)
         {
-            var users = new List<UserDTO>();
+            List<UserDTO>? users = new();
             if (getAvatar)
             {
                 users = await _userManager.Users.Select(u => u.ToUserDTO()).ToListAsync()!;
@@ -31,14 +31,13 @@ namespace PolyRushWeb.DA
 
         public async Task<List<UserDTO>> GetUsers()
         {
-            var users = new List<UserDTO>();
-            users = await _userManager.Users.Select(u => u.ToUserDTO()).ToListAsync()!;
+            List<UserDTO>? users = await _userManager.Users.Select(u => u.ToUserDTO()).ToListAsync()!;
             return users;
         }
 
         public async Task Deactivate(int id, bool deactivate = true)
         {
-            var user = new User
+            User? user = new()
             {
                 Id = id,
                 IsActive = !deactivate
@@ -55,7 +54,7 @@ namespace PolyRushWeb.DA
             return null;
         }
 
-        public async Task<User> GetById(int userId, bool getAvatar = true)
+        public async Task<User> GetByIdAsync(int userId, bool getAvatar = true)
         {
             //var user = await _context.Users.Where(u => u.Id == userId).FirstOrDefaultAsync();
             User user = await _userManager.FindByIdAsync(userId.ToString());
@@ -64,7 +63,7 @@ namespace PolyRushWeb.DA
 
         public async Task<string?> GetAvatarById(int userId)
         {
-            var avatar = await _context.Users.Where(u => u.Id == userId).Select(u => u.Avatar).FirstOrDefaultAsync();
+            string? avatar = await _context.Users.Where(u => u.Id == userId).Select(u => u.Avatar).FirstOrDefaultAsync();
             return avatar;
         }
 
@@ -89,10 +88,10 @@ namespace PolyRushWeb.DA
         }
         public async Task<int> GetCoinsAsync(int id)
         {
-            var coins = _context.Users;
-            var coins2 = coins.Where(u => u.Id == id);
-            var coins3 = coins2.Select(u => u.Coins);
-            var coins4 = await coins3.FirstOrDefaultAsync();
+            DbSet<User>? coins = _context.Users;
+            IQueryable<User>? coins2 = coins.Where(u => u.Id == id);
+            IQueryable<int>? coins3 = coins2.Select(u => u.Coins);
+            int coins4 = await coins3.FirstOrDefaultAsync();
                 
             return coins4;
         }
@@ -102,7 +101,7 @@ namespace PolyRushWeb.DA
             int userCoinAmount = await GetCoinsAsync(id);
             if (userCoinAmount < coins) return false;
             
-            var user = await _userManager.Users.Where(u => u.Id == id).FirstOrDefaultAsync();
+            User? user = await _userManager.Users.Where(u => u.Id == id).FirstOrDefaultAsync();
 
             //if no coins have been given, remove all coins.
             int amount = coins <= 0 ? userCoinAmount : coins;
@@ -114,13 +113,13 @@ namespace PolyRushWeb.DA
         public async Task UploadGameResult(Gamesession session)
         {
 
-            int highscore = (await GetById(session.UserId))!.Highscore;
+            int highscore = (await GetByIdAsync(session.UserId))!.Highscore;
             if (session.ScoreGathered > highscore)
             {
                 highscore = session.ScoreGathered;
             }
 
-            var user = await _userManager.Users.Where(u => u.Id == session.UserId).FirstOrDefaultAsync();
+            User? user = await _userManager.Users.Where(u => u.Id == session.UserId).FirstOrDefaultAsync();
 
             user.Coins += session.CoinsGathered;
             user.Timespassed += session.PeoplePassed;

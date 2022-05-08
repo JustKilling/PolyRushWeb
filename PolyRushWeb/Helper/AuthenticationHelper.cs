@@ -8,8 +8,11 @@ namespace PolyRushWeb.Helper
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public IActionResult RedirectResult { get; set; }
+        public string? FailView { get; set; }
 
-        public AuthenticationHelper(ClientHelper clientHelper, IHttpContextAccessor httpContextAccessor)
+        public AuthenticationHelper(
+            ClientHelper clientHelper, 
+            IHttpContextAccessor httpContextAccessor)
         {
             this._clientHelper = clientHelper;
             _httpContextAccessor = httpContextAccessor;
@@ -19,16 +22,30 @@ namespace PolyRushWeb.Helper
 
         public async Task<bool> IsAuthenticatedAsync()
         {
-            var httpClient = _clientHelper.GetHttpClient();
-            var result = await httpClient.GetAsync("/check/");
+            HttpClient? httpClient = _clientHelper.GetHttpClient();
+            HttpResponseMessage? result = await httpClient.GetAsync("check/");
             if (result.IsSuccessStatusCode) return true;
             return false;
         }
-        public void CheckFail()
+        public string Fail()
         {
-            var httpContext = _httpContextAccessor.HttpContext!;
-            httpContext.Response.Redirect("~/");
-            httpContext.Response.Cookies.Delete("token"); 
+            HttpContext? httpContext = _httpContextAccessor.HttpContext!;
+            httpContext.Response.Cookies.Append("token", "");
+            httpContext.Response.Redirect("");
+            return "default";
+        }
+
+        public void Logout()
+        {
+            Fail();
+        }
+
+        public async Task<bool> IsAdmin()
+        {
+            HttpClient? httpClient = _clientHelper.GetHttpClient();
+            HttpResponseMessage? result = await httpClient.GetAsync("checkadmin/");
+            if (result.IsSuccessStatusCode) return true;
+            return false;
         }
     }
 }

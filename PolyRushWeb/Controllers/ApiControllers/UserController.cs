@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PolyRushWeb.DA;
+using PolyRushWeb.Models;
 
 namespace PolyRushWeb.Controllers.ApiControllers
 {
@@ -21,7 +22,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
 
-            return Ok((await _userDa.GetById(id))?.Highscore < score);
+            return Ok((await _userDa.GetByIdAsync(id))?.Highscore < score);
         }
 
 
@@ -36,7 +37,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
          {
             //id ophalen uit jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            var user = await _userDa.GetById(id);
+            User? user = await _userDa.GetByIdAsync(id);
             //check if user with that id exists
             if (user == null) return BadRequest("User not found!");
             return Ok(user);
@@ -49,7 +50,28 @@ namespace PolyRushWeb.Controllers.ApiControllers
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             return Ok(await _userDa.GetCoinsAsync(id));
         }
-        
+
+        [HttpPatch]
+        public async Task<IActionResult> PatchAsync(UserDTO userDto)
+        {
+            var user = await _userDa.GetByIdAsync(userDto.ID);
+            user.IsAdmin = userDto.IsAdmin;
+            user.Highscore = userDto.Highscore;
+            user.Coins = userDto.Coins;
+            user.Coinsgathered = userDto.Coinsgathered;
+            user.Coinsspent = userDto.Coinsspent;
+            user.Firstname = userDto.Firstname;
+            user.Lastname = userDto.Lastname;
+            user.SeesAds = userDto.SeesAds;
+
+            await _userManager.SetUserNameAsync(user, editModel.Username);
+            await _userManager.SetEmailAsync(user, editModel.Email);
+
+            //change the password
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            _userManager.ResetPasswordAsync(user, token, editModel.Password);
+        }
+
         [HttpPost]
         [Route("removecoins/{amount}")]
         public async Task<IActionResult> RemoveCoins(int amount)

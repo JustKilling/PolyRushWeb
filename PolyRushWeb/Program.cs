@@ -19,7 +19,7 @@ using PolyRushWeb.DA;
 using Newtonsoft.Json;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("PolyRushWebConnection");;
+string? connectionString = builder.Configuration.GetConnectionString("PolyRushWebConnection");;
 
 builder.Services.AddDbContext<PolyRushWebContext>(options =>
     options.UseMySql(connectionString, ServerVersion.Parse("5.7")), ServiceLifetime.Transient);
@@ -78,7 +78,7 @@ builder.Services.AddControllers().AddNewtonsoftJson(o =>
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(o => o.TokenValidationParameters = new()
+    .AddJwtBearer(o => o.TokenValidationParameters = new TokenValidationParameters
         {
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretSettings.TokenSecret)),
         ValidateIssuerSigningKey = true,
@@ -96,7 +96,7 @@ builder.Services.AddProgressiveWebApp();
 //Add httpclient
 builder.Services.AddHttpClient("api", httpClient =>
 {
-    httpClient.BaseAddress = new(builder.Configuration["Api:Uri"]); 
+    httpClient.BaseAddress = new Uri(builder.Configuration["Api:Uri"]); 
 });
 
 builder.Services.AddSession();
@@ -118,7 +118,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-
+app.UseDeveloperExceptionPage();
 
 app.UseAuthentication();
 app.UseAuthorization();

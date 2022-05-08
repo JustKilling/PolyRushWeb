@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
@@ -31,8 +32,7 @@ namespace PolyRushWeb.Controllers
         private readonly ClientHelper _clientHelper;
         private readonly IConfiguration _configuration;
         private readonly AuthenticationHelper _authenticationHelper;
-        private static HttpClient _httpClient;
-        private static string URI;
+
         public HomeController(
             ClientHelper clientHelper,
             IConfiguration configuration,
@@ -41,7 +41,6 @@ namespace PolyRushWeb.Controllers
             _clientHelper = clientHelper;
             _configuration = configuration;
             this._authenticationHelper = authenticationHelper;
-            URI = _configuration["Api:Uri"];
         }
 
         /*public IActionResult Index()
@@ -51,36 +50,29 @@ namespace PolyRushWeb.Controllers
                    
         public async Task<IActionResult> Index()
         {
-            
-            if(!await _authenticationHelper.IsAuthenticatedAsync())
+            //Check if logged in, if not, return to start 
+            if (!await _authenticationHelper.IsAuthenticatedAsync())
             {
-                try
-                {
-                    return Unauthorized();
-                }
-                finally
-                {
-                    _authenticationHelper.CheckFail(); //Check if logged in, if not, return to start 
-                }
-            } 
+                return RedirectToAction("Index","Login");
+            }
 
+            var httpClient = _clientHelper.GetHttpClient();
+            var result = await httpClient.GetAsync("User");
+
+            var user = JsonConvert.DeserializeObject<UserDTO>(await result.Content.ReadAsStringAsync());
+
+            ViewBag.IsAdmin = (await httpClient.GetAsync("api/checkadmin")).IsSuccessStatusCode;
 
             //return the page with the user info
-            return View("Index", new UserDTO());
+            return View("Index", user);
         }
 
         public IActionResult Logout()
         {
-            //Set the request header
-            _httpClient.DefaultRequestHeaders.Authorization = new("Bearer", HttpContext.Session.GetString("Token"));
-            //get the response and result
-            _httpClient.PostAsync("logout/", new StringContent(""));
-           
-            HttpContext.Session.Remove("Token");
-            HttpContext.Session.Remove("RefreshToken");
-            
-            //return to start
-            return RedirectToAction(nameof(Index));
+           _authenticationHelper.Logout();
+
+           //return to start
+            return RedirectToAction("Index", "Login");
         }
        
         public IActionResult Privacy()
@@ -96,9 +88,20 @@ namespace PolyRushWeb.Controllers
 
         public async Task<IActionResult> LeaderboardAsync()
         {
-            // TO DO http client
-            var listTopHighscore = new List<UserDTO>();
-            ViewData["TopUsers"] = listTopHighscore;
+            var httpClient = _clientHelper.GetHttpClient();
+            var response = await httpClient.GetAsync($"Leaderboard/{10}");
+
+            var topUsers =
+                JsonConvert.DeserializeObject<List<UserDTO>>(await response.Content.ReadAsStringAsync());
+
+            response = await httpClient.GetAsync($"Leaderboard/playtime/{10}");
+
+            var topPlaytimes = 
+                JsonConvert.DeserializeObject<List<UserPlaytime>>(await response.Content.ReadAsStringAsync());
+
+            ViewData["TopUsers"] = topUsers;
+            ViewData["TopPlaytimes"] = topPlaytimes;
+
             return View();
         }
         public IActionResult Stats()

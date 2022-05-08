@@ -24,7 +24,7 @@ namespace PolyRushWeb.DA
         }
         public async Task<List<UserDTO>> GetTopUsers(int amount, bool getImages = true)
         {
-            var adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
+            IList<User>? adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
             return await _userManager.Users.Where(u => !adminUsers.Contains(u)).OrderByDescending(u => u.Highscore).Take(amount).Select(u => u.ToUserDTO()).ToListAsync();
         }
 
@@ -35,85 +35,49 @@ namespace PolyRushWeb.DA
         {
 
 
+
+
             //Get user playtimes
             List<UserPlaytime> userplaytimesUngrouped = await _context.Gamesession
                 .Select(gs => new UserPlaytime
                 {
                     Playtime = gs.EndDateTime.Subtract(gs.StartDateTime),
-                    User = (_userDa.GetById(gs.UserId, true).GetAwaiter().GetResult()).ToUserDTO()
+                    User = (_userDa.GetByIdAsync(gs.UserId, true).GetAwaiter().GetResult()).ToUserDTO()
                 })
                 .ToListAsync();
             List<IGrouping<int, UserPlaytime>>? uptGrouped = userplaytimesUngrouped.GroupBy(u => u.User.ID).ToList();
             List<UserPlaytime> upts = new();
-            foreach(var uptGroup in uptGrouped)
+            foreach (IGrouping<int, UserPlaytime>? uptGroup in uptGrouped)
             {
                 UserPlaytime uptToAdd = new() { Playtime = new TimeSpan(0, 0, 0) };
-                foreach(var upt in uptGroup)
+                foreach (UserPlaytime? upt in uptGroup)
                 {
                     uptToAdd.User = upt.User;
                     break;
                 }
-                foreach(var upt2 in uptGroup)
+                foreach (UserPlaytime? upt2 in uptGroup)
                 {
                     uptToAdd.Playtime = uptToAdd.Playtime.Add(upt2.Playtime);
                 }
                 upts.Add(uptToAdd);
             }
-            return upts.OrderBy(u => u.User.ID).ToList();
-            //2
-            //var userplaytimes = (from gs in _context.Gamesession select new UserPlaytime{ User = new UserDTO { ID = gs.UserId}, Playtime = gs.EndDateTime.Subtract(gs.EndDateTime) });
+            var _ = upts.OrderByDescending(u => u.Playtime.TotalSeconds).Take(amount).ToList();
+            return _;
 
-
-
-
-
-            //        var teamTotalScores =
-            //from player in players
-            //group player by player.Team into playerGroup
-            //select new
-            //{
-            //    Team = playerGroup.Key,
-            //    TotalScore = playerGroup.Sum(x => x.Score),
-            //};
-
-            //MySqlConnection conn = DatabaseConnector.MakeConnection();
-            ////user top playtime query
-            //string query = "select UserID, sum(timediff(EndDateTime, StartDateTime)) AS 'PlayTime' from gamesession group by UserID Order by PlayTime DESC LIMIT @Limit";
-            //MySqlCommand cmd = new(query, conn);
-            //cmd.Parameters.AddWithValue("@Limit", amount);
-            //MySqlDataReader? reader = cmd.ExecuteReader();
-            //List<(UserDTO, int TopPlayTime)> users = new();
-
-            //try
-            //{
-            //    while (reader.Read())
-            //    {
-            //        UserDTO user = (await _userDa.GetById(Convert.ToInt32(reader["UserID"]), false))!.ToUserDTO();
-            //        users.Add((user, Convert.ToInt32(reader["PlayTime"])));
-            //    }
-
-            //    return users;
-            //}
-            //finally
-            //{
-            //    reader.Close();
-
-            //    conn.Close();
-            //}
 
         }
 
         public async Task<List<NextGoalResponse>> GetNextGoals(int amount, int highscore)
         {
-            var adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
-            var users = await _context.Users.Where(u => !adminUsers.Contains(u)).Where(u => u.Highscore > 100 && u.Highscore > highscore)
+            IList<User>? adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
+            List<UserDTO>? users = await _context.Users.Where(u => !adminUsers.Contains(u)).Where(u => u.Highscore > 100 && u.Highscore > highscore)
                 .OrderBy(u => u.Highscore).Take(amount)
                 .Select(u => new UserDTO() { ID = u.Id, Highscore = u.Highscore, Avatar = u.Avatar }).ToListAsync();
 
             if (users.Count <= 0)
             {
                 string avatar = ImageToBase64Helper.ConvertImagePathToBase64String("Media/success.png");
-                return new()
+                return new List<NextGoalResponse>
                 {
                     new() { Avatar = avatar, Goal = Convert.ToInt32(Math.Ceiling(highscore * 1.25 / 1000)) * 1000, Rank = 0 }
                 };
@@ -121,9 +85,9 @@ namespace PolyRushWeb.DA
 
             List<NextGoalResponse> goalResponses = new();
 
-            foreach(var user in users)
+            foreach(UserDTO? user in users)
             {
-                goalResponses.Add(new()
+                goalResponses.Add(new NextGoalResponse
                 {
                     Avatar = user.Avatar,
                     Goal = user.Highscore,
@@ -142,7 +106,7 @@ namespace PolyRushWeb.DA
         public async Task UpdateRandomAsync(string username)
         {
 
-            var user = await _userManager.FindByNameAsync(username);
+            User? user = await _userManager.FindByNameAsync(username);
             user.Coins = rnd.Next(1000, 15000);
             user.Highscore = rnd.Next(7500);
             user.Itemspurchased = rnd.Next(20);

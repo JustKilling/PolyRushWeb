@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PolyRushLibrary
 {
@@ -12,5 +13,18 @@ namespace PolyRushLibrary
         public int ScoreGathered ;
         public int CoinsGathered ;
         public int PeoplePassed ;
+
+        //[NotMapped]
+        //public TimeSpan GamesessionPlaytime
+        //{
+        //    get
+        //    {
+        //        if (EndDateTime == null || StartDateTime == null) return TimeSpan.Zero;
+
+        //        TimeSpan diff = EndDateTime.Subtract(StartDateTime);
+        //        return diff;
+
+        //    }
+        //}
     }
 }
