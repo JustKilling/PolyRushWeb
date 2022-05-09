@@ -48,8 +48,8 @@ public class PolyRushWebContext : IdentityDbContext<User, IdentityRole<int>, int
             Email = AdminEmail,
             NormalizedEmail = AdminUserName.ToUpper(),
             EmailConfirmed = true,
-            SecurityStamp = "VVPCRDAS3MJWQD5CSW2GWPRADBXEZINA", //Random string
-            ConcurrencyStamp = "c8554266-b401-4519-9aeb-a9283053fc58", //Random guid string,
+            SecurityStamp = "V3PFRDAS3MJWQD5TSW2GWPRADBFEZINA", //Random 
+            ConcurrencyStamp = "n8754226-b405-4519-9beb-a9281053f355", //Random
         };
 
         adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, AdminUserPassword);
