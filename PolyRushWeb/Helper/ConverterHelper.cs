@@ -21,7 +21,8 @@ namespace PolyRushWeb.Helper
                 Itemspurchased = user.Itemspurchased,
                 Lastname = user.Lastname,
                 SeesAds = user.SeesAds,
-                Timespassed = user.Timespassed
+                Timespassed = user.Timespassed,
+                IsActive = user.IsActive ?? true
             };
         }
 

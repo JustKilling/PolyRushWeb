@@ -158,37 +158,6 @@ namespace PolyRushWeb.DA
 
             await _userManager.UpdateAsync(user);
         }
-
-
-        public  UserDTO CreateDto(IDataRecord reader)
-        {
-            UserDTO dto = new()
-            {
-                ID = Convert.ToInt32(reader["IDUser"])
-            };
-            try
-            {
-                dto.Avatar = reader["Avatar"].ToString() ?? "";
-            }
-            catch (Exception e)
-            {
-                dto.Avatar = "";
-            }
-           
-            dto.Coinsgathered = Convert.ToInt32(reader["Coinsgathered"]);
-            dto.Coinsspent = Convert.ToInt16(reader["Coinsspent"]);
-            dto.Email = reader["Email"].ToString()!;
-            dto.Firstname = reader["Firstname"].ToString()!;
-            dto.Lastname = reader["Lastname"].ToString()!;
-            dto.Username = reader["Username"].ToString()!;
-            dto.Highscore = Convert.ToInt32(reader["Highscore"]);
-            dto.IsAdmin = Convert.ToBoolean(reader["IsAdmin"]);
-            dto.Itemspurchased = Convert.ToInt32(reader["Itemspurchased"]);
-            dto.Coins = Convert.ToInt32(reader["Coins"]);
-            return dto;
-        }
-
-
      
     }
 }

@@ -16,6 +16,7 @@
         public bool? SeesAds;
         public int Timespassed;
         public string Username;
+        public bool IsActive;
 
         ////implicit operator to conver user to userdto
         //public static implicit operator UserDTO(ApplicationUser user)

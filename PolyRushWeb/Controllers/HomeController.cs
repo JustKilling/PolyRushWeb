@@ -43,10 +43,6 @@ namespace PolyRushWeb.Controllers
             this._authenticationHelper = authenticationHelper;
         }
 
-        /*public IActionResult Index()
-        {
-            return View();
-        }*/
                    
         public async Task<IActionResult> Index()
         {
@@ -59,7 +55,8 @@ namespace PolyRushWeb.Controllers
             var httpClient = _clientHelper.GetHttpClient();
             var result = await httpClient.GetAsync("User");
 
-            var user = JsonConvert.DeserializeObject<UserDTO>(await result.Content.ReadAsStringAsync());
+            var resultString = await result.Content.ReadAsStringAsync();
+            var user = JsonConvert.DeserializeObject<UserDTO>(resultString);
 
             //return the page with the user info
             return View("Index", user);

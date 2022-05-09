@@ -68,9 +68,6 @@ namespace PolyRushWeb.Controllers
             return View(nameof(Edit));
         }
 
-
-
-
         public async Task<IActionResult> Deactivate(int id)
         {
             var httpClient = _clientHelper.GetHttpClient();

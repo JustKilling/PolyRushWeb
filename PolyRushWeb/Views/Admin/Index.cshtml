@@ -42,15 +42,27 @@ $(document).ready( function () {
                     }
                 },
                 { responsivePriority: 1, data: "Username" },
-                { responsivePriority: 1, data: "ID",
-                    render: function(data, type) {
-                        let link = "/File/GetUserImage?UserID="+data;
-                        return `<div class="btn-group" role="group" aria-label="Edit or delete">
-                                    <a href="/Admin/Edit/${data}" class="btn btn-primary">Edit</a>` +
-                                    
-                                    `<a href="/Admin/Deactivate/${data}" class="btn btn-danger">Deactivate</a>`+
+                { responsivePriority: 1, data: null,
+                    render: function(data, type, row) {
 
-                                `</div>`;
+                        
+
+                        let link = "/File/GetUserImage?UserID="+row.ID;
+                         console.log(row);
+
+                        if(row.IsActive === true){
+                             return `<div class="btn-group" role="group" aria-label="Edit or delete">
+                                     <a href="/Admin/Edit/${row.ID}" class="btn btn-primary">Edit</a>` +
+                                    `<a href="/Admin/Deactivate/${row.ID}" class="btn btn-danger">Deactivate</a>`+
+                                    `</div>`;
+                        }else{
+                             return `<div class="btn-group" role="group" aria-label="Edit or delete">
+                                     <a href="/Admin/Edit/${row.ID}" class="btn btn-primary">Edit</a>` +
+                                    `<a href="/Admin/Activate/${row.ID}" class="btn btn-success">Activate</a>`+
+                                    `</div>`;
+                        }
+
+                       
                     }
                 }
             ],
