@@ -22,7 +22,7 @@ namespace PolyRushWeb.Models
         public string Avatar { get; set; } = "";
         public DateTime LastLoginTime { get; set; }
         public DateTime CreatedDate { get; set; }
-        public bool? IsActive { get; set; } = true;
+        public bool? IsActive { get; set; }
 
     }
 }

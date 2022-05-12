@@ -56,11 +56,8 @@ namespace PolyRushWeb.Controllers.ApiControllers
                 Avatar = registration.Avatar,
                 Firstname = registration.Firstname,
                 Lastname = registration.Lastname,
+                IsActive = true
             };
-
-
-            
-
 
             //try create the user
             IdentityResult result = await _userManager.CreateAsync(user, registration.Password);
@@ -97,7 +94,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             User? applicationUser = _userManager.Users.SingleOrDefault(x => x.Email == login.Email);
 
             if (applicationUser == null) return Unauthorized();
-
+            if (!applicationUser.IsActive ?? false) return Unauthorized();
 
             PasswordVerificationResult verificationResult = _userManager.PasswordHasher.VerifyHashedPassword(applicationUser, applicationUser.PasswordHash, login.Password);
 

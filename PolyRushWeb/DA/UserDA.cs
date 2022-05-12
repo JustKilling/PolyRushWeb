@@ -38,21 +38,12 @@ namespace PolyRushWeb.DA
 
         public async Task DeactivateAsync(int id, bool deactivate = true)
         {
-            User? user = new()
-            {
-                Id = id,
-                IsActive = !deactivate
-            };
-            _context.Entry(user).Property(u => u.IsActive).IsModified = true;
+
+            var user = await _userManager.Users.SingleAsync(u => u.Id == id);
+            user.IsActive = !deactivate;
+            _context.Users.Update(user);
+            //_context.Entry(user).Property(u => u.IsActive).IsModified = true;
             await _context.SaveChangesAsync();
-        }
-
-        public  User? UserExists(string usernameoremail)
-        {
-
-            _context.Users.AnyAsync(u =>
-                u.NormalizedEmail == usernameoremail.ToUpper() || u.NormalizedUserName == usernameoremail.ToUpper());
-            return null;
         }
 
         public async Task<User> GetByIdAsync(int userId, bool getAvatar = true)
@@ -124,6 +115,7 @@ namespace PolyRushWeb.DA
                 user.Firstname = model.Firstname;
                 user.Lastname = model.Lastname;
                 user.SeesAds = model.SeesAds;
+                user.IsActive = model.IsActive;
 
                 await _userManager.SetUserNameAsync(user, model.Username);
                 await _userManager.SetEmailAsync(user, model.Email);
