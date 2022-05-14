@@ -2,7 +2,7 @@
 {
     public class NextGoalResponse
     {
-        public string Avatar;
+        public int UserId;
         public int Goal;
         public int Rank;
     }

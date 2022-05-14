@@ -36,7 +36,7 @@
           <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
           <div> 
               <span style="display: inline; margin-right: 10px">@user.Username</span>
-              <div class="header_img" style="display: inline"> <img src="data:image/jpg;base64,@user.Avatar"> @*<img src="/File/GetUserImage?UserID=@user.ID" alt="">*@ </div>
+              <div class="header_img" style="display: inline"> <img src="/img/user/@{@user.ID.ToString()}.png" alt=""> </div>
           </div>
          
       </header>

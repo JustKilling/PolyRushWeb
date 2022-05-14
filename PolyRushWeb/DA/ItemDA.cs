@@ -81,8 +81,12 @@ namespace PolyRushWeb.DA
 
            
             Useritem? useritem = _context.Useritem.FirstOrDefault(ui => ui.UserId == id && ui.ItemId == item.Iditem);
-            useritem.Amount++;
-            _context.Useritem.Update(useritem);
+
+            if (useritem != null)
+            {
+                useritem.Amount++;
+                _context.Useritem.Update(useritem);
+            }
 
             //MySqlConnection conn = DatabaseConnector.MakeConnection();
             ////increment useritem amount
@@ -114,10 +118,10 @@ namespace PolyRushWeb.DA
         private async Task<bool> UserItemExistsAsync(int id, Item item) 
             => await _context.Useritem.Where(ui => ui.UserId == id && ui.ItemId == item.Iditem).AnyAsync();
 
-        public async Task<List<Item>> GetOwnedItemsFromTypeAsync(int id, ItemType type, bool getImage) => await _context.Useritem
+        public async Task<List<Item>> GetOwnedItemsFromTypeAsync(int id, ItemType type) => await _context.Useritem
                 .Join(_context.Item, ui => ui.ItemId, i => i.Iditem, (ui, i) => new { Useritem = ui, Item = i })
                 .Where(x => x.Useritem.UserId == id && x.Item.ItemTypeId == (int)type).Select(x => x.Item).ToListAsync();
-        public async Task<List<Item>> GetItemsFromType(ItemType type, bool getImage) 
+        public async Task<List<Item>> GetItemsFromType(ItemType type) 
             => await _context.Item.Where(i => i.ItemTypeId == (int)type).ToListAsync();
         public async Task<int> GetItemAmountAsync(int id, Item item)
         {
@@ -132,7 +136,7 @@ namespace PolyRushWeb.DA
             var useritem = await _context.Useritem.SingleAsync(ui => ui.UserId == id && ui.ItemId == item.Iditem);
             useritem.Amount--;
             _context.Update(useritem);
-            
+            await _context.SaveChangesAsync();
             return true;
         }
 

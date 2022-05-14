@@ -52,7 +52,7 @@ namespace PolyRushWeb.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "ba2f7219-43c8-459f-b2a3-6730b901818d",
+                            ConcurrencyStamp = "efc62bea-8bd4-4f33-a91c-c3480bfa0d1a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -105,10 +105,10 @@ namespace PolyRushWeb.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("varchar(95)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("varchar(95)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("longtext");
@@ -151,10 +151,10 @@ namespace PolyRushWeb.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("varchar(95)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("varchar(95)");
 
                     b.Property<string>("Value")
                         .HasColumnType("longtext");
@@ -450,10 +450,6 @@ namespace PolyRushWeb.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("Avatar")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<int>("Coins")
                         .HasColumnType("int");
 
@@ -484,8 +480,10 @@ namespace PolyRushWeb.Migrations
                     b.Property<int>("Highscore")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("IsActive")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("tinyint(1)");
@@ -558,16 +556,16 @@ namespace PolyRushWeb.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            Avatar = "",
                             Coins = 0,
                             Coinsgathered = 0,
                             Coinsspent = 0,
-                            ConcurrencyStamp = "c8554266-b401-4519-9aeb-a9283053fc58",
+                            ConcurrencyStamp = "n8754226-b405-4519-9beb-a9281053f355",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "emiel.delaey@sintjozefbrugge.be",
                             EmailConfirmed = true,
                             Firstname = "Admin",
                             Highscore = 0,
+                            IsActive = false,
                             IsAdmin = false,
                             Itemspurchased = 0,
                             LastLoginTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -575,10 +573,10 @@ namespace PolyRushWeb.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBPxxGxckF4auc2XM1Rl+QHW/L7+1FLRF/FOSsZWDYQV6wgkTeF/xx1E+CQ+mKRZog==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPjPCHBI9EddMDcFvwYVRko8VWSRtTfZDD+o6PN+yEQ4J4mUSLVgx1n7bIvGjwv1qg==",
                             PhoneNumberConfirmed = false,
                             Scoregathered = 0,
-                            SecurityStamp = "VVPCRDAS3MJWQD5CSW2GWPRADBXEZINA",
+                            SecurityStamp = "V3PFRDAS3MJWQD5TSW2GWPRADBFEZINA",
                             Timespassed = 0,
                             TwoFactorEnabled = false,
                             UserName = "Admin"

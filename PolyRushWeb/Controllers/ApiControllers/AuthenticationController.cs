@@ -13,6 +13,9 @@ using PolyRushWeb.DA;
 using PolyRushWeb.Data;
 using PolyRushWeb.Helper;
 using PolyRushWeb.Models;
+using System.Drawing;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+
 
 namespace PolyRushWeb.Controllers.ApiControllers
 {
@@ -21,21 +24,22 @@ namespace PolyRushWeb.Controllers.ApiControllers
     public class AuthenticationController : ControllerBase
     {
         private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
+
         private readonly SecretSettings _settings;
         private readonly polyrushContext _context;
+        private readonly IWebHostEnvironment _env;
 
         public AuthenticationController(UserManager<User> userManager,
-        SignInManager<User> signInManager,
-        IConfiguration configuration,
         SecretSettings settings,
-        polyrushContext context
+        polyrushContext context,
+        IWebHostEnvironment env
         )
         {
             _userManager = userManager;
-            _signInManager = signInManager;
+
             _settings = settings;
             _context = context;
+            _env = env;
         }
         [AllowAnonymous]
         [HttpPost("register")]
@@ -45,7 +49,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
 
             if (string.IsNullOrWhiteSpace(registration.Avatar))
             {
-                registration.Avatar = ImageToBase64Helper.ConvertImagePathToBase64String("Media/user.png");
+                registration.Avatar = ImageHelper.ConvertImagePathToBase64String("Media/user.png");
             }
 
             //Make the user
@@ -53,7 +57,6 @@ namespace PolyRushWeb.Controllers.ApiControllers
             {
                 Email = registration.Email,
                 UserName = registration.Username,
-                Avatar = registration.Avatar,
                 Firstname = registration.Firstname,
                 Lastname = registration.Lastname,
                 IsActive = true
@@ -70,6 +73,18 @@ namespace PolyRushWeb.Controllers.ApiControllers
                 }
                 return BadRequest(ModelState);
             }
+
+            var path = Path.Combine(_env.WebRootPath, "img" ,"user", user.Id.ToString() + ".png");
+
+
+            using (MemoryStream ms = new(Convert.FromBase64String(registration.Avatar)))
+            {
+                Bitmap bm = new(ms);
+                bm.SaveJPG100(path);
+               
+
+            }
+
             user = await _userManager.FindByNameAsync(user.UserName);
 
             //add claim to application user
@@ -94,7 +109,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             User? applicationUser = _userManager.Users.SingleOrDefault(x => x.Email == login.Email);
 
             if (applicationUser == null) return Unauthorized();
-            if (!applicationUser.IsActive ?? false) return Unauthorized();
+            if (!applicationUser.IsActive) return Unauthorized();
 
             PasswordVerificationResult verificationResult = _userManager.PasswordHasher.VerifyHashedPassword(applicationUser, applicationUser.PasswordHash, login.Password);
 
@@ -146,7 +161,6 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [HttpGet("checkadmin")]
         public IActionResult CheckAdminToken()
         {
-            var stop = User.Identity as ClaimsIdentity;
             return Ok();
         }
 

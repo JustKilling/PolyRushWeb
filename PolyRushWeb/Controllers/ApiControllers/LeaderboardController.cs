@@ -43,7 +43,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         public async Task<IActionResult> GetNextGoals(int amount)
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            User? user = await _userDa.GetByIdAsync(id);
+            UserDTO? user = await _userDa.GetByIdAsync(id);
             if (user == null) return BadRequest();
             List<NextGoalResponse> response = await _leaderboardDa.GetNextGoals(amount, user.Highscore);
             return Ok(response);

@@ -43,7 +43,6 @@ public class PolyRushWebContext : IdentityDbContext<User, IdentityRole<int>, int
             UserName = AdminUserName,
             Firstname = AdminUserName,
             Lastname = AdminUserName,
-            Avatar = "",
             NormalizedUserName = AdminUserName.ToUpper(),
             Email = AdminEmail,
             NormalizedEmail = AdminUserName.ToUpper(),

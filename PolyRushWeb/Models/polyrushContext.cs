@@ -36,6 +36,12 @@ namespace PolyRushWeb.Models
         {
             base.OnModelCreating(modelBuilder);
 
+            //isactive is true by default
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.Property(e => e.IsActive)
+                    .HasDefaultValue(true);
+            });
 
 
             modelBuilder.UseCollation("utf8_general_ci")
@@ -329,6 +335,5 @@ namespace PolyRushWeb.Models
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
-        public DbSet<PolyRushWeb.Models.UserEditAdminModel> UserEditAdminModel { get; set; }
     }
 }

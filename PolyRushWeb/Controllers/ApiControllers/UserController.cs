@@ -37,7 +37,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
          {
             //id ophalen uit jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            User? user = await _userDa.GetByIdAsync(id);
+            UserDTO? user = await _userDa.GetByIdAsync(id);
             //check if user with that id exists
             if (user == null) return BadRequest("User not found!");
             return Ok(user);
@@ -47,7 +47,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAsync(int id)
         {
-            User? user = await _userDa.GetByIdAsync(id);
+            UserDTO? user = await _userDa.GetByIdAsync(id);
             //check if user with that id exists
             if (user == null) return BadRequest("User not found!");
             return Ok(user);

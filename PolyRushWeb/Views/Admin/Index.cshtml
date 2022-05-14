@@ -31,14 +31,15 @@ $(document).ready( function () {
         ajax: {
             url: '/Admin/GetUsers'
         },
-        autoWidth: true,
+        autoWidth: false,
         columns: [
                 { 
-                    data: "Avatar",
+                    bSortable: false,
+                    data: "ID",
                     responsivePriority: 2,
                     render: function(data, type) {
-                        let link = "/File/GetUserImage?UserID="+data;
-                        return `<img style="max-height:40px;" src="data:image/jpg;base64,${data}" alt="" srcset="">`;
+                        //return `<img style="max-height:40px;" src="data:image/jpg;base64,${data}" alt="" srcset="">`;
+                        return `<img style="max-height:40px;" src="/img/user/${data}.png" loading="lazy" alt="User avatar">`;
                     }
                 },
                 { responsivePriority: 1, data: "Username" },

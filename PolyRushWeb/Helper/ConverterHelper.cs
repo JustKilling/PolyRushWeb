@@ -9,7 +9,6 @@ namespace PolyRushWeb.Helper
             return new UserDTO
             {
                 Username = user.UserName,
-                Avatar = user.Avatar,
                 Coins = user.Coins,
                 Coinsgathered = user.Coinsgathered,
                 Coinsspent = user.Coinsspent,
@@ -22,7 +21,27 @@ namespace PolyRushWeb.Helper
                 Lastname = user.Lastname,
                 SeesAds = user.SeesAds,
                 Timespassed = user.Timespassed,
-                IsActive = user.IsActive ?? true
+                IsActive = user.IsActive
+            };
+        }
+        public static User ToUser(this UserDTO user)
+        {
+            return new User
+            {
+                UserName = user.Username,
+                Coins = user.Coins,
+                Coinsgathered = user.Coinsgathered,
+                Coinsspent = user.Coinsspent,
+                Email = user.Email,
+                Firstname = user.Firstname,
+                Highscore = user.Highscore,
+                Id = user.ID,
+                IsAdmin = user.IsAdmin,
+                Itemspurchased = user.Itemspurchased,
+                Lastname = user.Lastname,
+                SeesAds = user.SeesAds,
+                Timespassed = user.Timespassed,
+                IsActive = user.IsActive
             };
         }
 
@@ -39,7 +58,7 @@ namespace PolyRushWeb.Helper
                 Id = user.Id,
                 IsAdmin = user.IsAdmin,
                 //if null --> true
-                IsActive = user.IsActive ?? true,
+                IsActive = user.IsActive,
                 Itemspurchased = user.Itemspurchased,
                 Lastname = user.Lastname,
                 Scoregathered = user.Scoregathered,

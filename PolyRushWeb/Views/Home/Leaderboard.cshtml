@@ -48,7 +48,8 @@ $( document ).ready(function() {
                     UserDTO user = listTopHighscore[@i-1];
                     <tr style="user-select:none">
                         <td>@i</td>
-                        <td><img style="user-select:none; max-width: 20px" src="data:image/jpg;base64,@user.Avatar"/></td>
+                        <td><img style="user-select:none; max-width: 20px" src="/img/user/@{@user.ID.ToString()}.png"/></td> 
+
                         <td>@user.Username</td>
                         <td>@user.Highscore</td>
                     </tr>
@@ -66,8 +67,8 @@ $( document ).ready(function() {
                     UserPlaytime pt = @listPlaytime[@i-1];
                     <tr style="user-select:none">
                         <td>@i</td>
-                        <!-- <td><img style="user-select:none; max-width: 20px" src="/File/GetUserImage?UserID=@pt.User.ID"/></td> -->
-                        <td><img style="user-select:none; max-width: 20px" src="data:image/jpg;base64,@pt.User.Avatar"/></td>
+                        <td><img style="user-select:none; max-width: 20px" src="/img/user/@{@pt.User.ID.ToString()}.png"/></td> 
+
                         <td>@pt.User.Username</td>
                         <td>@String.Format("{0:%h} hours, {0:%m} minutes, {0:%s} seconds", pt.Playtime)</td>
                     </tr>

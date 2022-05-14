@@ -56,16 +56,16 @@ namespace PolyRushWeb.DA
             if (setting is EnumSetting.MasterVolume) state = 100;
             polyrushContext context = await _contextFactory.CreateDbContextAsync();
             await context.Usersetting.AddAsync(new Usersetting { SettingId = (int)setting, State = state, UserId = id });
+            await context.SaveChangesAsync();
         }
 
         //Check if user has a record with this setting.
         private async Task<bool> SettingExistsAsync(int id, EnumSetting setting)
         {
-            bool result = false;
             polyrushContext context = await _contextFactory.CreateDbContextAsync();
-            result = context.Usersetting.Where(u => u.UserId == id && u.SettingId == (int)setting).FirstOrDefaultAsync() != null;
-            
-            return result;
+
+            //check if there are any usersettings with that id and setting
+            return await context.Usersetting.Where(u => u.UserId == id && u.SettingId == (int)setting).AnyAsync();    
         }
         public async Task SetSettingAsync(int id, EnumSetting setting, int state)
         {

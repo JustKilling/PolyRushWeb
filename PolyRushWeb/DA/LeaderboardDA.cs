@@ -14,7 +14,7 @@ namespace PolyRushWeb.DA
         private readonly UserDA _userDa;
         private readonly polyrushContext _context;
         private readonly UserManager<User> _userManager;
-        private Random rnd = new();
+        private readonly Random rnd = new();
 
         public LeaderboardDA(UserDA userDa, polyrushContext context, UserManager<User> userManager)
         {
@@ -22,7 +22,7 @@ namespace PolyRushWeb.DA
             _context = context;
             _userManager = userManager;
         }
-        public async Task<List<UserDTO>> GetTopUsers(int amount, bool getImages = true)
+        public async Task<List<UserDTO>> GetTopUsers(int amount)
         {
             IList<User>? adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
             return await _userManager.Users.Where(u => !adminUsers.Contains(u)).OrderByDescending(u => u.Highscore).Take(amount).Select(u => u.ToUserDTO()).ToListAsync();
@@ -42,7 +42,7 @@ namespace PolyRushWeb.DA
                 .Select(gs => new UserPlaytime
                 {
                     Playtime = gs.EndDateTime.Subtract(gs.StartDateTime),
-                    User = (_userDa.GetByIdAsync(gs.UserId, true).GetAwaiter().GetResult()).ToUserDTO()
+                    User = (_userDa.GetByIdAsync(gs.UserId).GetAwaiter().GetResult())
                 })
                 .ToListAsync();
             List<IGrouping<int, UserPlaytime>>? uptGrouped = userplaytimesUngrouped.GroupBy(u => u.User.ID).ToList();
@@ -72,14 +72,13 @@ namespace PolyRushWeb.DA
             IList<User>? adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
             List<UserDTO>? users = await _context.Users.Where(u => !adminUsers.Contains(u)).Where(u => u.Highscore > 100 && u.Highscore > highscore)
                 .OrderBy(u => u.Highscore).Take(amount)
-                .Select(u => new UserDTO() { ID = u.Id, Highscore = u.Highscore, Avatar = u.Avatar }).ToListAsync();
+                .Select(u => new UserDTO() { ID = u.Id, Highscore = u.Highscore}).ToListAsync();
 
             if (users.Count <= 0)
             {
-                string avatar = ImageToBase64Helper.ConvertImagePathToBase64String("Media/success.png");
                 return new List<NextGoalResponse>
                 {
-                    new() { Avatar = avatar, Goal = Convert.ToInt32(Math.Ceiling(highscore * 1.25 / 1000)) * 1000, Rank = 0 }
+                    new() { UserId = -1, Goal = Convert.ToInt32(Math.Ceiling(highscore * 1.25 / 1000)) * 1000, Rank = 0 }
                 };
             }
 
@@ -89,7 +88,7 @@ namespace PolyRushWeb.DA
             {
                 goalResponses.Add(new NextGoalResponse
                 {
-                    Avatar = user.Avatar,
+                    UserId = user.ID,
                     Goal = user.Highscore,
                     Rank = GetPositionByHighscore(user.Highscore)
                 }); ;
@@ -106,15 +105,23 @@ namespace PolyRushWeb.DA
         public async Task UpdateRandomAsync(string username)
         {
 
-            User? user = await _userManager.FindByNameAsync(username);
-            user.Coins = rnd.Next(1000, 15000);
-            user.Highscore = rnd.Next(7500);
-            user.Itemspurchased = rnd.Next(20);
-            user.Coinsspent = rnd.Next(user.Itemspurchased * 200);
-            user.Coinsgathered = rnd.Next(user.Coins - user.Itemspurchased * 200);
-            user.Timespassed = rnd.Next(100);
+            try
+            {
+                User? user = await _userManager.FindByNameAsync(username);
+                user.Coins = rnd.Next(1000, 15000);
+                user.Highscore = rnd.Next(7500);
+                user.Itemspurchased = rnd.Next(20);
+                user.Coinsspent = rnd.Next(user.Itemspurchased * 200);
+                user.Coinsgathered = rnd.Next(user.Coins - user.Itemspurchased * 200);
+                user.Timespassed = rnd.Next(100);
 
-            await _userManager.UpdateAsync(user);
+                await _userManager.UpdateAsync(user);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+           
         }
 
 

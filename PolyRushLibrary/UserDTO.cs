@@ -3,7 +3,6 @@
     public class UserDTO
     {
         public int ID;
-        public string Avatar;
         public int Coins;
         public int Coinsgathered;
         public int Coinsspent;
@@ -18,24 +17,5 @@
         public string Username;
         public bool IsActive;
 
-        ////implicit operator to conver user to userdto
-        //public static implicit operator UserDTO(ApplicationUser user)
-        //{
-        //    return new UserDTO
-        //    {
-        //        ID = user.IDUser,
-        //        Avatar = user.Avatar.ToString(),
-        //        Coinsgathered = user.Coinsgathered,
-        //        Coinsspent = user.Coinsspent,
-        //        Email = user.Email,
-        //        Firstname = user.Firstname,
-        //        Lastname = user.Lastname,
-        //        Username = user.Username,
-        //        Highscore = user.Highscore,
-        //        IsAdmin = user.IsAdmin,
-        //        Itemspurchased = user.Itemspurchased,
-        //        Coins = user.Coins
-        //    };
-        //}
     }
 }

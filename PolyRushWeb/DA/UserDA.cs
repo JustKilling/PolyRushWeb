@@ -19,17 +19,6 @@ namespace PolyRushWeb.DA
             _userManager = userManager;
         }
 
-        public async Task<List<UserDTO>> GetUsers(bool getAvatar = true)
-        {
-            List<UserDTO>? users = new();
-            if (getAvatar)
-            {
-                users = await _userManager.Users.Select(u => u.ToUserDTO()).ToListAsync()!;
-            }
-         
-            return users;
-        }
-
         public async Task<List<UserDTO>> GetUsers()
         {
             List<UserDTO>? users = await _userManager.Users.Select(u => u.ToUserDTO()).ToListAsync()!;
@@ -46,38 +35,17 @@ namespace PolyRushWeb.DA
             await _context.SaveChangesAsync();
         }
 
-        public async Task<User> GetByIdAsync(int userId, bool getAvatar = true)
+        public async Task<UserDTO> GetByIdAsync(int userId)
         {
-            //var user = await _context.Users.Where(u => u.Id == userId).FirstOrDefaultAsync();
-            User user = await _userManager.FindByIdAsync(userId.ToString());
-            return user;
+            var user = await _context.Users.Where(u => u.Id == userId).FirstOrDefaultAsync();
+            return user.ToUserDTO();
         }
-
-        public async Task<string?> GetAvatarById(int userId)
-        {
-            string? avatar = await _context.Users.Where(u => u.Id == userId).Select(u => u.Avatar).FirstOrDefaultAsync();
-            return avatar;
-        }
-
-
+        
         public async Task<bool> HasEnoughCoins(int id, int price)
         {
             return price < await GetCoinsAsync(id);
         }
         
-        //Een methode om te kijken of dit een email is.
-        private  bool IsEmail(string emailaddress)
-        {
-            try
-            {
-                MailAddress m = new(emailaddress);
-                return true;
-            }
-            catch (FormatException)
-            {
-                return false;
-            }
-        }
         public async Task<int> GetCoinsAsync(int id)
         {
             DbSet<User>? coins = _context.Users;
@@ -106,7 +74,7 @@ namespace PolyRushWeb.DA
         {
             try
             {
-                var user = await GetByIdAsync(model.Id);
+                User user = (await GetByIdAsync(model.Id)).ToUser();
                 user.IsAdmin = model.IsAdmin;
                 user.Highscore = model.Highscore;
                 user.Coins = model.Coins;
@@ -125,7 +93,7 @@ namespace PolyRushWeb.DA
                 
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }

@@ -19,10 +19,9 @@ namespace PolyRushWeb.Models
         public int Coinsspent { get; set; }
         public int Coinsgathered { get; set; }
         public int Timespassed { get; set; }
-        public string Avatar { get; set; } = "";
         public DateTime LastLoginTime { get; set; }
         public DateTime CreatedDate { get; set; }
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
 
     }
 }

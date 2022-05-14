@@ -40,7 +40,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         public async Task<IActionResult> GetAmounts([FromBody] List<Item> items)
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
+            bool isAdmin = User.IsInRole("Admin");
 
             List<int> amounts = new();
             foreach (Item? item in items)
@@ -57,7 +57,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         public async Task<IActionResult> BuyItem([FromBody] Item? item)
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
+            bool isAdmin = User.IsInRole("Admin");
             if (await _itemDa.BuyItem(id, item, isAdmin)) return Ok();
 
             return BadRequest("Not enough coins!");
@@ -68,7 +68,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Route("getdiscounteditemsfromtype/{type}")]
         public async Task<IActionResult> GetDiscountedItemsFromTypeAsync(ItemType type)
         {
-            bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
+            bool isAdmin = User.IsInRole("Admin");
             List<Item> items = await _itemDa.GetDiscountedItemsFromTypeAsync(type);
             if (!isAdmin) return Ok(items);
             //if an admin, put the price to 0
@@ -79,28 +79,18 @@ namespace PolyRushWeb.Controllers.ApiControllers
             return Ok(items);
         }
 
-        //method with and without specifying if you want the image or not
-        [HttpGet]
-        [Authorize]
-        [Route("getowneditemsfromtype/{type}/{getImage}")]
-        public async Task<IActionResult> GetOwnedItemsFromTypeAsync(ItemType type, bool getImage)
-        {
-            int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
-            if (isAdmin) return Ok(await _itemDa.GetItemsFromType(type, getImage));
-            return Ok(await _itemDa.GetOwnedItemsFromTypeAsync(id, type, getImage));
-        }
+
         [HttpGet]
         [Authorize]
         [Route("getowneditemsfromtype/{type}")]
         public async Task<IActionResult> GetOwnedItemsFromTypeAsync(ItemType type)
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
-            if (isAdmin) return Ok(await _itemDa.GetItemsFromType(type, true));
-            return Ok(await _itemDa.GetOwnedItemsFromTypeAsync(id, type, true));
+            bool isAdmin = User.IsInRole("Admin");
+            if (isAdmin) return Ok(await _itemDa.GetItemsFromType(type));
+            return Ok(await _itemDa.GetOwnedItemsFromTypeAsync(id, type));
         }
-        
+
         
         [HttpPost]
         [Authorize]
@@ -108,8 +98,8 @@ namespace PolyRushWeb.Controllers.ApiControllers
         public async Task<IActionResult> Remove1ItemAsync([FromBody] Item item)
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            bool isAdmin = bool.Parse(User.Claims.First(i => i.Type == "isAdmin").Value);
-            
+            bool isAdmin = User.IsInRole("Admin");
+
             return Ok(await _itemDa.Remove1ItemAsync(id, item, isAdmin));
         }
     }
