@@ -74,7 +74,7 @@ builder.Services.AddIdentityCore<User>(options =>
     .AddRoles<IdentityRole<int>>()
     .AddEntityFrameworkStores<PolyRushWebContext>()
     .AddSignInManager<SignInManager<User>>()
-    .AddTokenProvider<DataProtectorTokenProvider<User>>(TokenOptions.DefaultProvider);
+    .AddTokenProvider<DataProtectorTokenProvider<User>>(TokenOptions.DefaultProvider); //TODO Time limit also say in mail!
 
     SecretSettings secretSettings = new();
 builder.Configuration.Bind("SecretSettings", secretSettings);
