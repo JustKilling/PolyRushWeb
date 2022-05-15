@@ -28,15 +28,49 @@ namespace PolyRushWeb.DA
             return await _userManager.Users.Where(u => !adminUsers.Contains(u)).OrderByDescending(u => u.Highscore).Take(amount).Select(u => u.ToUserDTO()).ToListAsync();
         }
 
+        public async Task<StatsModel> GetUserStats(int id)
+        {
+            //get first user with that id.
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            if (user == null) return new StatsModel();
 
+            var stats = new StatsModel();
+
+            //highscore
+            //get the average highscore
+            int avgHighscore = Convert.ToInt32(await _context.Users.Select(u => u.Highscore).Where(x => x > 0).AverageAsync());
+            stats.Highscore = (avgHighscore, user.Highscore);
+
+            //coinsgathered
+            int avgCoinsGathered = Convert.ToInt32(await _context.Users.Select(u => u.Coinsgathered).Where(x => x > 0).AverageAsync());
+            stats.CoinsGathered = (avgCoinsGathered, user.Coinsgathered);
+
+            //coins
+            int avgCoins = Convert.ToInt32(await _context.Users.Select(u => u.Coins).Where(x => x > 0).AverageAsync());
+            stats.Coins = (avgCoins, user.Coins);
+
+            //People passed
+            int avgPeoplePassed = Convert.ToInt32(await _context.Users.Select(u => u.Timespassed).Where(x => x > 0).AverageAsync());
+            stats.PeoplePassed = (avgPeoplePassed, user.Timespassed);
+
+            //Score gathered
+            int avgScoreGathered = Convert.ToInt32(await _context.Users.Select(u => u.Scoregathered).Where(x => x > 0).AverageAsync());
+            stats.ScoreGathered = (avgScoreGathered, user.Scoregathered);
+
+            //PlayTime
+            var avgPlaytimeSeconds = Convert.ToInt32((await GetTopPlaytimeAsync(_userManager.Users.Count())).Select(x => x.Playtime).Average(t => t.TotalSeconds));
+            var avgPlaytime = TimeSpan.FromSeconds(avgPlaytimeSeconds);
+            stats.PlayTime = (avgPlaytime, await _userDa.GetUserTotalPlaytimeAsync(user.Id));
+
+            //TODO ?time per game?
+            //TODO COINS SPENT
+
+            return stats;
+        }
 
         //method to return the top users with playtime
-        public async Task<List<UserPlaytime>> GetTopPlaytime(int amount)
+        public async Task<List<UserPlaytime>> GetTopPlaytimeAsync(int amount)
         {
-
-
-
-
             //Get user playtimes
             List<UserPlaytime> userplaytimesUngrouped = await _context.Gamesession
                 .Select(gs => new UserPlaytime
@@ -123,7 +157,6 @@ namespace PolyRushWeb.DA
             }
            
         }
-
 
     }
 }

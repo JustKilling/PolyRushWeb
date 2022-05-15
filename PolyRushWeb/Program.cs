@@ -1,5 +1,8 @@
 global using PolyRushLibrary;
 using System;
+using System.Configuration;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -41,25 +44,39 @@ builder.Services.AddTransient<ItemDA>();
 builder.Services.AddTransient<SettingDA>();
 builder.Services.AddTransient<GameSessionDA>();
 
+//configure email
+//add emailhelper as a singleton
+builder.Services.AddSingleton<EmailHelper>();
+//configure fluentemail
+var client = new SmtpClient();
+client.Credentials = new NetworkCredential(builder.Configuration["Email:Username"], builder.Configuration["Email:Password"]);
+client.Host = builder.Configuration["Email:Host"];
+client.Port = Convert.ToInt32(builder.Configuration["Email:Port"]);
+client.EnableSsl = true;
+
+builder.Services
+    .AddFluentEmail(builder.Configuration["Email:Email"], "PolyRush")
+    .AddSmtpSender(client);
 
 //Add identity
 builder.Services.AddIdentityCore<User>(options =>
-{
-   
-    //Password settings
-    options.SignIn.RequireConfirmedAccount = false;
-    options.Password.RequireNonAlphanumeric = false;
-    options.Password.RequiredLength = 7;
-    options.Password.RequireUppercase = false;
-    options.Password.RequireLowercase = false;
-    options.User.RequireUniqueEmail = true;
+    {
 
-})
+        //Password settings
+        options.SignIn.RequireConfirmedAccount = false;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequiredLength = 7;
+        options.Password.RequireUppercase = false;
+        options.Password.RequireLowercase = false;
+        options.User.RequireUniqueEmail = true;
+
+    })
     .AddRoles<IdentityRole<int>>()
     .AddEntityFrameworkStores<PolyRushWebContext>()
-    .AddSignInManager<SignInManager<User>>();
+    .AddSignInManager<SignInManager<User>>()
+    .AddTokenProvider<DataProtectorTokenProvider<User>>(TokenOptions.DefaultProvider);
 
-SecretSettings secretSettings = new();
+    SecretSettings secretSettings = new();
 builder.Configuration.Bind("SecretSettings", secretSettings);
 builder.Services.AddSingleton(secretSettings);
 //builder.Services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();

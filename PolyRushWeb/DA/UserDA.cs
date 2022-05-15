@@ -115,9 +115,18 @@ namespace PolyRushWeb.DA
             user.Timespassed += session.PeoplePassed;
             user.Scoregathered += session.ScoreGathered;
             user.Highscore = highscore;
+            user.Coinsgathered += session.CoinsGathered;
 
             await _userManager.UpdateAsync(user);
         }
-     
+
+        public async Task<TimeSpan> GetUserTotalPlaytimeAsync(int userId)
+        {
+            var totalPlaytimes = await _context.Gamesession.Where(u => u.UserId == userId)
+                .Select(u => new { u.StartDateTime, u.EndDateTime }).ToListAsync();
+                
+            //calculate the difference between start and end, convert to seconds, sum it up, and convert to a timespan
+            return TimeSpan.FromSeconds(totalPlaytimes.Select(x => x.EndDateTime.Subtract(x.StartDateTime).TotalSeconds).Sum());
+        }
     }
 }

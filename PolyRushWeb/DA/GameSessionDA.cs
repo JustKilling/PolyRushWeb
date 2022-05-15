@@ -25,18 +25,6 @@ namespace PolyRushWeb.DA
             await _userDa.UploadGameResult(session);
         }
         
-        private static Gamesession Create(IDataReader reader)
-        {
-            return new Gamesession
-            {
-                IdgameSession = Convert.ToInt32(reader["IDGameSession"]),
-                UserId = Convert.ToInt32(reader["UserID"]),
-                StartDateTime = Convert.ToDateTime(reader["StartDateTime"]),
-                EndDateTime = Convert.ToDateTime(reader["EndDateTime"]),
-                CoinsGathered = Convert.ToInt32(reader["CoinsGathered"]),
-                PeoplePassed = Convert.ToInt32(reader["PeoplePassed"]),
-                ScoreGathered = Convert.ToInt32(reader["ScoreGathered"])
-            };
-        }
+
     }
 }

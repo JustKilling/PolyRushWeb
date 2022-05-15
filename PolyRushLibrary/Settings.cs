@@ -11,29 +11,21 @@
         public static string CloudURI => @"https://polyrushapi.azurewebsites.net";
         public static string GetAPIBaseURL(ApiType type)
         {
-            switch (type)
+            return type switch
             {
-                case ApiType.Cloud:
-                    return CloudURI + "/api";
-                case ApiType.Local:
-                    return LocalURI + "/api";
-                default:
-                    return CloudURI + "/api";
-            }
-            
+                ApiType.Cloud => CloudURI + "/api",
+                ApiType.Local => LocalURI + "/api",
+                _ => CloudURI + "/api"
+            };
         }
         public static string GetBaseURL(ApiType type)
         {
-            switch (type)
+            return type switch
             {
-                case ApiType.Cloud:
-                    return CloudURI;
-                case ApiType.Local:
-                    return LocalURI;
-                default:
-                    return CloudURI;
-            }
-
+                ApiType.Cloud => CloudURI,
+                ApiType.Local => LocalURI,
+                _ => CloudURI
+            };
         }
 
 

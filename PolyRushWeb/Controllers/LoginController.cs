@@ -83,6 +83,16 @@ namespace PolyRushWeb.Controllers
             }
             return RedirectToAction(nameof(Register));
         }
+        public async Task<IActionResult> ForgotPassword()
+        {
+            return View();
+        } 
+        public async Task<IActionResult> SendForgotPasswordMail(ForgotPasswordModel model)
+        {
+            HttpClient? client = _clientHelper.GetHttpClient();
+            HttpResponseMessage? response = await client.GetAsync($"forgot-password/{model.Email}");
+            return RedirectToAction(nameof(ForgotPassword));
+        }
 
         //public async Task<IActionResult> Logout()
         //{

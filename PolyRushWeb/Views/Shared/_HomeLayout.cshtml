@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
   <link rel="stylesheet" href="~/css/datatable.css" asp-append-version="true"/>
   <link href="~/css/sidebar.css" rel="stylesheet">
-
+  <link rel = "icon" href ="~/favicon.ico" type = "image/x-icon">
 
   <!-- Custom styles for this template -->
 </head>
@@ -67,6 +67,7 @@
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 <script src="~/js/sidebar.js" asp-append-version="true"></script>
+<partial name="_ValidationScriptsPartial"></partial>
 @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

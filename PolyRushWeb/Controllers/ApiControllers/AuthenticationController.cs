@@ -28,18 +28,20 @@ namespace PolyRushWeb.Controllers.ApiControllers
         private readonly SecretSettings _settings;
         private readonly polyrushContext _context;
         private readonly IWebHostEnvironment _env;
+        private readonly EmailHelper _emailHelper;
 
         public AuthenticationController(UserManager<User> userManager,
         SecretSettings settings,
         polyrushContext context,
-        IWebHostEnvironment env
+        IWebHostEnvironment env,
+        EmailHelper emailHelper
         )
         {
             _userManager = userManager;
-
             _settings = settings;
             _context = context;
             _env = env;
+            _emailHelper = emailHelper;
         }
         [AllowAnonymous]
         [HttpPost("register")]
@@ -161,6 +163,16 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [HttpGet("checkadmin")]
         public IActionResult CheckAdminToken()
         {
+            return Ok();
+        }
+
+        [HttpGet("forgot-password/{email}")]
+        public async Task<IActionResult> ForgotPassword(string email)
+        {
+            User user = await _userManager.FindByEmailAsync(email);
+            if (user == null) return BadRequest("User not found!");
+            var resetPasswordToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+            await _emailHelper.SendForgotPasswordEmail(user, resetPasswordToken);
             return Ok();
         }
 

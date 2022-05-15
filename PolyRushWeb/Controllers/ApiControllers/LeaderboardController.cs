@@ -16,7 +16,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         private readonly UserDA _userDa;
         private readonly LeaderboardDA _leaderboardDa;
 
-        public LeaderboardController(UserDA userDa, LeaderboardDA leaderboardDa, IHttpClientFactory httpClientFactory)
+        public LeaderboardController(UserDA userDa, LeaderboardDA leaderboardDa)
         {
             _userDa = userDa;
             _leaderboardDa = leaderboardDa;
@@ -32,8 +32,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Route("getnextgoals/{amount}/{score}")]
         public async Task<IActionResult> GetNextGoals(int amount, int score)
         {
-            int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-        
+          
             List<NextGoalResponse> response = await _leaderboardDa.GetNextGoals(amount, score);
             return Ok(response);
         }
@@ -60,7 +59,15 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Route("playtime/{amount}")]
         public async Task<IActionResult> GetTopPlayTimes(int amount = 10)
         {
-            return Ok(await _leaderboardDa.GetTopPlaytime(amount));
+            return Ok(await _leaderboardDa.GetTopPlaytimeAsync(amount));
+        }
+        [HttpGet]
+        [Route("stats")]
+        [Authorize]
+        public async Task<IActionResult> GetUserStats()
+        {
+            int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
+            return Ok(await _leaderboardDa.GetUserStats(id));
         }
     }
 }

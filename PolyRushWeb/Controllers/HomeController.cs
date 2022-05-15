@@ -30,16 +30,13 @@ namespace PolyRushWeb.Controllers
     public class HomeController : Controller
     {
         private readonly ClientHelper _clientHelper;
-        private readonly IConfiguration _configuration;
         private readonly AuthenticationHelper _authenticationHelper;
 
         public HomeController(
             ClientHelper clientHelper,
-            IConfiguration configuration,
             AuthenticationHelper authenticationHelper)
         {
             _clientHelper = clientHelper;
-            _configuration = configuration;
             this._authenticationHelper = authenticationHelper;
         }
 
@@ -99,9 +96,11 @@ namespace PolyRushWeb.Controllers
 
             return View();
         }
-        public IActionResult Stats()
+        public async Task<IActionResult> Stats()
         {
-            return View();
+            var httpClient = _clientHelper.GetHttpClient();
+            var response = await httpClient.GetAsync("leaderboard/stats");
+            return View(JsonConvert.DeserializeObject<StatsModel>(await response.Content.ReadAsStringAsync()));
         }
        
     }
