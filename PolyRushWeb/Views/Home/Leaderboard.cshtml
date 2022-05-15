@@ -61,7 +61,7 @@ $( document ).ready(function() {
 
             <caption style="caption-side: top; text-align:center; margin:auto; user-select:none">Top playtime</caption>
             <tbody>
-            @{var listPlaytime = topPlayTimes; }
+            @{List<UserPlaytime>? listPlaytime = topPlayTimes; }
                 @for (int i = 1; i <= @listPlaytime.Count; i++)
                 {
                     UserPlaytime pt = @listPlaytime[@i-1];

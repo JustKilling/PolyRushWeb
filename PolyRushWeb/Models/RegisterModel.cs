@@ -21,11 +21,10 @@ namespace PolyRushWeb.Models
         [Required(ErrorMessage = "Please provide your last name")]
         public string Lastname { get; set; }
         [Required(ErrorMessage = "Please provide an active email-adress.")]
-        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage ="Please provide a valid email-adress.")]
+        [EmailAddress]
         public string Email { get; set; }
         [Required(ErrorMessage = "Please provide a password.")]
-        //[RegularExpression("^.*(?=.*?[0-9]).{7,}$", ErrorMessage ="Please make sure the password is 8 characters long and has at least 1 digit.")]
-        [EmailAddress]
+        [RegularExpression("^.*(?=.*?[0-9]).{7,}$", ErrorMessage ="Please make sure the password is 8 characters long and has at least 1 digit.")]
         public string Password { get; set; }
         [Required(ErrorMessage = "Please provide a matching password to verify.")]
         [Compare("Password", ErrorMessage ="Those passwords didn't match. Try again.")]

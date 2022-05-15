@@ -49,11 +49,11 @@ namespace PolyRushWeb.Controllers
                 return RedirectToAction("Index","Login");
             }
 
-            var httpClient = _clientHelper.GetHttpClient();
-            var result = await httpClient.GetAsync("User");
+            HttpClient? httpClient = _clientHelper.GetHttpClient();
+            HttpResponseMessage? result = await httpClient.GetAsync("User");
 
-            var resultString = await result.Content.ReadAsStringAsync();
-            var user = JsonConvert.DeserializeObject<UserDTO>(resultString);
+            string? resultString = await result.Content.ReadAsStringAsync();
+            UserDTO? user = JsonConvert.DeserializeObject<UserDTO>(resultString);
 
             //return the page with the user info
             return View("Index", user);
@@ -80,15 +80,15 @@ namespace PolyRushWeb.Controllers
 
         public async Task<IActionResult> LeaderboardAsync()
         {
-            var httpClient = _clientHelper.GetHttpClient();
-            var response = await httpClient.GetAsync($"Leaderboard/{10}");
+            HttpClient? httpClient = _clientHelper.GetHttpClient();
+            HttpResponseMessage? response = await httpClient.GetAsync($"Leaderboard/{10}");
 
-            var topUsers =
+            List<UserDTO>? topUsers =
                 JsonConvert.DeserializeObject<List<UserDTO>>(await response.Content.ReadAsStringAsync());
 
             response = await httpClient.GetAsync($"Leaderboard/playtime/{10}");
 
-            var topPlaytimes = 
+            List<UserPlaytime>? topPlaytimes = 
                 JsonConvert.DeserializeObject<List<UserPlaytime>>(await response.Content.ReadAsStringAsync());
 
             ViewData["TopUsers"] = topUsers;
@@ -98,8 +98,8 @@ namespace PolyRushWeb.Controllers
         }
         public async Task<IActionResult> Stats()
         {
-            var httpClient = _clientHelper.GetHttpClient();
-            var response = await httpClient.GetAsync("leaderboard/stats");
+            HttpClient? httpClient = _clientHelper.GetHttpClient();
+            HttpResponseMessage? response = await httpClient.GetAsync("leaderboard/stats");
             return View(JsonConvert.DeserializeObject<StatsModel>(await response.Content.ReadAsStringAsync()));
         }
        

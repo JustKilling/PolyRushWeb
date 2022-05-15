@@ -28,7 +28,7 @@ namespace PolyRushWeb.DA
         public async Task DeactivateAsync(int id, bool deactivate = true)
         {
 
-            var user = await _userManager.Users.SingleAsync(u => u.Id == id);
+            User? user = await _userManager.Users.SingleAsync(u => u.Id == id);
             user.IsActive = !deactivate;
             _context.Users.Update(user);
             //_context.Entry(user).Property(u => u.IsActive).IsModified = true;
@@ -37,7 +37,7 @@ namespace PolyRushWeb.DA
 
         public async Task<UserDTO> GetByIdAsync(int userId)
         {
-            var user = await _context.Users.Where(u => u.Id == userId).FirstOrDefaultAsync();
+            User? user = await _context.Users.Where(u => u.Id == userId).FirstOrDefaultAsync();
             return user.ToUserDTO();
         }
         

@@ -36,7 +36,7 @@ namespace PolyRushWeb.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetUsers()
         {
-            var httpClient = _clientHelper.GetHttpClient();
+            HttpClient httpClient = _clientHelper.GetHttpClient();
 
             //Get all users 
             List<UserDTO>? users = JsonConvert.DeserializeObject<List<UserDTO>>(await httpClient.GetStringAsync("User/all"));
@@ -45,9 +45,9 @@ namespace PolyRushWeb.Controllers
 
         public async Task< IActionResult > Edit(int id)
         {
-            var httpClient = _clientHelper.GetHttpClient();
+            HttpClient httpClient = _clientHelper.GetHttpClient();
 
-            var response = await httpClient.GetStringAsync($"user/{id}");
+            string response = await httpClient.GetStringAsync($"user/{id}");
          
 
             UserEditAdminModel editModel = JsonConvert.DeserializeObject<User>(response)!.ToUserEditAdminModel();
@@ -58,9 +58,9 @@ namespace PolyRushWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                var httpClient = _clientHelper.GetHttpClient();
+                HttpClient httpClient = _clientHelper.GetHttpClient();
 
-                var response = await httpClient.PostAsJsonAsync("user/update", editModel);
+                HttpResponseMessage response = await httpClient.PostAsJsonAsync("user/update", editModel);
 
                 return View("Index");
 
@@ -70,14 +70,14 @@ namespace PolyRushWeb.Controllers
 
         public async Task<IActionResult> Deactivate(int id)
         {
-            var httpClient = _clientHelper.GetHttpClient();
+            HttpClient httpClient = _clientHelper.GetHttpClient();
             HttpRequestMessage request = new(HttpMethod.Post, $"User/deactivate/{id}");
             await httpClient.SendAsync(request);
             return View(nameof(Index));
         }
         public async Task<IActionResult> Activate(int id)
         {
-            var httpClient = _clientHelper.GetHttpClient();
+            HttpClient httpClient = _clientHelper.GetHttpClient();
             HttpRequestMessage request = new(HttpMethod.Post, $"User/activate/{id}");
             await httpClient.SendAsync(request);
             return View(nameof(Index));

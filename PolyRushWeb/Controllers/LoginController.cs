@@ -57,11 +57,11 @@ namespace PolyRushWeb.Controllers
             HttpResponseMessage? response = await client.PostAsJsonAsync("login/", request);
             if (response.IsSuccessStatusCode)
             {
-                var responseString = await response.Content.ReadAsStringAsync();
+                string responseString = await response.Content.ReadAsStringAsync();
                 AuthenticationResponse authenticationResponse =
                     JsonConvert.DeserializeObject<AuthenticationResponse>(responseString)!;
 
-                var cookieOptions = new CookieOptions
+                CookieOptions cookieOptions = new CookieOptions
                 {
                     Secure = true,
                     Expires = DateTime.Now.AddDays(7),
@@ -91,7 +91,19 @@ namespace PolyRushWeb.Controllers
         {
             HttpClient? client = _clientHelper.GetHttpClient();
             HttpResponseMessage? response = await client.GetAsync($"forgot-password/{model.Email}");
-            return RedirectToAction(nameof(ForgotPassword));
+            return RedirectToAction(nameof(Login));
+        }
+        public IActionResult ResetPassword([FromQuery] string email, [FromQuery] string token)
+        {
+            return View(new ResetPasswordModel(){Token = token, Email = email});
+        } 
+        public async Task<IActionResult> ResetPasswordAction(ResetPasswordModel resetPassword)
+        {
+            HttpClient? client = _clientHelper.GetHttpClient();
+            HttpResponseMessage? response = await client.PostAsJsonAsync($"reset-password", resetPassword);
+            
+            if(response.IsSuccessStatusCode) return View(nameof(Login));
+            return Content(await response.Content.ReadAsStringAsync());
         }
 
         //public async Task<IActionResult> Logout()

@@ -133,7 +133,7 @@ namespace PolyRushWeb.DA
             if (isAdmin) return true;
             if (await GetItemAmountAsync(id, item) < 1) return false;
 
-            var useritem = await _context.Useritem.SingleAsync(ui => ui.UserId == id && ui.ItemId == item.Iditem);
+            Useritem? useritem = await _context.Useritem.SingleAsync(ui => ui.UserId == id && ui.ItemId == item.Iditem);
             useritem.Amount--;
             _context.Update(useritem);
             await _context.SaveChangesAsync();

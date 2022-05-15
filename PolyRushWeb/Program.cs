@@ -48,7 +48,7 @@ builder.Services.AddTransient<GameSessionDA>();
 //add emailhelper as a singleton
 builder.Services.AddSingleton<EmailHelper>();
 //configure fluentemail
-var client = new SmtpClient();
+SmtpClient? client = new SmtpClient();
 client.Credentials = new NetworkCredential(builder.Configuration["Email:Username"], builder.Configuration["Email:Password"]);
 client.Host = builder.Configuration["Email:Host"];
 client.Port = Convert.ToInt32(builder.Configuration["Email:Port"]);

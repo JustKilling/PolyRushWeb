@@ -76,7 +76,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            var path = Path.Combine(_env.WebRootPath, "img" ,"user", user.Id.ToString() + ".png");
+            string path = Path.Combine(_env.WebRootPath, "img" ,"user", user.Id.ToString() + ".png");
 
 
             using (MemoryStream ms = new(Convert.FromBase64String(registration.Avatar)))
@@ -171,9 +171,19 @@ namespace PolyRushWeb.Controllers.ApiControllers
         {
             User user = await _userManager.FindByEmailAsync(email);
             if (user == null) return BadRequest("User not found!");
-            var resetPasswordToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+            string? resetPasswordToken = await _userManager.GeneratePasswordResetTokenAsync(user);
             await _emailHelper.SendForgotPasswordEmail(user, resetPasswordToken);
             return Ok();
+        }
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ForgotPassword(ResetPasswordModel resetPassword)
+        {
+            User? user = await _userManager.FindByEmailAsync(resetPassword.Email);
+            //in case query string transformed the + in the token to a space.
+            resetPassword.Token = resetPassword.Token.Replace(" ", "+");
+            var test = await _userManager.ResetPasswordAsync(user, resetPassword.Token, resetPassword.NewPassword);
+            if (test.Succeeded) return Ok();
+            return BadRequest(test.Errors);
         }
 
         //een nieuwe JWT aanmaken
@@ -185,10 +195,10 @@ namespace PolyRushWeb.Controllers.ApiControllers
 
             claims.AddRange(userClaims);        
 
-            var roleClaims = await _userManager.GetRolesAsync(user);
+            IList<string>? roleClaims = await _userManager.GetRolesAsync(user);
 
             //Add role claims to jwt
-            foreach (var roleClaim in roleClaims)
+            foreach (string? roleClaim in roleClaims)
             {
                 claims.Add(new Claim(ClaimTypes.Role, roleClaim));
             }

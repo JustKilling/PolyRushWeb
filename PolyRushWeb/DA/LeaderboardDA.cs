@@ -31,10 +31,10 @@ namespace PolyRushWeb.DA
         public async Task<StatsModel> GetUserStats(int id)
         {
             //get first user with that id.
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            User? user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
             if (user == null) return new StatsModel();
 
-            var stats = new StatsModel();
+            StatsModel? stats = new StatsModel();
 
             //highscore
             //get the average highscore
@@ -58,8 +58,8 @@ namespace PolyRushWeb.DA
             stats.ScoreGathered = (avgScoreGathered, user.Scoregathered);
 
             //PlayTime
-            var avgPlaytimeSeconds = Convert.ToInt32((await GetTopPlaytimeAsync(_userManager.Users.Count())).Select(x => x.Playtime).Average(t => t.TotalSeconds));
-            var avgPlaytime = TimeSpan.FromSeconds(avgPlaytimeSeconds);
+            int avgPlaytimeSeconds = Convert.ToInt32((await GetTopPlaytimeAsync(_userManager.Users.Count())).Select(x => x.Playtime).Average(t => t.TotalSeconds));
+            TimeSpan avgPlaytime = TimeSpan.FromSeconds(avgPlaytimeSeconds);
             stats.PlayTime = (avgPlaytime, await _userDa.GetUserTotalPlaytimeAsync(user.Id));
 
             //TODO ?time per game?
@@ -95,7 +95,7 @@ namespace PolyRushWeb.DA
                 }
                 upts.Add(uptToAdd);
             }
-            var _ = upts.OrderByDescending(u => u.Playtime.TotalSeconds).Take(amount).ToList();
+            List<UserPlaytime>? _ = upts.OrderByDescending(u => u.Playtime.TotalSeconds).Take(amount).ToList();
             return _;
 
 
