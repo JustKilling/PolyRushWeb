@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using PolyRushLibrary;
+using PolyRushWeb.Data;
 using PolyRushWeb.Helper;
 using PolyRushWeb.Models;
 
@@ -9,9 +10,9 @@ namespace PolyRushWeb.DA
     public  class GameSessionDA
     {
         private readonly UserDA _userDa;
-        private readonly polyrushContext _context;
+        private readonly PolyRushWebContext _context;
 
-        public GameSessionDA(UserDA userDa, polyrushContext context)
+        public GameSessionDA(UserDA userDa, PolyRushWebContext context)
         {
             _userDa = userDa;
             _context = context;

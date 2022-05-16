@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 
 using PolyRushLibrary.Responses;
-
+using PolyRushWeb.Data;
 using PolyRushWeb.Helper;
 using PolyRushWeb.Models;
 
@@ -12,11 +12,11 @@ namespace PolyRushWeb.DA
     public class LeaderboardDA
     {
         private readonly UserDA _userDa;
-        private readonly polyrushContext _context;
+        private readonly PolyRushWebContext _context;
         private readonly UserManager<User> _userManager;
         private readonly Random rnd = new();
 
-        public LeaderboardDA(UserDA userDa, polyrushContext context, UserManager<User> userManager)
+        public LeaderboardDA(UserDA userDa, PolyRushWebContext context, UserManager<User> userManager)
         {
             _userDa = userDa;
             _context = context;

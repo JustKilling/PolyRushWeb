@@ -9,6 +9,5 @@ namespace PolyRushLibrary
         public int ItemTypeId ;
         public string Name = null!;
         public int Price ;
-        public string Icon = null!;
     }
 }

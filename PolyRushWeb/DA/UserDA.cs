@@ -3,6 +3,7 @@ using System.Net.Mail;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using PolyRushWeb.Data;
 using PolyRushWeb.Helper;
 using PolyRushWeb.Models;
 
@@ -10,10 +11,10 @@ namespace PolyRushWeb.DA
 {
     public class UserDA
     {
-        private readonly polyrushContext _context;
+        private readonly PolyRushWebContext _context;
         private readonly UserManager<User> _userManager;
 
-        public UserDA(polyrushContext context, UserManager<User> userManager)
+        public UserDA(PolyRushWebContext context, UserManager<User> userManager)
         {
             _context = context;
             _userManager = userManager;

@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using Microsoft.AspNetCore.Mvc;
+using PolyRushWeb.Data;
 using PolyRushWeb.Models;
 
 namespace PolyRushWeb.Controllers.ApiControllers
@@ -7,9 +8,9 @@ namespace PolyRushWeb.Controllers.ApiControllers
     [ApiController]
     public class APIController : ControllerBase
     {
-        private readonly polyrushContext _context;
+        private readonly PolyRushWebContext _context;
 
-        public APIController(polyrushContext context)
+        public APIController(PolyRushWebContext context)
         {
             _context = context;
         }

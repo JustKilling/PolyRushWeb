@@ -26,11 +26,8 @@ string? connectionString = builder.Configuration.GetConnectionString("PolyRushWe
 
 builder.Services.AddDbContext<PolyRushWebContext>(options =>
     options.UseMySql(connectionString, ServerVersion.Parse("5.7")), ServiceLifetime.Transient);
-builder.Services.AddDbContext<polyrushContext>(options =>
-{
-    options.UseMySql(connectionString, ServerVersion.Parse("5.7"));
-}, ServiceLifetime.Transient);
-builder.Services.AddDbContextFactory<polyrushContext>(options =>
+
+builder.Services.AddDbContextFactory<PolyRushWebContext>(options =>
 {
     options.UseMySql(connectionString, ServerVersion.Parse("5.7"));
 }, ServiceLifetime.Transient);

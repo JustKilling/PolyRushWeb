@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PolyRushWeb.Data;
 using PolyRushWeb.Models;
 
 
@@ -7,13 +8,13 @@ namespace PolyRushWeb.DA
     public class ItemDA
     {
         private readonly UserDA _userDa;
-        private readonly polyrushContext _context;
+        private readonly PolyRushWebContext _context;
 
-        public ItemDA(UserDA userDa, polyrushContext context)
+        public ItemDA(UserDA userDa, PolyRushWebContext context)
         {
             _userDa = userDa;
             _context = context;
-
+      
         }
         public async Task<int> GetDiscountedPriceAsync(Item i)
         {

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 
 using PolyRushLibrary;
+using PolyRushWeb.Data;
 using PolyRushWeb.Helper;
 using PolyRushWeb.Models;
 
@@ -17,9 +18,9 @@ namespace PolyRushWeb.DA
 
     public class SettingDA
     {
-        private readonly IDbContextFactory<polyrushContext> _contextFactory;
+        private readonly IDbContextFactory<PolyRushWebContext> _contextFactory;
 
-        public SettingDA(IDbContextFactory<polyrushContext> contextFactory)
+        public SettingDA(IDbContextFactory<PolyRushWebContext> contextFactory)
         {
             _contextFactory = contextFactory;
           
@@ -46,7 +47,7 @@ namespace PolyRushWeb.DA
             //reader.Close();
             //await conn.CloseAsync();
 
-            polyrushContext context = await _contextFactory.CreateDbContextAsync();
+            PolyRushWebContext context = await _contextFactory.CreateDbContextAsync();
             return (await context.Usersetting.Where(us => us.UserId == id && us.SettingId == (int)enumSetting).FirstOrDefaultAsync())!.State;
         }
 
@@ -54,7 +55,7 @@ namespace PolyRushWeb.DA
         {
             int state = 1;
             if (setting is EnumSetting.MasterVolume) state = 100;
-            polyrushContext context = await _contextFactory.CreateDbContextAsync();
+            PolyRushWebContext context = await _contextFactory.CreateDbContextAsync();
             await context.Usersetting.AddAsync(new Usersetting { SettingId = (int)setting, State = state, UserId = id });
             await context.SaveChangesAsync();
         }
@@ -62,7 +63,7 @@ namespace PolyRushWeb.DA
         //Check if user has a record with this setting.
         private async Task<bool> SettingExistsAsync(int id, EnumSetting setting)
         {
-            polyrushContext context = await _contextFactory.CreateDbContextAsync();
+            PolyRushWebContext context = await _contextFactory.CreateDbContextAsync();
 
             //check if there are any usersettings with that id and setting
             return await context.Usersetting.Where(u => u.UserId == id && u.SettingId == (int)setting).AnyAsync();    
@@ -73,7 +74,7 @@ namespace PolyRushWeb.DA
                 await CreateSettingAsync(id, setting);
 
 
-            polyrushContext context = await _contextFactory.CreateDbContextAsync();
+            PolyRushWebContext context = await _contextFactory.CreateDbContextAsync();
             
             Usersetting usersetting = await context.Usersetting.SingleAsync(us => us.UserId == id && us.SettingId == (int)setting);
             usersetting.State = state;

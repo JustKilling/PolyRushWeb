@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\PolyRushWeb",
+    "\\PolyRushWeb\\Views",
+    "\\PolyRushWeb\\Views\\Home"
   ],
-  "SelectedNode": "\\PolyRushAPI.sln",
+  "SelectedNode": "\\PolyRushWeb\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

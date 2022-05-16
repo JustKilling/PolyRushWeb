@@ -26,13 +26,13 @@ namespace PolyRushWeb.Controllers.ApiControllers
         private readonly UserManager<User> _userManager;
 
         private readonly SecretSettings _settings;
-        private readonly polyrushContext _context;
+        private readonly PolyRushWebContext _context;
         private readonly IWebHostEnvironment _env;
         private readonly EmailHelper _emailHelper;
 
         public AuthenticationController(UserManager<User> userManager,
         SecretSettings settings,
-        polyrushContext context,
+        PolyRushWebContext context,
         IWebHostEnvironment env,
         EmailHelper emailHelper
         )
@@ -76,15 +76,12 @@ namespace PolyRushWeb.Controllers.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            string path = Path.Combine(_env.WebRootPath, "img" ,"user", user.Id.ToString() + ".png");
-
-
+            //upload image
+            string path = Path.Combine(_env.WebRootPath, "img", "user", user.Id.ToString() + ".png");
             using (MemoryStream ms = new(Convert.FromBase64String(registration.Avatar)))
             {
                 Bitmap bm = new(ms);
-                bm.SaveJPG100(path);
-               
-
+                await bm.SaveJPG100(path);
             }
 
             user = await _userManager.FindByNameAsync(user.UserName);
