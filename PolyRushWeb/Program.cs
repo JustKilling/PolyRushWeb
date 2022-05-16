@@ -23,13 +23,13 @@ using Newtonsoft.Json;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 string? connectionString = builder.Configuration.GetConnectionString("PolyRushWebConnection");;
-
+var serverVersion = ServerVersion.AutoDetect(connectionString);
 builder.Services.AddDbContext<PolyRushWebContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.Parse("5.7")), ServiceLifetime.Transient);
+    options.UseMySql(connectionString, serverVersion), ServiceLifetime.Transient);
 
 builder.Services.AddDbContextFactory<PolyRushWebContext>(options =>
 {
-    options.UseMySql(connectionString, ServerVersion.Parse("5.7"));
+    options.UseMySql(connectionString, serverVersion);
 }, ServiceLifetime.Transient);
 
 
