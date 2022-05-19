@@ -46,10 +46,11 @@ builder.Services.AddTransient<GameSessionDA>();
 builder.Services.AddSingleton<EmailHelper>();
 //configure fluentemail
 SmtpClient? client = new SmtpClient();
+client.UseDefaultCredentials = false;
 client.Credentials = new NetworkCredential(builder.Configuration["Email:Username"], builder.Configuration["Email:Password"]);
 client.Host = builder.Configuration["Email:Host"];
 client.Port = Convert.ToInt32(builder.Configuration["Email:Port"]);
-client.EnableSsl = true;
+client.EnableSsl = Convert.ToBoolean(builder.Configuration["Email:EnableSsl"]);
 
 builder.Services
     .AddFluentEmail(builder.Configuration["Email:Email"], "PolyRush")

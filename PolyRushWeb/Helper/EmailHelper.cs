@@ -11,12 +11,13 @@ namespace PolyRushWeb.Helper
         private readonly IFluentEmail _fluentEmail;
         private readonly IServer _server;
         private readonly IHttpContextAccessor _contextAccessor;
-
+       
 
         public EmailHelper(IFluentEmail fluentEmail, IServer server)
         {
             _fluentEmail = fluentEmail;
             _server = server; ;
+            
         }
 
         public async Task SendForgotPasswordEmail(User user, string resetPasswordToken)
@@ -24,7 +25,10 @@ namespace PolyRushWeb.Helper
             try
             {
                 //get current host name
-                string link = _server.Features.Get<IServerAddressesFeature>()?.Addresses.First() + $"/Login/ResetPassword?token={resetPasswordToken}&email={user.Email}";
+                string link = _server.Features.Get<IServerAddressesFeature>()?.Addresses.First() 
+                    + $"/Login/ResetPassword?token={resetPasswordToken}&email={user.Email}";
+                Console.WriteLine(link);
+
                 await _fluentEmail
                     .To(user.Email)
                     .Subject("Poly Rush | Forgot password")
@@ -33,7 +37,7 @@ namespace PolyRushWeb.Helper
             }
             catch (Exception e)
             {
-
+              
                 Console.WriteLine(e.Message);
             }
          
