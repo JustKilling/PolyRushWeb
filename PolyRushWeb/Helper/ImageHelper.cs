@@ -49,19 +49,19 @@ namespace PolyRushWeb.Helper
             encoderParameters.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 100L);
             resized.Save(filename, GetEncoder(ImageFormat.Jpeg), encoderParameters);
 
-            //using var ftp = new FtpClient(host: "prjemiel.netwerkit.be", user: "ftpemieldelaey", pass: "48c/e:aZT]");https://imgur.com/a/9CT2PZE
-            //var imagepath = "prjemiel.netwerkit.be/wwwroot/user";
-            //try
-            //{
-            //    await ftp.ConnectAsync();
-            //    await ftp.UploadFileAsync(filename, imagepath, verifyOptions: FtpVerify.Retry);
+            using var ftp = new FtpClient(host: "prjemiel.netwerkit.be", user: "ftpemieldelaey", pass: "48c/e:aZT]"); https://imgur.com/a/9CT2PZE
+            var imagepath = "ftp://prjemiel.netwerkit.be/wwwroot/user";
+            try
+            {
+                await ftp.ConnectAsync();
+                await ftp.UploadFileAsync(filename, imagepath, verifyOptions: FtpVerify.Retry);
 
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine(e);
-            //    throw;
-            //}
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
         private static ImageCodecInfo GetEncoder(ImageFormat format)
         {

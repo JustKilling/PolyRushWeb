@@ -21,13 +21,22 @@ namespace PolyRushWeb.Helper
 
         public async Task SendForgotPasswordEmail(User user, string resetPasswordToken)
         {
-            //get current host name
-            string link = _server.Features.Get<IServerAddressesFeature>()?.Addresses.First() + $"/Login/ResetPassword?token={resetPasswordToken}&email={user.Email}";
-            await _fluentEmail
-                .To(user.Email)
-                .Subject("Poly Rush | Forgot password")
-                .Body("Forgot password token: " + link)
-                .SendAsync();
+            try
+            {
+                //get current host name
+                string link = _server.Features.Get<IServerAddressesFeature>()?.Addresses.First() + $"/Login/ResetPassword?token={resetPasswordToken}&email={user.Email}";
+                await _fluentEmail
+                    .To(user.Email)
+                    .Subject("Poly Rush | Forgot password")
+                    .Body("Forgot password token: " + link)
+                    .SendAsync();
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.Message);
+            }
+         
         }
     }
 }

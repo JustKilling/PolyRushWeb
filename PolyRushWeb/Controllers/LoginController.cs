@@ -102,7 +102,7 @@ namespace PolyRushWeb.Controllers
             HttpClient? client = _clientHelper.GetHttpClient();
             HttpResponseMessage? response = await client.PostAsJsonAsync($"reset-password", resetPassword);
             
-            if(response.IsSuccessStatusCode) return View(nameof(Login));
+            if(response.IsSuccessStatusCode) return RedirectToAction(nameof(Login));
             return Content(await response.Content.ReadAsStringAsync());
         }
 
