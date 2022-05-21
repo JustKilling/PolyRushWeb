@@ -169,7 +169,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             User user = await _userManager.FindByEmailAsync(email);
             if (user == null) return BadRequest("User not found!");
             string? resetPasswordToken = await _userManager.GeneratePasswordResetTokenAsync(user);
-            await _emailHelper.SendForgotPasswordEmail(user, resetPasswordToken);
+            _emailHelper.SendForgotPasswordEmail(user, resetPasswordToken);
             return Ok();
         }
         [HttpPost("reset-password")]

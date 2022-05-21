@@ -48,7 +48,8 @@ namespace PolyRushWeb.Controllers.ApiControllers
                 amounts.Add(await _itemDa.GetAmountAsync(item, id, isAdmin));
             }
 
-            return Ok(amounts);
+            var _ = JsonConvert.SerializeObject(amounts);
+            return Ok(_);
         }
 
         [HttpPost]

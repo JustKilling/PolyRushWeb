@@ -1,4 +1,5 @@
-﻿document.addEventListener("DOMContentLoaded", function(event) {
+﻿//with the help of https://codes4education.com/responsive-sidebar-menu-using-html-css-and-javascript/
+document.addEventListener("DOMContentLoaded", function (event) {
 
     const showNavbar = (toggleId, navId, bodyId, headerId) =>{
         const toggle = document.getElementById(toggleId),
