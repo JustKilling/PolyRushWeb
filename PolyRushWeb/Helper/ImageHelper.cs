@@ -42,26 +42,26 @@ namespace PolyRushWeb.Helper
             return myResult.ToArray();
         }
         //https://stackoverflow.com/questions/41665/bmp-to-jpg-png-in-c-sharp
-        public static async Task SaveJPG100(this Bitmap bmp, string filename)
+        public static async Task SavePNG100(this Bitmap bmp, string filename)
         {
             Bitmap resized = new(bmp, new Size(500, 500));
             EncoderParameters encoderParameters = new(1);
             encoderParameters.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 100L);
-            resized.Save(filename, GetEncoder(ImageFormat.Jpeg), encoderParameters);
+            resized.Save(filename, GetEncoder(ImageFormat.Png), encoderParameters);
 
-            using var ftp = new FtpClient(host: "prjemiel.netwerkit.be", user: "ftpemieldelaey", pass: "48c/e:aZT]"); https://imgur.com/a/9CT2PZE
-            var imagepath = "ftp://prjemiel.netwerkit.be/wwwroot/user";
-            try
-            {
-                await ftp.ConnectAsync();
-                await ftp.UploadFileAsync(filename, imagepath, verifyOptions: FtpVerify.Retry);
+            //using var ftp = new FtpClient(host: "prjemiel.netwerkit.be", user: "ftpemieldelaey", pass: "48c/e:aZT]"); https://imgur.com/a/9CT2PZE
+            //var imagepath = "ftp://prjemiel.netwerkit.be/wwwroot/user";
+            //try
+            //{
+            //    await ftp.ConnectAsync();
+            //    await ftp.UploadFileAsync(filename, imagepath, verifyOptions: FtpVerify.Retry);
 
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e);
+            //    throw;
+            //}
         }
         private static ImageCodecInfo GetEncoder(ImageFormat format)
         {

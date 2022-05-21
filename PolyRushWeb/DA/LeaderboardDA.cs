@@ -58,11 +58,40 @@ namespace PolyRushWeb.DA
             stats.ScoreGathered = (avgScoreGathered, user.Scoregathered);
 
             //PlayTime
-            int avgPlaytimeSeconds = Convert.ToInt32((await GetTopPlaytimeAsync(_userManager.Users.Count())).Select(x => x.Playtime).Average(t => t.TotalSeconds));
+            //var gameSessions =
+            //    _context.Gamesession.AsEnumerable();
+            //var userPlaytimes = gameSessions.Select(gs => new UserPlaytime()
+            //{
+            //    Playtime = gs.EndDateTime.Subtract(gs.StartDateTime),
+            //    User = new UserDTO() { ID = gs.UserId }
+            //});
+            //List<UserPlaytime> playtimes = new List<UserPlaytime>();
+            //foreach (UserPlaytime userPlaytime in userPlaytimes)
+            //{
+            //    if (playtimes.Any(u => u.User.ID == userPlaytime.User.ID))
+            //    {
+            //        playtimes = playtimes.Where(u => u.User.ID == userPlaytime.User.ID).Select(x => 
+            //            new UserPlaytime(){User = x.User, Playtime = x.Playtime.Add(userPlaytime.Playtime)}).ToList();
+            //        continue;
+            //    }
+            //    playtimes.Add(userPlaytime);
+            //}
+
+            //stats.PlayTime = (userPlaytimes.Select(x => x.Playtime.TotalSeconds).Average(x => x), TimeSpan.Zero);
+            //double avgPerGameSeconds = test.Select(x => x.Playtime.TotalSeconds).Average();
+            //foreach (var t in test)
+            //{
+            //    Console.WriteLine(t.Playtime.TotalSeconds);
+            //}
+            //double avgPerGameSecondsForUser = test.Where(up => up.User.ID == id).Select(x => x.Playtime.TotalSeconds).Average();
+            //stats.PlayTime = (TimeSpan.FromSeconds(avgPerGameSeconds), TimeSpan.FromSeconds(avgPerGameSecondsForUser) );
+
+
+            long avgPlaytimeSeconds = Convert.ToInt64((await GetTopPlaytimeAsync(_userManager.Users.Count())).Select(x => x.Playtime).Average(t => t.TotalSeconds));
             TimeSpan avgPlaytime = TimeSpan.FromSeconds(avgPlaytimeSeconds);
             stats.PlayTime = (avgPlaytime, await _userDa.GetUserTotalPlaytimeAsync(user.Id));
 
-            //TODO ?time per game?
+            //TODO ?avg per game?
             //TODO COINS SPENT
 
             return stats;

@@ -33,6 +33,14 @@ namespace PolyRushWeb.Controllers
         {
             return View();
         }
+        public async Task<IActionResult> Discount()
+        {
+            HttpClient httpClient = _clientHelper.GetHttpClient();
+            //Get all users 
+            List<UserDTO>? users = JsonConvert.DeserializeObject<List<UserDTO>>(await httpClient.GetStringAsync("/all"));
+            
+            return View();
+        }
         [AllowAnonymous]
         public async Task<IActionResult> GetUsers()
         {

@@ -100,7 +100,8 @@ namespace PolyRushWeb.Controllers
         {
             HttpClient? httpClient = _clientHelper.GetHttpClient();
             HttpResponseMessage? response = await httpClient.GetAsync("leaderboard/stats");
-            return View(JsonConvert.DeserializeObject<StatsModel>(await response.Content.ReadAsStringAsync()));
+            var content = await response.Content.ReadAsStringAsync();
+            return View(JsonConvert.DeserializeObject<StatsModel>(content));
         }
        
     }

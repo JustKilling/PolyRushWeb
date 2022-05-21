@@ -1,0 +1,9 @@
+﻿@model List<Discount>
+@{
+    ViewData["Title"] = "Discount";
+    Layout = "_HomeLayout";
+}
+@foreach (Discount discount in Model)
+{
+    @discount.DiscountPercentage;
+};
