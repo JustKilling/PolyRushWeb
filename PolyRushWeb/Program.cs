@@ -40,6 +40,7 @@ builder.Services.AddTransient<LeaderboardDA>();
 builder.Services.AddTransient<ItemDA>();
 builder.Services.AddTransient<SettingDA>();
 builder.Services.AddTransient<GameSessionDA>();
+builder.Services.AddTransient<AchievementDA>();
 
 //configure email
 //add emailhelper as a singleton

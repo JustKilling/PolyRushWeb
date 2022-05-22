@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PolyRushWeb.Data;
 using PolyRushWeb.Models;
@@ -6,6 +7,7 @@ using PolyRushWeb.Models;
 namespace PolyRushWeb.Controllers.ApiControllers
 {
     [ApiController]
+    [Route("api")]
     public class APIController : ControllerBase
     {
         private readonly PolyRushWebContext _context;
@@ -16,7 +18,6 @@ namespace PolyRushWeb.Controllers.ApiControllers
         }
         //return OK response in the base domain when asked. This can be used to see if the API is online
         [HttpGet]
-        [Route("api/")]
         public IActionResult Get()
         {
             try

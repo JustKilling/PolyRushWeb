@@ -3,7 +3,24 @@
     ViewData["Title"] = "Discount";
     Layout = "_HomeLayout";
 }
-@foreach (Discount discount in Model)
+<script >
+    @{
+        int index = 4;
+    }
+    $(document).ready(function() {
+        $("#navs").children().eq(@index).addClass("active")
+    });
+</script>
+<div id="discountsContainer"></div>
+@if (Model.Any())
 {
-    @discount.DiscountPercentage;
-};
+    @foreach (Discount discount in Model)
+    {
+        @discount.DiscountPercentage
+    }
+}
+else
+{
+    <p>No discounts have been found!</p>
+}
+

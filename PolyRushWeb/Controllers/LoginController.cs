@@ -93,8 +93,9 @@ namespace PolyRushWeb.Controllers
             HttpResponseMessage? response = await client.GetAsync($"forgot-password/{model.Email}");
             return RedirectToAction(nameof(Login));
         }
-        public IActionResult ResetPassword([FromQuery] string email, [FromQuery] string token)
+        public async Task<IActionResult> ResetPassword([FromQuery] string email, [FromQuery] string token)
         {
+            
             return View(new ResetPasswordModel(){Token = token, Email = email});
         } 
         public async Task<IActionResult> ResetPasswordAction(ResetPasswordModel resetPassword)

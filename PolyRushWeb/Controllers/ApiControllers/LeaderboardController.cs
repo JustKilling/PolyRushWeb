@@ -48,6 +48,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             return Ok(response);
         }
 
+        //method to randomise a user, testing purposes only.
         [HttpGet]
         [Route("random/{username}")]
         public async Task<IActionResult> UpdateRandom(string username)

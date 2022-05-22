@@ -5,11 +5,18 @@
     ViewData["Title"] = "View";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
+<script >
+    @{
+        int index = 3;
+    }
+    $(document).ready(function() {
+        $("#navs").children().eq(@index).addClass("active")
+    });
+</script>
 
 <h1>View</h1>
 
 <h4>Edit user model for @Model.Username</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="EditUser" asp-controller="Admin">

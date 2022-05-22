@@ -26,13 +26,18 @@ namespace PolyRushWeb.Helper
             {
                 //get current host name
                 string link = _server.Features.Get<IServerAddressesFeature>()?.Addresses.First() 
-                    + $"/Login/ResetPassword?token={resetPasswordToken}&email={user.Email}";
+                    + $"/Login/ResetPassword?email={user.Email}&token={resetPasswordToken}";
                 Console.WriteLine(link);
+
+                var body = $"Dear {user.Firstname} {user.Lastname},\n" +
+                           $"You forgot your password, no problem! You can create a new password if you click on the link below!\n\n" +
+                           $"{link}\n\n" +
+                           $"If you did not request to change your password, please contact staff at polyrush@hotmail.com";
 
                 await _fluentEmail
                     .To(user.Email)
                     .Subject("Poly Rush | Forgot password")
-                    .Body("Forgot password token: " + link)
+                    .Body(body)
                     .SendAsync();
             }
             catch (Exception e)

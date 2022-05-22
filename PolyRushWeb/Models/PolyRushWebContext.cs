@@ -24,6 +24,8 @@ public class PolyRushWebContext : IdentityDbContext<User, IdentityRole<int>, int
     public DbSet<Setting> Setting { get; set; } = null!;
     public DbSet<Useritem> Useritem { get; set; } = null!;
     public DbSet<Usersetting> Usersetting { get; set; } = null!;
+    public DbSet<Achievement> Achievement { get; set; } = null!;
+    public DbSet<UserAchievement> UserAchievement { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -34,6 +36,8 @@ public class PolyRushWebContext : IdentityDbContext<User, IdentityRole<int>, int
         builder.Entity<IdentityUserRole<int>>().ToTable("userrole");
         builder.Entity<IdentityUserClaim<int>>().ToTable("userclaim");
         builder.Entity<IdentityUserLogin<int>>().ToTable("userlogin");
+        builder.Entity<IdentityRoleClaim<int>>().ToTable("roleclaim");
+        builder.Entity<IdentityUserToken<int>>().ToTable("usertoken");
 
         //Seed identity admin user
         const int AdminRoleId = 1;
@@ -41,7 +45,9 @@ public class PolyRushWebContext : IdentityDbContext<User, IdentityRole<int>, int
         const int AdminUserId = 1;
         const string AdminUserName = "Admin";
         const string AdminEmail = "emiel.delaey@sintjozefbrugge.be";
-        const string AdminUserPassword = "Admin123";
+        var random = new Random();
+        Byte[] b = new Byte[16]; random.NextBytes(b); //random 32 bytes
+        string AdminUserPassword = Convert.ToBase64String(b); //admin should reset password before he can login! This generates a random password
         IPasswordHasher<User> passwordHasher = new PasswordHasher<User>(); // Identity password hasher
 
         User adminUser = new()
@@ -52,7 +58,7 @@ public class PolyRushWebContext : IdentityDbContext<User, IdentityRole<int>, int
             Lastname = AdminUserName,
             NormalizedUserName = AdminUserName.ToUpper(),
             Email = AdminEmail,
-            NormalizedEmail = AdminUserName.ToUpper(),
+            NormalizedEmail = AdminEmail.ToUpper(),
             EmailConfirmed = true,
             SecurityStamp = "V3PFRDAS3MJWQD5TSW2GWPRADBFEZINA", //Random 
             ConcurrencyStamp = "n8754226-b405-4519-9beb-a9281053f355", //Random
@@ -247,60 +253,6 @@ public class PolyRushWebContext : IdentityDbContext<User, IdentityRole<int>, int
             builder.Entity<Setting>().HasData(setting);
         }
 
-        //builder.Entity<User>(entity =>
-        //{
-        //    entity.HasKey(e => e.Iduser)
-        //        .HasName("PRIMARY");
-
-        //    entity.ToTable("user");
-
-        //    entity.HasCharSet("latin1")
-        //        .UseCollation("latin1_swedish_ci");
-
-        //    entity.Property(e => e.Iduser)
-        //        .HasColumnType("int(11)")
-        //        .HasColumnName("IDUser");
-
-        //    entity.Property(e => e.Coins).HasColumnType("int(11)");
-
-        //    entity.Property(e => e.Coinsgathered).HasColumnType("int(11)");
-
-        //    entity.Property(e => e.Coinsspent).HasColumnType("int(11)");
-
-        //    entity.Property(e => e.CreatedDate)
-        //        .HasColumnType("datetime")
-        //        .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
-        //    entity.Property(e => e.Email).HasColumnType("text");
-
-        //    entity.Property(e => e.Firstname).HasColumnType("text");
-
-        //    entity.Property(e => e.Highscore).HasColumnType("int(11)");
-
-        //    entity.Property(e => e.IsActive)
-        //        .IsRequired()
-        //        .HasDefaultValueSql("'1'");
-
-        //    entity.Property(e => e.Itemspurchased).HasColumnType("int(11)");
-
-        //    entity.Property(e => e.Lastname).HasColumnType("text");
-
-        //    //entity.Property(e => e.Password).HasColumnType("text");
-
-        //    //entity.Property(e => e.RefreshToken).HasColumnType("text");
-
-        //    //entity.Property(e => e.Salt).HasColumnType("text");
-
-        //    entity.Property(e => e.Scoregathered).HasColumnType("int(11)");
-
-        //    entity.Property(e => e.SeesAds)
-        //        .IsRequired()
-        //        .HasDefaultValueSql("'1'");
-
-        //    entity.Property(e => e.Timespassed).HasColumnType("int(11)");
-
-        //    entity.Property(e => e.Username).HasColumnType("text");
-        //});
 
         builder.Entity<Useritem>(entity =>
         {
@@ -354,7 +306,110 @@ public class PolyRushWebContext : IdentityDbContext<User, IdentityRole<int>, int
                 .HasColumnName("UserID");
         });
 
+        builder.Entity<UserAchievement>(entity =>
+        {
+            entity.HasKey(e => e.IduserAchievement)
+                .HasName("PRIMARY");
 
+            entity.ToTable("userachievement");
+
+            entity.HasCharSet("latin1")
+                .UseCollation("latin1_swedish_ci");
+
+            entity.Property(e => e.UserId)
+                .HasColumnType("int(11)");
+           
+
+            entity.Property(e => e.AchievementId)
+                .HasColumnType("int(11)");
+
+
+        });
+
+        builder.Entity<Achievement>(entity =>
+        {
+            entity.HasKey(e => e.Idachievement)
+                .HasName("PRIMARY");
+
+            entity.ToTable("achievement");
+
+            entity.HasCharSet("latin1")
+                .UseCollation("latin1_swedish_ci");
+
+            entity.Property(e => e.AchievementDescription);
+
+
+            entity.Property(e => e.AchievementName);
+        });
+        //make the list of different achievements
+        var achievements = new List<Achievement>()
+        {
+            new Achievement()
+            {
+                Idachievement = 1, AchievementName = "25 coins in one game",
+                AchievementDescription = "Gather 25 coins in a single game"
+            },
+            new Achievement()
+            {
+                Idachievement = 2, AchievementName = "100 coins in one game",
+                AchievementDescription = "Gather 100 coins in a single game"
+            },  
+            new Achievement()
+            {
+                Idachievement = 3, AchievementName = "250 coins in one game",
+                AchievementDescription = "Gather 250 coins in a single game"
+            },
+            new Achievement()
+            {
+                Idachievement = 4, AchievementName = "500 coins in one game",
+                AchievementDescription = "Gather 500 coins in a single game"
+            },
+            new Achievement()
+            {
+                Idachievement = 5, AchievementName = "1000 coins in one game",
+                AchievementDescription = "Gather 1000 coins in a single game"
+            },
+            new Achievement()
+            {
+                Idachievement = 6, AchievementName = "Numero uno",
+                AchievementDescription = "Take the number one position on the leaderboard"
+            },
+            new Achievement()
+            {
+                Idachievement = 7, AchievementName = "Shopper",
+                AchievementDescription = "Buy something from the shop"
+            },
+            new Achievement()
+            {
+                Idachievement = 8, AchievementName = "Player",
+                AchievementDescription = "Play the game for the first time."
+            },
+            new Achievement()
+            {
+                Idachievement = 9, AchievementName = "1000 highscore",
+                AchievementDescription = "Reach a highscore of 1000."
+            },   
+            new Achievement()
+            {
+                Idachievement = 10, AchievementName = "2500 highscore",
+                AchievementDescription = "Reach a highscore of 2500."
+            },
+            new Achievement()
+            {
+                Idachievement = 11, AchievementName = "10000 highscore",
+                AchievementDescription = "Reach a highscore of 10000."
+            },
+            new Achievement()
+            {
+                Idachievement = 12, AchievementName = "50000 highscore",
+                AchievementDescription = "Reach a highscore of 50000."
+            }
+        };
+        //seed them to the table
+        foreach (var achievement in achievements)
+        {
+            builder.Entity<Achievement>().HasData(achievement);
+        }
     }
 
 }

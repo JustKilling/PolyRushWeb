@@ -40,8 +40,11 @@ namespace PolyRushWeb.Controllers.ApiControllers
             UserDTO? user = await _userDa.GetByIdAsync(id);
             //check if user with that id exists
             if (user == null) return BadRequest("User not found!");
+
             return Ok(user);
         }
+       
+
         //for admin to get a user with id
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin")]

@@ -22,6 +22,103 @@ namespace PolyRushWeb.Migrations
 
             MySqlModelBuilderExtensions.HasCharSet(modelBuilder, "utf8");
 
+            modelBuilder.Entity("Achievement", b =>
+                {
+                    b.Property<int>("Idachievement")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("AchievementDescription")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("AchievementName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Idachievement")
+                        .HasName("PRIMARY");
+
+                    b.ToTable("achievement", (string)null);
+
+                    MySqlEntityTypeBuilderExtensions.HasCharSet(b, "latin1");
+                    MySqlEntityTypeBuilderExtensions.UseCollation(b, "latin1_swedish_ci");
+
+                    b.HasData(
+                        new
+                        {
+                            Idachievement = 1,
+                            AchievementDescription = "Gather 10 coins in a single game",
+                            AchievementName = "10 coins in one game"
+                        },
+                        new
+                        {
+                            Idachievement = 2,
+                            AchievementDescription = "Gather 50 coins in a single game",
+                            AchievementName = "50 coins in one game"
+                        },
+                        new
+                        {
+                            Idachievement = 3,
+                            AchievementDescription = "Gather 100 coins in a single game",
+                            AchievementName = "100 coins in one game"
+                        },
+                        new
+                        {
+                            Idachievement = 4,
+                            AchievementDescription = "Gather 250 coins in a single game",
+                            AchievementName = "250 coins in one game"
+                        },
+                        new
+                        {
+                            Idachievement = 5,
+                            AchievementDescription = "Gather 500 coins in a single game",
+                            AchievementName = "500 coins in one game"
+                        },
+                        new
+                        {
+                            Idachievement = 6,
+                            AchievementDescription = "Take the number one position on the leaderboard",
+                            AchievementName = "Numero uno"
+                        },
+                        new
+                        {
+                            Idachievement = 7,
+                            AchievementDescription = "Buy something from the shop",
+                            AchievementName = "Shopper"
+                        },
+                        new
+                        {
+                            Idachievement = 8,
+                            AchievementDescription = "Play the game for the first time.",
+                            AchievementName = "Player"
+                        },
+                        new
+                        {
+                            Idachievement = 9,
+                            AchievementDescription = "Reach a highscore of 1000.",
+                            AchievementName = "1000 highscore"
+                        },
+                        new
+                        {
+                            Idachievement = 10,
+                            AchievementDescription = "Reach a highscore of 2500.",
+                            AchievementName = "2500 highscore"
+                        },
+                        new
+                        {
+                            Idachievement = 11,
+                            AchievementDescription = "Reach a highscore of 10000.",
+                            AchievementName = "10000 highscore"
+                        },
+                        new
+                        {
+                            Idachievement = 12,
+                            AchievementDescription = "Reach a highscore of 50000.",
+                            AchievementName = "50000 highscore"
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
                 {
                     b.Property<int>("Id")
@@ -52,7 +149,7 @@ namespace PolyRushWeb.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "76d5555a-282b-4144-8607-71fb68ab5e8d",
+                            ConcurrencyStamp = "c7789d9d-a0f0-414a-8e17-17af38af1dc4",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -77,7 +174,7 @@ namespace PolyRushWeb.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetRoleClaims", (string)null);
+                    b.ToTable("roleclaim", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
@@ -105,10 +202,10 @@ namespace PolyRushWeb.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(95)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("varchar(95)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("longtext");
@@ -151,17 +248,17 @@ namespace PolyRushWeb.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(95)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(95)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Value")
                         .HasColumnType("longtext");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("AspNetUserTokens", (string)null);
+                    b.ToTable("usertoken", (string)null);
                 });
 
             modelBuilder.Entity("PolyRushLibrary.Discount", b =>
@@ -561,9 +658,9 @@ namespace PolyRushWeb.Migrations
                             LastLoginTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Lastname = "Admin",
                             LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN",
+                            NormalizedEmail = "EMIEL.DELAEY@SINTJOZEFBRUGGE.BE",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOK+9kmz2kC3xnRLLZZbGIt1d6C4wTA0SmGJGUvWD0NDnqMmSoS1vHO+9M2mKDGGqQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBYJbwrhwRfzoMl6+D6hS6jQyHC7LwFmxc6z09ENIhVznFW1Wm5VlmJTG4u5LIFbhg==",
                             PhoneNumberConfirmed = false,
                             Scoregathered = 0,
                             SecurityStamp = "V3PFRDAS3MJWQD5TSW2GWPRADBFEZINA",
@@ -571,6 +668,27 @@ namespace PolyRushWeb.Migrations
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
+                });
+
+            modelBuilder.Entity("UserAchievement", b =>
+                {
+                    b.Property<int>("IduserAchievement")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("AchievementId")
+                        .HasColumnType("int(11)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int(11)");
+
+                    b.HasKey("IduserAchievement")
+                        .HasName("PRIMARY");
+
+                    b.ToTable("userachievement", (string)null);
+
+                    MySqlEntityTypeBuilderExtensions.HasCharSet(b, "latin1");
+                    MySqlEntityTypeBuilderExtensions.UseCollation(b, "latin1_swedish_ci");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

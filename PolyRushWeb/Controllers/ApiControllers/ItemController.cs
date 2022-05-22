@@ -91,8 +91,16 @@ namespace PolyRushWeb.Controllers.ApiControllers
             if (isAdmin) return Ok(await _itemDa.GetItemsFromType(type));
             return Ok(await _itemDa.GetOwnedItemsFromTypeAsync(id, type));
         }
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("getdiscounts")]
+        public async Task<IActionResult> GetDiscounts()
+        {
+            var discounts = await _itemDa.GetAllDiscounts();
+            if (discounts == null) return BadRequest("No discounts found!");
+            return Ok(discounts);
+        }
 
-        
         [HttpPost]
         [Authorize]
         [Route("useability")]

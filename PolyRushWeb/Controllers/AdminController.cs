@@ -36,16 +36,19 @@ namespace PolyRushWeb.Controllers
         public async Task<IActionResult> Discount()
         {
             HttpClient httpClient = _clientHelper.GetHttpClient();
-            //Get all users 
-            List<UserDTO>? users = JsonConvert.DeserializeObject<List<UserDTO>>(await httpClient.GetStringAsync("/all"));
-            
-            return View();
+            var response = await httpClient.GetAsync("item/getdiscounts");
+            if (!response.IsSuccessStatusCode)
+                return View(new List<Discount>());
+            //Get all discounts 
+            List<Discount>? discounts = JsonConvert.DeserializeObject<List<Discount>?>(await response.Content.ReadAsStringAsync());
+            //if discounts is null, return an empty list
+            return View(discounts ?? new List<Discount>());
         }
         [AllowAnonymous]
         public async Task<IActionResult> GetUsers()
         {
             HttpClient httpClient = _clientHelper.GetHttpClient();
-
+          
             //Get all users 
             List<UserDTO>? users = JsonConvert.DeserializeObject<List<UserDTO>>(await httpClient.GetStringAsync("User/all"));
             return Json(new {data = users});

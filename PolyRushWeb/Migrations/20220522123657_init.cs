@@ -6,12 +6,30 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PolyRushWeb.Migrations
 {
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
                 .Annotation("MySql:CharSet", "utf8");
+
+            migrationBuilder.CreateTable(
+                name: "achievement",
+                columns: table => new
+                {
+                    Idachievement = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    AchievementDescription = table.Column<string>(type: "longtext", nullable: false, collation: "latin1_swedish_ci")
+                        .Annotation("MySql:CharSet", "latin1"),
+                    AchievementName = table.Column<string>(type: "longtext", nullable: false, collation: "latin1_swedish_ci")
+                        .Annotation("MySql:CharSet", "latin1")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PRIMARY", x => x.Idachievement);
+                })
+                .Annotation("MySql:CharSet", "latin1")
+                .Annotation("Relational:Collation", "latin1_swedish_ci");
 
             migrationBuilder.CreateTable(
                 name: "discount",
@@ -176,6 +194,22 @@ namespace PolyRushWeb.Migrations
                 .Annotation("Relational:Collation", "utf8_general_ci");
 
             migrationBuilder.CreateTable(
+                name: "userachievement",
+                columns: table => new
+                {
+                    IduserAchievement = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    AchievementId = table.Column<int>(type: "int(11)", nullable: false),
+                    UserId = table.Column<int>(type: "int(11)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PRIMARY", x => x.IduserAchievement);
+                })
+                .Annotation("MySql:CharSet", "latin1")
+                .Annotation("Relational:Collation", "latin1_swedish_ci");
+
+            migrationBuilder.CreateTable(
                 name: "useritem",
                 columns: table => new
                 {
@@ -210,7 +244,7 @@ namespace PolyRushWeb.Migrations
                 .Annotation("Relational:Collation", "latin1_swedish_ci");
 
             migrationBuilder.CreateTable(
-                name: "AspNetRoleClaims",
+                name: "roleclaim",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -223,36 +257,11 @@ namespace PolyRushWeb.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
+                    table.PrimaryKey("PK_roleclaim", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetRoleClaims_role_RoleId",
+                        name: "FK_roleclaim_role_RoleId",
                         column: x => x.RoleId,
                         principalTable: "role",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8")
-                .Annotation("Relational:Collation", "utf8_general_ci");
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUserTokens",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    LoginProvider = table.Column<string>(type: "varchar(95)", nullable: false, collation: "utf8_general_ci")
-                        .Annotation("MySql:CharSet", "utf8"),
-                    Name = table.Column<string>(type: "varchar(95)", nullable: false, collation: "utf8_general_ci")
-                        .Annotation("MySql:CharSet", "utf8"),
-                    Value = table.Column<string>(type: "longtext", nullable: true, collation: "utf8_general_ci")
-                        .Annotation("MySql:CharSet", "utf8")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
-                    table.ForeignKey(
-                        name: "FK_AspNetUserTokens_user_UserId",
-                        column: x => x.UserId,
-                        principalTable: "user",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -288,9 +297,9 @@ namespace PolyRushWeb.Migrations
                 name: "userlogin",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "varchar(95)", nullable: false, collation: "utf8_general_ci")
+                    LoginProvider = table.Column<string>(type: "varchar(255)", nullable: false, collation: "utf8_general_ci")
                         .Annotation("MySql:CharSet", "utf8"),
-                    ProviderKey = table.Column<string>(type: "varchar(95)", nullable: false, collation: "utf8_general_ci")
+                    ProviderKey = table.Column<string>(type: "varchar(255)", nullable: false, collation: "utf8_general_ci")
                         .Annotation("MySql:CharSet", "utf8"),
                     ProviderDisplayName = table.Column<string>(type: "longtext", nullable: true, collation: "utf8_general_ci")
                         .Annotation("MySql:CharSet", "utf8"),
@@ -335,6 +344,50 @@ namespace PolyRushWeb.Migrations
                 .Annotation("MySql:CharSet", "utf8")
                 .Annotation("Relational:Collation", "utf8_general_ci");
 
+            migrationBuilder.CreateTable(
+                name: "usertoken",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    LoginProvider = table.Column<string>(type: "varchar(255)", nullable: false, collation: "utf8_general_ci")
+                        .Annotation("MySql:CharSet", "utf8"),
+                    Name = table.Column<string>(type: "varchar(255)", nullable: false, collation: "utf8_general_ci")
+                        .Annotation("MySql:CharSet", "utf8"),
+                    Value = table.Column<string>(type: "longtext", nullable: true, collation: "utf8_general_ci")
+                        .Annotation("MySql:CharSet", "utf8")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_usertoken", x => new { x.UserId, x.LoginProvider, x.Name });
+                    table.ForeignKey(
+                        name: "FK_usertoken_user_UserId",
+                        column: x => x.UserId,
+                        principalTable: "user",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8")
+                .Annotation("Relational:Collation", "utf8_general_ci");
+
+            migrationBuilder.InsertData(
+                table: "achievement",
+                columns: new[] { "Idachievement", "AchievementDescription", "AchievementName" },
+                values: new object[,]
+                {
+                    { 1, "Gather 10 coins in a single game", "10 coins in one game" },
+                    { 2, "Gather 50 coins in a single game", "50 coins in one game" },
+                    { 3, "Gather 100 coins in a single game", "100 coins in one game" },
+                    { 4, "Gather 250 coins in a single game", "250 coins in one game" },
+                    { 5, "Gather 500 coins in a single game", "500 coins in one game" },
+                    { 6, "Take the number one position on the leaderboard", "Numero uno" },
+                    { 7, "Buy something from the shop", "Shopper" },
+                    { 8, "Play the game for the first time.", "Player" },
+                    { 9, "Reach a highscore of 1000.", "1000 highscore" },
+                    { 10, "Reach a highscore of 2500.", "2500 highscore" },
+                    { 11, "Reach a highscore of 10000.", "10000 highscore" },
+                    { 12, "Reach a highscore of 50000.", "50000 highscore" }
+                });
+
             migrationBuilder.InsertData(
                 table: "item",
                 columns: new[] { "IDItem", "ItemTypeID", "Name", "Price" },
@@ -360,7 +413,7 @@ namespace PolyRushWeb.Migrations
             migrationBuilder.InsertData(
                 table: "role",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { 1, "76d5555a-282b-4144-8607-71fb68ab5e8d", "Admin", "ADMIN" });
+                values: new object[] { 1, "c7789d9d-a0f0-414a-8e17-17af38af1dc4", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "setting",
@@ -375,7 +428,7 @@ namespace PolyRushWeb.Migrations
             migrationBuilder.InsertData(
                 table: "user",
                 columns: new[] { "Id", "AccessFailedCount", "Coins", "Coinsgathered", "Coinsspent", "ConcurrencyStamp", "CreatedDate", "Email", "EmailConfirmed", "Firstname", "Highscore", "IsAdmin", "Itemspurchased", "LastLoginTime", "Lastname", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Scoregathered", "SecurityStamp", "SeesAds", "Timespassed", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 1, 0, 0, 0, 0, "n8754226-b405-4519-9beb-a9281053f355", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "emiel.delaey@sintjozefbrugge.be", true, "Admin", 0, false, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", false, null, "ADMIN", "ADMIN", "AQAAAAEAACcQAAAAEOK+9kmz2kC3xnRLLZZbGIt1d6C4wTA0SmGJGUvWD0NDnqMmSoS1vHO+9M2mKDGGqQ==", null, false, 0, "V3PFRDAS3MJWQD5TSW2GWPRADBFEZINA", null, 0, false, "Admin" });
+                values: new object[] { 1, 0, 0, 0, 0, "n8754226-b405-4519-9beb-a9281053f355", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "emiel.delaey@sintjozefbrugge.be", true, "Admin", 0, false, 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", false, null, "EMIEL.DELAEY@SINTJOZEFBRUGGE.BE", "ADMIN", "AQAAAAEAACcQAAAAEBYJbwrhwRfzoMl6+D6hS6jQyHC7LwFmxc6z09ENIhVznFW1Wm5VlmJTG4u5LIFbhg==", null, false, 0, "V3PFRDAS3MJWQD5TSW2GWPRADBFEZINA", null, 0, false, "Admin" });
 
             migrationBuilder.InsertData(
                 table: "userrole",
@@ -383,15 +436,15 @@ namespace PolyRushWeb.Migrations
                 values: new object[] { 1, 1 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetRoleClaims_RoleId",
-                table: "AspNetRoleClaims",
-                column: "RoleId");
-
-            migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "role",
                 column: "NormalizedName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_roleclaim_RoleId",
+                table: "roleclaim",
+                column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
@@ -423,10 +476,7 @@ namespace PolyRushWeb.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AspNetRoleClaims");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserTokens");
+                name: "achievement");
 
             migrationBuilder.DropTable(
                 name: "discount");
@@ -441,7 +491,13 @@ namespace PolyRushWeb.Migrations
                 name: "itemtype");
 
             migrationBuilder.DropTable(
+                name: "roleclaim");
+
+            migrationBuilder.DropTable(
                 name: "setting");
+
+            migrationBuilder.DropTable(
+                name: "userachievement");
 
             migrationBuilder.DropTable(
                 name: "userclaim");
@@ -457,6 +513,9 @@ namespace PolyRushWeb.Migrations
 
             migrationBuilder.DropTable(
                 name: "usersetting");
+
+            migrationBuilder.DropTable(
+                name: "usertoken");
 
             migrationBuilder.DropTable(
                 name: "role");

@@ -38,23 +38,31 @@ namespace PolyRushWeb.DA
 
             //highscore
             //get the average highscore
-            int avgHighscore = Convert.ToInt32(await _context.Users.Select(u => u.Highscore).Where(x => x > 0).AverageAsync());
+            //get all highscores, if there are no highscores higher then 0, return 0 as the average
+            //same for the other stats.
+            var highScores = _context.Users.Select(u => u.Highscore).Where(x => x > 0);
+            int avgHighscore = await highScores.AnyAsync() ? Convert.ToInt32(await highScores.AverageAsync()) : 0;
             stats.Highscore = (avgHighscore, user.Highscore);
 
             //coinsgathered
-            int avgCoinsGathered = Convert.ToInt32(await _context.Users.Select(u => u.Coinsgathered).Where(x => x > 0).AverageAsync());
+            var coinsgathered = _context.Users.Select(u => u.Coinsgathered).Where(x => x > 0);
+            int avgCoinsGathered = await coinsgathered.AnyAsync() ? Convert.ToInt32(await coinsgathered.AverageAsync()) : 0;
             stats.CoinsGathered = (avgCoinsGathered, user.Coinsgathered);
 
             //coins
-            int avgCoins = Convert.ToInt32(await _context.Users.Select(u => u.Coins).Where(x => x > 0).AverageAsync());
+            var coins = _context.Users.Select(u => u.Coins).Where(x => x > 0);
+            int avgCoins = await coins.AnyAsync() ? Convert.ToInt32(await coins.AverageAsync()) : 0;
             stats.Coins = (avgCoins, user.Coins);
 
             //People passed
-            int avgPeoplePassed = Convert.ToInt32(await _context.Users.Select(u => u.Timespassed).Where(x => x > 0).AverageAsync());
+            var peoplepassed = _context.Users.Select(u => u.Timespassed).Where(x => x > 0);
+            int avgPeoplePassed = await peoplepassed.AnyAsync() ? Convert.ToInt32(await  peoplepassed.AverageAsync()) : 0;
             stats.PeoplePassed = (avgPeoplePassed, user.Timespassed);
 
             //Score gathered
-            int avgScoreGathered = Convert.ToInt32(await _context.Users.Select(u => u.Scoregathered).Where(x => x > 0).AverageAsync());
+            var scoregathered = _context.Users.Select(u => u.Scoregathered).Where(x => x > 0);
+            int avgScoreGathered =
+                await scoregathered.AnyAsync() ? Convert.ToInt32(await scoregathered.AverageAsync()) : 0;
             stats.ScoreGathered = (avgScoreGathered, user.Scoregathered);
 
             //PlayTime
@@ -86,8 +94,8 @@ namespace PolyRushWeb.DA
             //double avgPerGameSecondsForUser = test.Where(up => up.User.ID == id).Select(x => x.Playtime.TotalSeconds).Average();
             //stats.PlayTime = (TimeSpan.FromSeconds(avgPerGameSeconds), TimeSpan.FromSeconds(avgPerGameSecondsForUser) );
 
-
-            long avgPlaytimeSeconds = Convert.ToInt64((await GetTopPlaytimeAsync(_userManager.Users.Count())).Select(x => x.Playtime).Average(t => t.TotalSeconds));
+            var playtimes = await GetTopPlaytimeAsync(_userManager.Users.Count());
+            long avgPlaytimeSeconds =playtimes.Any() ? Convert.ToInt64(playtimes.Select(x => x.Playtime).Average(t => t.TotalSeconds)) : 0;
             TimeSpan avgPlaytime = TimeSpan.FromSeconds(avgPlaytimeSeconds);
             stats.PlayTime = (avgPlaytime, await _userDa.GetUserTotalPlaytimeAsync(user.Id));
 
@@ -176,6 +184,7 @@ namespace PolyRushWeb.DA
                 user.Itemspurchased = rnd.Next(20);
                 user.Coinsspent = rnd.Next(user.Itemspurchased * 200);
                 user.Coinsgathered = rnd.Next(user.Coins - user.Itemspurchased * 200);
+                user.Scoregathered = rnd.Next(user.Highscore *2, user.Highscore*50);
                 user.Timespassed = rnd.Next(100);
 
                 await _userManager.UpdateAsync(user);
