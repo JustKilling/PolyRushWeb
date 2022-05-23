@@ -1,7 +1,7 @@
 ﻿@model List<Discount>
 @{
     ViewData["Title"] = "Discount";
-    Layout = "_HomeLayout";
+    Layout = "~/Views/Shared/_HomeLayout";
 }
 <script >
     @{
@@ -11,16 +11,42 @@
         $("#navs").children().eq(@index).addClass("active")
     });
 </script>
-<div id="discountsContainer"></div>
-@if (Model.Any())
-{
-    @foreach (Discount discount in Model)
-    {
-        @discount.DiscountPercentage
-    }
-}
-else
-{
-    <p>No discounts have been found!</p>
-}
 
+<table class="table" >
+	<thead>
+		<tr>
+			<th>Item</th>
+			<th>Discount percentage</th>
+			<th>Start date</th>
+			<th>End date</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.Any())
+{
+			@foreach (Discount discount in Model)
+			{
+				<tr>
+					<td>@discount.ItemId</td>
+					<td>@discount.DiscountPercentage </td>
+					<td>@discount.Startdate.ToLongDateString()</td>
+					<td>@discount.Enddate.ToLongDateString()</td>
+					<td><a href=@($"/Admin/DeleteDiscount/{discount.Iddiscount}") class="btn btn-primary">Delete</a></td>
+				</tr>
+				@discount.DiscountPercentage
+			}
+		}
+		else
+		{
+			<tr>No discounts have been found!</tr>
+		}
+		
+	
+	</tbody>
+</table>
+
+
+<div class="btn-group" role="group" aria-label="Create">
+    <a href="/Admin/DiscountCreateView" class="btn btn-primary">Create</a>
+</div>

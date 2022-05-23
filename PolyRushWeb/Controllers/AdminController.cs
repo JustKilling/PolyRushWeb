@@ -93,5 +93,20 @@ namespace PolyRushWeb.Controllers
             await httpClient.SendAsync(request);
             return View(nameof(Index));
         }
+        public async Task<IActionResult> DiscountCreateView(Discount discount)
+        {
+            //return the view with the given discount, if null, return an empty one.
+            return View(discount ?? new Discount());
+        }
+        public async Task<IActionResult> CreateDiscount(Discount discount)
+        {
+            if (!ModelState.IsValid) return View(nameof(DiscountCreateView), discount);
+            //go to the discount action, so show the list again after a discount has been added
+            HttpClient httpClient = _clientHelper.GetHttpClient();
+            HttpRequestMessage request = new(HttpMethod.Post, $"Item/Discount");
+            request.Content = new StringContent(JsonConvert.SerializeObject(discount));
+            await httpClient.SendAsync(request);
+            return RedirectToAction(nameof(Discount));
+        }
     }
 }
