@@ -61,7 +61,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
                 UserName = registration.Username,
                 Firstname = registration.Firstname,
                 Lastname = registration.Lastname,
-                IsActive = true
+                IsActive = true,
             };
 
             //try create the user
@@ -191,7 +191,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             IList<Claim>? userClaims = await _userManager.GetClaimsAsync(user);
 
             claims.AddRange(userClaims);        
-
+            
             IList<string>? roleClaims = await _userManager.GetRolesAsync(user);
 
             //Add role claims to jwt

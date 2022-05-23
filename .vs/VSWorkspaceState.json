@@ -2,13 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\PolyRushLibrary",
-    "\\PolyRushLibrary\\Entities",
     "\\PolyRushWeb",
-    "\\PolyRushWeb\\Controllers",
-    "\\PolyRushWeb\\Models",
     "\\PolyRushWeb\\Views",
     "\\PolyRushWeb\\Views\\Home"
   ],
-  "SelectedNode": "\\PolyRushWeb\\Controllers\\AdminController.cs",
+  "SelectedNode": "\\PolyRushLibrary\\Settings.cs",
   "PreviewInSolutionExplorer": false
 }

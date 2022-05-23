@@ -58,4 +58,10 @@
       <Folder Include="wwwroot\css" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Update="Views\Login\_Layout.cshtml">
+        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

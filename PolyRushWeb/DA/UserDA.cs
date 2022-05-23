@@ -20,10 +20,14 @@ namespace PolyRushWeb.DA
             _userManager = userManager;
         }
 
-        public async Task<List<UserDTO>> GetUsers()
+        public async Task<List<UserDTO>> GetUsers(bool includeAdmin = true)
         {
-            List<UserDTO>? users = await _userManager.Users.Select(u => u.ToUserDTO()).ToListAsync()!;
-            return users;
+            var users = await _context.Users.FromSqlRaw($"select * from user INNER JOIN userrole ON Id = UserId WHERE RoleId = 1").ToListAsync();
+            var adminIds = users.Select(u => u.Id);
+            //get all users, if admin is not included, don't query them.
+            return includeAdmin ?
+                await _userManager.Users.Select(u => u.ToUserDTO()).ToListAsync()! :
+                await _userManager.Users.Where(u => !adminIds.Contains(u.Id)).Select(u => u.ToUserDTO()).ToListAsync()!;
         }
 
         public async Task DeactivateAsync(int id, bool deactivate = true)

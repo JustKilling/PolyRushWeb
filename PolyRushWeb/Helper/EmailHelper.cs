@@ -29,10 +29,11 @@ namespace PolyRushWeb.Helper
                     + $"/Login/ResetPassword?email={user.Email}&token={resetPasswordToken}";
                 Console.WriteLine(link);
 
-                var body = $"Dear {user.Firstname} {user.Lastname},\n" +
-                           $"You forgot your password, no problem! You can create a new password if you click on the link below!\n\n" +
-                           $"{link}\n\n" +
-                           $"If you did not request to change your password, please contact staff at polyrush@hotmail.com";
+                var body = $"<h1>PolyRush</h1>" +
+                           $"<p>Dear {user.Firstname} {user.Lastname},<p>" +
+                           $"<p>You forgot your password, no problem! You can create a new password if you click on the <a href='{link}' target='_blank'>link</a> below!</p>" +
+                $"{link}" +
+                           $"<p>If you did not request to change your password, please contact staff at polyrush@hotmail.com</p>";
 
                 await _fluentEmail
                     .To(user.Email)

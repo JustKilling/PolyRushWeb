@@ -108,8 +108,11 @@ namespace PolyRushWeb.DA
         //method to return the top users with playtime
         public async Task<List<UserPlaytime>> GetTopPlaytimeAsync(int amount)
         {
+            
+            //select all non admins
+            List<int> nonAdminIds = (await _userDa.GetUsers(false)).Select(u => u.ID).ToList();
             //Get user playtimes
-            List<UserPlaytime> userplaytimesUngrouped = await _context.Gamesession
+            List<UserPlaytime> userplaytimesUngrouped = await _context.Gamesession.Where(gs => nonAdminIds.Contains(gs.UserId))
                 .Select(gs => new UserPlaytime
                 {
                     Playtime = gs.EndDateTime.Subtract(gs.StartDateTime),
