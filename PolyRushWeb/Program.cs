@@ -25,12 +25,12 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 string? connectionString = builder.Configuration.GetConnectionString("PolyRushWebConnection");;
 var serverVersion = ServerVersion.AutoDetect(connectionString);
 builder.Services.AddDbContext<PolyRushWebContext>(options =>
-    options.UseMySql(connectionString, serverVersion), ServiceLifetime.Transient);
+    options.UseMySql(connectionString, serverVersion), ServiceLifetime.Scoped);
 
 builder.Services.AddDbContextFactory<PolyRushWebContext>(options =>
 {
     options.UseMySql(connectionString, serverVersion);
-}, ServiceLifetime.Transient);
+}, ServiceLifetime.Scoped);
 
 
 

@@ -5,14 +5,14 @@
 }
 <script >
     @{
-        int index = 4;
+        int index = 5;
     }
     $(document).ready(function() {
         $("#navs").children().eq(@index).addClass("active")
     });
 </script>
 
-<table class="table" >
+<table class="table" style="max-width: 750px">
 	<thead>
 		<tr>
 			<th>Item</th>
@@ -34,7 +34,6 @@
 					<td>@discount.Enddate.ToLongDateString()</td>
 					<td><a href=@($"/Admin/DeleteDiscount/{discount.Iddiscount}") class="btn btn-primary">Delete</a></td>
 				</tr>
-				@discount.DiscountPercentage
 			}
 		}
 		else
@@ -45,7 +44,6 @@
 	
 	</tbody>
 </table>
-
 
 <div class="btn-group" role="group" aria-label="Create">
     <a href="/Admin/DiscountCreateView" class="btn btn-primary">Create</a>

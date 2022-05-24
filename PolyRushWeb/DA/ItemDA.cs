@@ -35,6 +35,19 @@ namespace PolyRushWeb.DA
             return (int)Math.Ceiling(discountedPrice);
         }
 
+        public async Task<List<Item>> GetAllItemsAsync()
+        {
+            return await _context.Item.ToListAsync();
+        }
+
+        public async Task<List<ItemItemTypeModel>> GetItemItemTypes()
+        {
+            //return items with there corresponding types.
+            List<ItemItemTypeModel> items = await _context.Itemtype
+                .Join(_context.Item, it => it.IditemType, i => i.ItemTypeId,
+                (it, i) => new ItemItemTypeModel() { Item = i, ItemType = it }).ToListAsync();
+            return items;
+        }
 
         public async Task<int> GetAmountAsync(Item item, int id, bool isAdmin = false)
         {
@@ -115,6 +128,18 @@ namespace PolyRushWeb.DA
             return true;
         }
 
+        public async Task DeleteDiscount(int id)
+        {
+            _context.Discount.Remove(new Discount { Iddiscount = id });
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddDiscount(Discount discount)
+        {
+            await _context.Discount.AddAsync(discount);
+            await _context.SaveChangesAsync();
+        }
+
         //Check if user has a record with this item.
         private async Task<bool> UserItemExistsAsync(int id, Item item) 
             => await _context.Useritem.Where(ui => ui.UserId == id && ui.ItemId == item.Iditem).AnyAsync();
@@ -156,7 +181,6 @@ namespace PolyRushWeb.DA
 
         public async Task<List<Discount>?> GetAllDiscounts()
         {
-            if (await _context.Discount.AnyAsync()) return null;
             return await _context.Discount.ToListAsync();
         }
         public async Task<List<Discount>?> GetAllActiveDiscounts()

@@ -18,6 +18,15 @@ namespace PolyRushWeb.Controllers.ApiControllers
         {
             _itemDa = itemDa;
         }
+
+        [HttpGet]
+        [Route("itemitemtype")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetItemItemTypes()
+        {
+
+            return Ok(await _itemDa.GetItemItemTypes());
+        }
         [HttpGet]
         [Route("{itemid}")]
         public async Task<IActionResult> GetItemByIDAsync(int itemid)
@@ -25,7 +34,13 @@ namespace PolyRushWeb.Controllers.ApiControllers
             
             return Ok(await _itemDa.GetItemById(itemid));
         }
+        [HttpGet]
+        [Route("all")]
+        public async Task<IActionResult> GetALlItems()
+        {
 
+            return Ok(await _itemDa.GetAllItemsAsync());
+        }
         [HttpGet]
         [Route("getitemsfromtype/{type}")]
         public async Task<IActionResult> GetItemFromTypeAsync(ItemType type)
@@ -99,6 +114,22 @@ namespace PolyRushWeb.Controllers.ApiControllers
             var discounts = await _itemDa.GetAllDiscounts();
             if (discounts == null) return BadRequest("No discounts found!");
             return Ok(discounts);
+        }
+
+        [HttpPost]
+        [Route("discount")]
+        public async Task<IActionResult> Discount(Discount discount)
+        {
+            await _itemDa.AddDiscount(discount);
+            return Ok();
+        }
+        [HttpPost]
+        [Route("deletediscount/{id}")]
+        [Authorize(Roles ="Admin")]
+        public async Task<IActionResult> Discount(int id)
+        {
+            await _itemDa.DeleteDiscount(id);
+            return Ok();
         }
 
         [HttpPost]

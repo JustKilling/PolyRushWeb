@@ -10,8 +10,6 @@ namespace PolyRushWeb.Models
 
         public string Firstname { get; set; } = null!;
         public string Lastname { get; set; } = null!;
-        public bool IsAdmin { get; set; }
-        public bool? SeesAds { get; set; }
         public int Coins { get; set; }
         public int Highscore { get; set; }
         public int Scoregathered { get; set; }

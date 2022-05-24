@@ -36,5 +36,15 @@ namespace PolyRushWeb.DA
         {
             return await _context.Achievement.FirstOrDefaultAsync(a => a.Idachievement == achievementId);
         }
+        public async Task<List<Achievement>> GetAchievements(int id)
+        {
+            // get all achievements inner join user achievements, select all achievements with userid
+            List<Achievement> achievements = await _context.Achievement
+                .Join(_context.UserAchievement, a => a.Idachievement, ua => ua.AchievementId,
+                (a, ua) => new { Achievement = a, UserAchievement = ua }).Where(aua => aua.UserAchievement.UserId == id)
+                .Select(aua => aua.Achievement)
+                .ToListAsync();
+            return achievements;
+        }
     }
 }

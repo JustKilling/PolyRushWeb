@@ -11,18 +11,21 @@ namespace PolyRushWeb.DA
 {
     public class UserDA
     {
-        private readonly PolyRushWebContext _context;
+        
         private readonly UserManager<User> _userManager;
+        private readonly IDbContextFactory<PolyRushWebContext> _contextFactory;
 
-        public UserDA(PolyRushWebContext context, UserManager<User> userManager)
+        public UserDA(UserManager<User> userManager, IDbContextFactory<PolyRushWebContext> contextFactory)
         {
-            _context = context;
             _userManager = userManager;
+            _contextFactory = contextFactory;
         }
 
         public async Task<List<UserDTO>> GetUsers(bool includeAdmin = true)
         {
-            var users = await _context.Users.FromSqlRaw($"select * from user INNER JOIN userrole ON Id = UserId WHERE RoleId = 1").ToListAsync();
+            var context = await _contextFactory.CreateDbContextAsync();
+
+            var users = await context.Users.FromSqlRaw($"select * from user INNER JOIN userrole ON Id = UserId WHERE RoleId = 1").ToListAsync();
             var adminIds = users.Select(u => u.Id);
             //get all users, if admin is not included, don't query them.
             return includeAdmin ?
@@ -32,17 +35,21 @@ namespace PolyRushWeb.DA
 
         public async Task DeactivateAsync(int id, bool deactivate = true)
         {
+            var context = await _contextFactory.CreateDbContextAsync();
+
 
             User? user = await _userManager.Users.SingleAsync(u => u.Id == id);
             user.IsActive = !deactivate;
-            _context.Users.Update(user);
-            //_context.Entry(user).Property(u => u.IsActive).IsModified = true;
-            await _context.SaveChangesAsync();
+            context.Users.Update(user);
+            //context.Entry(user).Property(u => u.IsActive).IsModified = true;
+            await context.SaveChangesAsync();
         }
 
         public async Task<UserDTO> GetByIdAsync(int userId)
         {
-            User? user = await _context.Users.Where(u => u.Id == userId).FirstOrDefaultAsync();
+            var context = await _contextFactory.CreateDbContextAsync();
+
+            User? user = await context.Users.Where(u => u.Id == userId).FirstOrDefaultAsync();
             return user.ToUserDTO();
         }
         
@@ -53,7 +60,10 @@ namespace PolyRushWeb.DA
         
         public async Task<int> GetCoinsAsync(int id)
         {
-            DbSet<User>? coins = _context.Users;
+            //TO DO what??
+            var context = await _contextFactory.CreateDbContextAsync();
+
+            DbSet<User>? coins = context.Users;
             IQueryable<User>? coins2 = coins.Where(u => u.Id == id);
             IQueryable<int>? coins3 = coins2.Select(u => u.Coins);
             int coins4 = await coins3.FirstOrDefaultAsync();
@@ -77,23 +87,36 @@ namespace PolyRushWeb.DA
 
         public async Task<bool> UpdateUser(UserEditAdminModel model)
         {
+            var context = await _contextFactory.CreateDbContextAsync();
             try
             {
-                User user = (await GetByIdAsync(model.Id)).ToUser();
-                user.IsAdmin = model.IsAdmin;
+                User user = await context.Users.Where(u => u.Id == model.Id).FirstOrDefaultAsync()!;
                 user.Highscore = model.Highscore;
                 user.Coins = model.Coins;
                 user.Coinsgathered = model.Coinsgathered;
                 user.Coinsspent = model.Coinsspent;
                 user.Firstname = model.Firstname;
                 user.Lastname = model.Lastname;
-                user.SeesAds = model.SeesAds;
                 user.IsActive = model.IsActive;
 
-                await _userManager.SetUserNameAsync(user, model.Username);
+                //make sure no relation to the user entity is present
+                await context.SaveChangesAsync();
+
+                await _userManager.SetUserNameAsync(new User { Id = model.Id}, model.Username);
                 await _userManager.SetEmailAsync(user, model.Email);
 
-                if(user.IsAdmin) await _userManager.AddToRoleAsync(user, "Admin");
+                var result = await _userManager.UpdateAsync(user);
+                //if updating failed, log the errors in the console.
+                if (!result.Succeeded)
+                {
+                    foreach (var err in result.Errors)
+                    {
+                        Console.WriteLine(err.Code + " " + err.Description);
+                    }
+                }
+                
+
+                if(model.IsAdmin) await _userManager.AddToRoleAsync(user, "Admin");
                 else await _userManager.RemoveFromRoleAsync(user, "Admin");
                 
                 return true;
@@ -127,7 +150,9 @@ namespace PolyRushWeb.DA
 
         public async Task<TimeSpan> GetUserTotalPlaytimeAsync(int userId)
         {
-            var totalPlaytimes = await _context.Gamesession.Where(u => u.UserId == userId)
+            var context = await _contextFactory.CreateDbContextAsync();
+
+            var totalPlaytimes = await context.Gamesession.Where(u => u.UserId == userId)
                 .Select(u => new { u.StartDateTime, u.EndDateTime }).ToListAsync();
                 
             //calculate the difference between start and end, convert to seconds, sum it up, and convert to a timespan

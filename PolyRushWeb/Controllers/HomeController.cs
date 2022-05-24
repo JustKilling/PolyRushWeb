@@ -67,9 +67,16 @@ namespace PolyRushWeb.Controllers
             return RedirectToAction("Index", "Login");
         }
        
-        public IActionResult Privacy()
+        public async Task<IActionResult> Achievements()
         {
-            return View();
+            HttpClient? httpClient = _clientHelper.GetHttpClient();
+            HttpResponseMessage? response = await httpClient.GetAsync($"Achievement");
+
+            if (!response.IsSuccessStatusCode) return View();
+
+            List<Achievement> achievements = JsonConvert.DeserializeObject<List<Achievement>>(await response.Content.ReadAsStringAsync())!;
+
+            return View(achievements);
         }
         
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

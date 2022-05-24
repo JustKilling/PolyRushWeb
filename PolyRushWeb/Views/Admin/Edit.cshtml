@@ -3,11 +3,11 @@
 
 @{
     ViewData["Title"] = "View";
-    Layout = "_HomeLayout.cshtml";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 <script >
     @{
-        int index = 3;
+        int index = 4;
     }
     $(document).ready(function() {
         $("#navs").children().eq(@index).addClass("active")
@@ -86,11 +86,6 @@
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="IsAdmin" /> @Html.DisplayNameFor(model => model.IsAdmin)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="SeesAds" /> @Html.DisplayNameFor(model => model.SeesAds)
                 </label>
             </div>
             <div class="form-group">

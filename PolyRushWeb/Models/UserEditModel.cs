@@ -16,7 +16,6 @@ namespace PolyRushWeb.Models
         public string Lastname { get; set; } = null!;
         [Required]
         public bool IsAdmin { get; set; }
-        public bool SeesAds { get; set; }
         [Required]
         public int Coins { get; set; }
         [Required]
@@ -31,6 +30,7 @@ namespace PolyRushWeb.Models
         public int Coinsgathered { get; set; }
         [Required]
         public int Timespassed { get; set; }
+        [Required]
         public bool IsActive { get; set; }
     }
 }

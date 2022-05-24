@@ -201,9 +201,9 @@ namespace PolyRushWeb.Controllers.ApiControllers
             }
 
             claims.Add(new Claim("id", user.Id.ToString()));
-            //if user is admin TODO REMOVE THIS
-            if(user.IsAdmin)
-                claims.Add(new Claim("isAdmin", (await _userManager.IsInRoleAsync(user, "ADMIN")).ToString()));
+
+           
+            claims.Add(new Claim("isAdmin", (await _userManager.IsInRoleAsync(user, "ADMIN")).ToString()));
 
             byte[] key = Encoding.ASCII.GetBytes(_settings.TokenSecret);
             JwtSecurityToken? token = new(

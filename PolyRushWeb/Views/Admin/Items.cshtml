@@ -1,0 +1,59 @@
+﻿@model List<ItemItemTypeModel>
+@{
+    ViewData["Title"] = "Items";
+    Layout = "_HomeLayout";
+}
+<script >
+    @{
+        int index = 6;
+    }
+    $(document).ready(function() {
+        $("#navs").children().eq(@index).addClass("active")
+    });
+</script>
+<style></style>
+@{
+	List<Itemtype> itemtypes = new List<Itemtype>();
+	foreach(ItemItemTypeModel iitm in Model)
+	{
+		//if there is any itemtype with the specified id, don't add it to the list
+		if (!itemtypes.Any(it => it.IditemType == iitm.ItemType.IditemType)) itemtypes.Add(iitm.ItemType);
+	}
+}
+@*per itemtype make a table and add the corresponding items to it.*@
+@foreach (Itemtype itemtype in itemtypes)
+{
+	//select all items with that item type id
+	List<Item> items = Model.Where(i => i.ItemType.IditemType == itemtype.IditemType).Select(i => i.Item).ToList();
+	<h1>@itemtype.Name</h1>
+	<table class="table" style="max-width: 750px">
+	<thead>
+		<tr>
+			<th>Icon</th>
+			<th>Id</th>
+			<th>Item name</th>
+			<th>Price</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (items.Any())
+{
+			@foreach (Item item in items)
+			{
+				<tr>
+					<td><img style="max-height:40px;" src=@($"/img/item/{item.Iditem}.png")></img></td>
+					<td>@item.Iditem</td>
+					<td>@item.Name</td>
+					<td>@item.Price</td>
+				</tr>
+			}
+		}
+		else
+		{
+			<tr>No items have been found!</tr>
+		}
+		
+	
+	</tbody>
+</table>
+}

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PolyRushWeb.Data;
 
@@ -10,9 +11,10 @@ using PolyRushWeb.Data;
 namespace PolyRushWeb.Migrations
 {
     [DbContext(typeof(PolyRushWebContext))]
-    partial class PolyRushWebContextModelSnapshot : ModelSnapshot
+    [Migration("20220524140646_remove_isadmin")]
+    partial class remove_isadmin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -149,7 +151,7 @@ namespace PolyRushWeb.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "c01c0608-c0f4-484d-bf3a-5093195c7d5e",
+                            ConcurrencyStamp = "80d8ef83-8777-4763-a1df-b5954d208a3f",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -611,6 +613,9 @@ namespace PolyRushWeb.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("longtext");
 
+                    b.Property<bool?>("SeesAds")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int>("Timespassed")
                         .HasColumnType("int");
 
@@ -653,7 +658,7 @@ namespace PolyRushWeb.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "EMIEL.DELAEY@SINTJOZEFBRUGGE.BE",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJI32iqW/Hrt7mKKCqJpxeBGFR8ieeFN98Hf7l1EdGemT2TIxyeHrzyiIp6g/wuUyg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECXyt6FzojMSckIeKQbn/woZvzzTaRCIyumUasLJbxfluPcIrfhhnz698Xp25MqIgw==",
                             PhoneNumberConfirmed = false,
                             Scoregathered = 0,
                             SecurityStamp = "V3PFRDAS3MJWQD5TSW2GWPRADBFEZINA",
