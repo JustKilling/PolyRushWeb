@@ -29,7 +29,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         public async Task<IActionResult> Achievements()
         {
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
-            var achievements = await _achievementDa.GetAchievements(id);
+            List<Achievement>? achievements = await _achievementDa.GetAchievements(id);
             return Ok(achievements);
         }
 

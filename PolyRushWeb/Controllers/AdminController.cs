@@ -16,6 +16,7 @@ using PolyRushWeb.Models;
 
 namespace PolyRushWeb.Controllers
 {
+    //attribute to make sure only admin can acces this controller.
     [Secure(true)]
     public class AdminController : Controller
     {
@@ -37,7 +38,7 @@ namespace PolyRushWeb.Controllers
         public async Task<IActionResult> Discount()
         {
             HttpClient httpClient = _clientHelper.GetHttpClient();
-            var response = await httpClient.GetAsync("item/getdiscounts");
+            HttpResponseMessage response = await httpClient.GetAsync("item/getdiscounts");
             if (!response.IsSuccessStatusCode)
                 return View(new List<Discount>());
             //Get all discounts 
@@ -62,7 +63,7 @@ namespace PolyRushWeb.Controllers
 
             string response = await httpClient.GetStringAsync($"user/{id}");
 
-            var user = JsonConvert.DeserializeObject<User>(response)!;
+            User user = JsonConvert.DeserializeObject<User>(response)!;
 
             bool isUserAdmin = await _userManager.IsInRoleAsync(user, "ADMIN");
             UserEditAdminModel editModel = user.ToUserEditAdminModel(isUserAdmin);
@@ -75,7 +76,7 @@ namespace PolyRushWeb.Controllers
             {
                 HttpClient httpClient = _clientHelper.GetHttpClient();
 
-                HttpResponseMessage response = await httpClient.PostAsJsonAsync("user/update", editModel);
+                HttpResponseMessage response = await httpClient.PostAsJsonAsync("user/updateadmin", editModel);
 
                 return View("Index");
 
@@ -103,10 +104,10 @@ namespace PolyRushWeb.Controllers
             //DiscountModel discountModel = discount.Iddiscount == 0 ?
             //    new DiscountModel { Startdate = DateTime.Now, Enddate = DateTime.Now.AddDays(7) } : discount
 
-            var httpClient = _clientHelper.GetHttpClient();
+            HttpClient httpClient = _clientHelper.GetHttpClient();
 
             //Get Items for select
-            var response = await httpClient.GetAsync("item/all");
+            HttpResponseMessage response = await httpClient.GetAsync("item/all");
 
             List<Item> items = JsonConvert.DeserializeObject<List<Item>>(await response.Content.ReadAsStringAsync())!;
             List<SelectListItem> selItems = new();
@@ -131,7 +132,7 @@ namespace PolyRushWeb.Controllers
             HttpRequestMessage request = new(HttpMethod.Post, $"item/discount");
             //create a json payload
             request.Content = new StringContent(JsonConvert.SerializeObject(discount.ToDiscount()), UnicodeEncoding.UTF8, "application/json");
-            var response = await httpClient.SendAsync(request);
+            HttpResponseMessage response = await httpClient.SendAsync(request);
             return RedirectToAction(nameof(Discount));
         }
         //method for deleting a discount
@@ -141,13 +142,13 @@ namespace PolyRushWeb.Controllers
             //go to the discount action, so show the list again after a discount has been added
             HttpClient httpClient = _clientHelper.GetHttpClient();
             HttpRequestMessage request = new(HttpMethod.Post, $"item/deletediscount/{id}");
-            var response = await httpClient.SendAsync(request);
+            HttpResponseMessage response = await httpClient.SendAsync(request);
             return RedirectToAction(nameof(Discount));
         }
         public async Task<IActionResult> Items()
         {
             HttpClient httpClient = _clientHelper.GetHttpClient();
-            var response = await httpClient.GetAsync("item/itemitemtype");
+            HttpResponseMessage response = await httpClient.GetAsync("item/itemitemtype");
 
             if (!response.IsSuccessStatusCode)
                 return View(new List<ItemItemTypeModel>());

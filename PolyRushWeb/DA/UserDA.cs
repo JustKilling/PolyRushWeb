@@ -3,6 +3,7 @@ using System.Net.Mail;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using PolyRushWeb.Data;
 using PolyRushWeb.Helper;
 using PolyRushWeb.Models;
@@ -23,22 +24,22 @@ namespace PolyRushWeb.DA
 
         public async Task<List<UserDTO>> GetUsers(bool includeAdmin = true)
         {
-            var context = await _contextFactory.CreateDbContextAsync();
+            PolyRushWebContext context = await _contextFactory.CreateDbContextAsync();
 
-            var users = await context.Users.FromSqlRaw($"select * from user INNER JOIN userrole ON Id = UserId WHERE RoleId = 1").ToListAsync();
-            var adminIds = users.Select(u => u.Id);
+            List<User> users = await context.Users.FromSqlRaw($"select * from user INNER JOIN userrole ON Id = UserId WHERE RoleId = 1").ToListAsync();
+            IEnumerable<int> adminIds = users.Select(u => u.Id);
             //get all users, if admin is not included, don't query them.
             return includeAdmin ?
-                await _userManager.Users.Select(u => u.ToUserDTO()).ToListAsync()! :
-                await _userManager.Users.Where(u => !adminIds.Contains(u.Id)).Select(u => u.ToUserDTO()).ToListAsync()!;
+                await _userManager.Users.Select(u => u.ToUserDTO()).AsNoTracking().ToListAsync()! :
+                await _userManager.Users.Where(u => !adminIds.Contains(u.Id)).AsNoTracking().Select(u => u.ToUserDTO()).ToListAsync()!;
         }
 
         public async Task DeactivateAsync(int id, bool deactivate = true)
         {
-            var context = await _contextFactory.CreateDbContextAsync();
+            PolyRushWebContext context = await _contextFactory.CreateDbContextAsync();
 
 
-            User? user = await _userManager.Users.SingleAsync(u => u.Id == id);
+            User? user = await _userManager.Users.AsNoTracking().SingleAsync(u => u.Id == id);
             user.IsActive = !deactivate;
             context.Users.Update(user);
             //context.Entry(user).Property(u => u.IsActive).IsModified = true;
@@ -47,9 +48,9 @@ namespace PolyRushWeb.DA
 
         public async Task<UserDTO> GetByIdAsync(int userId)
         {
-            var context = await _contextFactory.CreateDbContextAsync();
+            PolyRushWebContext context = await _contextFactory.CreateDbContextAsync();
 
-            User? user = await context.Users.Where(u => u.Id == userId).FirstOrDefaultAsync();
+            User? user = await context.Users.Where(u => u.Id == userId).AsNoTracking().FirstOrDefaultAsync();
             return user.ToUserDTO();
         }
         
@@ -61,7 +62,7 @@ namespace PolyRushWeb.DA
         public async Task<int> GetCoinsAsync(int id)
         {
             //TO DO what??
-            var context = await _contextFactory.CreateDbContextAsync();
+            PolyRushWebContext context = await _contextFactory.CreateDbContextAsync();
 
             DbSet<User>? coins = context.Users;
             IQueryable<User>? coins2 = coins.Where(u => u.Id == id);
@@ -76,7 +77,7 @@ namespace PolyRushWeb.DA
             int userCoinAmount = await GetCoinsAsync(id);
             if (userCoinAmount < coins) return false;
             
-            User? user = await _userManager.Users.Where(u => u.Id == id).FirstOrDefaultAsync();
+            User? user = await _userManager.Users.Where(u => u.Id == id).AsNoTracking().FirstOrDefaultAsync();
 
             //if no coins have been given, remove all coins.
             int amount = coins <= 0 ? userCoinAmount : coins;
@@ -85,40 +86,31 @@ namespace PolyRushWeb.DA
             return true;
         }
 
-        public async Task<bool> UpdateUser(UserEditAdminModel model)
+        #region Don't ask why this code works like this, there was alot of trial and error.
+        
+        //method to update a user
+        public async Task<bool> UpdateUser(UserDTO model)
         {
-            var context = await _contextFactory.CreateDbContextAsync();
+            
             try
             {
-                User user = await context.Users.Where(u => u.Id == model.Id).FirstOrDefaultAsync()!;
-                user.Highscore = model.Highscore;
-                user.Coins = model.Coins;
-                user.Coinsgathered = model.Coinsgathered;
-                user.Coinsspent = model.Coinsspent;
-                user.Firstname = model.Firstname;
-                user.Lastname = model.Lastname;
-                user.IsActive = model.IsActive;
-
-                //make sure no relation to the user entity is present
-                await context.SaveChangesAsync();
-
-                await _userManager.SetUserNameAsync(new User { Id = model.Id}, model.Username);
-                await _userManager.SetEmailAsync(user, model.Email);
-
-                var result = await _userManager.UpdateAsync(user);
-                //if updating failed, log the errors in the console.
-                if (!result.Succeeded)
+                await using (PolyRushWebContext context = await _contextFactory.CreateDbContextAsync())
                 {
-                    foreach (var err in result.Errors)
-                    {
-                        Console.WriteLine(err.Code + " " + err.Description);
-                    }
-                }
-                
+                    User user = await context.Users.FindAsync(model.ID);
+                    user.Firstname = model.Firstname;
+                    user.Lastname = model.Lastname;
+                    EntityEntry<User> result = context.Users.Update(user);
+                    await context.SaveChangesAsync();
 
-                if(model.IsAdmin) await _userManager.AddToRoleAsync(user, "Admin");
-                else await _userManager.RemoveFromRoleAsync(user, "Admin");
-                
+                }
+                await using (PolyRushWebContext context = await _contextFactory.CreateDbContextAsync())
+                {
+                    User user = await _userManager.Users.Where(u => u.Id == model.ID).FirstOrDefaultAsync();
+                    await _userManager.SetUserNameAsync(user, model.Username);
+                    await _userManager.SetEmailAsync(user, model.Email);
+                    await context.SaveChangesAsync();
+                }
+               
                 return true;
             }
             catch (Exception)
@@ -127,6 +119,47 @@ namespace PolyRushWeb.DA
             }
         }
 
+        //method to update a user, performed by an admin
+        public async Task<bool> UpdateUser(UserEditAdminModel model)
+        {
+            try
+            {
+                await using (PolyRushWebContext context = await _contextFactory.CreateDbContextAsync())
+                {
+                    User user = await context.Users.FindAsync(model.Id);
+                    user.Firstname = model.Firstname;
+                    user.Lastname = model.Lastname;
+                    user.Highscore = model.Highscore;
+                    user.Coins = model.Coins;
+                    user.Coinsgathered = model.Coinsgathered;
+                    user.Coinsspent = model.Coinsspent;
+                    user.IsActive = model.IsActive;
+                    user.Scoregathered = model.Scoregathered;
+                    user.Itemspurchased = model.Itemspurchased;
+                    user.Timespassed = model.Timespassed;
+                    EntityEntry<User> result = context.Users.Update(user);
+                    await context.SaveChangesAsync();
+
+                }
+
+                await using (PolyRushWebContext context = await _contextFactory.CreateDbContextAsync())
+                {
+                    User user = await _userManager.Users.Where(u => u.Id == model.Id).FirstOrDefaultAsync();
+                    await _userManager.SetUserNameAsync(user, model.Username);
+                    await _userManager.SetEmailAsync(user, model.Email);
+                    if (model.IsAdmin) await _userManager.AddToRoleAsync(user, "Admin");
+                    else await _userManager.RemoveFromRoleAsync(user, "Admin");
+                    await context.SaveChangesAsync();
+                }
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        #endregion
 
         public async Task UploadGameResult(Gamesession session)
         {
@@ -150,7 +183,7 @@ namespace PolyRushWeb.DA
 
         public async Task<TimeSpan> GetUserTotalPlaytimeAsync(int userId)
         {
-            var context = await _contextFactory.CreateDbContextAsync();
+            PolyRushWebContext context = await _contextFactory.CreateDbContextAsync();
 
             var totalPlaytimes = await context.Gamesession.Where(u => u.UserId == userId)
                 .Select(u => new { u.StartDateTime, u.EndDateTime }).ToListAsync();

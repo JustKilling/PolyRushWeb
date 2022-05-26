@@ -42,11 +42,14 @@ namespace PolyRushWeb.Helper
             return myResult.ToArray();
         }
         //https://stackoverflow.com/questions/41665/bmp-to-jpg-png-in-c-sharp
-        public static async Task SavePNG100(this Bitmap bmp, string filename)
+        public static async Task SavePNG100Async(this Bitmap bmp, string filename)
         {
+            //resize bitmap to 500,500
             Bitmap resized = new(bmp, new Size(500, 500));
+            //make sure its the best quality
             EncoderParameters encoderParameters = new(1);
-            encoderParameters.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 100L);
+            encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality, 100L);
+            //save the image locally
             resized.Save(filename, GetEncoder(ImageFormat.Png), encoderParameters);
 
             //using var ftp = new FtpClient(host: "prjemiel.netwerkit.be", user: "ftpemieldelaey", pass: "48c/e:aZT]"); https://imgur.com/a/9CT2PZE

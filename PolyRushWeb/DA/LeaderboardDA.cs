@@ -40,27 +40,27 @@ namespace PolyRushWeb.DA
             //get the average highscore
             //get all highscores, if there are no highscores higher then 0, return 0 as the average
             //same for the other stats.
-            var highScores = _context.Users.Select(u => u.Highscore).Where(x => x > 0);
+            IQueryable<int>? highScores = _context.Users.Select(u => u.Highscore).Where(x => x > 0);
             int avgHighscore = await highScores.AnyAsync() ? Convert.ToInt32(await highScores.AverageAsync()) : 0;
             stats.Highscore = (avgHighscore, user.Highscore);
 
             //coinsgathered
-            var coinsgathered = _context.Users.Select(u => u.Coinsgathered).Where(x => x > 0);
+            IQueryable<int>? coinsgathered = _context.Users.Select(u => u.Coinsgathered).Where(x => x > 0);
             int avgCoinsGathered = await coinsgathered.AnyAsync() ? Convert.ToInt32(await coinsgathered.AverageAsync()) : 0;
             stats.CoinsGathered = (avgCoinsGathered, user.Coinsgathered);
 
             //coins
-            var coins = _context.Users.Select(u => u.Coins).Where(x => x > 0);
+            IQueryable<int>? coins = _context.Users.Select(u => u.Coins).Where(x => x > 0);
             int avgCoins = await coins.AnyAsync() ? Convert.ToInt32(await coins.AverageAsync()) : 0;
             stats.Coins = (avgCoins, user.Coins);
 
             //People passed
-            var peoplepassed = _context.Users.Select(u => u.Timespassed).Where(x => x > 0);
+            IQueryable<int>? peoplepassed = _context.Users.Select(u => u.Timespassed).Where(x => x > 0);
             int avgPeoplePassed = await peoplepassed.AnyAsync() ? Convert.ToInt32(await  peoplepassed.AverageAsync()) : 0;
             stats.PeoplePassed = (avgPeoplePassed, user.Timespassed);
 
             //Score gathered
-            var scoregathered = _context.Users.Select(u => u.Scoregathered).Where(x => x > 0);
+            IQueryable<int>? scoregathered = _context.Users.Select(u => u.Scoregathered).Where(x => x > 0);
             int avgScoreGathered =
                 await scoregathered.AnyAsync() ? Convert.ToInt32(await scoregathered.AverageAsync()) : 0;
             stats.ScoreGathered = (avgScoreGathered, user.Scoregathered);
@@ -94,7 +94,7 @@ namespace PolyRushWeb.DA
             //double avgPerGameSecondsForUser = test.Where(up => up.User.ID == id).Select(x => x.Playtime.TotalSeconds).Average();
             //stats.PlayTime = (TimeSpan.FromSeconds(avgPerGameSeconds), TimeSpan.FromSeconds(avgPerGameSecondsForUser) );
 
-            var playtimes = await GetTopPlaytimeAsync(_userManager.Users.Count());
+            List<UserPlaytime>? playtimes = await GetTopPlaytimeAsync(_userManager.Users.Count());
             long avgPlaytimeSeconds =playtimes.Any() ? Convert.ToInt64(playtimes.Select(x => x.Playtime).Average(t => t.TotalSeconds)) : 0;
             TimeSpan avgPlaytime = TimeSpan.FromSeconds(avgPlaytimeSeconds);
             stats.PlayTime = (avgPlaytime, await _userDa.GetUserTotalPlaytimeAsync(user.Id));

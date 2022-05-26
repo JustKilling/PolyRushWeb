@@ -53,23 +53,29 @@ namespace PolyRushWeb.Controllers
         }
         public async Task<IActionResult> Login(LoginInputModel request)
         {
-            HttpClient? client = _clientHelper.GetHttpClient();
-            HttpResponseMessage? response = await client.PostAsJsonAsync("login/", request);
-            if (response.IsSuccessStatusCode)
+            if (ModelState.IsValid)
             {
-                string responseString = await response.Content.ReadAsStringAsync();
-                AuthenticationResponse authenticationResponse =
-                    JsonConvert.DeserializeObject<AuthenticationResponse>(responseString)!;
-
-                CookieOptions cookieOptions = new CookieOptions
+                HttpClient? client = _clientHelper.GetHttpClient();
+                HttpResponseMessage? response = await client.PostAsJsonAsync("login/", request);
+                if (response.IsSuccessStatusCode)
                 {
-                    Secure = true,
-                    Expires = DateTime.Now.AddDays(7),
-                };
+                    string responseString = await response.Content.ReadAsStringAsync();
+                    AuthenticationResponse authenticationResponse =
+                        JsonConvert.DeserializeObject<AuthenticationResponse>(responseString)!;
 
-                HttpContext.Response.Cookies.Append("Token", authenticationResponse.Token, cookieOptions);
-                return RedirectToAction("Index", "Home");
+                    CookieOptions cookieOptions = new CookieOptions
+                    {
+                        Secure = true,
+                        Expires = DateTime.Now.AddDays(7),
+                    };
+
+                    HttpContext.Response.Cookies.Append("Token", authenticationResponse.Token, cookieOptions);
+                    return RedirectToAction("Index", "Home");
+                }
             }
+         
+            ModelState.AddModelError("Invalid", "Invalid Details");
+
             return RedirectToAction(nameof(Index));
         }
 

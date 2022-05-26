@@ -2,7 +2,7 @@
 @model LoginInputModel
 @{
   ViewData["Title"] = "Login";
-  Layout = "_Layout";
+  Layout = "~/Views/Login/_Layout.cshtml";
 }
 
       <!-- Outer Row -->
@@ -34,9 +34,7 @@
                                             <button type="submit"  class="btn btn-primary btn-user btn-block">
                                                 Login
                                             </button>
-                                            
                                             <div asp-validation-summary="All" class="text-danger"></div>
-                                            
                                         </form>
                                         <hr>
                                         <div class="text-center">

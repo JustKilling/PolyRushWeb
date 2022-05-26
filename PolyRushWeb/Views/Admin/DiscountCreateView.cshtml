@@ -5,15 +5,14 @@
 }
 <script >
     @{
-        int index = 5;
+        int index = 6;
     }
     $(document).ready(function() {
         $("#navs").children().eq(@index).addClass("active")
     });
 </script>
-<h1>View</h1>
 
-<h4>Create a discount</h4>
+<h3>Create a discount</h3>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="CreateDiscount" asp-controller="Admin">

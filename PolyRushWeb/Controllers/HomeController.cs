@@ -59,6 +59,58 @@ namespace PolyRushWeb.Controllers
             return View("Index", user);
         }
 
+        public async Task<IActionResult> Profile(int id)
+        {
+            HttpClient? httpClient = _clientHelper.GetHttpClient();
+            HttpResponseMessage? result = await httpClient.GetAsync("User");
+
+            string? resultString = await result.Content.ReadAsStringAsync();
+            UserDTO user = JsonConvert.DeserializeObject<UserDTO>(resultString)!;
+            
+            return View(new UserEditModel()
+            {
+                Id = user.ID,
+                Email = user.Email,
+                Firstname = user.Firstname,
+                Lastname = user.Lastname,
+                Username = user.Username
+            });
+        } 
+        public async Task<IActionResult> EditProfile(UserEditModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                HttpClient? httpClient = _clientHelper.GetHttpClient();
+
+                UserDTO user = new UserDTO
+                {
+                    ID = model.Id,
+                    Firstname = model.Firstname,
+                    Lastname = model.Lastname,
+                    Username = model.Username,
+                    Email = model.Email,
+                };
+                HttpRequestMessage request = new(HttpMethod.Post, $"user/update");
+                request.Content = new StringContent(JsonConvert.SerializeObject(user), UnicodeEncoding.UTF8, "application/json");
+                HttpResponseMessage response = await httpClient.SendAsync(request);
+                Console.WriteLine(JsonConvert.SerializeObject(response));
+                
+
+                if (model.Image == null) return RedirectToAction(nameof(Profile), model.Id);
+                //post image
+                byte[] image = new byte[model.Image.Length];
+                int bRead = await model.Image.OpenReadStream().ReadAsync(image);
+                string base64Image = Convert.ToBase64String(image);
+
+
+                HttpClient httpClient2 = _clientHelper.GetHttpClient();
+                ImageModel img = new ImageModel() { ImageString = base64Image };
+                HttpResponseMessage response2 = await httpClient2.PostAsJsonAsync("user/updateimage", img);
+
+            }
+
+            return RedirectToAction(nameof(Profile), model.Id); 
+        }
         public IActionResult Logout()
         {
            _authenticationHelper.Logout();
@@ -107,7 +159,7 @@ namespace PolyRushWeb.Controllers
         {
             HttpClient? httpClient = _clientHelper.GetHttpClient();
             HttpResponseMessage? response = await httpClient.GetAsync("leaderboard/stats");
-            var content = await response.Content.ReadAsStringAsync();
+            string content = await response.Content.ReadAsStringAsync();
             return View(JsonConvert.DeserializeObject<StatsModel>(content));
         }
        

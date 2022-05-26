@@ -45,7 +45,7 @@ public class PolyRushWebContext : IdentityDbContext<User, IdentityRole<int>, int
         const int AdminUserId = 1;
         const string AdminUserName = "Admin";
         const string AdminEmail = "emiel.delaey@sintjozefbrugge.be";
-        var random = new Random();
+        Random? random = new Random();
         Byte[] b = new Byte[16]; random.NextBytes(b); //random 32 bytes
         string AdminUserPassword = Convert.ToBase64String(b); //admin should reset password before he can login! This generates a random password
         IPasswordHasher<User> passwordHasher = new PasswordHasher<User>(); // Identity password hasher
@@ -342,7 +342,7 @@ public class PolyRushWebContext : IdentityDbContext<User, IdentityRole<int>, int
             entity.Property(e => e.AchievementName);
         });
         //make the list of different achievements
-        var achievements = new List<Achievement>()
+        List<Achievement>? achievements = new List<Achievement>()
         {
             new Achievement()
             {
@@ -406,7 +406,7 @@ public class PolyRushWebContext : IdentityDbContext<User, IdentityRole<int>, int
             }
         };
         //seed them to the table
-        foreach (var achievement in achievements)
+        foreach (Achievement? achievement in achievements)
         {
             builder.Entity<Achievement>().HasData(achievement);
         }

@@ -63,7 +63,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
                 amounts.Add(await _itemDa.GetAmountAsync(item, id, isAdmin));
             }
 
-            var _ = JsonConvert.SerializeObject(amounts);
+            string? _ = JsonConvert.SerializeObject(amounts);
             return Ok(_);
         }
 
@@ -111,7 +111,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Route("getdiscounts")]
         public async Task<IActionResult> GetDiscounts()
         {
-            var discounts = await _itemDa.GetAllDiscounts();
+            List<Discount>? discounts = await _itemDa.GetAllDiscounts();
             if (discounts == null) return BadRequest("No discounts found!");
             return Ok(discounts);
         }

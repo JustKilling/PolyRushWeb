@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace PolyRushWeb.Helper
 {
@@ -40,12 +41,20 @@ namespace PolyRushWeb.Helper
             Fail();
         }
 
-        public async Task<bool> IsAdmin()
+        public async Task<bool> IsAdminAsync()
         {
             HttpClient? httpClient = _clientHelper.GetHttpClient();
             HttpResponseMessage? result = await httpClient.GetAsync("checkadmin/");
             if (result.IsSuccessStatusCode) return true;
             return false;
+        }
+        public async Task<UserDTO> GetAuthenticatedUserAsync()
+        {
+            HttpClient? httpClient = _clientHelper.GetHttpClient();
+            HttpResponseMessage? result = await httpClient.GetAsync($"User/");
+            if (!result.IsSuccessStatusCode) return new UserDTO();
+            UserDTO? user = JsonConvert.DeserializeObject<UserDTO>(await result.Content.ReadAsStringAsync());
+            return user;
         }
     }
 }

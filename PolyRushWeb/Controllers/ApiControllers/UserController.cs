@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System.Drawing;
+using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PolyRushWeb.DA;
+using PolyRushWeb.Helper;
 using PolyRushWeb.Models;
 
 namespace PolyRushWeb.Controllers.ApiControllers
@@ -12,10 +14,12 @@ namespace PolyRushWeb.Controllers.ApiControllers
     public class UserController : ControllerBase
     {
         private readonly UserDA _userDa;
+        private readonly IWebHostEnvironment _env;
 
-        public UserController(UserDA userDa)
+        public UserController(UserDA userDa, IWebHostEnvironment env)
         {
             _userDa = userDa;
+            _env = env;
         }
         [HttpGet("ishighscore/{score}")]
         public async Task<IActionResult> IsHighscore(int score)
@@ -43,7 +47,37 @@ namespace PolyRushWeb.Controllers.ApiControllers
 
             return Ok(user);
         }
-       
+
+        [HttpPost]
+        [Route("update")]
+        public async Task<IActionResult> UpdateUser(UserDTO user)
+        {
+            if (await _userDa.UpdateUser(user))
+            {
+                return Ok();
+            }
+            return BadRequest("Error updating user!");
+        }
+
+        [HttpPost]
+        [Route("updateimage")]
+        public async Task<IActionResult> UpdateImage(ImageModel model)
+        {
+            //convert to bytes
+            byte[] imageBytes = Convert.FromBase64String(model.ImageString);
+
+            //id ophalen uit jwt
+            int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
+            //create a bitmap from the bytes
+            Bitmap bm = new Bitmap(new MemoryStream(imageBytes));
+            //Get the path
+            string path = Path.Combine(_env.WebRootPath, "img", "user", id + ".png");
+            //save image to path
+            await bm.SavePNG100Async(path);
+
+            return Ok();
+        }
+        
 
         //for admin to get a user with id
         [HttpGet("{id}")]
@@ -64,10 +98,11 @@ namespace PolyRushWeb.Controllers.ApiControllers
         }
 
         [HttpPost]
-        [Route("update")]
-        public async Task<IActionResult> UpdateUser(UserEditAdminModel userDto)
+        [Route("updateadmin")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> UpdateUser(UserEditAdminModel user)
         {
-            if (await _userDa.UpdateUser(userDto))
+            if (await _userDa.UpdateUser(user))
             {
                 return Ok();
             }

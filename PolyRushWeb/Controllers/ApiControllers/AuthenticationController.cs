@@ -81,7 +81,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             using (MemoryStream ms = new(Convert.FromBase64String(registration.Avatar)))
             {
                 Bitmap bm = new(ms);
-                await bm.SavePNG100(path);
+                await bm.SavePNG100Async(path);
             }
 
             user = await _userManager.FindByNameAsync(user.UserName);
@@ -178,7 +178,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             User? user = await _userManager.FindByEmailAsync(resetPassword.Email);
             //in case query string transformed the + in the token to a space.
             resetPassword.Token = resetPassword.Token.Replace(" ", "+");
-            var test = await _userManager.ResetPasswordAsync(user, resetPassword.Token, resetPassword.NewPassword);
+            IdentityResult? test = await _userManager.ResetPasswordAsync(user, resetPassword.Token, resetPassword.NewPassword);
             if (test.Succeeded) return Ok();
             return BadRequest(test.Errors);
         }

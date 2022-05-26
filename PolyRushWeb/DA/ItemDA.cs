@@ -185,7 +185,7 @@ namespace PolyRushWeb.DA
         }
         public async Task<List<Discount>?> GetAllActiveDiscounts()
         {
-            var discounts = _context.Discount.Where(d => d.Startdate < DateTime.Now && d.Enddate > DateTime.Now);
+            IQueryable<Discount>? discounts = _context.Discount.Where(d => d.Startdate < DateTime.Now && d.Enddate > DateTime.Now);
             return await discounts.AnyAsync() ? await discounts.ToListAsync() : null;
         }
     }

@@ -7,7 +7,8 @@
 @using PolyRushWeb.Helper
 @inject AuthenticationHelper authenticationHelper
 
-<!DOCTYPE html>
+ <!DOCTYPE html>
+
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -28,16 +29,19 @@
   <!-- Custom styles for this template -->
 </head>
 
-@{
-    //UserDTO user = JsonConvert.DeserializeObject<UserDTO>(Context.Session.GetString("User"));
-    UserDTO user = new();
-}
+ @{
+     //UserDTO user = JsonConvert.DeserializeObject<UserDTO>(Context.Session.GetString("User"));
+     
+    UserDTO user = await authenticationHelper.GetAuthenticatedUserAsync();
+ }
+
 <html lang="en">
 <body class="bg-dark"id="body-pd">
     <header class="header bg-dark" id="header">
           <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
           <div> 
               <span style="display: inline; margin-right: 10px">@user.Username</span>
+           
               <div class="header_img" style="display: inline"> <img src="/img/user/@{@user.ID.ToString()}.png" alt=""> </div>
           </div>
          
@@ -50,10 +54,11 @@
                     <a asp-action="Leaderboard" asp-controller="Home" class="nav_link"> <i class='bx bx-list-ol nav_icon'></i> <span class="nav_name">Leaderboard</span> </a> 
                     <a asp-action="Stats" asp-controller="Home" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a>
                     <a asp-action="Achievements" asp-controller="Home" class="nav_link"> <i class='bx bx-medal nav_icon'></i><span class="nav_name">Achievements</span> </a>
+                    <a asp-action="Profile" asp-controller="Home" asp-route-id="@user.ID" class="nav_link"> <i class='bx bx-user nav_icon'></i><span class="nav_name">Profile</span> </a>
                     @{
-                        if (await authenticationHelper.IsAdmin())
+                        if (await authenticationHelper.IsAdminAsync())
                         {
-                            <a asp-action="Index" asp-controller="Admin" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a> 
+                            <a asp-action="Index" asp-controller="Admin" class="nav_link"> <i class='bx bx-group nav_icon'></i> <span class="nav_name">Users</span> </a> 
                             <a asp-action="Discount" asp-controller="Admin" class="nav_link"> <i class='bx bx-purchase-tag nav_icon'></i> <span class="nav_name">Discounts</span> </a> 
                             <a asp-action="Items" asp-controller="Admin" class="nav_link"> <i class='bx bx-star nav_icon'></i> <span class="nav_name">Items</span> </a> 
                         }

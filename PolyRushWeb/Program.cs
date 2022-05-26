@@ -23,9 +23,13 @@ using Newtonsoft.Json;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 string? connectionString = builder.Configuration.GetConnectionString("PolyRushWebConnection");;
-var serverVersion = ServerVersion.AutoDetect(connectionString);
+ServerVersion? serverVersion = ServerVersion.AutoDetect(connectionString);
 builder.Services.AddDbContext<PolyRushWebContext>(options =>
-    options.UseMySql(connectionString, serverVersion), ServiceLifetime.Scoped);
+    {
+        options.UseMySql(connectionString, serverVersion);
+        options.EnableSensitiveDataLogging();
+    }
+   , ServiceLifetime.Scoped);
 
 builder.Services.AddDbContextFactory<PolyRushWebContext>(options =>
 {
@@ -35,12 +39,12 @@ builder.Services.AddDbContextFactory<PolyRushWebContext>(options =>
 
 
 //Add DA dependencies
-builder.Services.AddTransient<UserDA>();
-builder.Services.AddTransient<LeaderboardDA>();
-builder.Services.AddTransient<ItemDA>();
-builder.Services.AddTransient<SettingDA>();
-builder.Services.AddTransient<GameSessionDA>();
-builder.Services.AddTransient<AchievementDA>();
+builder.Services.AddScoped<UserDA>();
+builder.Services.AddScoped<LeaderboardDA>();
+builder.Services.AddScoped<ItemDA>();
+builder.Services.AddScoped<SettingDA>();
+builder.Services.AddScoped<GameSessionDA>();
+builder.Services.AddScoped<AchievementDA>();
 
 //configure email
 //add emailhelper as a singleton
