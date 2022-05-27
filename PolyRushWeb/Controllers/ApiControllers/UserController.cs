@@ -69,13 +69,27 @@ namespace PolyRushWeb.Controllers.ApiControllers
             //id ophalen uit jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             //create a bitmap from the bytes
-            Bitmap bm = new Bitmap(new MemoryStream(imageBytes));
+            Bitmap bm = new(new MemoryStream(imageBytes));
             //Get the path
             string path = Path.Combine(_env.WebRootPath, "img", "user", id + ".png");
             //save image to path
             await bm.SavePNG100Async(path);
 
             return Ok();
+        } 
+        [HttpGet]
+        [Route("isemailinuse")]
+        [AllowAnonymous]
+        public async Task<IActionResult> IsEmailInUse([FromQuery] string email)
+        {
+            return Ok(await _userDa.IsEmailInUse(email.Trim()));
+        } 
+        [HttpGet]
+        [Route("isusernameinuse")]
+        [AllowAnonymous]
+        public async Task<IActionResult> IsUsernameInUse([FromQuery] string username)
+        {
+            return Ok(await _userDa.IsUsernameInUse(username.Trim()));
         }
         
 

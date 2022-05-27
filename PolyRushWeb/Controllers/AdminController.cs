@@ -16,27 +16,32 @@ using PolyRushWeb.Models;
 
 namespace PolyRushWeb.Controllers
 {
-    //attribute to make sure only admin can acces this controller.
-    [Secure(true)]
+    
     public class AdminController : Controller
     {
         private readonly UserManager<User> _userManager;
         private readonly ClientHelper _clientHelper;
+        private readonly AuthenticationHelper _authenticationHelper;
 
         public AdminController(
             UserManager<User> userManager,
-            ClientHelper clientHelper)
+            ClientHelper clientHelper,
+            AuthenticationHelper authenticationHelper)
         {
             _userManager = userManager;
             _clientHelper = clientHelper;
+            _authenticationHelper = authenticationHelper;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            if (!await _authenticationHelper.IsAdminAsync()) { return RedirectToAction("Logout", "Home"); } //Check if admin, if not, logout 
             return View();
         }
         public async Task<IActionResult> Discount()
         {
+            if (!await _authenticationHelper.IsAdminAsync()) { return RedirectToAction("Logout", "Home"); } //Check if admin, if not, logout 
+
             HttpClient httpClient = _clientHelper.GetHttpClient();
             HttpResponseMessage response = await httpClient.GetAsync("item/getdiscounts");
             if (!response.IsSuccessStatusCode)
@@ -47,11 +52,11 @@ namespace PolyRushWeb.Controllers
             //if discounts is null, return an empty list
             return View(discounts ?? new List<Discount>());
         }
-        [AllowAnonymous]
         public async Task<IActionResult> GetUsers()
         {
+            if (!await _authenticationHelper.IsAdminAsync()) { return RedirectToAction("Logout", "Home"); } //Check if admin, if not, logout 
             HttpClient httpClient = _clientHelper.GetHttpClient();
-          
+
             //Get all users 
             List<UserDTO>? users = JsonConvert.DeserializeObject<List<UserDTO>>(await httpClient.GetStringAsync("User/all"));
             return Json(new {data = users});
@@ -59,6 +64,7 @@ namespace PolyRushWeb.Controllers
 
         public async Task< IActionResult > Edit(int id)
         {
+            if (!await _authenticationHelper.IsAdminAsync()) { return RedirectToAction("Logout", "Home"); } //Check if admin, if not, logout 
             HttpClient httpClient = _clientHelper.GetHttpClient();
 
             string response = await httpClient.GetStringAsync($"user/{id}");
@@ -72,6 +78,7 @@ namespace PolyRushWeb.Controllers
         } 
         public async Task< IActionResult > EditUser(UserEditAdminModel editModel)
         {
+            if (!await _authenticationHelper.IsAdminAsync()) { return RedirectToAction("Logout", "Home"); } //Check if admin, if not, logout 
             if (ModelState.IsValid)
             {
                 HttpClient httpClient = _clientHelper.GetHttpClient();
@@ -86,6 +93,7 @@ namespace PolyRushWeb.Controllers
 
         public async Task<IActionResult> Deactivate(int id)
         {
+            if (!await _authenticationHelper.IsAdminAsync()) { return RedirectToAction("Logout", "Home"); } //Check if admin, if not, logout 
             HttpClient httpClient = _clientHelper.GetHttpClient();
             HttpRequestMessage request = new(HttpMethod.Post, $"User/deactivate/{id}");
             await httpClient.SendAsync(request);
@@ -93,6 +101,7 @@ namespace PolyRushWeb.Controllers
         }
         public async Task<IActionResult> Activate(int id)
         {
+            if (!await _authenticationHelper.IsAdminAsync()) { return RedirectToAction("Logout", "Home"); } //Check if admin, if not, logout 
             HttpClient httpClient = _clientHelper.GetHttpClient();
             HttpRequestMessage request = new(HttpMethod.Post, $"User/activate/{id}");
             await httpClient.SendAsync(request);
@@ -100,6 +109,7 @@ namespace PolyRushWeb.Controllers
         }
         public async Task<IActionResult> DiscountCreateView()
         {
+            if (!await _authenticationHelper.IsAdminAsync()) { return RedirectToAction("Logout", "Home"); } //Check if admin, if not, logout 
             //return the view with a discount with present date if discount id is 0.
             //DiscountModel discountModel = discount.Iddiscount == 0 ?
             //    new DiscountModel { Startdate = DateTime.Now, Enddate = DateTime.Now.AddDays(7) } : discount
@@ -126,6 +136,8 @@ namespace PolyRushWeb.Controllers
         //method for creating a discount
         public async Task<IActionResult> CreateDiscount(DiscountModel discount)
         {
+            if (!await _authenticationHelper.IsAdminAsync()) { return RedirectToAction("Logout", "Home"); } //Check if admin, if not, logout 
+
             if (!ModelState.IsValid) return View(nameof(DiscountCreateView), discount);
             //go to the discount action, so show the list again after a discount has been added
             HttpClient httpClient = _clientHelper.GetHttpClient();
@@ -138,7 +150,8 @@ namespace PolyRushWeb.Controllers
         //method for deleting a discount
         public async Task<IActionResult> DeleteDiscount(int id)
         {
-          
+            if (!await _authenticationHelper.IsAdminAsync()) { return RedirectToAction("Logout", "Home"); } //Check if admin, if not, logout 
+
             //go to the discount action, so show the list again after a discount has been added
             HttpClient httpClient = _clientHelper.GetHttpClient();
             HttpRequestMessage request = new(HttpMethod.Post, $"item/deletediscount/{id}");
@@ -147,6 +160,8 @@ namespace PolyRushWeb.Controllers
         }
         public async Task<IActionResult> Items()
         {
+            if (!await _authenticationHelper.IsAdminAsync()) { return RedirectToAction("Logout", "Home"); } //Check if admin, if not, logout 
+
             HttpClient httpClient = _clientHelper.GetHttpClient();
             HttpResponseMessage response = await httpClient.GetAsync("item/itemitemtype");
 

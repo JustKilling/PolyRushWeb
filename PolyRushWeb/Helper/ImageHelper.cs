@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -44,6 +45,7 @@ namespace PolyRushWeb.Helper
         //https://stackoverflow.com/questions/41665/bmp-to-jpg-png-in-c-sharp
         public static async Task SavePNG100Async(this Bitmap bmp, string filename)
         {
+            
             //resize bitmap to 500,500
             Bitmap resized = new(bmp, new Size(500, 500));
             //make sure its the best quality

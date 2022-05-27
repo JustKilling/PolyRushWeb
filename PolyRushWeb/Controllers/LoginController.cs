@@ -1,16 +1,20 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Net.Http.Headers;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using PolyRushLibrary;
@@ -45,7 +49,9 @@ namespace PolyRushWeb.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            
             return View("Login");
+
         }
         public IActionResult Register()
         {
@@ -63,7 +69,7 @@ namespace PolyRushWeb.Controllers
                     AuthenticationResponse authenticationResponse =
                         JsonConvert.DeserializeObject<AuthenticationResponse>(responseString)!;
 
-                    CookieOptions cookieOptions = new CookieOptions
+                    CookieOptions cookieOptions = new()
                     {
                         Secure = true,
                         Expires = DateTime.Now.AddDays(7),
@@ -75,9 +81,37 @@ namespace PolyRushWeb.Controllers
             }
          
             ModelState.AddModelError("Invalid", "Invalid Details");
+            HttpContext.Session.SetInt32("IsInvalidLogin", 1);
 
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> IsEmailInUse(string email)
+        {
+            HttpClient? client = _clientHelper.GetHttpClient();
+            HttpResponseMessage? response = await client.GetAsync($"user/isemailinuse?email={email}");
+            if (response.IsSuccessStatusCode)
+            {
+                var isUsed = Convert.ToBoolean(await response.Content.ReadAsStringAsync());
+                return Json(!isUsed);
+            }
+
+            //if something is wrong, prevent user from registering.
+            return Json(false);
+        }
+        public async Task<IActionResult> IsUsernameInUse(string username)
+            {
+                HttpClient? client = _clientHelper.GetHttpClient();
+                HttpResponseMessage? response = await client.GetAsync($"user/isusernameinuse?username={username}");
+                if (response.IsSuccessStatusCode)
+                {
+                    var isUsed = Convert.ToBoolean(await response.Content.ReadAsStringAsync());
+                    return Json(!isUsed);
+                }
+
+                //if something is wrong, prevent user from registering.
+                return Json(false);
+            }
 
         public async Task<IActionResult> RegisterUser(RegisterModel request)
         {
@@ -89,7 +123,7 @@ namespace PolyRushWeb.Controllers
             }
             return RedirectToAction(nameof(Register));
         }
-        public async Task<IActionResult> ForgotPassword()
+        public IActionResult ForgotPassword()
         {
             return View();
         } 
@@ -99,7 +133,7 @@ namespace PolyRushWeb.Controllers
             HttpResponseMessage? response = await client.GetAsync($"forgot-password/{model.Email}");
             return RedirectToAction(nameof(Login));
         }
-        public async Task<IActionResult> ResetPassword([FromQuery] string email, [FromQuery] string token)
+        public IActionResult ResetPassword([FromQuery] string email, [FromQuery] string token)
         {
             
             return View(new ResetPasswordModel(){Token = token, Email = email});

@@ -10,16 +10,17 @@ namespace PolyRushWeb.Models
         public int Id { get; set; }
         [Required]
         [StringLength(maximumLength:20, MinimumLength = 3, ErrorMessage = "Please provide a length between 3 and 20")]
-        public string Username { get; set; }
+        public string Username { get; set; } = "";
         [Required]
-        [DataType(DataType.EmailAddress, ErrorMessage = "Please provide a valid email adress!")]
-        public string Email { get; set; }
-        [Required]
-        [StringLength(maximumLength:20, MinimumLength = 3, ErrorMessage = "Please provide a length between 3 and 20")]
-        public string Firstname { get; set; }
+        [EmailAddress(ErrorMessage = "Please provide a valid email adress!")]
+        public string Email { get; set; } = "";
         [Required]
         [StringLength(maximumLength:20, MinimumLength = 3, ErrorMessage = "Please provide a length between 3 and 20")]
-        public string Lastname { get; set; }
+        public string Firstname { get; set; } = "";
+
+        [Required]
+        [StringLength(maximumLength: 20, MinimumLength = 3, ErrorMessage = "Please provide a length between 3 and 20")]
+        public string Lastname { get; set; } = "";
 
         [DisplayName("Upload file")]
         [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png" })]
@@ -30,9 +31,9 @@ namespace PolyRushWeb.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Username { get; set; }
+        public string Username { get; set; } = "";
         [Required]
-        public string Email { get; set; }
+        public string Email { get; set; } = "";
         [Required]
         public string Firstname { get; set; } = null!;
         [Required]

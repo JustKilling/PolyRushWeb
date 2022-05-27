@@ -8,8 +8,9 @@
     "\\PolyRushWeb\\Controllers\\ApiControllers",
     "\\PolyRushWeb\\Models",
     "\\PolyRushWeb\\Views",
-    "\\PolyRushWeb\\Views\\Home"
+    "\\PolyRushWeb\\Views\\Home",
+    "\\PolyRushWeb\\Views\\Shared"
   ],
-  "SelectedNode": "\\PolyRushWeb\\Views\\Home\\Stats.cshtml",
+  "SelectedNode": "\\PolyRushWeb\\Views\\Shared\\Login.cshtml",
   "PreviewInSolutionExplorer": false
 }

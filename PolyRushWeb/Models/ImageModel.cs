@@ -2,6 +2,6 @@
 {
     public class ImageModel
     {
-        public string ImageString { get; set; }
+        public string ImageString { get; set; } = "";
     }
 }

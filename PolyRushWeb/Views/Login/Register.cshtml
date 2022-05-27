@@ -37,17 +37,20 @@
                                     <input type="text" class="form-control my-2 form-control-user"
                                         asp-for="Username" 
                                         placeholder="Username">
+                                    <span asp-validation-for="Username" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control my-2 form-control-user"
-                                        asp-for="Email" 
-                                        placeholder="Email">
+                                           asp-for="Email" 
+                                           placeholder="Email">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control my-2 form-control-user"
                                             asp-for="Password" placeholder="Password">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
                                 </div>
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <input type="password" class="form-control my-2 form-control-user"
                                             asp-for="ConfirmPassword" placeholder="Confirm Password">
                                 </div>

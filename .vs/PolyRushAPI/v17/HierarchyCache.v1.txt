@@ -4,714 +4,568 @@ i:{00000000-0000-0000-0000-000000000000}:PolyRushAPI.sln
 i:{00000000-0000-0000-0000-000000000000}:PolyRushAPI
 ++PolyRushLibrary
 i:{00000000-0000-0000-0000-000000000000}:PolyRushLibrary
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\bin\debug\net6.0\polyrushlibrary.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\polyrushlibrary.csproj
 ++Dependencies
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:>2379
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4622
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:>3157
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6176
 ++Entities
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\entities\
-++Discount.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\entities\discount.cs
-++Gamesession.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\entities\gamesession.cs
-++Item.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\entities\item.cs
-++Itemtype.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\entities\itemtype.cs
-++Setting.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\entities\setting.cs
-++Useritem.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\entities\useritem.cs
-++Usersetting.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\entities\usersetting.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\entities\
 ++Requests
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\requests\
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\requests\
 ++Responses
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\responses\
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\responses\
 ++ItemType.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\itemtype.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\itemtype.cs
 ++Settings.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\settings.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\settings.cs
 ++UserDTO.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\userdto.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\userdto.cs
 ++UserPlaytime.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\userplaytime.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\userplaytime.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\userplaytime.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\models\userplaytime.cs
 ++Analyzers
 i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:analyzers
 i:{0836ac50-7885-46bf-b207-8a7c894e0567}:analyzers
 ++Frameworks
 i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:frameworks
 i:{0836ac50-7885-46bf-b207-8a7c894e0567}:frameworks
+++Achievement.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\entities\achievement.cs
+++Discount.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\entities\discount.cs
+++Gamesession.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\entities\gamesession.cs
+++Item.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\entities\item.cs
+++Itemtype.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\entities\itemtype.cs
+++Setting.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\entities\setting.cs
+++UserAchievement.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\entities\userachievement.cs
+++Useritem.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\entities\useritem.cs
+++Usersetting.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\entities\usersetting.cs
 ++AuthenticationRequest.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\requests\authenticationrequest.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\requests\authenticationrequest.cs
 ++AuthenticationResponse.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\responses\authenticationresponse.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\responses\authenticationresponse.cs
 ++NextGoalResponse.cs
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\responses\nextgoalresponse.cs
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\responses\nextgoalresponse.cs
 ++Microsoft.CodeAnalysis.CSharp.NetAnalyzers
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\program files\dotnet\sdk\6.0.203\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.203\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
 ++Microsoft.CodeAnalysis.NetAnalyzers
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\program files\dotnet\sdk\6.0.203\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.203\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
 ++System.Text.Json.SourceGeneration
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.5\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.5\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.4\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.4\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
 ++Microsoft.NETCore.App
-i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushlibrary\microsoft.netcore.app
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\microsoft.netcore.app
+i:{a56da0f2-06d0-48de-9b2f-153d0836b34f}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushlibrary\microsoft.netcore.app
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\microsoft.netcore.app
 ++PolyRushWeb
 i:{00000000-0000-0000-0000-000000000000}:PolyRushWeb
 ++Connected Services 
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4623
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6177
 ++Properties
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\properties\
 ++wwwroot
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\
 ++css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\css\
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\css\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\
 ++img
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\
 ++icons
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\
-++icon-128x128.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-128x128.png
-++icon-144x144.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-144x144.png
-++icon-152x152.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-152x152.png
-++icon-192x192.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-192x192.png
-++icon-384x384.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-384x384.png
-++icon-512x512.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-512x512.png
-++icon-72x72.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-72x72.png
-++icon-96x96.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-96x96.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\
 ++item
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\item\
-++1.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\item\1.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\1.png
-++3.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\item\3.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\3.png
-++4.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\item\4.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\4.png
-++5.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\item\5.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\5.png
-++6.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\item\6.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\6.png
-++7.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\item\7.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\7.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\item\
 ++user
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\
+++1.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\1.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\item\1.png
 ++10.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\10.png
-++100.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\100.png
-++101.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\101.png
-++102.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\102.png
-++105.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\105.png
-++106.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\106.png
-++107.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\107.png
-++108.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\108.png
-++109.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\109.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\10.png
 ++11.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\11.png
-++110.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\110.png
-++111.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\111.png
-++112.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\112.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\11.png
 ++12.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\12.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\12.png
 ++13.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\13.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\13.png
 ++14.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\14.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\14.png
 ++15.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\15.png
-++16.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\16.png
-++17.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\17.png
-++18.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\18.png
-++19.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\19.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\15.png
 ++2.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\2.png
-++20.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\20.png
-++21.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\21.png
-++22.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\22.png
-++23.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\23.png
-++24.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\24.png
-++25.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\25.png
-++26.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\26.png
-++27.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\27.png
-++28.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\28.png
-++29.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\29.png
-++30.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\30.png
-++31.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\31.png
-++32.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\32.png
-++33.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\33.png
-++34.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\34.png
-++35.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\35.png
-++36.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\36.png
-++37.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\37.png
-++38.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\38.png
-++39.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\39.png
-++40.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\40.png
-++41.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\41.png
-++42.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\42.png
-++43.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\43.png
-++44.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\44.png
-++45.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\45.png
-++46.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\46.png
-++47.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\47.png
-++48.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\48.png
-++49.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\49.png
-++50.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\50.png
-++51.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\51.png
-++52.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\52.png
-++53.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\53.png
-++54.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\54.png
-++55.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\55.png
-++56.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\56.png
-++57.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\57.png
-++58.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\58.png
-++59.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\59.png
-++60.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\60.png
-++61.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\61.png
-++62.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\62.png
-++63.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\63.png
-++64.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\64.png
-++65.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\65.png
-++66.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\66.png
-++67.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\67.png
-++68.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\68.png
-++69.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\69.png
-++70.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\70.png
-++71.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\71.png
-++72.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\72.png
-++73.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\73.png
-++74.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\74.png
-++75.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\75.png
-++76.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\76.png
-++77.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\77.png
-++78.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\78.png
-++79.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\79.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\2.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\item\2.png
+++3.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\3.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\item\3.png
+++4.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\4.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\item\4.png
+++5.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\5.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\item\5.png
+++6.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\6.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\item\6.png
+++7.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\7.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\item\7.png
 ++8.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\8.png
-++80.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\80.png
-++81.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\81.png
-++82.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\82.png
-++83.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\83.png
-++84.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\84.png
-++85.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\85.png
-++86.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\86.png
-++87.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\87.png
-++88.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\88.png
-++89.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\89.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\8.png
 ++9.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\9.png
-++90.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\90.png
-++91.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\91.png
-++92.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\92.png
-++93.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\93.png
-++94.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\94.png
-++95.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\95.png
-++96.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\96.png
-++97.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\97.png
-++98.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\98.png
-++99.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\99.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\user\9.png
 ++SS-2022.04.14.19.55.21.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\ss-2022.04.14.19.55.21.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\ss-2022.04.14.19.55.21.jpg
 ++SS-2022.04.14.19.55.21.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\ss-2022.04.14.19.55.21.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\ss-2022.04.14.19.55.21.png
 ++SS-2022.04.14.19.57.35.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\ss-2022.04.14.19.57.35.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\ss-2022.04.14.19.57.35.png
 ++ss-2022-04-14-19-55-21.jpg
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\ss-2022-04-14-19-55-21.jpg
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\ss-2022-04-14-19-55-21.jpg
 ++js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\js\
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\js\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\
 ++lib
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\
 ++favicon.ico
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\favicon.ico
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\favicon.ico
 ++favicon_old.ico
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\favicon_old.ico
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\favicon_old.ico
 ++manifest.json
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\manifest.json
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\manifest.json
 ++Controllers
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\controllers\
 ++ApiControllers
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\
+++AchievementController.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\achievementcontroller.cs
 ++APIController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\apicontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\apicontroller.cs
 ++AuthenticationController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\authenticationcontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\authenticationcontroller.cs
 ++GameSessionController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\gamesessioncontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\gamesessioncontroller.cs
 ++ItemController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\itemcontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\itemcontroller.cs
 ++LeaderboardController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\leaderboardcontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\leaderboardcontroller.cs
 ++SettingController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\settingcontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\settingcontroller.cs
 ++UserController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\usercontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\controllers\apicontrollers\usercontroller.cs
 ++AdminController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\admincontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\controllers\admincontroller.cs
 ++HomeController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\homecontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\controllers\homecontroller.cs
 ++LoginController.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\controllers\logincontroller.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\controllers\logincontroller.cs
 ++DA
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\da\
-++DiscountDA.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\da\discountda.cs
-++GameSessionDA.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\da\gamesessionda.cs
-++ItemDA.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\da\itemda.cs
-++LeaderboardDA.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\da\leaderboardda.cs
-++SettingDA.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\da\settingda.cs
-++UserDA.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\da\userda.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\da\
 ++Helper
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\helper\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\helper\
+++AllowedExtensionsAttribute.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\helper\allowedextensionsattribute.cs
 ++AuthenticationHelper.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\helper\authenticationhelper.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\helper\authenticationhelper.cs
 ++ClientHelper.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\helper\clienthelper.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\helper\clienthelper.cs
 ++ConverterHelper.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\helper\converterhelper.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\helper\converterhelper.cs
 ++DatabaseConnector.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\helper\databaseconnector.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\helper\databaseconnector.cs
+++DetachHelper.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\helper\detachhelper.cs
 ++EmailHelper.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\helper\emailhelper.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\helper\emailhelper.cs
 ++HttpHelper.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\helper\httphelper.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\helper\httphelper.cs
 ++ImageHelper.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\helper\imagehelper.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\helper\imagehelper.cs
 ++Secure.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\helper\secure.cs
 ++Media
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\media\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\media\
 ++Migrations
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\migrations\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\migrations\
 ++Models
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\models\
+++DiscountModel.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\models\discountmodel.cs
 ++ErrorViewModel.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\errorviewmodel.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\models\errorviewmodel.cs
 ++ForgotPasswordModel.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\forgotpasswordmodel.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\models\forgotpasswordmodel.cs
+++ImageModel.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\models\imagemodel.cs
+++ItemItemTypeModel.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\models\itemitemtypemodel.cs
 ++LoginModel.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\loginmodel.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\models\loginmodel.cs
 ++PolyRushWebContext.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\polyrushwebcontext.cs
-++RefreshToken.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\refreshtoken.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\models\polyrushwebcontext.cs
 ++RegisterModel.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\registermodel.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\models\registermodel.cs
 ++SecretSettings.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\secretsettings.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\models\secretsettings.cs
 ++StatsModel.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\statsmodel.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\models\statsmodel.cs
 ++User.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\user.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\models\user.cs
 ++UserEditModel.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\models\usereditmodel.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\models\usereditmodel.cs
 ++Views
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\
 ++Admin
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\admin\
-++Home
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\home\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\admin\
+++Discount.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\admin\discount.cshtml
+++DiscountCreateView.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\admin\discountcreateview.cshtml
+++Edit.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\admin\edit.cshtml
 ++Index.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\home\index.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\admin\index.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\admin\index.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\home\index.cshtml
+++Items.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\admin\items.cshtml
+++Home
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\home\
+++Achievements.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\home\achievements.cshtml
 ++Leaderboard.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\home\leaderboard.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\home\leaderboard.cshtml
 ++Privacy.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\home\privacy.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\home\privacy.cshtml
+++Profile.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\home\profile.cshtml
 ++Stats.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\home\stats.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\home\stats.cshtml
 ++Login
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\login\
-++ForgotPassword.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\login\forgotpassword.cshtml
-++Register.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\login\register.cshtml
-++ResetPassword.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\login\resetpassword.cshtml
-++Shared
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\shared\
-++_HomeLayout.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\shared\_homelayout.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\login\
 ++_Layout.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\shared\_layout.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\login\_layout.cshtml
+++ForgotPassword.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\login\forgotpassword.cshtml
+++Register.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\login\register.cshtml
+++ResetPassword.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\login\resetpassword.cshtml
+++Shared
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\shared\
+++_HomeLayout.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\shared\_homelayout.cshtml
 ++_ValidationScriptsPartial.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\shared\_validationscriptspartial.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\shared\_validationscriptspartial.cshtml
 ++Error.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\shared\error.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\shared\error.cshtml
 ++Login.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\shared\login.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\shared\login.cshtml
 ++_ViewImports.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\_viewimports.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\_viewimports.cshtml
 ++_ViewStart.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\_viewstart.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\_viewstart.cshtml
 ++appsettings.json
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\appsettings.json
-++appsettings.Development.json
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\appsettings.development.json
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\appsettings.json
+++GlobalSuppressions.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\globalsuppressions.cs
 ++prjemiel.netwerkenit.be
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\prjemiel.netwerkenit.be
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\prjemiel.netwerkenit.be
 ++Program.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\program.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\program.cs
 ++ScaffoldingReadMe.txt
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\scaffoldingreadme.txt
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\scaffoldingreadme.txt
 ++user.csv
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\user.csv
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\user.csv
 ++SQL Server Express LocalDB (Local) (ConnectionStrings:PolyRushWebContextConnection)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4670
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6231
 ++Packages
 i:{0836ac50-7885-46bf-b207-8a7c894e0567}:packages
 ++Projects
 i:{0836ac50-7885-46bf-b207-8a7c894e0567}:projects
 ++PublishProfiles
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\publishprofiles\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\properties\publishprofiles\
 ++ServiceDependencies
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\servicedependencies\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\properties\servicedependencies\
 ++launchSettings.json
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\launchsettings.json
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\properties\launchsettings.json
 ++serviceDependencies.json
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\servicedependencies.json
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\properties\servicedependencies.json
 ++datatable.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\css\datatable.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\css\datatable.css
 ++index.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\css\index.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\css\index.css
 ++sidebar.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\css\sidebar.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\css\sidebar.css
 ++site.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\css\site.css
-++7.png.meta
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\img\item\7.png.meta
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\css\site.css
+++icon-128x128.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-128x128.png
+++icon-144x144.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-144x144.png
+++icon-152x152.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-152x152.png
+++icon-192x192.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-192x192.png
+++icon-384x384.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-384x384.png
+++icon-512x512.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-512x512.png
+++icon-72x72.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-72x72.png
+++icon-96x96.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\icons\icon-96x96.png
 ++sidebar.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\js\sidebar.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\js\sidebar.js
 ++site.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\js\site.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\js\site.js
 ++bootstrap
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\
 ++jquery
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\
 ++jquery-validation
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\
 ++jquery-validation-unobtrusive
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation-unobtrusive\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation-unobtrusive\
+++AchievementDA.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\da\achievementda.cs
+++DiscountDA.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\da\discountda.cs
+++GameSessionDA.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\da\gamesessionda.cs
+++ItemDA.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\da\itemda.cs
+++LeaderboardDA.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\da\leaderboardda.cs
+++SettingDA.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\da\settingda.cs
+++UserDA.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\da\userda.cs
 ++success.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\media\success.png
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\media\success.png
 ++user.png
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\media\user.png
-++20220516203554_initial.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\migrations\20220516203554_initial.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\media\user.png
+++20220522123657_init.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\migrations\20220522123657_init.cs
+++20220522205713_achievementsupdate.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\migrations\20220522205713_achievementsupdate.cs
+++20220524140646_remove_isadmin.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\migrations\20220524140646_remove_isadmin.cs
+++20220524141058_remove_seesads.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\migrations\20220524141058_remove_seesads.cs
+++20220527095158_removelastlogintime.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\migrations\20220527095158_removelastlogintime.cs
 ++PolyRushWebContextModelSnapshot.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\migrations\polyrushwebcontextmodelsnapshot.cs
-++Edit.cshtml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\admin\edit.cshtml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\migrations\polyrushwebcontextmodelsnapshot.cs
 ++_Layout.cshtml.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\views\shared\_layout.cshtml.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\views\login\_layout.cshtml.css
+++appsettings.Development.json
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\appsettings.development.json
 ++MessagePackAnalyzer
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\.nuget\packages\messagepackanalyzer\2.1.152\analyzers\dotnet\messagepackanalyzer.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\.nuget\packages\messagepackanalyzer\2.1.152\analyzers\dotnet\messagepackanalyzer.dll
 ++Microsoft.AspNetCore.Analyzers
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.203\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.analyzers.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.analyzers.dll
 ++Microsoft.AspNetCore.App.Analyzers
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.5\analyzers\dotnet\cs\microsoft.aspnetcore.app.analyzers.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.4\analyzers\dotnet\cs\microsoft.aspnetcore.app.analyzers.dll
 ++Microsoft.AspNetCore.App.CodeFixes
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.5\analyzers\dotnet\cs\microsoft.aspnetcore.app.codefixes.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.4\analyzers\dotnet\cs\microsoft.aspnetcore.app.codefixes.dll
 ++Microsoft.AspNetCore.Components.Analyzers
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.203\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.components.analyzers.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.components.analyzers.dll
 ++Microsoft.AspNetCore.Mvc.Analyzers
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.203\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.mvc.analyzers.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.mvc.analyzers.dll
 ++Microsoft.AspNetCore.Razor.SourceGenerator.Tooling.Internal
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.203\sdks\microsoft.net.sdk.razor\source-generators\microsoft.aspnetcore.razor.sourcegenerator.tooling.internal.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk.razor\source-generators\microsoft.aspnetcore.razor.sourcegenerator.tooling.internal.dll
 ++Microsoft.CodeAnalysis.Analyzers
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.2\analyzers\dotnet\cs\microsoft.codeanalysis.analyzers.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.2\analyzers\dotnet\cs\microsoft.codeanalysis.analyzers.dll
 ++Microsoft.CodeAnalysis.CSharp.Analyzers
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.2\analyzers\dotnet\cs\microsoft.codeanalysis.csharp.analyzers.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.2\analyzers\dotnet\cs\microsoft.codeanalysis.csharp.analyzers.dll
 ++Microsoft.EntityFrameworkCore.Analyzers
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.4\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.4\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
 ++Microsoft.Extensions.Logging.Generators
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.5\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.4\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
 ++Microsoft.NET.Sdk.Razor.SourceGenerators
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.203\sdks\microsoft.net.sdk.razor\source-generators\microsoft.net.sdk.razor.sourcegenerators.dll
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk.razor\source-generators\microsoft.net.sdk.razor.sourcegenerators.dll
 ++Microsoft.AspNetCore.App
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\microsoft.aspnetcore.app
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\microsoft.aspnetcore.app
 ++FluentEmail.Smtp (3.0.2)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4658
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6201
 ++FluentFTP (37.0.2)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4661
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6204
 ++Microsoft.AspNetCore.Authentication.JwtBearer (6.0.4)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4660
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6203
 ++Microsoft.AspNetCore.Identity.EntityFrameworkCore (6.0.4)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4657
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6200
 ++Microsoft.AspNetCore.Identity.UI (6.0.4)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4667
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6210
 ++Microsoft.AspNetCore.Mvc.NewtonsoftJson (6.0.4)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4656
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6199
 ++Microsoft.EntityFrameworkCore.SqlServer (6.0.4)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4652
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6195
 ++Microsoft.EntityFrameworkCore.Tools (6.0.4)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4663
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6206
 ++Microsoft.IdentityModel.Tokens (6.16.0)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4662
-++Microsoft.VisualStudio.Web.CodeGeneration.Design (6.0.4)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4666
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6205
+++Microsoft.VisualStudio.Web.CodeGeneration.Design (6.0.5)
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6209
 ++Newtonsoft.Json (13.0.1)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4655
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6198
 ++Pomelo.EntityFrameworkCore.MySql (6.0.1)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4665
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6208
 ++Swashbuckle.AspNetCore (6.3.0)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4654
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6197
 ++System.Drawing.Common (6.0.0)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4651
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6194
 ++System.IdentityModel.Tokens.Jwt (6.16.0)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4653
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6196
 ++System.Windows.Extensions (6.0.0)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4664
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6207
 ++WebEssentials.AspNetCore.PWA (1.0.65)
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>4659
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:>6202
 ++FolderProfile.pubxml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\publishprofiles\folderprofile.pubxml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\properties\publishprofiles\folderprofile.pubxml
 ++FolderProfile1.pubxml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\publishprofiles\folderprofile1.pubxml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\properties\publishprofiles\folderprofile1.pubxml
 ++PolyRushApi - Web Deploy.pubxml
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\publishprofiles\polyrushapi - web deploy.pubxml
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\properties\publishprofiles\polyrushapi - web deploy.pubxml
 ++PolyRushApi - Web Deploy
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\servicedependencies\polyrushapi - web deploy\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\properties\servicedependencies\polyrushapi - web deploy\
 ++serviceDependencies.local.json
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\servicedependencies.local.json
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\properties\servicedependencies.local.json
+++7.png.meta
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\img\item\7.png.meta
 ++dist
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\dist\
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\dist\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\dist\
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\dist\
 ++LICENSE
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\license
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\license
 ++LICENSE.txt
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\license.txt
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation-unobtrusive\license.txt
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\license.txt
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation-unobtrusive\license.txt
 ++LICENSE.md
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\license.md
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\license.md
 ++jquery.validate.unobtrusive.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
-++20220516203554_initial.Designer.cs
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\migrations\20220516203554_initial.designer.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
+++20220522123657_init.Designer.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\migrations\20220522123657_init.designer.cs
+++20220522205713_achievementsupdate.Designer.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\migrations\20220522205713_achievementsupdate.designer.cs
+++20220524140646_remove_isadmin.Designer.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\migrations\20220524140646_remove_isadmin.designer.cs
+++20220524141058_remove_seesads.Designer.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\migrations\20220524141058_remove_seesads.designer.cs
+++20220527095158_removelastlogintime.Designer.cs
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\migrations\20220527095158_removelastlogintime.designer.cs
 ++profile.arm.json
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\properties\servicedependencies\polyrushapi - web deploy\profile.arm.json
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\properties\servicedependencies\polyrushapi - web deploy\profile.arm.json
 ++jquery.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\dist\jquery.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\dist\jquery.js
 ++additional-methods.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\dist\additional-methods.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\dist\additional-methods.js
 ++jquery.validate.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\dist\jquery.validate.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\dist\jquery.validate.js
 ++jquery.validate.unobtrusive.min.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
 ++bootstrap.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.css
 ++bootstrap-grid.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 ++bootstrap-reboot.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
 ++bootstrap-utilities.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
 ++bootstrap.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.js
 ++jquery.min.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\dist\jquery.min.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\dist\jquery.min.js
 ++additional-methods.min.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
 ++jquery.validate.min.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
 ++bootstrap.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
 ++bootstrap.min.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
 ++bootstrap.rtl.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
 ++bootstrap-grid.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
 ++bootstrap-grid.min.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
 ++bootstrap-grid.rtl.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
 ++bootstrap-reboot.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
 ++bootstrap-reboot.min.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
 ++bootstrap-reboot.rtl.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
 ++bootstrap-utilities.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
 ++bootstrap-utilities.min.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
 ++bootstrap-utilities.rtl.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
 ++bootstrap.bundle.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
 ++bootstrap.esm.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
 ++bootstrap.js.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
 ++bootstrap.min.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
 ++jquery.min.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\dist\jquery.min.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\jquery\dist\jquery.min.map
 ++bootstrap.min.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
 ++bootstrap.min.css.old
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.old
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.old
 ++bootstrap.rtl.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
 ++bootstrap.rtl.min.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
 ++bootstrap-grid.min.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
 ++bootstrap-grid.rtl.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
 ++bootstrap-grid.rtl.min.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
 ++bootstrap-reboot.min.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
 ++bootstrap-reboot.rtl.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
 ++bootstrap-reboot.rtl.min.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
 ++bootstrap-utilities.min.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
 ++bootstrap-utilities.rtl.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
 ++bootstrap-utilities.rtl.min.css
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
 ++bootstrap.bundle.js.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
 ++bootstrap.bundle.min.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
 ++bootstrap.esm.js.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
 ++bootstrap.esm.min.js
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
 ++bootstrap.min.js.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
 ++bootstrap.rtl.min.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
 ++bootstrap-grid.rtl.min.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
 ++bootstrap-reboot.rtl.min.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
 ++bootstrap-utilities.rtl.min.css.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
 ++bootstrap.bundle.min.js.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
 ++bootstrap.esm.min.js.map
-i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\emiel delaey\documents\polyrushweb\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
+i:{0836ac50-7885-46bf-b207-8a7c894e0567}:c:\users\lolpv\source\repos\justkilling\polyrushweb\polyrushweb\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map

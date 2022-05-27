@@ -26,7 +26,7 @@ namespace PolyRushWeb.DA
             if (!query.Any()) return item.Price;
 
             //select only highest percentage.
-            Task<int> discountResult = query.Select(d => d.DiscountPercentage).MaxAsync();
+            int discountResult = await query.Select(d => d.DiscountPercentage).MaxAsync();
 
             decimal discountPercentage = Convert.ToDecimal(discountResult);
             decimal discount = Math.Round(item.Price * (discountPercentage / 100m), 2, MidpointRounding.ToEven);

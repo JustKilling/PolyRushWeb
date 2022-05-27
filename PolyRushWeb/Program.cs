@@ -50,7 +50,7 @@ builder.Services.AddScoped<AchievementDA>();
 //add emailhelper as a singleton
 builder.Services.AddSingleton<EmailHelper>();
 //configure fluentemail
-SmtpClient? client = new SmtpClient();
+SmtpClient? client = new();
 client.UseDefaultCredentials = false;
 client.Credentials = new NetworkCredential(builder.Configuration["Email:Username"], builder.Configuration["Email:Password"]);
 client.Host = builder.Configuration["Email:Host"];

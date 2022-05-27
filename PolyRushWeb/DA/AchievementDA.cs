@@ -10,7 +10,6 @@ namespace PolyRushWeb.DA
 {
     public  class AchievementDA
     {
-        private readonly UserDA _userDa;
         private readonly PolyRushWebContext _context;
 
         public AchievementDA(PolyRushWebContext context)
@@ -22,7 +21,7 @@ namespace PolyRushWeb.DA
         {
             Achievement? achievement = await _context.Achievement.FindAsync(IdAchievement);
             if (achievement == null) throw new NullReferenceException();
-            UserAchievement? userAchievement = new UserAchievement() { UserId = IdUser, AchievementId = IdAchievement };
+            UserAchievement? userAchievement = new() { UserId = IdUser, AchievementId = IdAchievement };
             if (await _context.UserAchievement.AnyAsync(x =>
                     x.UserId == userAchievement.UserId && x.AchievementId == userAchievement.AchievementId))
                 return false;

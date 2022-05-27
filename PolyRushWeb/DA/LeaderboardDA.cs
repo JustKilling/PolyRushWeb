@@ -34,7 +34,7 @@ namespace PolyRushWeb.DA
             User? user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
             if (user == null) return new StatsModel();
 
-            StatsModel? stats = new StatsModel();
+            StatsModel? stats = new();
 
             //highscore
             //get the average highscore

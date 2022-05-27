@@ -20,7 +20,7 @@ namespace PolyRushWeb.Helper
             
         }
 
-        public async Task SendForgotPasswordEmail(User user, string resetPasswordToken)
+        public async Task SendForgotPasswordEmailAsync(User user, string resetPasswordToken)
         {
             try
             {

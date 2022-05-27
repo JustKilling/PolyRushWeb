@@ -4,14 +4,9 @@ namespace PolyRushWeb.Models
 {
    
         public class LoginInputModel
-    {
-            [Required]
-            [DataType(DataType.EmailAddress)]
-            public string Email { get; set; }
-
-            [Required]
-            [DataType(DataType.Password)]
-            public string Password { get; set; }
+        {
+            [Required] [EmailAddress] public string Email { get; set; } = "";
+            [Required] [DataType(DataType.Password)] public string Password { get; set; } = "";
 
         }
     

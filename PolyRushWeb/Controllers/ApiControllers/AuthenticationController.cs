@@ -133,8 +133,6 @@ namespace PolyRushWeb.Controllers.ApiControllers
                 await _userManager.ReplaceClaimAsync(applicationUser, claim, updatedClaim);
             }
 
-            applicationUser.LastLoginTime = DateTime.Now;
-
             _context.Users.Update(applicationUser);
 
             //Get the token
@@ -167,13 +165,14 @@ namespace PolyRushWeb.Controllers.ApiControllers
         public async Task<IActionResult> ForgotPassword(string email)
         {
             User user = await _userManager.FindByEmailAsync(email);
-            if (user == null) return BadRequest("User not found!");
+            if (user == null || !user.IsActive) return BadRequest("User not found!");
+            
             string? resetPasswordToken = await _userManager.GeneratePasswordResetTokenAsync(user);
-            _emailHelper.SendForgotPasswordEmail(user, resetPasswordToken);
+            await _emailHelper.SendForgotPasswordEmailAsync(user, resetPasswordToken);
             return Ok();
         }
         [HttpPost("reset-password")]
-        public async Task<IActionResult> ForgotPassword(ResetPasswordModel resetPassword)
+        public async Task<IActionResult> ResetPassword(ResetPasswordModel resetPassword)
         {
             User? user = await _userManager.FindByEmailAsync(resetPassword.Email);
             //in case query string transformed the + in the token to a space.

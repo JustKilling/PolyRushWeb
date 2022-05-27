@@ -2,7 +2,6 @@
 {
     public class SecretSettings
     {
-        public string TokenSecret { get; set; }
-        public string RefreshTokenSecret { get; set; }
+        public string TokenSecret { get; set; } = "";
     }
 }

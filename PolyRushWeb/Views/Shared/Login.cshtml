@@ -35,6 +35,18 @@
                                                 Login
                                             </button>
                                             <div asp-validation-summary="All" class="text-danger"></div>
+                                            
+                                            @{
+                                                //get if is invalid login from sesion variables
+                                                if (Convert.ToBoolean(Context.Session.GetInt32("IsInvalidLogin")))
+                                                {
+                                                    <p class="text-danger">Invalid login credentials!</p>
+                                                    Context.Session.SetInt32("IsInvalidLogin", 0);
+                                                    Console.WriteLine("jdlksmqfioemjmfeqsimljfqjeml");
+                                                }
+                                             
+                                            }
+
                                         </form>
                                         <hr>
                                         <div class="text-center">

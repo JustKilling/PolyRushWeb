@@ -13,7 +13,7 @@
 </script>
 <style></style>
 @{
-	List<Itemtype> itemtypes = new List<Itemtype>();
+	List<Itemtype> itemtypes = new();
 	foreach(ItemItemTypeModel iitm in Model)
 	{
 		//if there is any itemtype with the specified id, don't add it to the list

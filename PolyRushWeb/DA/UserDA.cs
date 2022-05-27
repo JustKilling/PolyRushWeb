@@ -39,10 +39,10 @@ namespace PolyRushWeb.DA
             PolyRushWebContext context = await _contextFactory.CreateDbContextAsync();
 
 
-            User? user = await _userManager.Users.AsNoTracking().SingleAsync(u => u.Id == id);
+            User? user = await context.Users.FindAsync(id);
+            if (user == null) return;
             user.IsActive = !deactivate;
-            context.Users.Update(user);
-            //context.Entry(user).Property(u => u.IsActive).IsModified = true;
+           
             await context.SaveChangesAsync();
         }
 
@@ -51,7 +51,7 @@ namespace PolyRushWeb.DA
             PolyRushWebContext context = await _contextFactory.CreateDbContextAsync();
 
             User? user = await context.Users.Where(u => u.Id == userId).AsNoTracking().FirstOrDefaultAsync();
-            return user.ToUserDTO();
+            return user == null ? new UserDTO() : user.ToUserDTO();
         }
         
         public async Task<bool> HasEnoughCoins(int id, int price)
@@ -79,6 +79,8 @@ namespace PolyRushWeb.DA
             
             User? user = await _userManager.Users.Where(u => u.Id == id).AsNoTracking().FirstOrDefaultAsync();
 
+            if(user == null) return false;
+
             //if no coins have been given, remove all coins.
             int amount = coins <= 0 ? userCoinAmount : coins;
             user.Coins -= amount;
@@ -96,16 +98,16 @@ namespace PolyRushWeb.DA
             {
                 await using (PolyRushWebContext context = await _contextFactory.CreateDbContextAsync())
                 {
-                    User user = await context.Users.FindAsync(model.ID);
+                    User user = await context.Users.FindAsync(model.ID) ?? new User();
                     user.Firstname = model.Firstname;
                     user.Lastname = model.Lastname;
-                    EntityEntry<User> result = context.Users.Update(user);
+                    
                     await context.SaveChangesAsync();
 
                 }
                 await using (PolyRushWebContext context = await _contextFactory.CreateDbContextAsync())
                 {
-                    User user = await _userManager.Users.Where(u => u.Id == model.ID).FirstOrDefaultAsync();
+                    User user = await _userManager.Users.Where(u => u.Id == model.ID).FirstOrDefaultAsync() ?? new User();
                     await _userManager.SetUserNameAsync(user, model.Username);
                     await _userManager.SetEmailAsync(user, model.Email);
                     await context.SaveChangesAsync();
@@ -126,7 +128,8 @@ namespace PolyRushWeb.DA
             {
                 await using (PolyRushWebContext context = await _contextFactory.CreateDbContextAsync())
                 {
-                    User user = await context.Users.FindAsync(model.Id);
+                    User? user = await context.Users.FindAsync(model.Id);
+                    if (user == null) return false;
                     user.Firstname = model.Firstname;
                     user.Lastname = model.Lastname;
                     user.Highscore = model.Highscore;
@@ -137,14 +140,15 @@ namespace PolyRushWeb.DA
                     user.Scoregathered = model.Scoregathered;
                     user.Itemspurchased = model.Itemspurchased;
                     user.Timespassed = model.Timespassed;
-                    EntityEntry<User> result = context.Users.Update(user);
+                   
                     await context.SaveChangesAsync();
 
                 }
 
                 await using (PolyRushWebContext context = await _contextFactory.CreateDbContextAsync())
                 {
-                    User user = await _userManager.Users.Where(u => u.Id == model.Id).FirstOrDefaultAsync();
+                    User? user = await _userManager.Users.Where(u => u.Id == model.Id).FirstOrDefaultAsync();
+                    if (user == null) return false;
                     await _userManager.SetUserNameAsync(user, model.Username);
                     await _userManager.SetEmailAsync(user, model.Email);
                     if (model.IsAdmin) await _userManager.AddToRoleAsync(user, "Admin");
@@ -164,13 +168,13 @@ namespace PolyRushWeb.DA
         public async Task UploadGameResult(Gamesession session)
         {
 
-            int highscore = (await GetByIdAsync(session.UserId))!.Highscore;
+            int highscore = (await GetByIdAsync(session.UserId)).Highscore;
             if (session.ScoreGathered > highscore)
             {
                 highscore = session.ScoreGathered;
             }
 
-            User? user = await _userManager.Users.Where(u => u.Id == session.UserId).FirstOrDefaultAsync();
+            User? user = await _userManager.Users.Where(u => u.Id == session.UserId).FirstOrDefaultAsync() ?? new User();
 
             user.Coins += session.CoinsGathered;
             user.Timespassed += session.PeoplePassed;
@@ -191,5 +195,18 @@ namespace PolyRushWeb.DA
             //calculate the difference between start and end, convert to seconds, sum it up, and convert to a timespan
             return TimeSpan.FromSeconds(totalPlaytimes.Select(x => x.EndDateTime.Subtract(x.StartDateTime).TotalSeconds).Sum());
         }
+
+        public async Task<bool> IsEmailInUse(string email)
+        {
+            User? user = await _userManager.FindByEmailAsync(email);
+            return user != null;
+        }  
+        public async Task<bool> IsUsernameInUse(string username)
+        {
+            User? user = await _userManager.FindByNameAsync(username);
+            return user != null;
+        }
+
+      
     }
 }

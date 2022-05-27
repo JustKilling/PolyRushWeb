@@ -2,7 +2,7 @@
 {
     public class ItemItemTypeModel
     {
-        public Item Item { get; set; }
-        public Itemtype ItemType { get; set; }
+        public Item Item { get; set; } = null!;
+        public Itemtype ItemType { get; set; } = null!;
     }
 }
