@@ -90,6 +90,33 @@ namespace PolyRushWeb.Controllers
             }
             return View(nameof(Edit));
         }
+        public async Task< IActionResult > EditItem(int id)
+        {
+            HttpClient httpClient = _clientHelper.GetHttpClient();
+            var response = await httpClient.GetStringAsync($"Item/{id}");
+            Item item = JsonConvert.DeserializeObject<Item>(response);
+            var itemModel = new ItemModel()
+            {
+                Iditem = item.Iditem,
+                Name = item.Name,
+                Price = item.Price
+            };
+            return View(itemModel);
+        }
+        public async Task< IActionResult > EditItemAction(ItemModel model)
+        {
+            //make sure model is valid
+            if (ModelState.IsValid)
+            {
+                HttpClient httpClient = _clientHelper.GetHttpClient();
+
+                HttpResponseMessage response = await httpClient.PostAsJsonAsync("item/edit", model);
+
+                return RedirectToAction(nameof(Items));
+
+            }
+            return View(nameof(EditItem));
+        }
 
         public async Task<IActionResult> Deactivate(int id)
         {
@@ -110,10 +137,7 @@ namespace PolyRushWeb.Controllers
         public async Task<IActionResult> DiscountCreateView()
         {
             if (!await _authenticationHelper.IsAdminAsync()) { return RedirectToAction("Logout", "Home"); } //Check if admin, if not, logout 
-            //return the view with a discount with present date if discount id is 0.
-            //DiscountModel discountModel = discount.Iddiscount == 0 ?
-            //    new DiscountModel { Startdate = DateTime.Now, Enddate = DateTime.Now.AddDays(7) } : discount
-
+            
             HttpClient httpClient = _clientHelper.GetHttpClient();
 
             //Get Items for select
@@ -172,5 +196,6 @@ namespace PolyRushWeb.Controllers
             List<ItemItemTypeModel> items= JsonConvert.DeserializeObject<List<ItemItemTypeModel>>(await response.Content.ReadAsStringAsync());
             return View(items);
         }
+
     }
 }

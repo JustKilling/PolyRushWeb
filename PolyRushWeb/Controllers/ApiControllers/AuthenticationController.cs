@@ -15,6 +15,7 @@ using PolyRushWeb.Helper;
 using PolyRushWeb.Models;
 using System.Drawing;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using Microsoft.Extensions.WebEncoders.Testing;
 
 
 namespace PolyRushWeb.Controllers.ApiControllers
@@ -69,12 +70,15 @@ namespace PolyRushWeb.Controllers.ApiControllers
 
             if (!result.Succeeded)
             {
+                List<string> errors = new List<string>();
+
                 //gather the errors
                 foreach (IdentityError? error in result.Errors)
                 {
                     ModelState.AddModelError(error.Code, error.Description);
+                    errors.Add(error.Description);
                 }
-                return BadRequest(ModelState);
+                return BadRequest(errors);
             }
 
             //upload image to server

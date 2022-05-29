@@ -173,7 +173,17 @@ namespace PolyRushWeb.DA
             var discounts = await _context.Discount.ToListAsync();
             //only select discounts that are still active
             var activeDiscounts = discounts.Where(d => d.Startdate <= DateTime.Now && d.Enddate > DateTime.Now);
+            
             return activeDiscounts.ToList();
+        }
+
+        public async Task EditItem(ItemModel model)
+        {
+            //edit the item entity
+            var item = await _context.Item.FindAsync(model.Iditem)!;
+            item!.Name = model.Name;
+            item.Price = model.Price;
+            await _context.SaveChangesAsync();
         }
     }
 }

@@ -33,6 +33,7 @@
 			<th>Id</th>
 			<th>Item name</th>
 			<th>Price</th>
+			<th>Edit</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -45,6 +46,7 @@
 					<td>@item.Iditem</td>
 					<td>@item.Name</td>
 					<td>@item.Price</td>
+					<td><a href="/Admin/EditItem/@item.Iditem" class="btn btn-primary">Edit</a></td>
 				</tr>
 			}
 		}

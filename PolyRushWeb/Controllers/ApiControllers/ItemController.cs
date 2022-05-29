@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PolyRushLibrary;
 using PolyRushWeb.DA;
+using PolyRushWeb.Models;
 
 namespace PolyRushWeb.Controllers.ApiControllers
 {
@@ -36,7 +37,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         }
         [HttpGet]
         [Route("all")]
-        public async Task<IActionResult> GetALlItems()
+        public async Task<IActionResult> GetAllItems()
         {
 
             return Ok(await _itemDa.GetAllItemsAsync());
@@ -139,6 +140,14 @@ namespace PolyRushWeb.Controllers.ApiControllers
         public async Task<IActionResult> Discount(int id)
         {
             await _itemDa.DeleteDiscount(id);
+            return Ok();
+        }
+        [HttpPost]
+        [Route("edit")]
+        [Authorize(Roles ="Admin")]
+        public async Task<IActionResult> Edititem(ItemModel model)
+        {
+            await _itemDa.EditItem(model);
             return Ok();
         }
 
