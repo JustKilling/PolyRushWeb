@@ -50,5 +50,33 @@
                 <input type="submit" value="Save" class="btn btn-primary"/>
             </div>
         </form>
+        <button type="button" id="deletebutton"class="btn btn-primary">
+            Delete account
+        </button>
     </div>
 </div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#deletebutton').click(function() {
+            if (confirm('Are you sure?')) {
+                
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/RemoveAccount",
+                    success: function (result) {
+                        //redirect to login page
+                        window.location = "/";
+                    },
+                    error: function (xmlhttprequest, textstatus, errorthrown) {
+                        alert(" connection to the server failed ");
+                        console.log("error: " + errorthrown);
+                    }
+                });
+
+            }
+        });
+    });
+</script>

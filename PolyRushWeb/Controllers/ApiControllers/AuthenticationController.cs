@@ -69,6 +69,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
 
             if (!result.Succeeded)
             {
+                //gather the errors
                 foreach (IdentityError? error in result.Errors)
                 {
                     ModelState.AddModelError(error.Code, error.Description);
@@ -76,7 +77,10 @@ namespace PolyRushWeb.Controllers.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            //upload image
+            //upload image to server
+            await ImageHelper.UploadAvatar(registration.Avatar, user.Id);
+
+            //Save image locally
             string path = Path.Combine(_env.WebRootPath, "img", "user", user.Id.ToString() + ".png");
             using (MemoryStream ms = new(Convert.FromBase64String(registration.Avatar)))
             {

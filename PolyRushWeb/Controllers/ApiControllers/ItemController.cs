@@ -116,6 +116,16 @@ namespace PolyRushWeb.Controllers.ApiControllers
             return Ok(discounts);
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("getactivediscounts")]
+        public async Task<IActionResult> GetActiveDiscounts()
+        {
+            List<Discount>? discounts = await _itemDa.GetAllActiveDiscounts();
+            if (discounts == null) return BadRequest("No active discounts found!");
+            return Ok(discounts);
+        }
+
         [HttpPost]
         [Route("discount")]
         public async Task<IActionResult> Discount(Discount discount)

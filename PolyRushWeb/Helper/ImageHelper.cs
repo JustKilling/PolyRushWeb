@@ -4,8 +4,13 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
+using System.Net.Mime;
+using System.Text;
 using FluentFTP;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.VisualBasic.CompilerServices;
+using Newtonsoft.Json;
+using Encoder = System.Drawing.Imaging.Encoder;
 
 namespace PolyRushWeb.Helper
 {
@@ -53,20 +58,18 @@ namespace PolyRushWeb.Helper
             encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality, 100L);
             //save the image locally
             resized.Save(filename, GetEncoder(ImageFormat.Png), encoderParameters);
+        }
 
-            //using var ftp = new FtpClient(host: "prjemiel.netwerkit.be", user: "ftpemieldelaey", pass: "48c/e:aZT]"); https://imgur.com/a/9CT2PZE
-            //var imagepath = "ftp://prjemiel.netwerkit.be/wwwroot/user";
-            //try
-            //{
-            //    await ftp.ConnectAsync();
-            //    await ftp.UploadFileAsync(filename, imagepath, verifyOptions: FtpVerify.Retry);
-
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine(e);
-            //    throw;
-            //}
+        public static async Task UploadAvatar(string base64Image, int userId)
+        {
+            HttpClient client = new HttpClient();
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://prjemiel.netwerkit.be");
+            request.Content = new StringContent(JsonConvert.SerializeObject(new 
+                {
+                    Image = base64Image, 
+                    ID = userId
+                }), Encoding.UTF8, mediaType: MediaTypeNames.Application.Json);
+            await client.SendAsync(request);
         }
         private static ImageCodecInfo GetEncoder(ImageFormat format)
         {

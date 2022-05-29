@@ -102,26 +102,11 @@ namespace PolyRushWeb.DA
                 _context.Useritem.Update(useritem);
             }
 
-            //MySqlConnection conn = DatabaseConnector.MakeConnection();
-            ////increment useritem amount
-            //string query = "UPDATE useritem SET Amount = Amount + 1 WHERE UserID = @UserID AND ItemID = @ItemID";
-            //MySqlCommand cmd = new(query, conn);
-            //cmd.Parameters.AddWithValue("@UserID", id);
-            //cmd.Parameters.AddWithValue("@ItemID", item.Iditem);
-            //cmd.ExecuteNonQuery();
-
-            //substract price
-
-            User? user = _context.Users.FirstOrDefault(u => u.Id == id);
-            user.Coins -= price;
+            
+            User user = _context.Users.FirstOrDefault(u => u.Id == id)!;
+            user!.Coins -= price;
             _context.Users.Update(user);
 
-            //query = "UPDATE user SET Coins = Coins - @Amount WHERE IDUser = @IDUser";
-            //cmd = new(query, conn);
-            //cmd.Parameters.AddWithValue("@Amount", price);
-            //cmd.Parameters.AddWithValue("@IDUser", id);
-            //cmd.ExecuteNonQuery();
-            //conn.Close();
 
             await _context.SaveChangesAsync();
 
@@ -185,8 +170,10 @@ namespace PolyRushWeb.DA
         }
         public async Task<List<Discount>?> GetAllActiveDiscounts()
         {
-            IQueryable<Discount>? discounts = _context.Discount.Where(d => d.Startdate < DateTime.Now && d.Enddate > DateTime.Now);
-            return await discounts.AnyAsync() ? await discounts.ToListAsync() : null;
+            var discounts = await _context.Discount.ToListAsync();
+            //only select discounts that are still active
+            var activeDiscounts = discounts.Where(d => d.Startdate <= DateTime.Now && d.Enddate > DateTime.Now);
+            return activeDiscounts.ToList();
         }
     }
 }

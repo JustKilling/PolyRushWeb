@@ -207,6 +207,18 @@ namespace PolyRushWeb.DA
             return user != null;
         }
 
-      
+
+        public async Task DisableAccountAsync(int id)
+        {
+            var context = await _contextFactory.CreateDbContextAsync();
+            //set user inactive
+            var user = await context.Users.FindAsync(id);
+            user!.IsActive = false;
+            await context.SaveChangesAsync();
+            //Set user email to something different so it can be used again if they create
+            //a new account with that email
+            var user2 = await _userManager.Users.FirstOrDefaultAsync(u => u.Id == id);
+            await _userManager.SetEmailAsync(user2!, "_" + user.Email);
+        }
     }
 }

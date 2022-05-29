@@ -43,7 +43,7 @@ namespace PolyRushWeb.Controllers
             if (!await _authenticationHelper.IsAdminAsync()) { return RedirectToAction("Logout", "Home"); } //Check if admin, if not, logout 
 
             HttpClient httpClient = _clientHelper.GetHttpClient();
-            HttpResponseMessage response = await httpClient.GetAsync("item/getdiscounts");
+            HttpResponseMessage response = await httpClient.GetAsync("item/getactivediscounts");
             if (!response.IsSuccessStatusCode)
                 return View(new List<Discount>());
             //Get all discounts 

@@ -36,6 +36,15 @@ namespace PolyRushWeb.Controllers.ApiControllers
             return Ok(await _userDa.GetUsers());
         }
 
+        [HttpPost("deleteaccount")]
+        public async Task<IActionResult> DeleteAccount()
+        {
+         
+            int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
+            await _userDa.DisableAccountAsync(id);
+            return Ok();
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAsync()
          {
@@ -74,6 +83,8 @@ namespace PolyRushWeb.Controllers.ApiControllers
             string path = Path.Combine(_env.WebRootPath, "img", "user", id + ".png");
             //save image to path
             await bm.SavePNG100Async(path);
+            //upload image to image server
+            await ImageHelper.UploadAvatar(model.ImageString, id);
 
             return Ok();
         } 

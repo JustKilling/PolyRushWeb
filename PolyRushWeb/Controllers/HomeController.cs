@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -116,7 +117,21 @@ namespace PolyRushWeb.Controllers
            //return to start
             return RedirectToAction("Index", "Login");
         }
-       
+        [HttpPost]
+        public async Task<IActionResult> RemoveAccount()
+        {
+
+            HttpClient httpclient = _clientHelper.GetHttpClient();
+            HttpRequestMessage request = new(HttpMethod.Post, "user/deleteaccount");
+            var response = await httpclient.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode) return BadRequest();
+
+            _authenticationHelper.Logout();
+            return Ok();
+
+        }
+
         public async Task<IActionResult> Achievements()
         {
             if (!await _authenticationHelper.IsAuthenticatedAsync()) { return RedirectToAction("Logout", "Home"); } //Check if admin, if not, logout 
