@@ -10,7 +10,7 @@ namespace PolyRushWeb.Models
         [Required]
         public string Name { get; set; } = null!;
         [Required]
-        [Range(0, 10000, ErrorMessage = "Please provide a value between 0 and 10000")]
+        [Range(0, 100000, ErrorMessage = "Please provide a value between 0 and 100000")]
         public int Price { get; set; }
 
     }
