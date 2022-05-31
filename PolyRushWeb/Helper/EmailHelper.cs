@@ -27,14 +27,14 @@ namespace PolyRushWeb.Helper
                 //get current host name
                 string link = _server.Features.Get<IServerAddressesFeature>()?.Addresses.First() 
                     + $"/Login/ResetPassword?email={user.Email}&token={resetPasswordToken}";
-                Console.WriteLine(link);
-
+                
+                //make the email body
                 string? body = $"<h1>PolyRush</h1>" +
                                $"<p>Dear {user.Firstname} {user.Lastname},<p>" +
                                $"<p>You forgot your password, no problem! You can create a new password if you click on the <a href='{link}' target='_blank'>link</a> below!</p>" +
                                $"{link}" +
                                $"<p>If you did not request to change your password, please contact staff at polyrush@hotmail.com</p>";
-
+                //send the mail
                 await _fluentEmail
                     .To(user.Email)
                     .Subject("Poly Rush | Forgot password")

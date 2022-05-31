@@ -6,4 +6,4 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "<Pending>", Scope = "member", Target = "~M:PolyRushWeb.Helper.ImageHelper.ReduceImageSize(System.Byte[],System.Int32,System.Int32)~System.Byte[]")]
-[assembly: SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "<Pending>", Scope = "member", Target = "~M:PolyRushWeb.Helper.ImageHelper.SavePNG100Async(System.Drawing.Bitmap,System.String)~System.Threading.Tasks.Task")]
+[assembly: SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "<Pending>", Scope = "member", Target = "~M:PolyRushWeb.Helper.ImageHelper.SavePNG(System.Drawing.Bitmap,System.String)~System.Threading.Tasks.Task")]

@@ -89,7 +89,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             using (MemoryStream ms = new(Convert.FromBase64String(registration.Avatar)))
             {
                 Bitmap bm = new(ms);
-                await bm.SavePNG100Async(path);
+                bm.SavePNG(path);
             }
 
             user = await _userManager.FindByNameAsync(user.UserName);

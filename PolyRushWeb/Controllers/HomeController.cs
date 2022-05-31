@@ -96,12 +96,12 @@ namespace PolyRushWeb.Controllers
                 
 
                 if (model.Image == null) return RedirectToAction(nameof(Profile), model.Id);
-                //post image
+                //update the image
+                //create a new byte array and read the image into it.
                 byte[] image = new byte[model.Image.Length];
                 int bRead = await model.Image.OpenReadStream().ReadAsync(image);
                 string base64Image = Convert.ToBase64String(image);
-
-
+                //post the image to the api
                 HttpClient httpClient2 = _clientHelper.GetHttpClient();
                 ImageModel img = new() { ImageString = base64Image };
                 HttpResponseMessage response2 = await httpClient2.PostAsJsonAsync("user/updateimage", img);
@@ -112,6 +112,7 @@ namespace PolyRushWeb.Controllers
         }
         public IActionResult Logout()
         {
+            //logout
             _authenticationHelper.Logout();
 
            //return to start
@@ -120,13 +121,13 @@ namespace PolyRushWeb.Controllers
         [HttpPost]
         public async Task<IActionResult> RemoveAccount()
         {
-
+            //send delete account request
             HttpClient httpclient = _clientHelper.GetHttpClient();
             HttpRequestMessage request = new(HttpMethod.Post, "user/deleteaccount");
             var response = await httpclient.SendAsync(request);
 
             if (!response.IsSuccessStatusCode) return BadRequest();
-
+            //log the user out
             _authenticationHelper.Logout();
             return Ok();
 
@@ -134,7 +135,7 @@ namespace PolyRushWeb.Controllers
 
         public async Task<IActionResult> Achievements()
         {
-            if (!await _authenticationHelper.IsAuthenticatedAsync()) { return RedirectToAction("Logout", "Home"); } //Check if admin, if not, logout 
+            if (!await _authenticationHelper.IsAuthenticatedAsync()) { return RedirectToAction("Logout", "Home"); } //Check if logged in, if not, logout 
             HttpClient? httpClient = _clientHelper.GetHttpClient();
             HttpResponseMessage? response = await httpClient.GetAsync($"Achievement");
 
@@ -153,7 +154,7 @@ namespace PolyRushWeb.Controllers
 
         public async Task<IActionResult> LeaderboardAsync()
         {
-            if (!await _authenticationHelper.IsAuthenticatedAsync()) { return RedirectToAction("Logout", "Home"); } //Check if admin, if not, logout 
+            if (!await _authenticationHelper.IsAuthenticatedAsync()) { return RedirectToAction("Logout", "Home"); } //Check if logged in, if not, logout 
             HttpClient? httpClient = _clientHelper.GetHttpClient();
             HttpResponseMessage? response = await httpClient.GetAsync($"Leaderboard/{10}");
 
@@ -172,7 +173,8 @@ namespace PolyRushWeb.Controllers
         }
         public async Task<IActionResult> Stats()
         {
-            if (!await _authenticationHelper.IsAuthenticatedAsync()) { return RedirectToAction("Logout", "Home"); } //Check if admin, if not, logout 
+            if (!await _authenticationHelper.IsAuthenticatedAsync()) { return RedirectToAction("Logout", "Home"); } //Check if logged in, if not, logout 
+            
             HttpClient? httpClient = _clientHelper.GetHttpClient();
             HttpResponseMessage? response = await httpClient.GetAsync("leaderboard/stats");
             string content = await response.Content.ReadAsStringAsync();

@@ -82,7 +82,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             //Get the path
             string path = Path.Combine(_env.WebRootPath, "img", "user", id + ".png");
             //save image to path
-            await bm.SavePNG100Async(path);
+            bm.SavePNG(path);
             //upload image to image server
             await ImageHelper.UploadAvatar(model.ImageString, id);
 

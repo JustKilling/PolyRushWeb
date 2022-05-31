@@ -16,6 +16,7 @@ namespace PolyRushWeb.Helper
 {
     public static class ImageHelper
     {
+        //convert image to a base64string
         public static string ConvertImagePathToBase64String(string path)
         {
             //read the file
@@ -48,9 +49,8 @@ namespace PolyRushWeb.Helper
             return myResult.ToArray();
         }
         //https://stackoverflow.com/questions/41665/bmp-to-jpg-png-in-c-sharp
-        public static async Task SavePNG100Async(this Bitmap bmp, string filename)
+        public static void SavePNG(this Bitmap bmp, string filename)
         {
-            
             //resize bitmap to 500,500
             Bitmap resized = new(bmp, new Size(500, 500));
             //make sure its the best quality
@@ -62,8 +62,10 @@ namespace PolyRushWeb.Helper
 
         public static async Task UploadAvatar(string base64Image, int userId)
         {
-            HttpClient client = new HttpClient();
+            //"using" so it gets disposed so no connection stays open.
+            using HttpClient client = new HttpClient();
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://prjemiel.netwerkit.be");
+            //set the json content to the image with id.
             request.Content = new StringContent(JsonConvert.SerializeObject(new 
                 {
                     Image = base64Image, 
