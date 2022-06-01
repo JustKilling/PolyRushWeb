@@ -55,6 +55,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Route("amounts")]
         public async Task<IActionResult> GetAmounts([FromBody] List<Item> items)
         {
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             bool isAdmin = User.IsInRole("Admin");
 
@@ -73,6 +74,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Route("buy")]
         public async Task<IActionResult> BuyItem([FromBody] Item? item)
         {
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             bool isAdmin = User.IsInRole("Admin");
             if (await _itemDa.BuyItem(id, item, isAdmin)) return Ok();
@@ -102,6 +104,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Route("getowneditemsfromtype/{type}")]
         public async Task<IActionResult> GetOwnedItemsFromTypeAsync(ItemType type)
         {
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             bool isAdmin = User.IsInRole("Admin");
             if (isAdmin) return Ok(await _itemDa.GetItemsFromType(type));
@@ -156,6 +159,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Route("useability")]
         public async Task<IActionResult> Remove1ItemAsync([FromBody] Item item)
         {
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             bool isAdmin = User.IsInRole("Admin");
 

@@ -41,6 +41,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Route("getnextgoals/{amount}")]
         public async Task<IActionResult> GetNextGoals(int amount)
         {
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             UserDTO? user = await _userDa.GetByIdAsync(id);
             if (user == null) return BadRequest();
@@ -67,6 +68,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Authorize]
         public async Task<IActionResult> GetUserStats()
         {
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             return Ok(await _leaderboardDa.GetUserStats(id));
         }

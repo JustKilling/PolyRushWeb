@@ -38,6 +38,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
                 }
             }
 
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             await _settingDa.SetSettingAsync(id, EnumSetting.Music, intEnable);
             return Ok();
@@ -63,6 +64,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
                 }
             }
 
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             await _settingDa.SetSettingAsync(id, EnumSetting.Sfx, intEnable);
             return Ok();

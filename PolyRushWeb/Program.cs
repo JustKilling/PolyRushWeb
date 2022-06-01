@@ -74,29 +74,39 @@ builder.Services.AddIdentityCore<User>(options =>
         options.User.RequireUniqueEmail = true;
 
     })
+    //Set the role interface
     .AddRoles<IdentityRole<int>>()
+    //set the dbcontext
     .AddEntityFrameworkStores<PolyRushWebContext>()
+    //add the signinmanager
     .AddSignInManager<SignInManager<User>>()
-    .AddTokenProvider<DataProtectorTokenProvider<User>>(TokenOptions.DefaultProvider); //TODO Time limit also say in mail!
+    //Add tokenprovider so tokens can be generated
+    .AddTokenProvider<DataProtectorTokenProvider<User>>(TokenOptions.DefaultProvider); 
 
-    SecretSettings secretSettings = new();
+//Class to get secret settings
+SecretSettings secretSettings = new();
 builder.Configuration.Bind("SecretSettings", secretSettings);
 builder.Services.AddSingleton(secretSettings);
-//builder.Services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();
+
+//add Ihttpcontextaccessor & ClientHelper as singleton
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSingleton<ClientHelper>();
+//add authenticationhelper as scoped
 builder.Services.AddScoped<AuthenticationHelper>();
 
+//ignore self referencing loops
 JsonConvert.DefaultSettings = () => new JsonSerializerSettings
 {
     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
 };
+//add newtonsoftjson as json serializer
 builder.Services.AddControllers().AddNewtonsoftJson(o =>
 {
     o.SerializerSettings.ContractResolver = new DefaultContractResolver();
 });
 
 
+//add jwt authentication for server side validation
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(o => o.TokenValidationParameters = new TokenValidationParameters
         {
@@ -119,6 +129,7 @@ builder.Services.AddHttpClient("api", httpClient =>
     httpClient.BaseAddress = new Uri(builder.Configuration["Api:Uri"]); 
 });
 
+//add session so session variables can be used
 builder.Services.AddSession();
 
 WebApplication app = builder.Build();
@@ -126,11 +137,12 @@ WebApplication app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
+    //set error page
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
+//enable session
 app.UseSession();
 
 app.UseHttpsRedirection();
@@ -138,14 +150,18 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+//make sure error page shows up when there is an error
 app.UseDeveloperExceptionPage();
 
+//use authentication and authorization
 app.UseAuthentication();
 app.UseAuthorization();
 
+//map the default controller route
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Login}/{action=Index}/{id?}"
 );
 
+//Start the app
 app.Run();

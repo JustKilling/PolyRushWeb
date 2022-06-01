@@ -16,18 +16,22 @@ namespace PolyRushWeb.Controllers.ApiControllers
             _achievementDa = achievementDa;
         }
 
+        //method to get achievement based on its id
         [HttpPost]
         [Route("{achievementId}")]
         public async Task<IActionResult> AddAchievementWithId(int achievementId)
         {
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
 
             return Ok(await _achievementDa.AddAchievementAsync(id, achievementId));
         }
 
+        //method to get all achievements that a user has.
         [HttpGet]
         public async Task<IActionResult> Achievements()
         {
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             List<Achievement>? achievements = await _achievementDa.GetAchievements(id);
             return Ok(achievements);

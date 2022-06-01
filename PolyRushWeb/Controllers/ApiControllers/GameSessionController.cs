@@ -19,6 +19,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [HttpPost]
         public async Task PutGameSessionAsync([FromBody] Gamesession session)
         {            
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             session.UserId = id;
             await _gameSessionDa.UploadGameSession(session);

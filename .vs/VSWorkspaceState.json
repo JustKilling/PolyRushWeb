@@ -11,6 +11,6 @@
     "\\PolyRushWeb\\Views\\Home",
     "\\PolyRushWeb\\Views\\Shared"
   ],
-  "SelectedNode": "\\PolyRushWeb\\Controllers\\ApiControllers\\AuthenticationController.cs",
+  "SelectedNode": "\\PolyRushWeb\\Views\\_ViewStart.cshtml",
   "PreviewInSolutionExplorer": false
 }

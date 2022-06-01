@@ -24,6 +24,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [HttpGet("ishighscore/{score}")]
         public async Task<IActionResult> IsHighscore(int score)
         {
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
 
             return Ok((await _userDa.GetByIdAsync(id))?.Highscore < score);
@@ -40,6 +41,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         public async Task<IActionResult> DeleteAccount()
         {
          
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             await _userDa.DisableAccountAsync(id);
             return Ok();
@@ -49,6 +51,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         public async Task<IActionResult> GetAsync()
          {
             //id ophalen uit jwt
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             UserDTO? user = await _userDa.GetByIdAsync(id);
             //check if user with that id exists
@@ -118,6 +121,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Route("coins")]
         public async Task<IActionResult> GetCoins()
         {
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             return Ok(await _userDa.GetCoinsAsync(id));
         }
@@ -137,6 +141,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Route("deactivate")]
         public async Task<IActionResult> Deactivate()
         {
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             await _userDa.DeactivateAsync(id);
             return Ok();
@@ -164,6 +169,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Route("removecoins/{amount}")]
         public async Task<IActionResult> RemoveCoins(int amount)
         {
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             return Ok(await _userDa.RemoveCoins(id, amount));
         }
@@ -171,6 +177,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [Route("removecoins")]
         public async Task<IActionResult> RemoveCoins()
         {
+            //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
             return Ok(await _userDa.RemoveCoins(id));
         }
