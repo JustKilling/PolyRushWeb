@@ -19,7 +19,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         {
             _itemDa = itemDa;
         }
-
+        //Get item item types, thats an object that holds the item and its type
         [HttpGet]
         [Route("itemitemtype")]
         [Authorize(Roles = "Admin")]
@@ -28,6 +28,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
 
             return Ok(await _itemDa.GetItemItemTypes());
         }
+        //Get an item by its id
         [HttpGet]
         [Route("{itemid}")]
         public async Task<IActionResult> GetItemByIDAsync(int itemid)
@@ -35,6 +36,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             
             return Ok(await _itemDa.GetItemById(itemid));
         }
+        //return all items
         [HttpGet]
         [Route("all")]
         public async Task<IActionResult> GetAllItems()
@@ -42,6 +44,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
 
             return Ok(await _itemDa.GetAllItemsAsync());
         }
+        //get all items from type
         [HttpGet]
         [Route("getitemsfromtype/{type}")]
         public async Task<IActionResult> GetItemFromTypeAsync(ItemType type)
@@ -49,7 +52,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             return Ok(await _itemDa.GetItemsFromTypeAsync(type));
         }
 
-
+        //get how much items a user has per given item.
         [HttpGet]
         [Authorize]
         [Route("amounts")]
@@ -68,7 +71,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             string? _ = JsonConvert.SerializeObject(amounts);
             return Ok(_);
         }
-
+        //method to try and buy and item, if not enough coins return a badrequest
         [HttpPost]
         [Authorize]
         [Route("buy")]
@@ -81,7 +84,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
 
             return BadRequest("Not enough coins!");
         }
-
+        //get all discounted items from typ
         [HttpGet]
         [Authorize]
         [Route("getdiscounteditemsfromtype/{type}")]
@@ -99,6 +102,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         }
 
 
+        //method to get all owned items from a certain type
         [HttpGet]
         [Authorize]
         [Route("getowneditemsfromtype/{type}")]
@@ -106,10 +110,13 @@ namespace PolyRushWeb.Controllers.ApiControllers
         {
             //get user id from jwt
             int id = int.Parse(User.Claims.First(i => i.Type == "id").Value);
+            //Return all if admin
             bool isAdmin = User.IsInRole("Admin");
             if (isAdmin) return Ok(await _itemDa.GetItemsFromType(type));
+            
             return Ok(await _itemDa.GetOwnedItemsFromTypeAsync(id, type));
         }
+        //method to get all discounts
         [HttpGet]
         [AllowAnonymous]
         [Route("getdiscounts")]
@@ -119,7 +126,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             if (discounts == null) return BadRequest("No discounts found!");
             return Ok(discounts);
         }
-
+        //method to get all active discounts
         [HttpGet]
         [AllowAnonymous]
         [Route("getactivediscounts")]
@@ -130,6 +137,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             return Ok(discounts);
         }
 
+        //method to add a discount
         [HttpPost]
         [Route("discount")]
         public async Task<IActionResult> Discount(Discount discount)
@@ -137,6 +145,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             await _itemDa.AddDiscount(discount);
             return Ok();
         }
+        //methed to delete a discount by its id
         [HttpPost]
         [Route("deletediscount/{id}")]
         [Authorize(Roles ="Admin")]
@@ -145,6 +154,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             await _itemDa.DeleteDiscount(id);
             return Ok();
         }
+        //method to edit an item
         [HttpPost]
         [Route("edit")]
         [Authorize(Roles ="Admin")]
@@ -154,6 +164,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
             return Ok();
         }
 
+        //method that removes one ability from the user
         [HttpPost]
         [Authorize]
         [Route("useability")]
