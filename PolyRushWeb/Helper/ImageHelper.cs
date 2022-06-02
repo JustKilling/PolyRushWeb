@@ -26,10 +26,10 @@ namespace PolyRushWeb.Helper
             fs.Read(imageData, 0, imageData.Length);
 
             imageData = ReduceImageSize(imageData);
-            
+
             return Convert.ToBase64String(imageData);
         }
-        
+
         //method to reduce image size
         //https://yeahexp.com/how-to-decrease-byte-array-size-representing-an-image/
         public static byte[] ReduceImageSize(this byte[] imageData, int width = 500, int height = 500)
@@ -59,19 +59,18 @@ namespace PolyRushWeb.Helper
             //save the image locally
             resized.Save(filename, GetEncoder(ImageFormat.Png), encoderParameters);
         }
-
+        
         public static async Task UploadAvatar(string base64Image, int userId)
         {
+            HttpClientHandler clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
             //"using" so it gets disposed so no connection stays open.
-            using HttpClient client = new HttpClient();
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "localhost/gip");
-            //set the json content to the image with id.
-            request.Content = new StringContent(JsonConvert.SerializeObject(new 
-                {
-                    Image = base64Image, 
-                    ID = userId
-                }), Encoding.UTF8, mediaType: MediaTypeNames.Application.Json);
-            await client.SendAsync(request);
+            using HttpClient client = new HttpClient(clientHandler);
+            string jsonObj = JsonConvert.SerializeObject(new UserAvatar { ID = userId, Image = base64Image });
+            HttpRequestMessage request = new(HttpMethod.Post, $"https://localhost/gip");
+            request.Content = new StringContent(jsonObj, Encoding.UTF8, "application/json");
+            var response = await client.SendAsync(request);
+         
         }
         private static ImageCodecInfo GetEncoder(ImageFormat format)
         {
@@ -90,4 +89,9 @@ namespace PolyRushWeb.Helper
 
 
     }
+}
+public class UserAvatar
+{
+    public int ID { get; set; }
+    public string Image { get; set; }
 }

@@ -13,7 +13,7 @@ namespace PolyRushWeb.Helper
             _httpClientFactory = httpClientFactory;
             _httpContextAccesor = httpContext;
         }
-        //
+        //method to get a httpclient with authorizatioin header
         public HttpClient GetHttpClient()
         {
             HttpClient? httpClient = _httpClientFactory.CreateClient("api");
