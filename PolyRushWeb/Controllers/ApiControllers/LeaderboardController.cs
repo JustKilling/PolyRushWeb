@@ -53,14 +53,15 @@ namespace PolyRushWeb.Controllers.ApiControllers
             return Ok(response);
         }
 
-        //method to randomise a user, testing purposes only.
-        [HttpGet]
-        [Route("random/{username}")]
-        public async Task<IActionResult> UpdateRandom(string username)
-        {
-            await _leaderboardDa.UpdateRandomAsync(username);
-            return Ok();
-        }
+        ////method to randomise a user, testing purposes only.
+        //[HttpGet]
+        //[Route("random/{username}")]
+        //public async Task<IActionResult> UpdateRandom(string username)
+        //{
+        //    await _leaderboardDa.UpdateRandomAsync(username);
+        //    return Ok();
+        //}
+
         //method to return top playtimes
         [HttpGet]
         [Route("playtime/{amount}")]

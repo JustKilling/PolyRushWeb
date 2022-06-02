@@ -7,13 +7,13 @@ namespace PolyRushWeb.Helper
 
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IHttpContextAccessor _httpContextAccesor;
-
+        //constructor that injects the dependencies
         public ClientHelper(IHttpClientFactory httpClientFactory, IHttpContextAccessor httpContext)
         {
             _httpClientFactory = httpClientFactory;
             _httpContextAccesor = httpContext;
         }
-
+        //
         public HttpClient GetHttpClient()
         {
             HttpClient? httpClient = _httpClientFactory.CreateClient("api");
