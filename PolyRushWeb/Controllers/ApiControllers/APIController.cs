@@ -11,7 +11,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
     public class APIController : ControllerBase
     {
         private readonly PolyRushWebContext _context;
-
+        //constructor that injects the dependencies
         public APIController(PolyRushWebContext context)
         {
             _context = context;

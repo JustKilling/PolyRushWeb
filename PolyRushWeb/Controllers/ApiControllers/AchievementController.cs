@@ -10,7 +10,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
     public class AchievementController : ControllerBase
     {
         private readonly AchievementDA _achievementDa;
-
+        //constructor that injects the dependencies
         public AchievementController(AchievementDA achievementDa)
         {
             _achievementDa = achievementDa;

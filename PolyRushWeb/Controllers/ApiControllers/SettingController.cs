@@ -13,6 +13,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
     {
         private readonly SettingDA _settingDa;
 
+        //constructor that injects the dependencies
         public SettingController(SettingDA settingDa)
         {
             _settingDa = settingDa;

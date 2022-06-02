@@ -11,6 +11,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
     {
         private readonly GameSessionDA _gameSessionDa;
 
+        //constructor that injects the dependencies
         public GameSessionController(GameSessionDA gameSessionDa)
         {
             _gameSessionDa = gameSessionDa;

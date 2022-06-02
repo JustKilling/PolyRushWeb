@@ -16,6 +16,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         private readonly UserDA _userDa;
         private readonly LeaderboardDA _leaderboardDa;
 
+        //constructor that injects the dependencies
         public LeaderboardController(UserDA userDa, LeaderboardDA leaderboardDa)
         {
             _userDa = userDa;

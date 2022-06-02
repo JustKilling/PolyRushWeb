@@ -16,6 +16,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         private readonly UserDA _userDa;
         private readonly IWebHostEnvironment _env;
 
+        //constructor that injects the dependencies
         public UserController(UserDA userDa, IWebHostEnvironment env)
         {
             _userDa = userDa;

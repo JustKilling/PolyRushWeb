@@ -15,6 +15,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
     {
         private readonly ItemDA _itemDa;
 
+        //constructor that injects the dependencies
         public ItemController(ItemDA itemDa)
         {
             _itemDa = itemDa;

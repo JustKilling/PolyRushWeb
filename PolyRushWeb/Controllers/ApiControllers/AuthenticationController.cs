@@ -30,7 +30,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         private readonly PolyRushWebContext _context;
         private readonly IWebHostEnvironment _env;
         private readonly EmailHelper _emailHelper;
-
+        //constructor that injects the dependencies
         public AuthenticationController(UserManager<User> userManager,
         SecretSettings settings,
         PolyRushWebContext context,

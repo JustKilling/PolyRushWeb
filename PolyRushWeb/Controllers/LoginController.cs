@@ -31,6 +31,7 @@ namespace PolyRushWeb.Controllers
         private readonly AuthenticationHelper _authenticationHelper;
         private readonly ClientHelper _clientHelper;
 
+        //constructor that injects the dependencies
         public LoginController(
             ClientHelper clientHelper,
             ILogger<RegisterModel> logger,
@@ -40,7 +41,6 @@ namespace PolyRushWeb.Controllers
             _logger = logger;
             _authenticationHelper = authenticationHelper;
             _clientHelper = clientHelper;
-            
         }
         // GET
         public async Task<IActionResult> Index()

@@ -23,6 +23,7 @@ namespace PolyRushWeb.Controllers
         private readonly ClientHelper _clientHelper;
         private readonly AuthenticationHelper _authenticationHelper;
 
+        //constructor that injects the dependencies
         public AdminController(
             UserManager<User> userManager,
             ClientHelper clientHelper,

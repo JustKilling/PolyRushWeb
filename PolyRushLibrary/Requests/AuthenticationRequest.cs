@@ -2,6 +2,7 @@
 
 namespace PolyRushLibrary
 {
+    //request to login
     [Serializable]
     public class AuthenticationRequest
     {
@@ -9,6 +10,7 @@ namespace PolyRushLibrary
         public string Email;
     }
 
+    //request to register
     [Serializable]
     public class AuthenticationRequestRegister : AuthenticationRequest
     {
@@ -16,11 +18,5 @@ namespace PolyRushLibrary
         public string Username;
         public string Firstname;
         public string Lastname;
-    }
-
-    [Serializable]
-    public class RefreshRequest
-    {
-        public string RefreshToken;
     }
 }

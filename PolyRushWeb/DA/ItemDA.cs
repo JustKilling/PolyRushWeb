@@ -9,13 +9,13 @@ namespace PolyRushWeb.DA
     {
         private readonly UserDA _userDa;
         private readonly PolyRushWebContext _context;
-
+        //constructor that injects the dependencies
         public ItemDA(UserDA userDa, PolyRushWebContext context)
         {
             _userDa = userDa;
             _context = context;
-      
         }
+        //get the discounted price of an item
         public async Task<int> GetDiscountedPriceAsync(Item i)
         {
             //get the fresh item from the database
@@ -25,16 +25,17 @@ namespace PolyRushWeb.DA
             IQueryable<Discount> query = _context.Discount.Where(d => d.ItemId == i.Iditem && (d.Startdate < DateTime.Now && DateTime.Now < d.Enddate));
             if (!query.Any()) return item.Price;
 
-            //select only highest percentage.
+            //select only highest percentage if there would be multiple discounts at the same time.
             int discountResult = await query.Select(d => d.DiscountPercentage).MaxAsync();
 
+            //calculated the discounted price
             decimal discountPercentage = Convert.ToDecimal(discountResult);
             decimal discount = Math.Round(item.Price * (discountPercentage / 100m), 2, MidpointRounding.ToEven);
             decimal discountedPrice = item.Price - discount;
-
+            //return the rounded up price
             return (int)Math.Ceiling(discountedPrice);
         }
-
+        //return all items
         public async Task<List<Item>> GetAllItemsAsync()
         {
             return await _context.Item.ToListAsync();
@@ -51,13 +52,16 @@ namespace PolyRushWeb.DA
 
         public async Task<int> GetAmountAsync(Item item, int id, bool isAdmin = false)
         {
+            //return that an admin has 9999 of an item
             if (isAdmin) return 9999;
 
+            //if useritem doesn't exist create it.
             if (!await UserItemExistsAsync(id, item))
                 await CreateUserItemAsync(id, item, isAdmin);
 
             try
             {
+                //get useritems inner join the items, select where the useritem is equal to the item id and select the amount the user has from the useritem table.
                 int result = await _context.Useritem.Where(ui => ui.UserId == id)
               .Join(_context.Item, ui => ui.ItemId, i => i.Iditem, (ui, i) => new { Useritem = ui, Item = i })
               .Where(x => x.Item.Iditem == item.Iditem).Select(x => x.Useritem.Amount).FirstOrDefaultAsync();
@@ -69,7 +73,7 @@ namespace PolyRushWeb.DA
             }
 
         }
-
+        //return all items from a type
         public async Task<List<Item>> GetItemsFromTypeAsync(ItemType type) => await _context.Item.Where(i => i.ItemTypeId == (int)type).ToListAsync();
 
         public async Task<Item> GetItemById(int id) => await _context.Item.Where(i => i.Iditem == id).FirstOrDefaultAsync();
