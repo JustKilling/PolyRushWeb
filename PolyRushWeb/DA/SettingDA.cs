@@ -19,44 +19,32 @@ namespace PolyRushWeb.DA
     public class SettingDA
     {
         private readonly IDbContextFactory<PolyRushWebContext> _contextFactory;
-
+        //constructor that injects the dependencies
         public SettingDA(IDbContextFactory<PolyRushWebContext> contextFactory)
         {
             _contextFactory = contextFactory;
           
         }
-
+        //get the value of a certain user setting
         public async Task<int> GetUserSetting(int id, EnumSetting enumSetting)
         {
             //make the setting record for the user if it doesn't exists
             if (!await SettingExistsAsync(id, enumSetting)) await CreateSettingAsync(id, enumSetting);
 
-
-
-
-            //MySqlConnection conn = DatabaseConnector.MakeConnection();
-
-            //string query =
-            //    "SELECT * from usersetting WHERE UserID = @UserID AND SettingID = @SettingID";
-            //MySqlCommand cmd = new(query, conn);
-            //cmd.Parameters.AddWithValue("@UserID", id);
-            //cmd.Parameters.AddWithValue("@SettingID", enumSetting);
-            //MySqlDataReader reader = cmd.ExecuteReader();
-            //if (!reader.Read()) return null;
-            //Usersetting setting = Create(reader);
-            //reader.Close();
-            //await conn.CloseAsync();
-
             PolyRushWebContext context = await _contextFactory.CreateDbContextAsync();
+            //return the setting state
             return (await context.Usersetting.Where(us => us.UserId == id && us.SettingId == (int)enumSetting).FirstOrDefaultAsync())!.State;
         }
-
+        //Create a user setting
         private async Task CreateSettingAsync(int id, EnumSetting setting)
         {
             int state = 1;
+            //set it to 100 for the master volume
             if (setting is EnumSetting.MasterVolume) state = 100;
             PolyRushWebContext context = await _contextFactory.CreateDbContextAsync();
+            //add the setting to the usersetting
             await context.Usersetting.AddAsync(new Usersetting { SettingId = (int)setting, State = state, UserId = id });
+            //Save
             await context.SaveChangesAsync();
         }
 
@@ -70,39 +58,21 @@ namespace PolyRushWeb.DA
         }
         public async Task SetSettingAsync(int id, EnumSetting setting, int state)
         {
+            //make the setting record for the user if it doesn't exists
             if (!await (SettingExistsAsync(id, setting)))
                 await CreateSettingAsync(id, setting);
 
 
             PolyRushWebContext context = await _contextFactory.CreateDbContextAsync();
             
+            //select the usersetting
             Usersetting usersetting = await context.Usersetting.SingleAsync(us => us.UserId == id && us.SettingId == (int)setting);
             usersetting.State = state;
+            //Save and update it
             context.Usersetting.Update(usersetting);
             await context.SaveChangesAsync();
 
-            //MySqlConnection conn = DatabaseConnector.MakeConnection();
-            //string query = "UPDATE usersetting SET State = @State WHERE UserID = @UserID AND SettingID = @SettingID";
-            //MySqlCommand cmd = new(query, conn);
-            //cmd.Parameters.AddWithValue("@UserID", id);
-            //cmd.Parameters.AddWithValue("@SettingID", setting);
-            //cmd.Parameters.AddWithValue("@State", state);
-            //cmd.ExecuteNonQuery();
-            //conn.Close();
         }
-
-        //private Usersetting Create(MySqlDataReader reader)
-        //{
-        //    return new()
-        //    {
-        //        UserId = Convert.ToInt32(reader["UserID"]),
-        //        SettingId = Convert.ToInt32(reader["SettingID"]),
-        //        State = Convert.ToInt32(reader["State"])
-        //        //Idsetting = Convert.ToInt32(reader["IDSetting"]),
-        //        //Name = reader["Name"].ToString()!,
-        //        //Description = reader["Description"].ToString()!
-        //    };
-        //}
 
 
     }

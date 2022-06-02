@@ -45,12 +45,15 @@ namespace PolyRushWeb.DA
             stats.Highscore = (avgHighscore, user.Highscore);
 
             //coinsgathered
+            //select how much coins each user has gathered, calculate the average and put it in the stats object
             IQueryable<int>? coinsgathered = _context.Users.Select(u => u.Coinsgathered).Where(x => x > 0);
             int avgCoinsGathered = await coinsgathered.AnyAsync() ? Convert.ToInt32(await coinsgathered.AverageAsync()) : 0;
             stats.CoinsGathered = (avgCoinsGathered, user.Coinsgathered);
 
             //coins
+            //select how much coins each user has
             IQueryable<int>? coins = _context.Users.Select(u => u.Coins).Where(x => x > 0);
+            //calculate the average
             int avgCoins = await coins.AnyAsync() ? Convert.ToInt32(await coins.AverageAsync()) : 0;
             stats.Coins = (avgCoins, user.Coins);
 
@@ -60,47 +63,22 @@ namespace PolyRushWeb.DA
             stats.PeoplePassed = (avgPeoplePassed, user.Timespassed);
 
             //Score gathered
+            //select all scores that are gathered from each user
             IQueryable<int>? scoregathered = _context.Users.Select(u => u.Scoregathered).Where(x => x > 0);
+            //calculate the average
             int avgScoreGathered =
                 await scoregathered.AnyAsync() ? Convert.ToInt32(await scoregathered.AverageAsync()) : 0;
+            //put it in the stats
             stats.ScoreGathered = (avgScoreGathered, user.Scoregathered);
 
             //PlayTime
-            //var gameSessions =
-            //    _context.Gamesession.AsEnumerable();
-            //var userPlaytimes = gameSessions.Select(gs => new UserPlaytime()
-            //{
-            //    Playtime = gs.EndDateTime.Subtract(gs.StartDateTime),
-            //    User = new UserDTO() { ID = gs.UserId }
-            //});
-            //List<UserPlaytime> playtimes = new List<UserPlaytime>();
-            //foreach (UserPlaytime userPlaytime in userPlaytimes)
-            //{
-            //    if (playtimes.Any(u => u.User.ID == userPlaytime.User.ID))
-            //    {
-            //        playtimes = playtimes.Where(u => u.User.ID == userPlaytime.User.ID).Select(x => 
-            //            new UserPlaytime(){User = x.User, Playtime = x.Playtime.Add(userPlaytime.Playtime)}).ToList();
-            //        continue;
-            //    }
-            //    playtimes.Add(userPlaytime);
-            //}
-
-            //stats.PlayTime = (userPlaytimes.Select(x => x.Playtime.TotalSeconds).Average(x => x), TimeSpan.Zero);
-            //double avgPerGameSeconds = test.Select(x => x.Playtime.TotalSeconds).Average();
-            //foreach (var t in test)
-            //{
-            //    Console.WriteLine(t.Playtime.TotalSeconds);
-            //}
-            //double avgPerGameSecondsForUser = test.Where(up => up.User.ID == id).Select(x => x.Playtime.TotalSeconds).Average();
-            //stats.PlayTime = (TimeSpan.FromSeconds(avgPerGameSeconds), TimeSpan.FromSeconds(avgPerGameSecondsForUser) );
-
+            //get the top playtimes for all users
             List<UserPlaytime>? playtimes = await GetTopPlaytimeAsync(_userManager.Users.Count());
+            //calculate the average playtime in seconds
             long avgPlaytimeSeconds =playtimes.Any() ? Convert.ToInt64(playtimes.Select(x => x.Playtime).Average(t => t.TotalSeconds)) : 0;
+            //put it in a timespan object and put it in the playtime object
             TimeSpan avgPlaytime = TimeSpan.FromSeconds(avgPlaytimeSeconds);
             stats.PlayTime = (avgPlaytime, await _userDa.GetUserTotalPlaytimeAsync(user.Id));
-
-            //TODO ?avg per game?
-            //TODO COINS SPENT
 
             return stats;
         }
@@ -115,11 +93,15 @@ namespace PolyRushWeb.DA
             List<UserPlaytime> userplaytimesUngrouped = await _context.Gamesession.Where(gs => nonAdminIds.Contains(gs.UserId))
                 .Select(gs => new UserPlaytime
                 {
+                    //caclulate how long the gamesession took
                     Playtime = gs.EndDateTime.Subtract(gs.StartDateTime),
+                    //get the user
                     User = (_userDa.GetByIdAsync(gs.UserId).GetAwaiter().GetResult())
                 })
                 .ToListAsync();
+            //group the object by the id
             List<IGrouping<int, UserPlaytime>>? uptGrouped = userplaytimesUngrouped.GroupBy(u => u.User.ID).ToList();
+            //remove reduntant records by adding the playtimes together
             List<UserPlaytime> upts = new();
             foreach (IGrouping<int, UserPlaytime>? uptGroup in uptGrouped)
             {
@@ -135,19 +117,21 @@ namespace PolyRushWeb.DA
                 }
                 upts.Add(uptToAdd);
             }
-            List<UserPlaytime>? _ = upts.OrderByDescending(u => u.Playtime.TotalSeconds).Take(amount).ToList();
-            return _;
-
-
+            //order the list by descending order so higher user is on top and take the certain amount
+            return upts.OrderByDescending(u => u.Playtime.TotalSeconds).Take(amount).ToList();
         }
-
+        //get the next goal
         public async Task<List<NextGoalResponse>> GetNextGoals(int amount, int highscore)
         {
+            //select all admins
             IList<User>? adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
+            //select all non admins where highscore is higher then 100 and higher then the users highscore, order by the highscore and take a certain amount
+            //then select the user object
             List<UserDTO>? users = await _context.Users.Where(u => !adminUsers.Contains(u)).Where(u => u.Highscore > 100 && u.Highscore > highscore)
                 .OrderBy(u => u.Highscore).Take(amount)
                 .Select(u => new UserDTO() { ID = u.Id, Highscore = u.Highscore}).ToListAsync();
 
+            //if it doesn't have any users it means the user is on top so return their highscore * 1.25
             if (users.Count <= 0)
             {
                 return new List<NextGoalResponse>
@@ -155,49 +139,47 @@ namespace PolyRushWeb.DA
                     new() { UserId = -1, Goal = Convert.ToInt32(Math.Ceiling(highscore * 1.25 / 1000)) * 1000, Rank = 0 }
                 };
             }
-
+            //add the goalsresponses to the object
             List<NextGoalResponse> goalResponses = new();
-
             foreach(UserDTO? user in users)
             {
                 goalResponses.Add(new NextGoalResponse
                 {
                     UserId = user.ID,
                     Goal = user.Highscore,
+                    //get the user positoin
                     Rank = GetPositionByHighscore(user.Highscore)
                 }); ;
             }
+            //return the goal responses object
 
             return goalResponses;
         }
-
+        //select what position the user is by counting how much users are above you
         private int GetPositionByHighscore(int highscore)
         {
             return _context.Users.Where(u => u.Highscore >= highscore).Select(u => u.Id).Count();
         }
 
-        public async Task UpdateRandomAsync(string username)
-        {
+        //public async Task UpdateRandomAsync(string username)
+        //{
+        //    try
+        //    {
+        //        User? user = await _userManager.FindByNameAsync(username);
+        //        user.Coins = rnd.Next(1000, 15000);
+        //        user.Highscore = rnd.Next(7500);
+        //        user.Itemspurchased = rnd.Next(20);
+        //        user.Coinsspent = rnd.Next(user.Itemspurchased * 200);
+        //        user.Coinsgathered = rnd.Next(user.Coins - user.Itemspurchased * 200);
+        //        user.Scoregathered = rnd.Next(user.Highscore *2, user.Highscore*50);
+        //        user.Timespassed = rnd.Next(100);
 
-            try
-            {
-                User? user = await _userManager.FindByNameAsync(username);
-                user.Coins = rnd.Next(1000, 15000);
-                user.Highscore = rnd.Next(7500);
-                user.Itemspurchased = rnd.Next(20);
-                user.Coinsspent = rnd.Next(user.Itemspurchased * 200);
-                user.Coinsgathered = rnd.Next(user.Coins - user.Itemspurchased * 200);
-                user.Scoregathered = rnd.Next(user.Highscore *2, user.Highscore*50);
-                user.Timespassed = rnd.Next(100);
-
-                await _userManager.UpdateAsync(user);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-           
-        }
-
+        //        await _userManager.UpdateAsync(user);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e);
+        //    }
+        //}
     }
 }
