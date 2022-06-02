@@ -12,20 +12,21 @@ namespace PolyRushWeb.Helper
         private readonly IServer _server;
         private readonly IHttpContextAccessor _contextAccessor;
        
-
+        //constructor with dependency injection
         public EmailHelper(IFluentEmail fluentEmail, IServer server)
         {
             _fluentEmail = fluentEmail;
             _server = server; ;
             
         }
-
+        //method to send a forget password mail with its token
         public async Task SendForgotPasswordEmailAsync(User user, string resetPasswordToken)
         {
             try
             {
                 //get current host name
                 string link = _server.Features.Get<IServerAddressesFeature>()?.Addresses.First() 
+                    //make the query string
                     + $"/Login/ResetPassword?email={user.Email}&token={resetPasswordToken}";
                 
                 //make the email body
@@ -43,7 +44,6 @@ namespace PolyRushWeb.Helper
             }
             catch (Exception e)
             {
-              
                 Console.WriteLine(e.Message);
             }
          

@@ -22,9 +22,13 @@ $( document ).ready(function() {
         color: var(--bs-body-color);
         text-shadow: 0 0 1px rgba(50,251,226,.6),0 0 3px rgba(50,251,226,.5),0 0 .5rem rgba(50,251,226,.3),0 0 2rem rgba(50,251,226,.2):
     }
+    #leaderboards .container{
+        margin-left = 0;    
+    }
 </style>
 
 @{
+    //get top users and playtimes
     List<UserDTO>? topUsers = ViewData["TopUsers"] as List<UserDTO>;
     List<UserPlaytime>? topPlayTimes = ViewData["TopPlaytimes"] as List<UserPlaytime>;
     if (topUsers == null) throw new ArgumentNullException("Topusers not found in view!");
@@ -40,6 +44,7 @@ $( document ).ready(function() {
 
             <caption style="caption-side: top; text-align:center; margin:auto; user-select:none">Top score</caption>
             <tbody>
+            @*put highscores in a table*@
             @{List<UserDTO>? listTopHighscore = topUsers; }
                 @for (int i = 1; i <= @listTopHighscore.Count; i++)
                 {
@@ -59,6 +64,7 @@ $( document ).ready(function() {
 
             <caption style="caption-side: top; text-align:center; margin:auto; user-select:none">Top playtime</caption>
             <tbody>
+            @*put top playtimes in a table*@
             @{List<UserPlaytime>? listPlaytime = topPlayTimes; }
                 @for (int i = 1; i <= @listPlaytime.Count; i++)
                 {

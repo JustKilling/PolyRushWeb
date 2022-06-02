@@ -4,6 +4,8 @@ namespace PolyRushWeb.Helper
 {
     public static class ConverterHelper
     {
+        //extension methods
+        //method to convert a user to a userDTO
         public static UserDTO ToUserDTO(this User user)
         {
             return new UserDTO
@@ -22,6 +24,7 @@ namespace PolyRushWeb.Helper
                 IsActive = user.IsActive
             };
         }
+        //method to convert a userDTO to a user
         public static User ToUser(this UserDTO user)
         {
             return new User
@@ -40,7 +43,7 @@ namespace PolyRushWeb.Helper
                 IsActive = user.IsActive
             };
         }
-
+        //method to convert a user to a usereditadminmodel
         public static UserEditAdminModel ToUserEditAdminModel(this User user, bool isAdmin = false)
         {
             return new UserEditAdminModel
@@ -62,6 +65,7 @@ namespace PolyRushWeb.Helper
                 Username = user.UserName,
             };
         }
+        //method to convert a discount to a discountmodel
         public static DiscountModel ToDiscountModel(this Discount discount)
         {
             return new DiscountModel
@@ -73,6 +77,7 @@ namespace PolyRushWeb.Helper
                 Startdate = discount.Startdate
             };
         }
+        //method to convert a discountmodel to a discount
         public static Discount ToDiscount(this DiscountModel discount)
         {
             return new Discount

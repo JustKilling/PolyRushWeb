@@ -36,6 +36,7 @@
             </div>
             <br />
             <div class="form-group">
+                @*add every item to the select*@
                  @{List<SelectListItem> items = ViewBag.Items as List<SelectListItem>;}
                  <label class="control-label">Item</label>
                  <select asp-for="ItemId" asp-items="items" class="form-control"></select> 

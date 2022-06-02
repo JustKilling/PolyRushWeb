@@ -26,12 +26,9 @@
   <link href="~/css/sidebar.css" rel="stylesheet">
   <link rel = "icon" href ="~/favicon.ico" type = "image/x-icon">
 
-  <!-- Custom styles for this template -->
 </head>
 
  @{
-     //UserDTO user = JsonConvert.DeserializeObject<UserDTO>(Context.Session.GetString("User"));
-     
     UserDTO user = await authenticationHelper.GetAuthenticatedUserAsync();
 
  }
@@ -69,7 +66,6 @@
              </div>
          </nav>
     </div>
-    <!--Container Main start-->
     <div class="height-100 bg-dark">
         @RenderBody()
     </div>

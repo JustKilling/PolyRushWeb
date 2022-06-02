@@ -35,6 +35,7 @@ namespace PolyRushWeb.Controllers.ApiControllers
         [HttpGet("all")]
         public async Task<IActionResult> GetAllAsync()
         {
+            //method to get all user
             return Ok(await _userDa.GetUsers());
         }
 
@@ -60,7 +61,8 @@ namespace PolyRushWeb.Controllers.ApiControllers
 
             return Ok(user);
         }
-
+        
+        //Update the user
         [HttpPost]
         [Route("update")]
         public async Task<IActionResult> UpdateUser(UserDTO user)

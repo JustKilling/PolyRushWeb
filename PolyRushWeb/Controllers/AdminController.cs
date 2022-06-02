@@ -193,7 +193,6 @@ namespace PolyRushWeb.Controllers
             if (!response.IsSuccessStatusCode)
                 return View(new List<ItemItemTypeModel>());
             //Get all itemitemtypes 
-        
             List<ItemItemTypeModel> items= JsonConvert.DeserializeObject<List<ItemItemTypeModel>>(await response.Content.ReadAsStringAsync());
             return View(items);
         }

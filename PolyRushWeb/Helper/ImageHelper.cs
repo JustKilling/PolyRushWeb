@@ -64,7 +64,7 @@ namespace PolyRushWeb.Helper
         {
             //"using" so it gets disposed so no connection stays open.
             using HttpClient client = new HttpClient();
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://prjemiel.netwerkit.be");
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "localhost/gip");
             //set the json content to the image with id.
             request.Content = new StringContent(JsonConvert.SerializeObject(new 
                 {
