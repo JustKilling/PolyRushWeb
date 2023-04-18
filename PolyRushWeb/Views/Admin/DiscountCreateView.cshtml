@@ -1,0 +1,58 @@
+﻿@model DiscountModel
+@{
+    ViewData["Title"] = "Create Discount";
+    Layout = "_HomeLayout";
+}
+<script >
+    @{
+        int index = 6;
+    }
+    $(document).ready(function() {
+        $("#navs").children().eq(@index).addClass("active")
+    });
+</script>
+
+<h3>Create a discount</h3>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateDiscount" asp-controller="Admin">
+           
+            <div class="form-group">
+                <label asp-for="Startdate" class="control-label"></label>
+                <input asp-for="Startdate" class="form-control" />
+                <span asp-validation-for="Startdate" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Enddate" class="control-label"></label>
+                <input asp-for="Enddate" class="form-control" />
+                <span asp-validation-for="Enddate" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="DiscountPercentage" class="control-label"></label>
+                <input asp-for="DiscountPercentage" class="form-control" />
+                <span asp-validation-for="DiscountPercentage" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                @*add every item to the select*@
+                 @{List<SelectListItem> items = ViewBag.Items as List<SelectListItem>;}
+                 <label class="control-label">Item</label>
+                 <select asp-for="ItemId" asp-items="items" class="form-control"></select> 
+                 <span asp-validation-for="ItemId" class="text-danger"></span>
+            </div>
+           
+            <br />
+
+             <button type="submit"  class="btn btn-primary btn-user btn-block">Save</button>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        </form>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Discount">Back to List</a>
+</div>

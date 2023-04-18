@@ -1,0 +1,23 @@
+﻿.dataTable tr.odd{
+}
+.dataTable tr.even {
+}
+.dataTable td {
+    background: #4723D9;
+}
+.dataTable {
+    background: #4723D9;
+    color: white
+}
+.custom-select option {
+    background: rgba(var(--bs-dark-rgb));
+}
+.custom-select {
+    background: rgba(var(--bs-dark-rgb));
+}
+.dataTables_length label{
+    float: left;
+}
+#myTable_length > label > select > option {
+    background: rgba(var(--bs-dark-rgb));
+}

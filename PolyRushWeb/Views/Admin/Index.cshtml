@@ -1,0 +1,83 @@
+﻿@{
+  Layout = "_HomeLayout";
+}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.5/fh-3.2.2/r-2.2.9/datatables.min.css"/>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+<script >
+    @{
+        int index = 5;
+    }
+    $(document).ready(function() {
+        $("#navs").children().eq(@index).addClass("active")
+    });
+</script>
+
+<h1>Admin</h1>
+
+
+<table id="myTable" class="hover responsive" style="max-width: 30%">
+<colgroup>
+    <col style="width: 10%">
+    <col style="width: 30%">
+</colgroup>
+    <thead>
+        <tr>
+            <th>Avatar</th>
+            <th>Username</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+</table>
+<script>
+$(document).ready( function () {
+
+   
+    //create datatable from json object
+    $('#myTable').DataTable( {
+        responsive: true,
+        fixedHeader: true,
+        ajax: {
+            url: '/Admin/GetUsers'
+        },
+        autoWidth: false,
+        columns: [
+                { 
+                    bSortable: false,
+                    data: "ID",
+                    responsivePriority: 2,
+                    render: function(data, type) {
+                        //return `<img style="max-height:40px;" src="data:image/jpg;base64,${data}" alt="" srcset="">`;
+                        return `<img style="max-height:40px;" src="/img/user/${data}.png" loading="lazy" alt="User avatar">`;
+                    }
+                },
+                { responsivePriority: 1, data: "Username" },
+                { responsivePriority: 1, data: null,
+                    render: function(data, type, row) {
+
+                        
+
+                        let link = "/File/GetUserImage?UserID="+row.ID;
+                         console.log(row);
+
+                        if(row.IsActive === true){
+                             return `<div class="btn-group" role="group" aria-label="Edit or delete">
+                                     <a href="/Admin/Edit/${row.ID}" class="btn btn-primary">Edit</a>` +
+                                    `<a href="/Admin/Deactivate/${row.ID}" class="btn btn-danger">Deactivate</a>`+
+                                    `</div>`;
+                        }else{
+                             return `<div class="btn-group" role="group" aria-label="Edit or delete">
+                                     <a href="/Admin/Edit/${row.ID}" class="btn btn-primary">Edit</a>` +
+                                    `<a href="/Admin/Activate/${row.ID}" class="btn btn-success">Activate</a>`+
+                                    `</div>`;
+                        }
+
+                       
+                    }
+                }
+            ],
+        paging: "first_last_numbers"
+    } );
+} );
+
+</script>

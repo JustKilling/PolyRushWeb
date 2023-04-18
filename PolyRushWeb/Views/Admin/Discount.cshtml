@@ -1,0 +1,50 @@
+﻿@model List<Discount>
+@{
+    ViewData["Title"] = "Discount";
+    Layout = "_HomeLayout";
+}
+<script >
+    @{
+        int index = 6;
+    }
+    $(document).ready(function() {
+        $("#navs").children().eq(@index).addClass("active")
+    });
+</script>
+<h3>Discounts</h3>
+<table class="table" style="max-width: 750px">
+	<thead>
+		<tr>
+			<th>Item</th>
+			<th>Discount percentage</th>
+			<th>Start date</th>
+			<th>End date</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.Any())
+{			//add every discount to the table with the delete id
+			@foreach (Discount discount in Model)
+			{
+				<tr>
+					<td>@discount.ItemId</td>
+					<td>@discount.DiscountPercentage </td>
+					<td>@discount.Startdate.ToLongDateString()</td>
+					<td>@discount.Enddate.ToLongDateString()</td>
+					<td><a href=@($"/Admin/DeleteDiscount/{discount.Iddiscount}") class="btn btn-primary">Delete</a></td>
+				</tr>
+			}
+		}
+		else
+		{
+			<tr>No discounts have been found!</tr>
+		}
+		
+	
+	</tbody>
+</table>
+
+<div class="btn-group" role="group" aria-label="Create">
+    <a href="/Admin/DiscountCreateView" class="btn btn-primary">Create</a>
+</div>

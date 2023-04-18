@@ -1,0 +1,153 @@
+﻿@model PolyRushWeb.Models.StatsModel
+@using PolyRushWeb.DA
+
+<script >
+    @{
+        int index = 2;
+    }
+    $(document).ready(function() {
+        $("#navs").children().eq(@index).addClass("active")
+    });
+</script>
+<style>
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .card {
+        margin: 20px;
+        padding: 20px;
+        width: 500px;
+        min-height: 200px;
+        display: grid;
+        grid-template-rows: 20px 50px 1fr 50px;
+        border-radius: 10px;
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+        transition: all 0.2s;
+    }
+
+    .card:hover {
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+        transform: scale(1.01);
+    }
+
+    .cardicon {
+        position: relative;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.9);
+        grid-row: 1/1;
+        grid-column: 1/1;
+        font-size: 30px;
+    }
+
+    .cardtitle {
+        grid-row: 1/1;
+        grid-column: 2/4;
+        font-weight: 400;
+        color: #ffffff;
+        display: inline;
+    }
+
+    .cardcontent {
+
+        grid-row: 2/5;
+        grid-column: 1/4;
+        align-self: center;
+        word-break: break-all;
+        color: #1a0933;
+    }
+    
+    .card1 { background: radial-gradient(#fe4f5, #3fbafe); }
+
+    .card2 { background: radial-gradient(#fbc1cc, #fa99b2); }
+
+    .card3 { background: radial-gradient(#76b2fe, #b69efe); }
+
+    .card4 { background: radial-gradient(#60efbc, #58d5c9); }
+
+    .card5 { background: radial-gradient(#f588d8, #c0a3e5); }
+
+    .card6 { background: radial-gradient(#78E190, #20B37B); }
+       
+    @@media (max-width: 1600px) {
+        .cards { justify-content: center; }
+    }
+
+</style>
+
+
+<div class="container">
+    <div class="cards">
+        <div class="card card1">
+            <div class="cardicon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <h2 class="cardtitle">Highscore</h2>
+
+            <p class="cardcontent">
+                Avg: @Model.Highscore.Item1 <br/> 
+                You: @Model.Highscore.Item2
+
+            </p>
+       
+        </div>
+        <div class="card card2">
+            <div class="cardicon">
+                <i class="fas fa-stopwatch"></i>
+            </div>
+
+            <h2 class="cardtitle">Playtime</h2>
+            <p class="cardcontent">
+                Avg: @Model.PlayTime.Item1.ToString() <br/> 
+                You: @Model.PlayTime.Item2.ToString() 
+            </p>
+        </div>
+        <div class="card card3">
+            <div class="cardicon">
+                <i class="fas fa-users"></i>
+            </div>
+
+            <h2 class="cardtitle">People passed</h2>
+            <p class="cardcontent">
+                Avg: @Model.PeoplePassed.Item1 <br/> 
+                You: @Model.PeoplePassed.Item2
+            </p>
+        </div>
+        <div class="card card4">
+            <div class="cardicon">
+                <i class="fas fa-coins"></i>
+            </div>
+
+            <h2 class="cardtitle">Coins gathered</h2>
+            <p class="cardcontent">
+                Avg: @Model.CoinsGathered.Item1 <br/> 
+                You: @Model.CoinsGathered.Item2
+            </p>
+        </div>
+        <div class="card card5">
+            <div class="cardicon">
+                <i class="fas fa-star"></i>
+            </div>
+
+            <h2 class="cardtitle">Score gathered</h2>
+            <p class="cardcontent">
+                Avg: @Model.ScoreGathered.Item1 <br/> 
+                You: @Model.ScoreGathered.Item2
+            </p>
+        </div>
+        <div class="card card6">
+            <div class="cardicon">
+                <i class="fa-solid fa-coin-blank"></i>
+            </div>
+
+            <h2 class="cardtitle">Coins</h2>
+            <p class="cardcontent">
+                Avg: @Model.Coins.Item1 <br/> 
+                You: @Model.Coins.Item2
+            </p>
+        </div>
+    </div>
+</div>
